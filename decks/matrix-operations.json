@@ -1,0 +1,47 @@
+{
+  "id": "matrix-operations",
+  "title": "Matrix Operations",
+  "description": "Multiplication, transpose, identity, determinants",
+  "questions": [
+    {
+      "type": "mc",
+      "prompt": "What is the determinant of the identity matrix I (any size)?",
+      "choices": ["0", "1", "-1", "Depends on size"],
+      "answer": 1
+    },
+    {
+      "type": "mc",
+      "prompt": "For matrix multiplication AB to be defined, what must be true?",
+      "choices": [
+        "A and B must be the same size",
+        "Both must be square",
+        "Columns of A must equal rows of B",
+        "Rows of A must equal columns of A"
+      ],
+      "answer": 2
+    },
+    {
+      "type": "type",
+      "prompt": "A 3x4 matrix has how many entries total?",
+      "answer": ["12"]
+    },
+    {
+      "type": "wordbank",
+      "prompt": "The _____ of a matrix is formed by flipping it over its main diagonal.",
+      "wordbank": ["transpose", "inverse", "determinant", "trace"],
+      "answer": "transpose"
+    },
+    {
+      "type": "wordbank",
+      "prompt": "A matrix that equals its own transpose is called _____.",
+      "wordbank": ["symmetric", "diagonal", "singular", "orthogonal"],
+      "answer": "symmetric"
+    },
+    {
+      "type": "mc",
+      "prompt": "A matrix has no inverse exactly when its determinant is:",
+      "choices": ["Negative", "Zero", "One", "Greater than 1"],
+      "answer": 1
+    }
+  ]
+}

@@ -1,0 +1,47 @@
+{
+  "id": "vectors-basics",
+  "title": "Vectors: The Basics",
+  "description": "Magnitude, direction, and basic operations",
+  "questions": [
+    {
+      "type": "mc",
+      "prompt": "What is the magnitude of the vector (3, 4)?",
+      "choices": ["5", "7", "12", "25"],
+      "answer": 0
+    },
+    {
+      "type": "mc",
+      "prompt": "Two vectors are orthogonal when their dot product equals:",
+      "choices": ["1", "-1", "0", "the magnitude"],
+      "answer": 2
+    },
+    {
+      "type": "type",
+      "prompt": "Compute the dot product of (1, 2, 3) and (4, 5, 6).",
+      "answer": ["32"]
+    },
+    {
+      "type": "type",
+      "prompt": "What is the magnitude of the vector (0, 5)? (just the number)",
+      "answer": ["5"]
+    },
+    {
+      "type": "wordbank",
+      "prompt": "A vector with magnitude 1 is called a _____ vector.",
+      "wordbank": ["unit", "zero", "scalar", "normal"],
+      "answer": "unit"
+    },
+    {
+      "type": "wordbank",
+      "prompt": "Adding a vector to its own _____ always gives the zero vector.",
+      "wordbank": ["negative", "transpose", "inverse", "magnitude"],
+      "answer": "negative"
+    },
+    {
+      "type": "mc",
+      "prompt": "Which operation scales a vector's length without changing its direction (for positive scalars)?",
+      "choices": ["Dot product", "Cross product", "Scalar multiplication", "Vector addition"],
+      "answer": 2
+    }
+  ]
+}

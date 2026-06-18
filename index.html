@@ -1,0 +1,636 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Linear Algebra Drills</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0B0E14;
+    --surface:#1A1F2C;
+    --surface-raised:#222838;
+    --chalk:#EAEAF0;
+    --chalk-dim:#9AA1B4;
+    --vector:#7C9DFF;
+    --vector-dim:#3F4D8A;
+    --correct:#3DDC97;
+    --wrong:#FF6B6B;
+    --grid-line: rgba(124,157,255,0.06);
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:var(--ink);
+    color:var(--chalk);
+    font-family:'Inter',sans-serif;
+    min-height:100vh;
+    background-image:
+      linear-gradient(var(--grid-line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+    background-size:32px 32px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+  }
+  .app{
+    width:100%;
+    max-width:480px;
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    padding:20px 18px 40px;
+  }
+  header.top{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    margin-bottom:28px;
+  }
+  .brand{
+    font-family:'Space Mono', monospace;
+    font-weight:700;
+    font-size:15px;
+    letter-spacing:0.02em;
+    color:var(--chalk-dim);
+    display:flex;
+    align-items:center;
+    gap:8px;
+  }
+  .brand .bracket{color:var(--vector);}
+  .score-pill{
+    font-family:'Space Mono', monospace;
+    font-size:13px;
+    background:var(--surface);
+    border:1px solid var(--vector-dim);
+    border-radius:999px;
+    padding:6px 12px;
+    color:var(--vector);
+  }
+  h1{
+    font-family:'Space Mono', monospace;
+    font-size:28px;
+    line-height:1.25;
+    margin:0 0 6px;
+    font-weight:700;
+  }
+  .sub{
+    color:var(--chalk-dim);
+    font-size:14.5px;
+    margin:0 0 28px;
+    line-height:1.5;
+  }
+
+  /* ---------- Deck menu ---------- */
+  .deck-list{display:flex; flex-direction:column; gap:14px;}
+  .deck-card{
+    background:var(--surface);
+    border:1px solid #2A3142;
+    border-radius:16px;
+    padding:18px 18px 16px;
+    cursor:pointer;
+    transition:border-color .15s, transform .1s;
+    text-align:left;
+    color:var(--chalk);
+    font-family:inherit;
+    display:flex;
+    gap:14px;
+    align-items:center;
+  }
+  .deck-card:hover{border-color:var(--vector-dim);}
+  .deck-card:active{transform:scale(0.98);}
+  .deck-glyph{flex:none; width:44px; height:44px;}
+  .deck-info{flex:1; min-width:0;}
+  .deck-title{font-weight:700; font-size:16.5px; margin-bottom:3px;}
+  .deck-desc{font-size:13px; color:var(--chalk-dim); line-height:1.4;}
+  .deck-meta{font-family:'Space Mono',monospace; font-size:11.5px; color:var(--vector); margin-top:8px;}
+
+  /* ---------- Quiz screen ---------- */
+  .progress-row{
+    display:flex; align-items:center; gap:10px;
+    margin-bottom:22px;
+  }
+  .progress-track{
+    flex:1; height:6px; border-radius:4px;
+    background:#222838; overflow:hidden;
+  }
+  .progress-fill{
+    height:100%; background:var(--vector);
+    border-radius:4px; transition:width .25s ease;
+  }
+  .progress-label{font-family:'Space Mono',monospace; font-size:12px; color:var(--chalk-dim); flex:none;}
+
+  .qcard{
+    background:var(--surface);
+    border:1px solid #2A3142;
+    border-radius:18px;
+    padding:26px 20px;
+    margin-bottom:20px;
+  }
+  .qtype-tag{
+    font-family:'Space Mono',monospace;
+    font-size:11px;
+    color:var(--vector);
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    margin-bottom:14px;
+    display:inline-block;
+  }
+  .prompt{
+    font-size:19px;
+    line-height:1.45;
+    font-weight:500;
+    margin:0;
+  }
+  .prompt .bracket-deco{color:var(--vector); font-family:'Space Mono',monospace;}
+
+  .choices{display:flex; flex-direction:column; gap:10px; margin-top:22px;}
+  .choice-btn{
+    background:var(--surface-raised);
+    border:1px solid #313850;
+    color:var(--chalk);
+    border-radius:12px;
+    padding:14px 16px;
+    font-size:15.5px;
+    text-align:left;
+    cursor:pointer;
+    font-family:inherit;
+    transition:border-color .12s, background .12s;
+  }
+  .choice-btn:hover{border-color:var(--vector-dim);}
+  .choice-btn.correct{background:rgba(61,220,151,0.14); border-color:var(--correct); color:var(--correct);}
+  .choice-btn.wrong{background:rgba(255,107,107,0.14); border-color:var(--wrong); color:var(--wrong);}
+  .choice-btn:disabled{cursor:default;}
+
+  .type-row{margin-top:22px; display:flex; gap:10px;}
+  .type-input{
+    flex:1;
+    background:var(--surface-raised);
+    border:1px solid #313850;
+    color:var(--chalk);
+    border-radius:12px;
+    padding:14px 16px;
+    font-size:16px;
+    font-family:'Space Mono',monospace;
+  }
+  .type-input:focus{outline:none; border-color:var(--vector);}
+  .type-input.correct{border-color:var(--correct); color:var(--correct);}
+  .type-input.wrong{border-color:var(--wrong); color:var(--wrong);}
+
+  .wordbank-tray{
+    display:flex; flex-wrap:wrap; gap:8px; margin-top:18px;
+  }
+  .wb-chip{
+    background:var(--surface-raised);
+    border:1px solid #313850;
+    color:var(--chalk);
+    border-radius:999px;
+    padding:9px 16px;
+    font-size:14.5px;
+    cursor:pointer;
+    font-family:inherit;
+  }
+  .wb-chip:hover{border-color:var(--vector-dim);}
+  .wb-chip:disabled{opacity:0.35; cursor:default;}
+  .wb-slot{
+    margin-top:18px;
+    min-height:48px;
+    border:1.5px dashed #3A4258;
+    border-radius:12px;
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Space Mono',monospace;
+    font-size:15px;
+    color:var(--chalk-dim);
+    padding:8px 14px;
+  }
+  .wb-slot.filled{border-style:solid; color:var(--chalk); border-color:var(--vector-dim);}
+  .wb-slot.correct{border-color:var(--correct); color:var(--correct); background:rgba(61,220,151,0.08);}
+  .wb-slot.wrong{border-color:var(--wrong); color:var(--wrong); background:rgba(255,107,107,0.08);}
+
+  .primary-btn{
+    width:100%;
+    background:var(--vector);
+    color:#0B0E14;
+    border:none;
+    border-radius:12px;
+    padding:15px;
+    font-size:15.5px;
+    font-weight:700;
+    font-family:'Space Mono',monospace;
+    cursor:pointer;
+    margin-top:10px;
+  }
+  .primary-btn:disabled{opacity:0.35; cursor:default;}
+  .ghost-btn{
+    width:100%;
+    background:transparent;
+    color:var(--chalk-dim);
+    border:1px solid #2A3142;
+    border-radius:12px;
+    padding:13px;
+    font-size:14px;
+    font-family:'Inter',sans-serif;
+    cursor:pointer;
+    margin-top:10px;
+  }
+  .feedback{
+    margin-top:14px;
+    font-size:13.5px;
+    color:var(--chalk-dim);
+    font-family:'Space Mono',monospace;
+    min-height:18px;
+  }
+
+  /* ---------- Results ---------- */
+  .results{
+    text-align:center;
+    padding-top:30px;
+  }
+  .results .big-score{
+    font-family:'Space Mono',monospace;
+    font-size:64px;
+    font-weight:700;
+    color:var(--vector);
+    line-height:1;
+    margin-bottom:6px;
+  }
+  .results .score-sub{color:var(--chalk-dim); margin-bottom:30px;}
+  .vector-art{margin:0 auto 20px; display:block;}
+
+  footer.appfoot{
+    text-align:center;
+    color:#3A4258;
+    font-family:'Space Mono',monospace;
+    font-size:11px;
+    margin-top:auto;
+    padding-top:30px;
+  }
+
+  [data-screen]{display:none;}
+  [data-screen].active{display:block;}
+
+  @media (prefers-reduced-motion: reduce){
+    *{transition:none !important;}
+  }
+</style>
+</head>
+<body>
+<div class="app">
+
+  <header class="top">
+    <div class="brand"><span class="bracket">[</span>LINALG DRILLS<span class="bracket">]</span></div>
+    <div class="score-pill" id="globalScorePill">0 solved</div>
+  </header>
+
+  <!-- ===== SCREEN: deck menu ===== -->
+  <section data-screen="menu" class="active">
+    <h1>Pick a concept.</h1>
+    <p class="sub">Quick drills, multiple choice, type-in, and word-bank. Your scores stay on this device.</p>
+    <div class="deck-list" id="deckList">
+      <div class="sub">Loading decks…</div>
+    </div>
+  </section>
+
+  <!-- ===== SCREEN: quiz ===== -->
+  <section data-screen="quiz">
+    <div class="progress-row">
+      <div class="progress-track"><div class="progress-fill" id="progressFill" style="width:0%"></div></div>
+      <div class="progress-label" id="progressLabel">1 / 1</div>
+    </div>
+
+    <div class="qcard" id="qcard">
+      <!-- injected per question -->
+    </div>
+
+    <div class="feedback" id="feedback"></div>
+    <button class="primary-btn" id="nextBtn" disabled>Next</button>
+    <button class="ghost-btn" id="quitBtn">Back to decks</button>
+  </section>
+
+  <!-- ===== SCREEN: results ===== -->
+  <section data-screen="results">
+    <div class="results">
+      <svg class="vector-art" width="120" height="120" viewBox="0 0 120 120" fill="none">
+        <line x1="60" y1="60" x2="60" y2="60" id="resultArrow" stroke="#7C9DFF" stroke-width="3" stroke-linecap="round" marker-end="url(#arrowhead)"/>
+        <defs>
+          <marker id="arrowhead" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto">
+            <path d="M0,0 L8,4 L0,8 Z" fill="#7C9DFF"/>
+          </marker>
+        </defs>
+        <circle cx="60" cy="60" r="3" fill="#EAEAF0"/>
+      </svg>
+      <div class="big-score" id="resultScore">0/0</div>
+      <div class="score-sub" id="resultSub">Deck complete</div>
+      <button class="primary-btn" id="retryBtn">Try again</button>
+      <button class="ghost-btn" id="menuBtn">Back to decks</button>
+    </div>
+  </section>
+
+  <footer class="appfoot">BUILT FOR THE COURSE · OFFLINE-FRIENDLY</footer>
+</div>
+
+<script>
+(function(){
+  "use strict";
+
+  const screens = document.querySelectorAll('[data-screen]');
+  function showScreen(name){
+    screens.forEach(s => s.classList.toggle('active', s.dataset.screen === name));
+  }
+
+  const STORAGE_KEY = 'linalg-drills-progress-v1';
+  function loadProgress(){
+    try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || {}; }
+    catch(e){ return {}; }
+  }
+  function saveProgress(p){
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(p));
+  }
+  let progress = loadProgress();
+
+  function totalSolved(){
+    return Object.values(progress).reduce((sum, d) => sum + (d.bestScore || 0), 0);
+  }
+  function refreshScorePill(){
+    document.getElementById('globalScorePill').textContent = totalSolved() + ' solved';
+  }
+
+  // ---------- Deck glyph (small vector diagram, varies by index) ----------
+  function deckGlyph(seed){
+    const angle = (seed * 47) % 360;
+    const rad = angle * Math.PI / 180;
+    const x = 22 + 16 * Math.cos(rad);
+    const y = 22 + 16 * Math.sin(rad);
+    return `<svg width="44" height="44" viewBox="0 0 44 44">
+      <circle cx="22" cy="22" r="20" fill="none" stroke="#2A3142" stroke-width="1.5"/>
+      <line x1="22" y1="22" x2="${x.toFixed(1)}" y2="${y.toFixed(1)}" stroke="#7C9DFF" stroke-width="2.5" stroke-linecap="round" marker-end="url(#gh)"/>
+      <defs><marker id="gh" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto">
+        <path d="M0,0 L6,3 L0,6 Z" fill="#7C9DFF"/>
+      </marker></defs>
+      <circle cx="22" cy="22" r="2" fill="#EAEAF0"/>
+    </svg>`;
+  }
+
+  // ---------- Load manifest + decks ----------
+  let manifest = [];
+  let decksById = {};
+
+  async function loadManifest(){
+    const res = await fetch('decks/manifest.json');
+    manifest = await res.json();
+    renderDeckList();
+  }
+
+  function renderDeckList(){
+    const list = document.getElementById('deckList');
+    list.innerHTML = '';
+    manifest.forEach((entry, i) => {
+      const card = document.createElement('button');
+      card.className = 'deck-card';
+      const prog = progress[entry.id];
+      const metaText = prog ? `BEST: ${prog.bestScore}/${prog.total}` : 'NOT ATTEMPTED';
+      card.innerHTML = `
+        <div class="deck-glyph">${deckGlyph(i+1)}</div>
+        <div class="deck-info">
+          <div class="deck-title">${escapeHtml(entry.title || entry.id)}</div>
+          <div class="deck-desc">${escapeHtml(entry.description || '')}</div>
+          <div class="deck-meta">${metaText}</div>
+        </div>`;
+      card.addEventListener('click', () => startDeck(entry.id));
+      list.appendChild(card);
+    });
+  }
+
+  function escapeHtml(s){
+    const d = document.createElement('div');
+    d.textContent = s || '';
+    return d.innerHTML;
+  }
+
+  async function fetchDeck(id){
+    if (decksById[id]) return decksById[id];
+    const entry = manifest.find(m => m.id === id);
+    if (!entry) throw new Error('Unknown deck: ' + id);
+    const res = await fetch(entry.file);
+    const deck = await res.json();
+    decksById[id] = deck;
+    // store title/description on manifest entry for menu display
+    entry.title = deck.title;
+    entry.description = deck.description;
+    return deck;
+  }
+
+  // ---------- Quiz runtime ----------
+  let activeDeck = null;
+  let qIndex = 0;
+  let score = 0;
+  let answered = false;
+  let wbSelected = null; // for wordbank: currently chosen word
+
+  async function startDeck(id){
+    activeDeck = await fetchDeck(id);
+    qIndex = 0;
+    score = 0;
+    renderDeckList(); // refresh meta text in background
+    showScreen('quiz');
+    renderQuestion();
+  }
+
+  function renderQuestion(){
+    answered = false;
+    wbSelected = null;
+    const q = activeDeck.questions[qIndex];
+    const card = document.getElementById('qcard');
+    const total = activeDeck.questions.length;
+
+    document.getElementById('progressFill').style.width = ((qIndex) / total * 100) + '%';
+    document.getElementById('progressLabel').textContent = (qIndex+1) + ' / ' + total;
+    document.getElementById('feedback').textContent = '';
+    document.getElementById('nextBtn').disabled = true;
+    document.getElementById('nextBtn').textContent = (qIndex === total - 1) ? 'See results' : 'Next';
+
+    if (q.type === 'mc'){
+      card.innerHTML = `
+        <span class="qtype-tag">Multiple choice</span>
+        <p class="prompt">${escapeHtml(q.prompt)}</p>
+        <div class="choices" id="choicesWrap"></div>`;
+      const wrap = card.querySelector('#choicesWrap');
+      q.choices.forEach((choice, idx) => {
+        const btn = document.createElement('button');
+        btn.className = 'choice-btn';
+        btn.textContent = choice;
+        btn.addEventListener('click', () => handleMcAnswer(idx, btn, wrap));
+        wrap.appendChild(btn);
+      });
+    } else if (q.type === 'type'){
+      card.innerHTML = `
+        <span class="qtype-tag">Fill in</span>
+        <p class="prompt">${escapeHtml(q.prompt)}</p>
+        <div class="type-row">
+          <input type="text" class="type-input" id="typeInput" placeholder="Your answer" autocomplete="off" autocapitalize="off" spellcheck="false" />
+        </div>
+        <button class="primary-btn" id="submitTypeBtn">Submit</button>`;
+      const input = card.querySelector('#typeInput');
+      const submitBtn = card.querySelector('#submitTypeBtn');
+      const submit = () => handleTypeAnswer(input, submitBtn);
+      submitBtn.addEventListener('click', submit);
+      input.addEventListener('keydown', e => { if (e.key === 'Enter') submit(); });
+      setTimeout(() => input.focus(), 50);
+    } else if (q.type === 'wordbank'){
+      const parts = q.prompt.split('_____');
+      card.innerHTML = `
+        <span class="qtype-tag">Word bank</span>
+        <p class="prompt">${escapeHtml(parts[0])}<span class="bracket-deco">[ ___ ]</span>${escapeHtml(parts[1]||'')}</p>
+        <div class="wb-slot" id="wbSlot">tap a word below</div>
+        <div class="wordbank-tray" id="wbTray"></div>
+        <button class="primary-btn" id="submitWbBtn" disabled>Submit</button>`;
+      const tray = card.querySelector('#wbTray');
+      const slot = card.querySelector('#wbSlot');
+      const submitBtn = card.querySelector('#submitWbBtn');
+      const chips = [];
+      q.wordbank.forEach(word => {
+        const chip = document.createElement('button');
+        chip.className = 'wb-chip';
+        chip.textContent = word;
+        chip.addEventListener('click', () => {
+          wbSelected = word;
+          slot.textContent = word;
+          slot.classList.add('filled');
+          submitBtn.disabled = false;
+        });
+        chips.push(chip);
+        tray.appendChild(chip);
+      });
+      submitBtn.addEventListener('click', () => handleWordbankAnswer(slot, chips, submitBtn));
+    }
+  }
+
+  function lockAnswered(){
+    answered = true;
+    document.getElementById('nextBtn').disabled = false;
+  }
+
+  function handleMcAnswer(idx, btn, wrap){
+    if (answered) return;
+    const q = activeDeck.questions[qIndex];
+    const correctIdx = q.answer;
+    const buttons = wrap.querySelectorAll('.choice-btn');
+    buttons.forEach(b => b.disabled = true);
+    if (idx === correctIdx){
+      btn.classList.add('correct');
+      score++;
+      document.getElementById('feedback').textContent = 'Correct.';
+    } else {
+      btn.classList.add('wrong');
+      buttons[correctIdx].classList.add('correct');
+      document.getElementById('feedback').textContent = 'Correct answer: ' + q.choices[correctIdx];
+    }
+    lockAnswered();
+  }
+
+  function normalize(s){
+    return (s || '').toString().trim().toLowerCase();
+  }
+
+  function handleTypeAnswer(input, submitBtn){
+    if (answered) return;
+    const q = activeDeck.questions[qIndex];
+    const userVal = normalize(input.value);
+    const accepted = q.answer.map(normalize);
+    const isCorrect = accepted.includes(userVal);
+    input.disabled = true;
+    submitBtn.disabled = true;
+    if (isCorrect){
+      input.classList.add('correct');
+      score++;
+      document.getElementById('feedback').textContent = 'Correct.';
+    } else {
+      input.classList.add('wrong');
+      document.getElementById('feedback').textContent = 'Correct answer: ' + q.answer[0];
+    }
+    lockAnswered();
+  }
+
+  function handleWordbankAnswer(slot, chips, submitBtn){
+    if (answered) return;
+    const q = activeDeck.questions[qIndex];
+    chips.forEach(c => c.disabled = true);
+    submitBtn.disabled = true;
+    const isCorrect = normalize(wbSelected) === normalize(q.answer);
+    if (isCorrect){
+      slot.classList.add('correct');
+      score++;
+      document.getElementById('feedback').textContent = 'Correct.';
+    } else {
+      slot.classList.add('wrong');
+      document.getElementById('feedback').textContent = 'Correct answer: ' + q.answer;
+    }
+    lockAnswered();
+  }
+
+  document.getElementById('nextBtn').addEventListener('click', () => {
+    if (!answered) return;
+    qIndex++;
+    if (qIndex >= activeDeck.questions.length){
+      finishDeck();
+    } else {
+      renderQuestion();
+    }
+  });
+
+  document.getElementById('quitBtn').addEventListener('click', () => {
+    showScreen('menu');
+  });
+
+  function finishDeck(){
+    const total = activeDeck.questions.length;
+    const prev = progress[activeDeck.id];
+    const bestScore = prev ? Math.max(prev.bestScore, score) : score;
+    progress[activeDeck.id] = { bestScore, total, lastScore: score, attempts: (prev?.attempts||0)+1 };
+    saveProgress(progress);
+    refreshScorePill();
+
+    document.getElementById('resultScore').textContent = score + '/' + total;
+    const pct = Math.round((score/total)*100);
+    let sub = pct === 100 ? 'Perfect run.' : pct >= 70 ? 'Solid work.' : 'Keep drilling — repetition builds intuition.';
+    document.getElementById('resultSub').textContent = sub;
+
+    // animate a little arrow scaled to score pct
+    const arrow = document.getElementById('resultArrow');
+    const angle = -90 + (pct/100)*180; // sweep
+    const rad = angle * Math.PI/180;
+    const x = 60 + 45*Math.cos(rad);
+    const y = 60 + 45*Math.sin(rad);
+    arrow.setAttribute('x2', x.toFixed(1));
+    arrow.setAttribute('y2', y.toFixed(1));
+
+    showScreen('results');
+  }
+
+  document.getElementById('retryBtn').addEventListener('click', () => {
+    qIndex = 0; score = 0;
+    showScreen('quiz');
+    renderQuestion();
+  });
+  document.getElementById('menuBtn').addEventListener('click', () => {
+    renderDeckList();
+    showScreen('menu');
+  });
+
+  // ---------- Deep link support: ?deck=vectors-basics ----------
+  async function init(){
+    refreshScorePill();
+    await loadManifest();
+    const params = new URLSearchParams(window.location.search);
+    const deckParam = params.get('deck');
+    if (deckParam && manifest.some(m => m.id === deckParam)){
+      startDeck(deckParam);
+    }
+  }
+  init();
+})();
+</script>
+</body>
+</html>
