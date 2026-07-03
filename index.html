@@ -371,7 +371,7 @@ function updateScorePill(n){
   pill.style.display = '';
 }
 
-function isTeacher(){ return currentUser && S.includes(currentUser.id); }
+function isTeacher(){ return currentUser && TEACHER_IDS.includes(currentUser.id); }
 
 // ---------- Auth flow ----------
 sb.auth.onAuthStateChange(async (event, session) => {
