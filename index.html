@@ -156,6 +156,13 @@
   .vector-art{margin:0 auto 20px;display:block;}
   footer.appfoot{text-align:center;color:#3A4258;font-family:'Space Mono',monospace;font-size:11px;margin-top:auto;padding-top:30px;}
 </style>
+  <script>
+  MathJax = {
+    tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] },
+    startup: { typeset: false }
+  };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-cml.js"></script>
 </head>
 <body>
 <div class="app">
@@ -604,6 +611,7 @@ function renderQuestion(){
     });
     submitBtn.addEventListener('click', () => handleWordbankAnswer(slot, chips, submitBtn));
   }
+  MathJax.typesetPromise([card]);
 }
 
 function lockAnswered(){ answered = true; document.getElementById('nextBtn').disabled = false; }
