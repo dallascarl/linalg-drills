@@ -7,6 +7,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <style>
   :root{
     --ink:#0B0E14;
@@ -18,7 +19,8 @@
     --vector-dim:#3F4D8A;
     --correct:#3DDC97;
     --wrong:#FF6B6B;
-    --grid-line: rgba(124,157,255,0.06);
+    --gold:#FFD166;
+    --grid-line:rgba(124,157,255,0.06);
   }
   *{box-sizing:border-box;}
   html,body{margin:0;padding:0;}
@@ -28,609 +30,837 @@
     font-family:'Inter',sans-serif;
     min-height:100vh;
     background-image:
-      linear-gradient(var(--grid-line) 1px, transparent 1px),
-      linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+      linear-gradient(var(--grid-line) 1px,transparent 1px),
+      linear-gradient(90deg,var(--grid-line) 1px,transparent 1px);
     background-size:32px 32px;
     display:flex;
     flex-direction:column;
     align-items:center;
   }
-  .app{
-    width:100%;
-    max-width:480px;
-    min-height:100vh;
-    display:flex;
-    flex-direction:column;
-    padding:20px 18px 40px;
-  }
-  header.top{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    margin-bottom:28px;
-  }
-  .brand{
-    font-family:'Space Mono', monospace;
-    font-weight:700;
-    font-size:15px;
-    letter-spacing:0.02em;
-    color:var(--chalk-dim);
-    display:flex;
-    align-items:center;
-    gap:8px;
-  }
+  .app{width:100%;max-width:480px;min-height:100vh;display:flex;flex-direction:column;padding:20px 18px 40px;}
+
+  /* header */
+  header.top{display:flex;align-items:center;justify-content:space-between;margin-bottom:28px;gap:10px;}
+  .brand{font-family:'Space Mono',monospace;font-weight:700;font-size:15px;letter-spacing:.02em;color:var(--chalk-dim);display:flex;align-items:center;gap:8px;flex:none;}
   .brand .bracket{color:var(--vector);}
-  .score-pill{
-    font-family:'Space Mono', monospace;
-    font-size:13px;
-    background:var(--surface);
-    border:1px solid var(--vector-dim);
-    border-radius:999px;
-    padding:6px 12px;
-    color:var(--vector);
-  }
-  h1{
-    font-family:'Space Mono', monospace;
-    font-size:28px;
-    line-height:1.25;
-    margin:0 0 6px;
-    font-weight:700;
-  }
-  .sub{
-    color:var(--chalk-dim);
-    font-size:14.5px;
-    margin:0 0 28px;
-    line-height:1.5;
-  }
+  .header-right{display:flex;align-items:center;gap:8px;}
+  .score-pill{font-family:'Space Mono',monospace;font-size:12px;background:var(--surface);border:1px solid var(--vector-dim);border-radius:999px;padding:5px 11px;color:var(--vector);cursor:default;}
+  .icon-btn{background:var(--surface);border:1px solid #2A3142;border-radius:10px;color:var(--chalk-dim);padding:6px 10px;font-size:14px;cursor:pointer;font-family:inherit;transition:border-color .15s;}
+  .icon-btn:hover{border-color:var(--vector-dim);color:var(--chalk);}
 
-  /* ---------- Deck menu ---------- */
-  .deck-list{display:flex; flex-direction:column; gap:14px;}
-  .deck-card{
-    background:var(--surface);
-    border:1px solid #2A3142;
-    border-radius:16px;
-    padding:18px 18px 16px;
-    cursor:pointer;
-    transition:border-color .15s, transform .1s;
-    text-align:left;
-    color:var(--chalk);
-    font-family:inherit;
-    display:flex;
-    gap:14px;
-    align-items:center;
-  }
+  h1{font-family:'Space Mono',monospace;font-size:26px;line-height:1.25;margin:0 0 6px;font-weight:700;}
+  .sub{color:var(--chalk-dim);font-size:14px;margin:0 0 24px;line-height:1.5;}
+
+  /* forms */
+  .form-card{background:var(--surface);border:1px solid #2A3142;border-radius:18px;padding:26px 22px;margin-bottom:16px;}
+  .form-card h2{font-family:'Space Mono',monospace;font-size:18px;margin:0 0 20px;font-weight:700;}
+  .field{display:flex;flex-direction:column;gap:6px;margin-bottom:14px;}
+  .field label{font-size:12.5px;color:var(--chalk-dim);font-weight:600;letter-spacing:.04em;text-transform:uppercase;}
+  .field input,.field select{background:var(--surface-raised);border:1px solid #313850;color:var(--chalk);border-radius:10px;padding:12px 14px;font-size:15px;font-family:inherit;}
+  .field input:focus,.field select:focus{outline:none;border-color:var(--vector);}
+  .field input.err{border-color:var(--wrong);}
+  .field-hint{font-size:12px;color:var(--chalk-dim);}
+  .form-err{color:var(--wrong);font-size:13px;margin:8px 0 0;font-family:'Space Mono',monospace;}
+  .form-link{color:var(--vector);font-size:13.5px;cursor:pointer;background:none;border:none;padding:0;font-family:inherit;text-decoration:underline;}
+
+  /* buttons */
+  .primary-btn{width:100%;background:var(--vector);color:#0B0E14;border:none;border-radius:12px;padding:14px;font-size:15px;font-weight:700;font-family:'Space Mono',monospace;cursor:pointer;margin-top:8px;}
+  .primary-btn:disabled{opacity:.35;cursor:default;}
+  .ghost-btn{width:100%;background:transparent;color:var(--chalk-dim);border:1px solid #2A3142;border-radius:12px;padding:12px;font-size:14px;font-family:'Inter',sans-serif;cursor:pointer;margin-top:8px;}
+  .danger-btn{width:100%;background:transparent;color:var(--wrong);border:1px solid var(--wrong);border-radius:12px;padding:12px;font-size:14px;font-family:'Inter',sans-serif;cursor:pointer;margin-top:8px;}
+
+  /* deck list */
+  .deck-list{display:flex;flex-direction:column;gap:14px;}
+  .deck-card{background:var(--surface);border:1px solid #2A3142;border-radius:16px;padding:18px 18px 16px;cursor:pointer;transition:border-color .15s,transform .1s;text-align:left;color:var(--chalk);font-family:inherit;display:flex;gap:14px;align-items:center;}
   .deck-card:hover{border-color:var(--vector-dim);}
-  .deck-card:active{transform:scale(0.98);}
-  .deck-glyph{flex:none; width:44px; height:44px;}
-  .deck-info{flex:1; min-width:0;}
-  .deck-title{font-weight:700; font-size:16.5px; margin-bottom:3px;}
-  .deck-desc{font-size:13px; color:var(--chalk-dim); line-height:1.4;}
-  .deck-meta{font-family:'Space Mono',monospace; font-size:11.5px; color:var(--vector); margin-top:8px;}
+  .deck-card:active{transform:scale(.98);}
+  .deck-glyph{flex:none;width:44px;height:44px;}
+  .deck-info{flex:1;min-width:0;}
+  .deck-title{font-weight:700;font-size:16px;margin-bottom:3px;}
+  .deck-desc{font-size:13px;color:var(--chalk-dim);line-height:1.4;}
+  .deck-meta{font-family:'Space Mono',monospace;font-size:11px;color:var(--vector);margin-top:8px;}
 
-  /* ---------- Quiz screen ---------- */
-  .progress-row{
-    display:flex; align-items:center; gap:10px;
-    margin-bottom:22px;
-  }
-  .progress-track{
-    flex:1; height:6px; border-radius:4px;
-    background:#222838; overflow:hidden;
-  }
-  .progress-fill{
-    height:100%; background:var(--vector);
-    border-radius:4px; transition:width .25s ease;
-  }
-  .progress-label{font-family:'Space Mono',monospace; font-size:12px; color:var(--chalk-dim); flex:none;}
-
-  .qcard{
-    background:var(--surface);
-    border:1px solid #2A3142;
-    border-radius:18px;
-    padding:26px 20px;
-    margin-bottom:20px;
-  }
-  .qtype-tag{
-    font-family:'Space Mono',monospace;
-    font-size:11px;
-    color:var(--vector);
-    letter-spacing:0.06em;
-    text-transform:uppercase;
-    margin-bottom:14px;
-    display:inline-block;
-  }
-  .prompt{
-    font-size:19px;
-    line-height:1.45;
-    font-weight:500;
-    margin:0;
-  }
-  .prompt .bracket-deco{color:var(--vector); font-family:'Space Mono',monospace;}
-
-  .choices{display:flex; flex-direction:column; gap:10px; margin-top:22px;}
-  .choice-btn{
-    background:var(--surface-raised);
-    border:1px solid #313850;
-    color:var(--chalk);
-    border-radius:12px;
-    padding:14px 16px;
-    font-size:15.5px;
-    text-align:left;
-    cursor:pointer;
-    font-family:inherit;
-    transition:border-color .12s, background .12s;
-  }
+  /* quiz */
+  .progress-row{display:flex;align-items:center;gap:10px;margin-bottom:22px;}
+  .progress-track{flex:1;height:6px;border-radius:4px;background:#222838;overflow:hidden;}
+  .progress-fill{height:100%;background:var(--vector);border-radius:4px;transition:width .25s ease;}
+  .progress-label{font-family:'Space Mono',monospace;font-size:12px;color:var(--chalk-dim);flex:none;}
+  .qcard{background:var(--surface);border:1px solid #2A3142;border-radius:18px;padding:26px 20px;margin-bottom:20px;}
+  .qtype-tag{font-family:'Space Mono',monospace;font-size:11px;color:var(--vector);letter-spacing:.06em;text-transform:uppercase;margin-bottom:14px;display:inline-block;}
+  .prompt{font-size:18px;line-height:1.45;font-weight:500;margin:0;}
+  .prompt .bracket-deco{color:var(--vector);font-family:'Space Mono',monospace;}
+  .choices{display:flex;flex-direction:column;gap:10px;margin-top:22px;}
+  .choice-btn{background:var(--surface-raised);border:1px solid #313850;color:var(--chalk);border-radius:12px;padding:14px 16px;font-size:15px;text-align:left;cursor:pointer;font-family:inherit;transition:border-color .12s,background .12s;}
   .choice-btn:hover{border-color:var(--vector-dim);}
-  .choice-btn.correct{background:rgba(61,220,151,0.14); border-color:var(--correct); color:var(--correct);}
-  .choice-btn.wrong{background:rgba(255,107,107,0.14); border-color:var(--wrong); color:var(--wrong);}
+  .choice-btn.correct{background:rgba(61,220,151,.14);border-color:var(--correct);color:var(--correct);}
+  .choice-btn.wrong{background:rgba(255,107,107,.14);border-color:var(--wrong);color:var(--wrong);}
   .choice-btn:disabled{cursor:default;}
-
-  .type-row{margin-top:22px; display:flex; gap:10px;}
-  .type-input{
-    flex:1;
-    background:var(--surface-raised);
-    border:1px solid #313850;
-    color:var(--chalk);
-    border-radius:12px;
-    padding:14px 16px;
-    font-size:16px;
-    font-family:'Space Mono',monospace;
-  }
-  .type-input:focus{outline:none; border-color:var(--vector);}
-  .type-input.correct{border-color:var(--correct); color:var(--correct);}
-  .type-input.wrong{border-color:var(--wrong); color:var(--wrong);}
-
-  .wordbank-tray{
-    display:flex; flex-wrap:wrap; gap:8px; margin-top:18px;
-  }
-  .wb-chip{
-    background:var(--surface-raised);
-    border:1px solid #313850;
-    color:var(--chalk);
-    border-radius:999px;
-    padding:9px 16px;
-    font-size:14.5px;
-    cursor:pointer;
-    font-family:inherit;
-  }
+  .type-row{margin-top:22px;display:flex;gap:10px;}
+  .type-input{flex:1;background:var(--surface-raised);border:1px solid #313850;color:var(--chalk);border-radius:12px;padding:14px 16px;font-size:16px;font-family:'Space Mono',monospace;}
+  .type-input:focus{outline:none;border-color:var(--vector);}
+  .type-input.correct{border-color:var(--correct);color:var(--correct);}
+  .type-input.wrong{border-color:var(--wrong);color:var(--wrong);}
+  .wordbank-tray{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px;}
+  .wb-chip{background:var(--surface-raised);border:1px solid #313850;color:var(--chalk);border-radius:999px;padding:9px 16px;font-size:14px;cursor:pointer;font-family:inherit;}
   .wb-chip:hover{border-color:var(--vector-dim);}
-  .wb-chip:disabled{opacity:0.35; cursor:default;}
-  .wb-slot{
-    margin-top:18px;
-    min-height:48px;
-    border:1.5px dashed #3A4258;
-    border-radius:12px;
-    display:flex; align-items:center; justify-content:center;
-    font-family:'Space Mono',monospace;
-    font-size:15px;
-    color:var(--chalk-dim);
-    padding:8px 14px;
-  }
-  .wb-slot.filled{border-style:solid; color:var(--chalk); border-color:var(--vector-dim);}
-  .wb-slot.correct{border-color:var(--correct); color:var(--correct); background:rgba(61,220,151,0.08);}
-  .wb-slot.wrong{border-color:var(--wrong); color:var(--wrong); background:rgba(255,107,107,0.08);}
+  .wb-chip:disabled{opacity:.35;cursor:default;}
+  .wb-slot{margin-top:18px;min-height:48px;border:1.5px dashed #3A4258;border-radius:12px;display:flex;align-items:center;justify-content:center;font-family:'Space Mono',monospace;font-size:15px;color:var(--chalk-dim);padding:8px 14px;}
+  .wb-slot.filled{border-style:solid;color:var(--chalk);border-color:var(--vector-dim);}
+  .wb-slot.correct{border-color:var(--correct);color:var(--correct);background:rgba(61,220,151,.08);}
+  .wb-slot.wrong{border-color:var(--wrong);color:var(--wrong);background:rgba(255,107,107,.08);}
+  .feedback{margin-top:14px;font-size:13px;color:var(--chalk-dim);font-family:'Space Mono',monospace;min-height:18px;}
 
-  .primary-btn{
-    width:100%;
-    background:var(--vector);
-    color:#0B0E14;
-    border:none;
-    border-radius:12px;
-    padding:15px;
-    font-size:15.5px;
-    font-weight:700;
-    font-family:'Space Mono',monospace;
-    cursor:pointer;
-    margin-top:10px;
-  }
-  .primary-btn:disabled{opacity:0.35; cursor:default;}
-  .ghost-btn{
-    width:100%;
-    background:transparent;
-    color:var(--chalk-dim);
-    border:1px solid #2A3142;
-    border-radius:12px;
-    padding:13px;
-    font-size:14px;
-    font-family:'Inter',sans-serif;
-    cursor:pointer;
-    margin-top:10px;
-  }
-  .feedback{
-    margin-top:14px;
-    font-size:13.5px;
-    color:var(--chalk-dim);
-    font-family:'Space Mono',monospace;
-    min-height:18px;
-  }
+  /* results */
+  .results{text-align:center;padding-top:30px;}
+  .results .big-score{font-family:'Space Mono',monospace;font-size:60px;font-weight:700;color:var(--vector);line-height:1;margin-bottom:6px;}
+  .results .score-sub{color:var(--chalk-dim);margin-bottom:30px;}
 
-  /* ---------- Results ---------- */
-  .results{
-    text-align:center;
-    padding-top:30px;
-  }
-  .results .big-score{
-    font-family:'Space Mono',monospace;
-    font-size:64px;
-    font-weight:700;
-    color:var(--vector);
-    line-height:1;
-    margin-bottom:6px;
-  }
-  .results .score-sub{color:var(--chalk-dim); margin-bottom:30px;}
-  .vector-art{margin:0 auto 20px; display:block;}
+  /* leaderboard */
+  .lb-row{display:flex;align-items:center;gap:12px;padding:12px 14px;border-radius:12px;background:var(--surface);border:1px solid #2A3142;margin-bottom:8px;}
+  .lb-rank{font-family:'Space Mono',monospace;font-size:13px;color:var(--chalk-dim);width:28px;flex:none;text-align:center;}
+  .lb-rank.gold{color:var(--gold);}
+  .lb-name{flex:1;font-weight:600;font-size:14px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+  .lb-score{font-family:'Space Mono',monospace;font-size:13px;color:var(--vector);}
+  .lb-you{border-color:var(--vector-dim);}
+  .tab-row{display:flex;gap:8px;margin-bottom:18px;}
+  .tab-btn{flex:1;padding:9px;border-radius:10px;font-size:13px;font-family:'Space Mono',monospace;cursor:pointer;border:1px solid #2A3142;background:var(--surface);color:var(--chalk-dim);transition:all .15s;}
+  .tab-btn.active{background:var(--vector);color:#0B0E14;border-color:var(--vector);}
 
-  footer.appfoot{
-    text-align:center;
-    color:#3A4258;
-    font-family:'Space Mono',monospace;
-    font-size:11px;
-    margin-top:auto;
-    padding-top:30px;
-  }
+  /* admin */
+  .admin-table{width:100%;border-collapse:collapse;font-size:13px;}
+  .admin-table th{text-align:left;padding:8px 10px;font-family:'Space Mono',monospace;font-size:11px;color:var(--chalk-dim);border-bottom:1px solid #2A3142;font-weight:400;letter-spacing:.04em;}
+  .admin-table td{padding:10px 10px;border-bottom:1px solid #1A1F2C;vertical-align:top;}
+  .admin-table tr:hover td{background:var(--surface);}
+  .badge{display:inline-block;padding:2px 8px;border-radius:999px;font-size:11px;font-family:'Space Mono',monospace;}
+  .badge-opt{background:rgba(255,107,107,.15);color:var(--wrong);}
+  .badge-in{background:rgba(61,220,151,.12);color:var(--correct);}
+
+  /* settings panel */
+  .settings-panel{background:var(--surface);border:1px solid #2A3142;border-radius:18px;padding:22px;}
+  .settings-panel h2{font-family:'Space Mono',monospace;font-size:16px;margin:0 0 18px;}
+  .toggle-row{display:flex;align-items:center;justify-content:space-between;padding:12px 0;border-bottom:1px solid #2A3142;}
+  .toggle-row:last-child{border-bottom:none;}
+  .toggle-label{font-size:14px;}
+  .toggle-label small{display:block;font-size:12px;color:var(--chalk-dim);margin-top:2px;}
+  .toggle{position:relative;width:42px;height:24px;flex:none;}
+  .toggle input{opacity:0;width:0;height:0;}
+  .toggle-slider{position:absolute;inset:0;background:#313850;border-radius:999px;cursor:pointer;transition:.2s;}
+  .toggle-slider:before{content:'';position:absolute;width:18px;height:18px;left:3px;top:3px;background:#9AA1B4;border-radius:50%;transition:.2s;}
+  .toggle input:checked+.toggle-slider{background:var(--vector);}
+  .toggle input:checked+.toggle-slider:before{transform:translateX(18px);background:#0B0E14;}
 
   [data-screen]{display:none;}
   [data-screen].active{display:block;}
 
-  @media (prefers-reduced-motion: reduce){
-    *{transition:none !important;}
-  }
+  .spinner{text-align:center;padding:40px;color:var(--chalk-dim);font-family:'Space Mono',monospace;font-size:13px;}
+  .vector-art{margin:0 auto 20px;display:block;}
+  footer.appfoot{text-align:center;color:#3A4258;font-family:'Space Mono',monospace;font-size:11px;margin-top:auto;padding-top:30px;}
 </style>
 </head>
 <body>
 <div class="app">
 
   <header class="top">
-    <div class="brand"><span class="bracket">[</span>LINALG DRILLS<span class="bracket">]</span></div>
-    <div class="score-pill" id="globalScorePill">0 solved</div>
+    <div class="brand"><span class="bracket">[</span>LINALG<span class="bracket">]</span></div>
+    <div class="header-right">
+      <div class="score-pill" id="globalScorePill" style="display:none">0 ✓</div>
+      <button class="icon-btn" id="lbHeaderBtn" style="display:none" title="Leaderboard">🏆</button>
+      <button class="icon-btn" id="settingsBtn" style="display:none" title="Settings">⚙︎</button>
+      <button class="icon-btn" id="signOutBtn" style="display:none" title="Sign out">↩</button>
+    </div>
   </header>
 
-  <!-- ===== SCREEN: deck menu ===== -->
-  <section data-screen="menu" class="active">
-    <h1>Pick a concept.</h1>
-    <p class="sub">Quick drills, multiple choice, type-in, and word-bank. Your scores stay on this device.</p>
-    <div class="deck-list" id="deckList">
-      <div class="sub">Loading decks…</div>
+  <!-- ===== AUTH: Sign in ===== -->
+  <section data-screen="signin" class="active">
+    <h1>Welcome back.</h1>
+    <p class="sub">Sign in to track your progress and compete on the leaderboard.</p>
+    <div class="form-card">
+      <h2>Sign In</h2>
+      <div class="field">
+        <label>Email</label>
+        <input type="email" id="siEmail" placeholder="you@example.com" autocomplete="email" />
+      </div>
+      <div class="field">
+        <label>Password</label>
+        <input type="password" id="siPassword" placeholder="••••••••" autocomplete="current-password" />
+      </div>
+      <div class="form-err" id="siErr"></div>
+      <button class="primary-btn" id="siBtn">Sign In</button>
+    </div>
+    <p style="text-align:center;font-size:13.5px;color:var(--chalk-dim);">
+      No account? <button class="form-link" id="goSignup">Create one</button>
+    </p>
+  </section>
+
+  <!-- ===== AUTH: Sign up ===== -->
+  <section data-screen="signup">
+    <h1>Join the class.</h1>
+    <p class="sub">Create your account. Your real name is only visible to the instructor.</p>
+    <div class="form-card">
+      <h2>Create Account</h2>
+      <div class="field">
+        <label>Your real name</label>
+        <input type="text" id="suFullName" placeholder="Jane Smith" autocomplete="name" />
+        <span class="field-hint">Only the instructor can see this.</span>
+      </div>
+      <div class="field">
+        <label>Username (public)</label>
+        <input type="text" id="suUsername" placeholder="e.g. mathwizard42" autocomplete="username" />
+        <span class="field-hint">Shown on the leaderboard — choose wisely.</span>
+      </div>
+      <div class="field">
+        <label>Email</label>
+        <input type="email" id="suEmail" placeholder="you@example.com" autocomplete="email" />
+      </div>
+      <div class="field">
+        <label>Password</label>
+        <input type="password" id="suPassword" placeholder="8+ characters" autocomplete="new-password" />
+      </div>
+      <div class="form-err" id="suErr"></div>
+      <button class="primary-btn" id="suBtn">Create Account</button>
+    </div>
+    <p style="text-align:center;font-size:13.5px;color:var(--chalk-dim);">
+      Have an account? <button class="form-link" id="goSignin">Sign in</button>
+    </p>
+  </section>
+
+  <!-- ===== AUTH: Email confirm holding ===== -->
+  <section data-screen="confirm">
+    <div style="text-align:center;padding-top:60px;">
+      <div style="font-size:48px;margin-bottom:20px;">📬</div>
+      <h1>Check your email.</h1>
+      <p class="sub">We sent a confirmation link to your email address. Click it, then come back and sign in.</p>
+      <button class="ghost-btn" id="backToSignin">Back to sign in</button>
     </div>
   </section>
 
-  <!-- ===== SCREEN: quiz ===== -->
+  <!-- ===== DECK MENU ===== -->
+  <section data-screen="menu">
+    <h1>Pick a concept.</h1>
+    <p class="sub" id="menuSub">Loading…</p>
+    <div class="deck-list" id="deckList"><div class="spinner">Loading decks…</div></div>
+  </section>
+
+  <!-- ===== QUIZ ===== -->
   <section data-screen="quiz">
     <div class="progress-row">
       <div class="progress-track"><div class="progress-fill" id="progressFill" style="width:0%"></div></div>
       <div class="progress-label" id="progressLabel">1 / 1</div>
     </div>
-
-    <div class="qcard" id="qcard">
-      <!-- injected per question -->
-    </div>
-
+    <div class="qcard" id="qcard"></div>
     <div class="feedback" id="feedback"></div>
     <button class="primary-btn" id="nextBtn" disabled>Next</button>
     <button class="ghost-btn" id="quitBtn">Back to decks</button>
   </section>
 
-  <!-- ===== SCREEN: results ===== -->
+  <!-- ===== RESULTS ===== -->
   <section data-screen="results">
     <div class="results">
-      <svg class="vector-art" width="120" height="120" viewBox="0 0 120 120" fill="none">
-        <line x1="60" y1="60" x2="60" y2="60" id="resultArrow" stroke="#7C9DFF" stroke-width="3" stroke-linecap="round" marker-end="url(#arrowhead)"/>
-        <defs>
-          <marker id="arrowhead" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto">
-            <path d="M0,0 L8,4 L0,8 Z" fill="#7C9DFF"/>
-          </marker>
-        </defs>
+      <svg class="vector-art" width="100" height="100" viewBox="0 0 120 120" fill="none">
+        <line x1="60" y1="60" x2="60" y2="15" id="resultArrow" stroke="#7C9DFF" stroke-width="3" stroke-linecap="round" marker-end="url(#ah)"/>
+        <defs><marker id="ah" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#7C9DFF"/></marker></defs>
         <circle cx="60" cy="60" r="3" fill="#EAEAF0"/>
       </svg>
       <div class="big-score" id="resultScore">0/0</div>
       <div class="score-sub" id="resultSub">Deck complete</div>
+      <div id="savingIndicator" style="font-family:'Space Mono',monospace;font-size:12px;color:var(--chalk-dim);margin-bottom:16px;"></div>
       <button class="primary-btn" id="retryBtn">Try again</button>
+      <button class="ghost-btn" id="lbFromResultBtn">View leaderboard</button>
       <button class="ghost-btn" id="menuBtn">Back to decks</button>
     </div>
   </section>
 
-  <footer class="appfoot">BUILT FOR THE COURSE · OFFLINE-FRIENDLY</footer>
+  <!-- ===== LEADERBOARD ===== -->
+  <section data-screen="leaderboard">
+    <h1>Leaderboard.</h1>
+    <p class="sub">Total questions answered correctly, all time.</p>
+    <div class="tab-row">
+      <button class="tab-btn active" id="lbTabAll">All decks</button>
+      <button class="tab-btn" id="lbTabDeck">This deck</button>
+    </div>
+    <div id="lbContent"><div class="spinner">Loading…</div></div>
+    <button class="ghost-btn" id="lbBackBtn">Back to decks</button>
+  </section>
+
+  <!-- ===== SETTINGS ===== -->
+  <section data-screen="settings">
+    <h1>Settings.</h1>
+    <p class="sub">Your account and preferences.</p>
+    <div class="settings-panel">
+      <h2>Account</h2>
+      <div class="toggle-row">
+        <div class="toggle-label">
+          Username
+          <small id="settingsUsername">—</small>
+        </div>
+      </div>
+      <div class="toggle-row">
+        <div class="toggle-label">
+          Real name (private)
+          <small id="settingsFullName">—</small>
+        </div>
+      </div>
+      <div class="toggle-row">
+        <div class="toggle-label">
+          Show me on leaderboard
+          <small>Turn off to practice privately. Scores still count for instructor view.</small>
+        </div>
+        <label class="toggle">
+          <input type="checkbox" id="lbOptIn" checked />
+          <span class="toggle-slider"></span>
+        </label>
+      </div>
+    </div>
+    <button class="ghost-btn" id="settingsBack">Back to decks</button>
+    <button class="danger-btn" id="settingsSignOut">Sign out</button>
+  </section>
+
+  <!-- ===== ADMIN ===== -->
+  <section data-screen="admin">
+    <h1>Instructor View.</h1>
+    <p class="sub">Real names and scores — only visible to you.</p>
+    <div id="adminContent"><div class="spinner">Loading…</div></div>
+    <button class="ghost-btn" id="adminBack">Back to decks</button>
+  </section>
+
+  <footer class="appfoot">LINALG DRILLS · FREE · OFFLINE-FRIENDLY</footer>
 </div>
 
 <script>
-(function(){
-  "use strict";
+// ═══════════════════════════════════════════════════
+//  CONFIG — fill these in after creating Supabase project
+// ═══════════════════════════════════════════════════
+const SUPABASE_URL  = https://jryujnnmolvmusqieckc.supabase.co;
+const SUPABASE_ANON = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpyeXVqbm5tb2x2bXVzcWllY2tjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODMwMjQ0NTUsImV4cCI6MjA5ODYwMDQ1NX0.ybO6gVrKagz6fy0ZKI2Ued4SwnRRBURXV5bCYlPGQP8;
+// Put your own Supabase user ID here after you create your teacher account:
+const TEACHER_IDS   = ['YOUR_TEACHER_USER_ID'];
+// ═══════════════════════════════════════════════════
 
-  const screens = document.querySelectorAll('[data-screen]');
-  function showScreen(name){
-    screens.forEach(s => s.classList.toggle('active', s.dataset.screen === name));
+const sb = supabase.createClient(SUPABASE_URL, SUPABASE_ANON);
+
+// ---------- Screen router ----------
+const screens = document.querySelectorAll('[data-screen]');
+function showScreen(name){
+  screens.forEach(s => s.classList.toggle('active', s.dataset.screen === name));
+  window.scrollTo(0,0);
+}
+
+// ---------- Auth state ----------
+let currentUser = null;
+let currentProfile = null;
+
+async function loadProfile(uid){
+  const {data} = await sb.from('profiles').select('*').eq('id', uid).single();
+  return data;
+}
+
+async function refreshProfile(){
+  if (!currentUser) return;
+  currentProfile = await loadProfile(currentUser.id);
+  if (currentProfile){
+    document.getElementById('settingsUsername').textContent = '@' + currentProfile.username;
+    document.getElementById('settingsFullName').textContent = currentProfile.full_name;
+    document.getElementById('lbOptIn').checked = currentProfile.lb_opt_in !== false;
+    updateScorePill(currentProfile.total_correct || 0);
   }
+}
 
-  const STORAGE_KEY = 'linalg-drills-progress-v1';
-  function loadProgress(){
-    try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || {}; }
-    catch(e){ return {}; }
-  }
-  function saveProgress(p){
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(p));
-  }
-  let progress = loadProgress();
+function updateScorePill(n){
+  const pill = document.getElementById('globalScorePill');
+  pill.textContent = n + ' ✓';
+  pill.style.display = '';
+}
 
-  function totalSolved(){
-    return Object.values(progress).reduce((sum, d) => sum + (d.bestScore || 0), 0);
-  }
-  function refreshScorePill(){
-    document.getElementById('globalScorePill').textContent = totalSolved() + ' solved';
-  }
+function isTeacher(){ return currentUser && TEACHER_IDS.includes(currentUser.id); }
 
-  // ---------- Deck glyph (small vector diagram, varies by index) ----------
-  function deckGlyph(seed){
-    const angle = (seed * 47) % 360;
-    const rad = angle * Math.PI / 180;
-    const x = 22 + 16 * Math.cos(rad);
-    const y = 22 + 16 * Math.sin(rad);
-    return `<svg width="44" height="44" viewBox="0 0 44 44">
-      <circle cx="22" cy="22" r="20" fill="none" stroke="#2A3142" stroke-width="1.5"/>
-      <line x1="22" y1="22" x2="${x.toFixed(1)}" y2="${y.toFixed(1)}" stroke="#7C9DFF" stroke-width="2.5" stroke-linecap="round" marker-end="url(#gh)"/>
-      <defs><marker id="gh" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto">
-        <path d="M0,0 L6,3 L0,6 Z" fill="#7C9DFF"/>
-      </marker></defs>
-      <circle cx="22" cy="22" r="2" fill="#EAEAF0"/>
-    </svg>`;
-  }
-
-  // ---------- Load manifest + decks ----------
-  let manifest = [];
-  let decksById = {};
-
-  async function loadManifest(){
-    const res = await fetch('decks/manifest.json');
-    manifest = await res.json();
-    renderDeckList();
-  }
-
-  function renderDeckList(){
-    const list = document.getElementById('deckList');
-    list.innerHTML = '';
-    manifest.forEach((entry, i) => {
-      const card = document.createElement('button');
-      card.className = 'deck-card';
-      const prog = progress[entry.id];
-      const metaText = prog ? `BEST: ${prog.bestScore}/${prog.total}` : 'NOT ATTEMPTED';
-      card.innerHTML = `
-        <div class="deck-glyph">${deckGlyph(i+1)}</div>
-        <div class="deck-info">
-          <div class="deck-title">${escapeHtml(entry.title || entry.id)}</div>
-          <div class="deck-desc">${escapeHtml(entry.description || '')}</div>
-          <div class="deck-meta">${metaText}</div>
-        </div>`;
-      card.addEventListener('click', () => startDeck(entry.id));
-      list.appendChild(card);
-    });
-  }
-
-  function escapeHtml(s){
-    const d = document.createElement('div');
-    d.textContent = s || '';
-    return d.innerHTML;
-  }
-
-  async function fetchDeck(id){
-    if (decksById[id]) return decksById[id];
-    const entry = manifest.find(m => m.id === id);
-    if (!entry) throw new Error('Unknown deck: ' + id);
-    const res = await fetch(entry.file);
-    const deck = await res.json();
-    decksById[id] = deck;
-    // store title/description on manifest entry for menu display
-    entry.title = deck.title;
-    entry.description = deck.description;
-    return deck;
-  }
-
-  // ---------- Quiz runtime ----------
-  let activeDeck = null;
-  let qIndex = 0;
-  let score = 0;
-  let answered = false;
-  let wbSelected = null; // for wordbank: currently chosen word
-
-  async function startDeck(id){
-    activeDeck = await fetchDeck(id);
-    qIndex = 0;
-    score = 0;
-    renderDeckList(); // refresh meta text in background
-    showScreen('quiz');
-    renderQuestion();
-  }
-
-  function renderQuestion(){
-    answered = false;
-    wbSelected = null;
-    const q = activeDeck.questions[qIndex];
-    const card = document.getElementById('qcard');
-    const total = activeDeck.questions.length;
-
-    document.getElementById('progressFill').style.width = ((qIndex) / total * 100) + '%';
-    document.getElementById('progressLabel').textContent = (qIndex+1) + ' / ' + total;
-    document.getElementById('feedback').textContent = '';
-    document.getElementById('nextBtn').disabled = true;
-    document.getElementById('nextBtn').textContent = (qIndex === total - 1) ? 'See results' : 'Next';
-
-    if (q.type === 'mc'){
-      card.innerHTML = `
-        <span class="qtype-tag">Multiple choice</span>
-        <p class="prompt">${escapeHtml(q.prompt)}</p>
-        <div class="choices" id="choicesWrap"></div>`;
-      const wrap = card.querySelector('#choicesWrap');
-      q.choices.forEach((choice, idx) => {
-        const btn = document.createElement('button');
-        btn.className = 'choice-btn';
-        btn.textContent = choice;
-        btn.addEventListener('click', () => handleMcAnswer(idx, btn, wrap));
-        wrap.appendChild(btn);
-      });
-    } else if (q.type === 'type'){
-      card.innerHTML = `
-        <span class="qtype-tag">Fill in</span>
-        <p class="prompt">${escapeHtml(q.prompt)}</p>
-        <div class="type-row">
-          <input type="text" class="type-input" id="typeInput" placeholder="Your answer" autocomplete="off" autocapitalize="off" spellcheck="false" />
-        </div>
-        <button class="primary-btn" id="submitTypeBtn">Submit</button>`;
-      const input = card.querySelector('#typeInput');
-      const submitBtn = card.querySelector('#submitTypeBtn');
-      const submit = () => handleTypeAnswer(input, submitBtn);
-      submitBtn.addEventListener('click', submit);
-      input.addEventListener('keydown', e => { if (e.key === 'Enter') submit(); });
-      setTimeout(() => input.focus(), 50);
-    } else if (q.type === 'wordbank'){
-      const parts = q.prompt.split('_____');
-      card.innerHTML = `
-        <span class="qtype-tag">Word bank</span>
-        <p class="prompt">${escapeHtml(parts[0])}<span class="bracket-deco">[ ___ ]</span>${escapeHtml(parts[1]||'')}</p>
-        <div class="wb-slot" id="wbSlot">tap a word below</div>
-        <div class="wordbank-tray" id="wbTray"></div>
-        <button class="primary-btn" id="submitWbBtn" disabled>Submit</button>`;
-      const tray = card.querySelector('#wbTray');
-      const slot = card.querySelector('#wbSlot');
-      const submitBtn = card.querySelector('#submitWbBtn');
-      const chips = [];
-      q.wordbank.forEach(word => {
-        const chip = document.createElement('button');
-        chip.className = 'wb-chip';
-        chip.textContent = word;
-        chip.addEventListener('click', () => {
-          wbSelected = word;
-          slot.textContent = word;
-          slot.classList.add('filled');
-          submitBtn.disabled = false;
-        });
-        chips.push(chip);
-        tray.appendChild(chip);
-      });
-      submitBtn.addEventListener('click', () => handleWordbankAnswer(slot, chips, submitBtn));
-    }
-  }
-
-  function lockAnswered(){
-    answered = true;
-    document.getElementById('nextBtn').disabled = false;
-  }
-
-  function handleMcAnswer(idx, btn, wrap){
-    if (answered) return;
-    const q = activeDeck.questions[qIndex];
-    const correctIdx = q.answer;
-    const buttons = wrap.querySelectorAll('.choice-btn');
-    buttons.forEach(b => b.disabled = true);
-    if (idx === correctIdx){
-      btn.classList.add('correct');
-      score++;
-      document.getElementById('feedback').textContent = 'Correct.';
-    } else {
-      btn.classList.add('wrong');
-      buttons[correctIdx].classList.add('correct');
-      document.getElementById('feedback').textContent = 'Correct answer: ' + q.choices[correctIdx];
-    }
-    lockAnswered();
-  }
-
-  function normalize(s){
-    return (s || '').toString().trim().toLowerCase();
-  }
-
-  function handleTypeAnswer(input, submitBtn){
-    if (answered) return;
-    const q = activeDeck.questions[qIndex];
-    const userVal = normalize(input.value);
-    const accepted = q.answer.map(normalize);
-    const isCorrect = accepted.includes(userVal);
-    input.disabled = true;
-    submitBtn.disabled = true;
-    if (isCorrect){
-      input.classList.add('correct');
-      score++;
-      document.getElementById('feedback').textContent = 'Correct.';
-    } else {
-      input.classList.add('wrong');
-      document.getElementById('feedback').textContent = 'Correct answer: ' + q.answer[0];
-    }
-    lockAnswered();
-  }
-
-  function handleWordbankAnswer(slot, chips, submitBtn){
-    if (answered) return;
-    const q = activeDeck.questions[qIndex];
-    chips.forEach(c => c.disabled = true);
-    submitBtn.disabled = true;
-    const isCorrect = normalize(wbSelected) === normalize(q.answer);
-    if (isCorrect){
-      slot.classList.add('correct');
-      score++;
-      document.getElementById('feedback').textContent = 'Correct.';
-    } else {
-      slot.classList.add('wrong');
-      document.getElementById('feedback').textContent = 'Correct answer: ' + q.answer;
-    }
-    lockAnswered();
-  }
-
-  document.getElementById('nextBtn').addEventListener('click', () => {
-    if (!answered) return;
-    qIndex++;
-    if (qIndex >= activeDeck.questions.length){
-      finishDeck();
-    } else {
-      renderQuestion();
-    }
-  });
-
-  document.getElementById('quitBtn').addEventListener('click', () => {
-    showScreen('menu');
-  });
-
-  function finishDeck(){
-    const total = activeDeck.questions.length;
-    const prev = progress[activeDeck.id];
-    const bestScore = prev ? Math.max(prev.bestScore, score) : score;
-    progress[activeDeck.id] = { bestScore, total, lastScore: score, attempts: (prev?.attempts||0)+1 };
-    saveProgress(progress);
-    refreshScorePill();
-
-    document.getElementById('resultScore').textContent = score + '/' + total;
-    const pct = Math.round((score/total)*100);
-    let sub = pct === 100 ? 'Perfect run.' : pct >= 70 ? 'Solid work.' : 'Keep drilling — repetition builds intuition.';
-    document.getElementById('resultSub').textContent = sub;
-
-    // animate a little arrow scaled to score pct
-    const arrow = document.getElementById('resultArrow');
-    const angle = -90 + (pct/100)*180; // sweep
-    const rad = angle * Math.PI/180;
-    const x = 60 + 45*Math.cos(rad);
-    const y = 60 + 45*Math.sin(rad);
-    arrow.setAttribute('x2', x.toFixed(1));
-    arrow.setAttribute('y2', y.toFixed(1));
-
-    showScreen('results');
-  }
-
-  document.getElementById('retryBtn').addEventListener('click', () => {
-    qIndex = 0; score = 0;
-    showScreen('quiz');
-    renderQuestion();
-  });
-  document.getElementById('menuBtn').addEventListener('click', () => {
-    renderDeckList();
-    showScreen('menu');
-  });
-
-  // ---------- Deep link support: ?deck=vectors-basics ----------
-  async function init(){
-    refreshScorePill();
+// ---------- Auth flow ----------
+sb.auth.onAuthStateChange(async (event, session) => {
+  currentUser = session?.user || null;
+  if (currentUser){
+    await refreshProfile();
+    showHeaderButtons(true);
     await loadManifest();
+    showScreen('menu');
+    // deep-link
     const params = new URLSearchParams(window.location.search);
-    const deckParam = params.get('deck');
-    if (deckParam && manifest.some(m => m.id === deckParam)){
-      startDeck(deckParam);
-    }
+    const dp = params.get('deck');
+    if (dp && manifest.some(m => m.id === dp)) startDeck(dp);
+  } else {
+    showHeaderButtons(false);
+    showScreen('signin');
   }
-  init();
-})();
+});
+
+function showHeaderButtons(on){
+  ['globalScorePill','lbHeaderBtn','settingsBtn','signOutBtn'].forEach(id => {
+    const el = document.getElementById(id);
+    el.style.display = on ? '' : 'none';
+  });
+}
+
+// Sign in
+document.getElementById('siBtn').addEventListener('click', async () => {
+  const email = document.getElementById('siEmail').value.trim();
+  const pass  = document.getElementById('siPassword').value;
+  document.getElementById('siErr').textContent = '';
+  const {error} = await sb.auth.signInWithPassword({email, password: pass});
+  if (error) document.getElementById('siErr').textContent = error.message;
+});
+document.getElementById('goSignup').addEventListener('click', () => showScreen('signup'));
+document.getElementById('goSignin').addEventListener('click', () => showScreen('signin'));
+document.getElementById('backToSignin').addEventListener('click', () => showScreen('signin'));
+
+// Sign up
+document.getElementById('suBtn').addEventListener('click', async () => {
+  const fullName = document.getElementById('suFullName').value.trim();
+  const username = document.getElementById('suUsername').value.trim().toLowerCase().replace(/\s+/g,'');
+  const email    = document.getElementById('suEmail').value.trim();
+  const pass     = document.getElementById('suPassword').value;
+  const errEl    = document.getElementById('suErr');
+  errEl.textContent = '';
+
+  if (!fullName || !username || !email || !pass){
+    errEl.textContent = 'All fields are required.'; return;
+  }
+  if (username.length < 3){
+    errEl.textContent = 'Username must be at least 3 characters.'; return;
+  }
+  if (pass.length < 8){
+    errEl.textContent = 'Password must be at least 8 characters.'; return;
+  }
+
+  // Check username uniqueness
+  const {data: existing} = await sb.from('profiles').select('id').eq('username', username).maybeSingle();
+  if (existing){ errEl.textContent = 'That username is taken. Try another.'; return; }
+
+  const {error} = await sb.auth.signUp({
+    email, password: pass,
+    options: { data: { full_name: fullName, username } }
+  });
+  if (error){ errEl.textContent = error.message; return; }
+  showScreen('confirm');
+});
+
+// Sign out
+async function doSignOut(){
+  await sb.auth.signOut();
+  currentUser = null;
+  currentProfile = null;
+  showScreen('signin');
+}
+document.getElementById('signOutBtn').addEventListener('click', doSignOut);
+document.getElementById('settingsSignOut').addEventListener('click', doSignOut);
+
+// ═══════════════════════════════════════════════════
+//  DECK LOADING (unchanged logic)
+// ═══════════════════════════════════════════════════
+let manifest = [];
+let decksById = {};
+
+async function loadManifest(){
+  const res = await fetch('decks/manifest.json');
+  manifest = await res.json();
+  renderDeckList();
+}
+
+function escapeHtml(s){
+  const d = document.createElement('div');
+  d.textContent = s || '';
+  return d.innerHTML;
+}
+
+function deckGlyph(seed){
+  const angle = (seed * 47) % 360;
+  const rad = angle * Math.PI / 180;
+  const x = 22 + 16 * Math.cos(rad);
+  const y = 22 + 16 * Math.sin(rad);
+  return `<svg width="44" height="44" viewBox="0 0 44 44">
+    <circle cx="22" cy="22" r="20" fill="none" stroke="#2A3142" stroke-width="1.5"/>
+    <line x1="22" y1="22" x2="${x.toFixed(1)}" y2="${y.toFixed(1)}" stroke="#7C9DFF" stroke-width="2.5" stroke-linecap="round" marker-end="url(#g${seed})"/>
+    <defs><marker id="g${seed}" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#7C9DFF"/></marker></defs>
+    <circle cx="22" cy="22" r="2" fill="#EAEAF0"/>
+  </svg>`;
+}
+
+function renderDeckList(){
+  const list = document.getElementById('deckList');
+  list.innerHTML = '';
+  const sub = document.getElementById('menuSub');
+  sub.textContent = isTeacher()
+    ? 'Instructor account — quiz or view student data below.'
+    : 'Quick drills. Scores go to the leaderboard.';
+
+  if (isTeacher()){
+    const adminCard = document.createElement('button');
+    adminCard.className = 'deck-card';
+    adminCard.style.borderColor = 'var(--gold)';
+    adminCard.innerHTML = `
+      <div class="deck-glyph"><svg width="44" height="44" viewBox="0 0 44 44"><circle cx="22" cy="22" r="20" fill="none" stroke="#FFD166" stroke-width="1.5"/><text x="22" y="28" text-anchor="middle" font-size="16" fill="#FFD166">👁</text></svg></div>
+      <div class="deck-info">
+        <div class="deck-title" style="color:var(--gold)">Student Dashboard</div>
+        <div class="deck-desc">View all students' real names and scores.</div>
+        <div class="deck-meta" style="color:var(--gold)">INSTRUCTOR ONLY</div>
+      </div>`;
+    adminCard.addEventListener('click', openAdmin);
+    list.appendChild(adminCard);
+  }
+
+  manifest.forEach((entry, i) => {
+    const card = document.createElement('button');
+    card.className = 'deck-card';
+    const prog = currentProfile?.deck_bests?.[entry.id];
+    const metaText = prog ? `BEST: ${prog.best}/${prog.total}` : 'NOT ATTEMPTED';
+    card.innerHTML = `
+      <div class="deck-glyph">${deckGlyph(i+1)}</div>
+      <div class="deck-info">
+        <div class="deck-title">${escapeHtml(entry.title || entry.id)}</div>
+        <div class="deck-desc">${escapeHtml(entry.description || '')}</div>
+        <div class="deck-meta">${metaText}</div>
+      </div>`;
+    card.addEventListener('click', () => startDeck(entry.id));
+    list.appendChild(card);
+  });
+}
+
+async function fetchDeck(id){
+  if (decksById[id]) return decksById[id];
+  const entry = manifest.find(m => m.id === id);
+  if (!entry) throw new Error('Unknown deck: ' + id);
+  const res = await fetch(entry.file);
+  const deck = await res.json();
+  decksById[id] = deck;
+  entry.title = deck.title;
+  entry.description = deck.description;
+  return deck;
+}
+
+// ═══════════════════════════════════════════════════
+//  QUIZ RUNTIME (core logic unchanged)
+// ═══════════════════════════════════════════════════
+let activeDeck = null;
+let qIndex = 0;
+let score = 0;
+let answered = false;
+let wbSelected = null;
+
+async function startDeck(id){
+  activeDeck = await fetchDeck(id);
+  qIndex = 0; score = 0;
+  showScreen('quiz');
+  renderQuestion();
+}
+
+function renderQuestion(){
+  answered = false; wbSelected = null;
+  const q = activeDeck.questions[qIndex];
+  const total = activeDeck.questions.length;
+  const card = document.getElementById('qcard');
+
+  document.getElementById('progressFill').style.width = (qIndex / total * 100) + '%';
+  document.getElementById('progressLabel').textContent = (qIndex+1) + ' / ' + total;
+  document.getElementById('feedback').textContent = '';
+  document.getElementById('nextBtn').disabled = true;
+  document.getElementById('nextBtn').textContent = (qIndex === total-1) ? 'See results' : 'Next';
+
+  if (q.type === 'mc'){
+    card.innerHTML = `<span class="qtype-tag">Multiple choice</span><p class="prompt">${escapeHtml(q.prompt)}</p><div class="choices" id="choicesWrap"></div>`;
+    const wrap = card.querySelector('#choicesWrap');
+    q.choices.forEach((choice, idx) => {
+      const btn = document.createElement('button');
+      btn.className = 'choice-btn';
+      btn.textContent = choice;
+      btn.addEventListener('click', () => handleMcAnswer(idx, btn, wrap));
+      wrap.appendChild(btn);
+    });
+  } else if (q.type === 'type'){
+    card.innerHTML = `<span class="qtype-tag">Fill in</span><p class="prompt">${escapeHtml(q.prompt)}</p>
+      <div class="type-row"><input type="text" class="type-input" id="typeInput" placeholder="Your answer" autocomplete="off" autocapitalize="off" spellcheck="false"/></div>
+      <button class="primary-btn" id="submitTypeBtn">Submit</button>`;
+    const input = card.querySelector('#typeInput');
+    const submitBtn = card.querySelector('#submitTypeBtn');
+    const submit = () => handleTypeAnswer(input, submitBtn);
+    submitBtn.addEventListener('click', submit);
+    input.addEventListener('keydown', e => { if (e.key === 'Enter') submit(); });
+    setTimeout(() => input.focus(), 50);
+  } else if (q.type === 'wordbank'){
+    const parts = q.prompt.split('_____');
+    card.innerHTML = `<span class="qtype-tag">Word bank</span>
+      <p class="prompt">${escapeHtml(parts[0])}<span class="bracket-deco">[ ___ ]</span>${escapeHtml(parts[1]||'')}</p>
+      <div class="wb-slot" id="wbSlot">tap a word below</div>
+      <div class="wordbank-tray" id="wbTray"></div>
+      <button class="primary-btn" id="submitWbBtn" disabled>Submit</button>`;
+    const tray = card.querySelector('#wbTray');
+    const slot = card.querySelector('#wbSlot');
+    const submitBtn = card.querySelector('#submitWbBtn');
+    const chips = [];
+    q.wordbank.forEach(word => {
+      const chip = document.createElement('button');
+      chip.className = 'wb-chip'; chip.textContent = word;
+      chip.addEventListener('click', () => {
+        wbSelected = word; slot.textContent = word;
+        slot.classList.add('filled'); submitBtn.disabled = false;
+      });
+      chips.push(chip); tray.appendChild(chip);
+    });
+    submitBtn.addEventListener('click', () => handleWordbankAnswer(slot, chips, submitBtn));
+  }
+}
+
+function lockAnswered(){ answered = true; document.getElementById('nextBtn').disabled = false; }
+function normalize(s){ return (s||'').toString().trim().toLowerCase(); }
+
+function handleMcAnswer(idx, btn, wrap){
+  if (answered) return;
+  const q = activeDeck.questions[qIndex];
+  wrap.querySelectorAll('.choice-btn').forEach(b => b.disabled = true);
+  if (idx === q.answer){
+    btn.classList.add('correct'); score++;
+    document.getElementById('feedback').textContent = 'Correct.';
+  } else {
+    btn.classList.add('wrong');
+    wrap.querySelectorAll('.choice-btn')[q.answer].classList.add('correct');
+    document.getElementById('feedback').textContent = 'Correct answer: ' + q.choices[q.answer];
+  }
+  lockAnswered();
+}
+
+function handleTypeAnswer(input, submitBtn){
+  if (answered) return;
+  const q = activeDeck.questions[qIndex];
+  const isCorrect = q.answer.map(normalize).includes(normalize(input.value));
+  input.disabled = true; submitBtn.disabled = true;
+  if (isCorrect){
+    input.classList.add('correct'); score++;
+    document.getElementById('feedback').textContent = 'Correct.';
+  } else {
+    input.classList.add('wrong');
+    document.getElementById('feedback').textContent = 'Correct answer: ' + q.answer[0];
+  }
+  lockAnswered();
+}
+
+function handleWordbankAnswer(slot, chips, submitBtn){
+  if (answered) return;
+  const q = activeDeck.questions[qIndex];
+  chips.forEach(c => c.disabled = true); submitBtn.disabled = true;
+  const isCorrect = normalize(wbSelected) === normalize(q.answer);
+  if (isCorrect){
+    slot.classList.add('correct'); score++;
+    document.getElementById('feedback').textContent = 'Correct.';
+  } else {
+    slot.classList.add('wrong');
+    document.getElementById('feedback').textContent = 'Correct answer: ' + q.answer;
+  }
+  lockAnswered();
+}
+
+document.getElementById('nextBtn').addEventListener('click', () => {
+  if (!answered) return;
+  qIndex++;
+  if (qIndex >= activeDeck.questions.length) finishDeck();
+  else renderQuestion();
+});
+document.getElementById('quitBtn').addEventListener('click', () => showScreen('menu'));
+
+// ═══════════════════════════════════════════════════
+//  FINISH DECK — save to Supabase
+// ═══════════════════════════════════════════════════
+async function finishDeck(){
+  const total = activeDeck.questions.length;
+  const pct = Math.round((score/total)*100);
+  document.getElementById('resultScore').textContent = score + '/' + total;
+  document.getElementById('resultSub').textContent =
+    pct === 100 ? 'Perfect run.' : pct >= 70 ? 'Solid work.' : 'Keep drilling — repetition builds intuition.';
+
+  const arrow = document.getElementById('resultArrow');
+  const angle = -90 + (pct/100)*180;
+  const rad = angle * Math.PI/180;
+  arrow.setAttribute('x2', (60 + 45*Math.cos(rad)).toFixed(1));
+  arrow.setAttribute('y2', (60 + 45*Math.sin(rad)).toFixed(1));
+
+  const savingEl = document.getElementById('savingIndicator');
+  savingEl.textContent = 'Saving score…';
+  showScreen('results');
+
+  // Save attempt to DB
+  const {error: attemptErr} = await sb.from('attempts').insert({
+    user_id: currentUser.id,
+    deck_id: activeDeck.id,
+    score,
+    total,
+    correct: score
+  });
+
+  if (attemptErr){ savingEl.textContent = '⚠ Could not save score (offline?).'; return; }
+
+  // Update profile totals + deck bests
+  const prevBests = currentProfile?.deck_bests || {};
+  const prevBest = prevBests[activeDeck.id]?.best || 0;
+  const newBest = Math.max(prevBest, score);
+  const newBests = { ...prevBests, [activeDeck.id]: { best: newBest, total } };
+  const newTotal = (currentProfile?.total_correct || 0) + score;
+
+  await sb.from('profiles').update({
+    total_correct: newTotal,
+    deck_bests: newBests
+  }).eq('id', currentUser.id);
+
+  currentProfile.total_correct = newTotal;
+  currentProfile.deck_bests = newBests;
+  updateScorePill(newTotal);
+  savingEl.textContent = '✓ Score saved.';
+}
+
+document.getElementById('retryBtn').addEventListener('click', () => {
+  qIndex = 0; score = 0; showScreen('quiz'); renderQuestion();
+});
+document.getElementById('menuBtn').addEventListener('click', () => {
+  renderDeckList(); showScreen('menu');
+});
+document.getElementById('lbFromResultBtn').addEventListener('click', () => openLeaderboard(activeDeck?.id));
+
+// ═══════════════════════════════════════════════════
+//  LEADERBOARD
+// ═══════════════════════════════════════════════════
+let lbMode = 'all'; // 'all' | 'deck'
+let lbDeckId = null;
+
+async function openLeaderboard(deckId){
+  lbDeckId = deckId || null;
+  lbMode = 'all';
+  document.getElementById('lbTabAll').classList.add('active');
+  document.getElementById('lbTabDeck').classList.toggle('active', false);
+  document.getElementById('lbTabDeck').style.display = lbDeckId ? '' : 'none';
+  showScreen('leaderboard');
+  renderLeaderboard();
+}
+
+async function renderLeaderboard(){
+  const content = document.getElementById('lbContent');
+  content.innerHTML = '<div class="spinner">Loading…</div>';
+
+  let rows;
+  if (lbMode === 'all'){
+    const {data} = await sb.from('profiles')
+      .select('username, total_correct, lb_opt_in')
+      .eq('lb_opt_in', true)
+      .order('total_correct', {ascending: false})
+      .limit(50);
+    rows = (data||[]).map(r => ({name: r.username, score: r.total_correct || 0}));
+  } else {
+    // per-deck: best score per user from attempts
+    const {data} = await sb.from('attempts')
+      .select('user_id, score, profiles(username, lb_opt_in)')
+      .eq('deck_id', lbDeckId)
+      .order('score', {ascending: false});
+    // reduce to best per user
+    const seen = {};
+    (data||[]).forEach(r => {
+      const uid = r.user_id;
+      if (!r.profiles?.lb_opt_in) return;
+      if (!seen[uid] || r.score > seen[uid].score)
+        seen[uid] = {name: r.profiles.username, score: r.score};
+    });
+    rows = Object.values(seen).sort((a,b) => b.score - a.score).slice(0,50);
+  }
+
+  if (!rows.length){ content.innerHTML = '<p style="color:var(--chalk-dim);text-align:center;padding:30px;">No entries yet.</p>'; return; }
+  content.innerHTML = '';
+  rows.forEach((row, i) => {
+    const isYou = row.name === currentProfile?.username;
+    const div = document.createElement('div');
+    div.className = 'lb-row' + (isYou ? ' lb-you' : '');
+    const rankText = i === 0 ? '🥇' : i === 1 ? '🥈' : i === 2 ? '🥉' : (i+1)+'';
+    const rankClass = i < 3 ? 'lb-rank gold' : 'lb-rank';
+    div.innerHTML = `
+      <div class="${rankClass}">${rankText}</div>
+      <div class="lb-name">${escapeHtml(row.name)}${isYou ? ' <span style="color:var(--vector);font-size:11px">(you)</span>' : ''}</div>
+      <div class="lb-score">${row.score} ✓</div>`;
+    content.appendChild(div);
+  });
+}
+
+document.getElementById('lbTabAll').addEventListener('click', () => {
+  lbMode = 'all';
+  document.getElementById('lbTabAll').classList.add('active');
+  document.getElementById('lbTabDeck').classList.remove('active');
+  renderLeaderboard();
+});
+document.getElementById('lbTabDeck').addEventListener('click', () => {
+  lbMode = 'deck';
+  document.getElementById('lbTabDeck').classList.add('active');
+  document.getElementById('lbTabAll').classList.remove('active');
+  renderLeaderboard();
+});
+document.getElementById('lbHeaderBtn').addEventListener('click', () => openLeaderboard(null));
+document.getElementById('lbBackBtn').addEventListener('click', () => showScreen('menu'));
+
+// ═══════════════════════════════════════════════════
+//  SETTINGS
+// ═══════════════════════════════════════════════════
+document.getElementById('settingsBtn').addEventListener('click', async () => {
+  await refreshProfile();
+  showScreen('settings');
+});
+document.getElementById('settingsBack').addEventListener('click', () => showScreen('menu'));
+
+document.getElementById('lbOptIn').addEventListener('change', async (e) => {
+  await sb.from('profiles').update({lb_opt_in: e.target.checked}).eq('id', currentUser.id);
+  if (currentProfile) currentProfile.lb_opt_in = e.target.checked;
+});
+
+// ═══════════════════════════════════════════════════
+//  ADMIN VIEW (teacher only)
+// ═══════════════════════════════════════════════════
+async function openAdmin(){
+  showScreen('admin');
+  const content = document.getElementById('adminContent');
+  content.innerHTML = '<div class="spinner">Loading student data…</div>';
+
+  // All profiles except teacher
+  const {data: profiles} = await sb.from('profiles')
+    .select('id, username, full_name, total_correct, lb_opt_in, deck_bests')
+    .not('id', 'in', `(${TEACHER_IDS.map(id => `"${id}"`).join(',')})`)
+    .order('total_correct', {ascending: false});
+
+  if (!profiles?.length){
+    content.innerHTML = '<p style="color:var(--chalk-dim);text-align:center;padding:30px;">No students yet.</p>';
+    return;
+  }
+
+  const deckIds = manifest.map(m => m.id);
+  let html = `<div style="overflow-x:auto">
+    <table class="admin-table">
+      <thead><tr>
+        <th>Real Name</th>
+        <th>Username</th>
+        <th>Total ✓</th>
+        <th>Leaderboard</th>
+      </tr></thead><tbody>`;
+
+  profiles.forEach(p => {
+    const optBadge = p.lb_opt_in !== false
+      ? '<span class="badge badge-in">visible</span>'
+      : '<span class="badge badge-opt">opted out</span>';
+    html += `<tr>
+      <td><strong>${escapeHtml(p.full_name)}</strong></td>
+      <td style="color:var(--chalk-dim)">@${escapeHtml(p.username)}</td>
+      <td style="font-family:'Space Mono',monospace">${p.total_correct || 0}</td>
+      <td>${optBadge}</td>
+    </tr>`;
+    // Per-deck breakdown row
+    if (p.deck_bests && Object.keys(p.deck_bests).length){
+      const bests = Object.entries(p.deck_bests)
+        .map(([id, v]) => `<span style="font-size:11px;color:var(--chalk-dim);margin-right:8px">${escapeHtml(id.replace(/-/g,' '))}: <span style="color:var(--vector)">${v.best}/${v.total}</span></span>`)
+        .join('');
+      html += `<tr><td colspan="4" style="padding-top:0;padding-bottom:12px">${bests}</td></tr>`;
+    }
+  });
+
+  html += '</tbody></table></div>';
+  content.innerHTML = html;
+}
+document.getElementById('adminBack').addEventListener('click', () => showScreen('menu'));
 </script>
 </body>
 </html>
