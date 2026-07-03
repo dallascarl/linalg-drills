@@ -557,6 +557,17 @@ async function startDeck(id){
   renderQuestion();
 }
 
+function safeHtml(s){
+  // Splits on $...$ and $$...$$ math, escapes non-math parts, leaves math raw
+  const parts = (s||'').split(/(\$\$[\s\S]*?\$\$|\$[^$\n]*?\$)/g);
+  return parts.map((p, i) => {
+    if (i % 2 === 1) return p; // it's a math segment, leave it alone
+    const d = document.createElement('div');
+    d.textContent = p;
+    return d.innerHTML;
+  }).join('');
+}
+
 function renderQuestion(){
   answered = false; wbSelected = null;
   const q = activeDeck.questions[qIndex];
@@ -570,17 +581,17 @@ function renderQuestion(){
   document.getElementById('nextBtn').textContent = (qIndex === total-1) ? 'See results' : 'Next';
 
   if (q.type === 'mc'){
-    card.innerHTML = `<span class="qtype-tag">Multiple choice</span><p class="prompt">${escapeHtml(q.prompt)}</p><div class="choices" id="choicesWrap"></div>`;
+    card.innerHTML = `<span class="qtype-tag">Multiple choice</span><p class="prompt">${safeHtml(q.prompt)}</p><div class="choices" id="choicesWrap"></div>`;
     const wrap = card.querySelector('#choicesWrap');
     q.choices.forEach((choice, idx) => {
       const btn = document.createElement('button');
       btn.className = 'choice-btn';
-      btn.textContent = choice;
+      btn.innerHTML = safeHtml(choice);
       btn.addEventListener('click', () => handleMcAnswer(idx, btn, wrap));
       wrap.appendChild(btn);
     });
   } else if (q.type === 'type'){
-    card.innerHTML = `<span class="qtype-tag">Fill in</span><p class="prompt">${escapeHtml(q.prompt)}</p>
+    card.innerHTML = `<span class="qtype-tag">Fill in</span><p class="prompt">${safeHtml(q.prompt)}</p>
       <div class="type-row"><input type="text" class="type-input" id="typeInput" placeholder="Your answer" autocomplete="off" autocapitalize="off" spellcheck="false"/></div>
       <button class="primary-btn" id="submitTypeBtn">Submit</button>`;
     const input = card.querySelector('#typeInput');
@@ -592,7 +603,7 @@ function renderQuestion(){
   } else if (q.type === 'wordbank'){
     const parts = q.prompt.split('_____');
     card.innerHTML = `<span class="qtype-tag">Word bank</span>
-      <p class="prompt">${escapeHtml(parts[0])}<span class="bracket-deco">[ ___ ]</span>${escapeHtml(parts[1]||'')}</p>
+      <p class="prompt">${safeHtml(parts[0])}<span class="bracket-deco">[ ___ ]</span>${safeHtml(parts[1]||'')}</p>
       <div class="wb-slot" id="wbSlot">tap a word below</div>
       <div class="wordbank-tray" id="wbTray"></div>
       <button class="primary-btn" id="submitWbBtn" disabled>Submit</button>`;
@@ -602,7 +613,8 @@ function renderQuestion(){
     const chips = [];
     q.wordbank.forEach(word => {
       const chip = document.createElement('button');
-      chip.className = 'wb-chip'; chip.textContent = word;
+      chip.className = 'wb-chip';
+      chip.innerHTML = safeHtml(word);
       chip.addEventListener('click', () => {
         wbSelected = word; slot.textContent = word;
         slot.classList.add('filled'); submitBtn.disabled = false;
