@@ -8,6 +8,13 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+  MathJax = {
+    tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] },
+    startup: { typeset: false }
+  };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
 <style>
   :root{
     --ink:#0B0E14;
@@ -33,13 +40,10 @@
       linear-gradient(var(--grid-line) 1px,transparent 1px),
       linear-gradient(90deg,var(--grid-line) 1px,transparent 1px);
     background-size:32px 32px;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
+    display:flex;flex-direction:column;align-items:center;
   }
   .app{width:100%;max-width:480px;min-height:100vh;display:flex;flex-direction:column;padding:20px 18px 40px;}
 
-  /* header */
   header.top{display:flex;align-items:center;justify-content:space-between;margin-bottom:28px;gap:10px;}
   .brand{font-family:'Space Mono',monospace;font-weight:700;font-size:15px;letter-spacing:.02em;color:var(--chalk-dim);display:flex;align-items:center;gap:8px;flex:none;}
   .brand .bracket{color:var(--vector);}
@@ -51,25 +55,21 @@
   h1{font-family:'Space Mono',monospace;font-size:26px;line-height:1.25;margin:0 0 6px;font-weight:700;}
   .sub{color:var(--chalk-dim);font-size:14px;margin:0 0 24px;line-height:1.5;}
 
-  /* forms */
   .form-card{background:var(--surface);border:1px solid #2A3142;border-radius:18px;padding:26px 22px;margin-bottom:16px;}
   .form-card h2{font-family:'Space Mono',monospace;font-size:18px;margin:0 0 20px;font-weight:700;}
   .field{display:flex;flex-direction:column;gap:6px;margin-bottom:14px;}
   .field label{font-size:12.5px;color:var(--chalk-dim);font-weight:600;letter-spacing:.04em;text-transform:uppercase;}
-  .field input,.field select{background:var(--surface-raised);border:1px solid #313850;color:var(--chalk);border-radius:10px;padding:12px 14px;font-size:15px;font-family:inherit;}
-  .field input:focus,.field select:focus{outline:none;border-color:var(--vector);}
-  .field input.err{border-color:var(--wrong);}
+  .field input{background:var(--surface-raised);border:1px solid #313850;color:var(--chalk);border-radius:10px;padding:12px 14px;font-size:15px;font-family:inherit;}
+  .field input:focus{outline:none;border-color:var(--vector);}
   .field-hint{font-size:12px;color:var(--chalk-dim);}
   .form-err{color:var(--wrong);font-size:13px;margin:8px 0 0;font-family:'Space Mono',monospace;}
   .form-link{color:var(--vector);font-size:13.5px;cursor:pointer;background:none;border:none;padding:0;font-family:inherit;text-decoration:underline;}
 
-  /* buttons */
   .primary-btn{width:100%;background:var(--vector);color:#0B0E14;border:none;border-radius:12px;padding:14px;font-size:15px;font-weight:700;font-family:'Space Mono',monospace;cursor:pointer;margin-top:8px;}
   .primary-btn:disabled{opacity:.35;cursor:default;}
   .ghost-btn{width:100%;background:transparent;color:var(--chalk-dim);border:1px solid #2A3142;border-radius:12px;padding:12px;font-size:14px;font-family:'Inter',sans-serif;cursor:pointer;margin-top:8px;}
   .danger-btn{width:100%;background:transparent;color:var(--wrong);border:1px solid var(--wrong);border-radius:12px;padding:12px;font-size:14px;font-family:'Inter',sans-serif;cursor:pointer;margin-top:8px;}
 
-  /* deck list */
   .deck-list{display:flex;flex-direction:column;gap:14px;}
   .deck-card{background:var(--surface);border:1px solid #2A3142;border-radius:16px;padding:18px 18px 16px;cursor:pointer;transition:border-color .15s,transform .1s;text-align:left;color:var(--chalk);font-family:inherit;display:flex;gap:14px;align-items:center;}
   .deck-card:hover{border-color:var(--vector-dim);}
@@ -78,9 +78,8 @@
   .deck-info{flex:1;min-width:0;}
   .deck-title{font-weight:700;font-size:16px;margin-bottom:3px;}
   .deck-desc{font-size:13px;color:var(--chalk-dim);line-height:1.4;}
-  .deck-meta{font-family:'Space Mono',monospace;font-size:11px;color:var(--vector);margin-top:8px;}
+  .deck-meta{font-family:'Space Mono',monospace;font-size:11px;color:var(--vector);margin-top:6px;line-height:1.6;}
 
-  /* quiz */
   .progress-row{display:flex;align-items:center;gap:10px;margin-bottom:22px;}
   .progress-track{flex:1;height:6px;border-radius:4px;background:#222838;overflow:hidden;}
   .progress-fill{height:100%;background:var(--vector);border-radius:4px;transition:width .25s ease;}
@@ -110,12 +109,13 @@
   .wb-slot.wrong{border-color:var(--wrong);color:var(--wrong);background:rgba(255,107,107,.08);}
   .feedback{margin-top:14px;font-size:13px;color:var(--chalk-dim);font-family:'Space Mono',monospace;min-height:18px;}
 
-  /* results */
   .results{text-align:center;padding-top:30px;}
   .results .big-score{font-family:'Space Mono',monospace;font-size:60px;font-weight:700;color:var(--vector);line-height:1;margin-bottom:6px;}
-  .results .score-sub{color:var(--chalk-dim);margin-bottom:30px;}
+  .results .score-sub{color:var(--chalk-dim);margin-bottom:16px;}
+  .points-banner{background:var(--surface);border:1px solid var(--vector-dim);border-radius:12px;padding:14px 18px;margin-bottom:20px;font-family:'Space Mono',monospace;font-size:13px;line-height:1.6;}
+  .points-banner .pts-earned{font-size:22px;font-weight:700;color:var(--vector);}
+  .points-banner .pts-note{color:var(--chalk-dim);font-size:11px;margin-top:4px;}
 
-  /* leaderboard */
   .lb-row{display:flex;align-items:center;gap:12px;padding:12px 14px;border-radius:12px;background:var(--surface);border:1px solid #2A3142;margin-bottom:8px;}
   .lb-rank{font-family:'Space Mono',monospace;font-size:13px;color:var(--chalk-dim);width:28px;flex:none;text-align:center;}
   .lb-rank.gold{color:var(--gold);}
@@ -126,7 +126,6 @@
   .tab-btn{flex:1;padding:9px;border-radius:10px;font-size:13px;font-family:'Space Mono',monospace;cursor:pointer;border:1px solid #2A3142;background:var(--surface);color:var(--chalk-dim);transition:all .15s;}
   .tab-btn.active{background:var(--vector);color:#0B0E14;border-color:var(--vector);}
 
-  /* admin */
   .admin-table{width:100%;border-collapse:collapse;font-size:13px;}
   .admin-table th{text-align:left;padding:8px 10px;font-family:'Space Mono',monospace;font-size:11px;color:var(--chalk-dim);border-bottom:1px solid #2A3142;font-weight:400;letter-spacing:.04em;}
   .admin-table td{padding:10px 10px;border-bottom:1px solid #1A1F2C;vertical-align:top;}
@@ -134,8 +133,9 @@
   .badge{display:inline-block;padding:2px 8px;border-radius:999px;font-size:11px;font-family:'Space Mono',monospace;}
   .badge-opt{background:rgba(255,107,107,.15);color:var(--wrong);}
   .badge-in{background:rgba(61,220,151,.12);color:var(--correct);}
+  .grade-pill{font-family:'Space Mono',monospace;font-size:12px;color:var(--correct);}
+  .lb-pts-pill{font-family:'Space Mono',monospace;font-size:12px;color:var(--vector);}
 
-  /* settings panel */
   .settings-panel{background:var(--surface);border:1px solid #2A3142;border-radius:18px;padding:22px;}
   .settings-panel h2{font-family:'Space Mono',monospace;font-size:16px;margin:0 0 18px;}
   .toggle-row{display:flex;align-items:center;justify-content:space-between;padding:12px 0;border-bottom:1px solid #2A3142;}
@@ -151,18 +151,10 @@
 
   [data-screen]{display:none;}
   [data-screen].active{display:block;}
-
   .spinner{text-align:center;padding:40px;color:var(--chalk-dim);font-family:'Space Mono',monospace;font-size:13px;}
   .vector-art{margin:0 auto 20px;display:block;}
   footer.appfoot{text-align:center;color:#3A4258;font-family:'Space Mono',monospace;font-size:11px;margin-top:auto;padding-top:30px;}
 </style>
-  <script>
-  MathJax = {
-    tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] },
-    startup: { typeset: false }
-  };
-</script>
-<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
 </head>
 <body>
 <div class="app">
@@ -170,85 +162,56 @@
   <header class="top">
     <div class="brand"><span class="bracket">[</span>LINALG<span class="bracket">]</span></div>
     <div class="header-right">
-      <div class="score-pill" id="globalScorePill" style="display:none">0 ✓</div>
+      <div class="score-pill" id="globalScorePill" style="display:none">0 pts</div>
       <button class="icon-btn" id="lbHeaderBtn" style="display:none" title="Leaderboard">🏆</button>
       <button class="icon-btn" id="settingsBtn" style="display:none" title="Settings">⚙︎</button>
       <button class="icon-btn" id="signOutBtn" style="display:none" title="Sign out">↩</button>
     </div>
   </header>
 
-  <!-- ===== AUTH: Sign in ===== -->
   <section data-screen="signin" class="active">
     <h1>Welcome back.</h1>
     <p class="sub">Sign in to track your progress and compete on the leaderboard.</p>
     <div class="form-card">
       <h2>Sign In</h2>
-      <div class="field">
-        <label>Email</label>
-        <input type="email" id="siEmail" placeholder="you@example.com" autocomplete="email" />
-      </div>
-      <div class="field">
-        <label>Password</label>
-        <input type="password" id="siPassword" placeholder="••••••••" autocomplete="current-password" />
-      </div>
+      <div class="field"><label>Email</label><input type="email" id="siEmail" placeholder="you@example.com" autocomplete="email"/></div>
+      <div class="field"><label>Password</label><input type="password" id="siPassword" placeholder="••••••••" autocomplete="current-password"/></div>
       <div class="form-err" id="siErr"></div>
       <button class="primary-btn" id="siBtn">Sign In</button>
     </div>
-    <p style="text-align:center;font-size:13.5px;color:var(--chalk-dim);">
-      No account? <button class="form-link" id="goSignup">Create one</button>
-    </p>
+    <p style="text-align:center;font-size:13.5px;color:var(--chalk-dim);">No account? <button class="form-link" id="goSignup">Create one</button></p>
   </section>
 
-  <!-- ===== AUTH: Sign up ===== -->
   <section data-screen="signup">
     <h1>Join the class.</h1>
     <p class="sub">Create your account. Your real name is only visible to the instructor.</p>
     <div class="form-card">
       <h2>Create Account</h2>
-      <div class="field">
-        <label>Your real name</label>
-        <input type="text" id="suFullName" placeholder="Jane Smith" autocomplete="name" />
-        <span class="field-hint">Only the instructor can see this.</span>
-      </div>
-      <div class="field">
-        <label>Username (public)</label>
-        <input type="text" id="suUsername" placeholder="e.g. mathwizard42" autocomplete="username" />
-        <span class="field-hint">Shown on the leaderboard — choose wisely.</span>
-      </div>
-      <div class="field">
-        <label>Email</label>
-        <input type="email" id="suEmail" placeholder="you@example.com" autocomplete="email" />
-      </div>
-      <div class="field">
-        <label>Password</label>
-        <input type="password" id="suPassword" placeholder="8+ characters" autocomplete="new-password" />
-      </div>
+      <div class="field"><label>Your real name</label><input type="text" id="suFullName" placeholder="Jane Smith" autocomplete="name"/><span class="field-hint">Only the instructor can see this.</span></div>
+      <div class="field"><label>Username (public)</label><input type="text" id="suUsername" placeholder="e.g. mathwizard42" autocomplete="username"/><span class="field-hint">Shown on the leaderboard — choose wisely.</span></div>
+      <div class="field"><label>Email</label><input type="email" id="suEmail" placeholder="you@example.com" autocomplete="email"/></div>
+      <div class="field"><label>Password</label><input type="password" id="suPassword" placeholder="8+ characters" autocomplete="new-password"/></div>
       <div class="form-err" id="suErr"></div>
       <button class="primary-btn" id="suBtn">Create Account</button>
     </div>
-    <p style="text-align:center;font-size:13.5px;color:var(--chalk-dim);">
-      Have an account? <button class="form-link" id="goSignin">Sign in</button>
-    </p>
+    <p style="text-align:center;font-size:13.5px;color:var(--chalk-dim);">Have an account? <button class="form-link" id="goSignin">Sign in</button></p>
   </section>
 
-  <!-- ===== AUTH: Email confirm holding ===== -->
   <section data-screen="confirm">
     <div style="text-align:center;padding-top:60px;">
       <div style="font-size:48px;margin-bottom:20px;">📬</div>
       <h1>Check your email.</h1>
-      <p class="sub">We sent a confirmation link to your email address. Click it, then come back and sign in.</p>
+      <p class="sub">We sent a confirmation link. Click it, then come back and sign in.</p>
       <button class="ghost-btn" id="backToSignin">Back to sign in</button>
     </div>
   </section>
 
-  <!-- ===== DECK MENU ===== -->
   <section data-screen="menu">
     <h1>Pick a concept.</h1>
     <p class="sub" id="menuSub">Loading…</p>
     <div class="deck-list" id="deckList"><div class="spinner">Loading decks…</div></div>
   </section>
 
-  <!-- ===== QUIZ ===== -->
   <section data-screen="quiz">
     <div class="progress-row">
       <div class="progress-track"><div class="progress-fill" id="progressFill" style="width:0%"></div></div>
@@ -260,7 +223,6 @@
     <button class="ghost-btn" id="quitBtn">Back to decks</button>
   </section>
 
-  <!-- ===== RESULTS ===== -->
   <section data-screen="results">
     <div class="results">
       <svg class="vector-art" width="100" height="100" viewBox="0 0 120 120" fill="none">
@@ -270,17 +232,20 @@
       </svg>
       <div class="big-score" id="resultScore">0/0</div>
       <div class="score-sub" id="resultSub">Deck complete</div>
-      <div id="savingIndicator" style="font-family:'Space Mono',monospace;font-size:12px;color:var(--chalk-dim);margin-bottom:16px;"></div>
+      <div class="points-banner" id="pointsBanner" style="display:none">
+        <div class="pts-earned" id="ptsEarned"></div>
+        <div class="pts-note" id="ptsNote"></div>
+      </div>
+      <div id="savingIndicator" style="font-family:'Space Mono',monospace;font-size:12px;color:var(--chalk-dim);margin-bottom:16px;min-height:18px;"></div>
       <button class="primary-btn" id="retryBtn">Try again</button>
       <button class="ghost-btn" id="lbFromResultBtn">View leaderboard</button>
       <button class="ghost-btn" id="menuBtn">Back to decks</button>
     </div>
   </section>
 
-  <!-- ===== LEADERBOARD ===== -->
   <section data-screen="leaderboard">
     <h1>Leaderboard.</h1>
-    <p class="sub">Total questions answered correctly, all time.</p>
+    <p class="sub">Leaderboard points — earned with diminishing returns per deck.</p>
     <div class="tab-row">
       <button class="tab-btn active" id="lbTabAll">All decks</button>
       <button class="tab-btn" id="lbTabDeck">This deck</button>
@@ -289,43 +254,25 @@
     <button class="ghost-btn" id="lbBackBtn">Back to decks</button>
   </section>
 
-  <!-- ===== SETTINGS ===== -->
   <section data-screen="settings">
     <h1>Settings.</h1>
     <p class="sub">Your account and preferences.</p>
     <div class="settings-panel">
       <h2>Account</h2>
+      <div class="toggle-row"><div class="toggle-label">Username<small id="settingsUsername">—</small></div></div>
+      <div class="toggle-row"><div class="toggle-label">Real name (private)<small id="settingsFullName">—</small></div></div>
       <div class="toggle-row">
-        <div class="toggle-label">
-          Username
-          <small id="settingsUsername">—</small>
-        </div>
-      </div>
-      <div class="toggle-row">
-        <div class="toggle-label">
-          Real name (private)
-          <small id="settingsFullName">—</small>
-        </div>
-      </div>
-      <div class="toggle-row">
-        <div class="toggle-label">
-          Show me on leaderboard
-          <small>Turn off to practice privately. Scores still count for instructor view.</small>
-        </div>
-        <label class="toggle">
-          <input type="checkbox" id="lbOptIn" checked />
-          <span class="toggle-slider"></span>
-        </label>
+        <div class="toggle-label">Show me on leaderboard<small>Off = practice privately. Grade still tracked.</small></div>
+        <label class="toggle"><input type="checkbox" id="lbOptIn" checked/><span class="toggle-slider"></span></label>
       </div>
     </div>
     <button class="ghost-btn" id="settingsBack">Back to decks</button>
     <button class="danger-btn" id="settingsSignOut">Sign out</button>
   </section>
 
-  <!-- ===== ADMIN ===== -->
   <section data-screen="admin">
     <h1>Instructor View.</h1>
-    <p class="sub">Real names and scores — only visible to you.</p>
+    <p class="sub">Grade scores (best raw) and leaderboard points — only visible to you.</p>
     <div id="adminContent"><div class="spinner">Loading…</div></div>
     <button class="ghost-btn" id="adminBack">Back to decks</button>
   </section>
@@ -335,24 +282,29 @@
 
 <script>
 // ═══════════════════════════════════════════════════
-//  CONFIG — fill these in after creating Supabase project
+//  CONFIG
 // ═══════════════════════════════════════════════════
 const SUPABASE_URL  = 'https://jryujnnmolvmusqieckc.supabase.co';
 const SUPABASE_ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpyeXVqbm5tb2x2bXVzcWllY2tjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODMwMjQ0NTUsImV4cCI6MjA5ODYwMDQ1NX0.ybO6gVrKagz6fy0ZKI2Ued4SwnRRBURXV5bCYlPGQP8';
-// Put your own Supabase user ID here after you create your teacher account:
 const TEACHER_IDS   = ['1dec7973-fcc4-4fac-b753-fc67b5c724b1'];
-// ═══════════════════════════════════════════════════
+
+// Diminishing returns multipliers: attempt 1, 2, 3, 4+
+const LB_MULTIPLIERS = [1, 0.75, 0.25, 0];
 
 const sb = supabase.createClient(SUPABASE_URL, SUPABASE_ANON);
 
-// ---------- Screen router ----------
+// ═══════════════════════════════════════════════════
+//  SCREEN ROUTER
+// ═══════════════════════════════════════════════════
 const screens = document.querySelectorAll('[data-screen]');
 function showScreen(name){
   screens.forEach(s => s.classList.toggle('active', s.dataset.screen === name));
   window.scrollTo(0,0);
 }
 
-// ---------- Auth state ----------
+// ═══════════════════════════════════════════════════
+//  AUTH & PROFILE
+// ═══════════════════════════════════════════════════
 let currentUser = null;
 let currentProfile = null;
 
@@ -374,13 +326,12 @@ async function refreshProfile(){
 
 function updateScorePill(n){
   const pill = document.getElementById('globalScorePill');
-  pill.textContent = n + ' ✓';
+  pill.textContent = n + ' pts';
   pill.style.display = '';
 }
 
 function isTeacher(){ return currentUser && TEACHER_IDS.includes(currentUser.id); }
 
-// ---------- Auth flow ----------
 sb.auth.onAuthStateChange(async (event, session) => {
   currentUser = session?.user || null;
   if (currentUser){
@@ -388,7 +339,6 @@ sb.auth.onAuthStateChange(async (event, session) => {
     showHeaderButtons(true);
     await loadManifest();
     showScreen('menu');
-    // deep-link
     const params = new URLSearchParams(window.location.search);
     const dp = params.get('deck');
     if (dp && manifest.some(m => m.id === dp)) startDeck(dp);
@@ -400,12 +350,10 @@ sb.auth.onAuthStateChange(async (event, session) => {
 
 function showHeaderButtons(on){
   ['globalScorePill','lbHeaderBtn','settingsBtn','signOutBtn'].forEach(id => {
-    const el = document.getElementById(id);
-    el.style.display = on ? '' : 'none';
+    document.getElementById(id).style.display = on ? '' : 'none';
   });
 }
 
-// Sign in
 document.getElementById('siBtn').addEventListener('click', async () => {
   const email = document.getElementById('siEmail').value.trim();
   const pass  = document.getElementById('siPassword').value;
@@ -417,7 +365,6 @@ document.getElementById('goSignup').addEventListener('click', () => showScreen('
 document.getElementById('goSignin').addEventListener('click', () => showScreen('signin'));
 document.getElementById('backToSignin').addEventListener('click', () => showScreen('signin'));
 
-// Sign up
 document.getElementById('suBtn').addEventListener('click', async () => {
   const fullName = document.getElementById('suFullName').value.trim();
   const username = document.getElementById('suUsername').value.trim().toLowerCase().replace(/\s+/g,'');
@@ -425,41 +372,26 @@ document.getElementById('suBtn').addEventListener('click', async () => {
   const pass     = document.getElementById('suPassword').value;
   const errEl    = document.getElementById('suErr');
   errEl.textContent = '';
-
-  if (!fullName || !username || !email || !pass){
-    errEl.textContent = 'All fields are required.'; return;
-  }
-  if (username.length < 3){
-    errEl.textContent = 'Username must be at least 3 characters.'; return;
-  }
-  if (pass.length < 8){
-    errEl.textContent = 'Password must be at least 8 characters.'; return;
-  }
-
-  // Check username uniqueness
+  if (!fullName || !username || !email || !pass){ errEl.textContent = 'All fields are required.'; return; }
+  if (username.length < 3){ errEl.textContent = 'Username must be at least 3 characters.'; return; }
+  if (pass.length < 8){ errEl.textContent = 'Password must be at least 8 characters.'; return; }
   const {data: existing} = await sb.from('profiles').select('id').eq('username', username).maybeSingle();
   if (existing){ errEl.textContent = 'That username is taken. Try another.'; return; }
-
-  const {error} = await sb.auth.signUp({
-    email, password: pass,
-    options: { data: { full_name: fullName, username } }
-  });
+  const {error} = await sb.auth.signUp({email, password: pass, options:{data:{full_name:fullName, username}}});
   if (error){ errEl.textContent = error.message; return; }
   showScreen('confirm');
 });
 
-// Sign out
 async function doSignOut(){
   await sb.auth.signOut();
-  currentUser = null;
-  currentProfile = null;
+  currentUser = null; currentProfile = null;
   showScreen('signin');
 }
 document.getElementById('signOutBtn').addEventListener('click', doSignOut);
 document.getElementById('settingsSignOut').addEventListener('click', doSignOut);
 
 // ═══════════════════════════════════════════════════
-//  DECK LOADING (unchanged logic)
+//  DECK LOADING
 // ═══════════════════════════════════════════════════
 let manifest = [];
 let decksById = {};
@@ -474,6 +406,17 @@ function escapeHtml(s){
   const d = document.createElement('div');
   d.textContent = s || '';
   return d.innerHTML;
+}
+
+// Escapes HTML but leaves $...$ and $$...$$ math untouched for MathJax
+function safeHtml(s){
+  const parts = (s||'').split(/(\$\$[\s\S]*?\$\$|\$[^$\n]*?\$)/g);
+  return parts.map((p, i) => {
+    if (i % 2 === 1) return p;
+    const d = document.createElement('div');
+    d.textContent = p;
+    return d.innerHTML;
+  }).join('');
 }
 
 function deckGlyph(seed){
@@ -492,10 +435,9 @@ function deckGlyph(seed){
 function renderDeckList(){
   const list = document.getElementById('deckList');
   list.innerHTML = '';
-  const sub = document.getElementById('menuSub');
-  sub.textContent = isTeacher()
+  document.getElementById('menuSub').textContent = isTeacher()
     ? 'Instructor account — quiz or view student data below.'
-    : 'Quick drills. Scores go to the leaderboard.';
+    : 'Quick drills. Grade = your best score ever. Leaderboard points use diminishing returns.';
 
   if (isTeacher()){
     const adminCard = document.createElement('button');
@@ -505,7 +447,7 @@ function renderDeckList(){
       <div class="deck-glyph"><svg width="44" height="44" viewBox="0 0 44 44"><circle cx="22" cy="22" r="20" fill="none" stroke="#FFD166" stroke-width="1.5"/><text x="22" y="28" text-anchor="middle" font-size="16" fill="#FFD166">👁</text></svg></div>
       <div class="deck-info">
         <div class="deck-title" style="color:var(--gold)">Student Dashboard</div>
-        <div class="deck-desc">View all students' real names and scores.</div>
+        <div class="deck-desc">Grade scores and leaderboard points for all students.</div>
         <div class="deck-meta" style="color:var(--gold)">INSTRUCTOR ONLY</div>
       </div>`;
     adminCard.addEventListener('click', openAdmin);
@@ -516,13 +458,25 @@ function renderDeckList(){
     const card = document.createElement('button');
     card.className = 'deck-card';
     const prog = currentProfile?.deck_bests?.[entry.id];
-    const metaText = prog ? `BEST: ${prog.best}/${prog.total}` : 'NOT ATTEMPTED';
+    const attempts = prog?.attempts || 0;
+    const attemptsLeft = Math.max(0, 3 - attempts);
+    const ppq = entry.pointsPerQuestion || 1;
+
+    let metaLines = [];
+    if (prog){
+      metaLines.push(`GRADE BEST: ${prog.bestRaw}/${prog.total}`);
+      metaLines.push(`LB PTS EARNED: ${prog.lbPoints || 0} · ${attemptsLeft} scored attempt${attemptsLeft !== 1 ? 's' : ''} left`);
+    } else {
+      metaLines.push(`NOT ATTEMPTED · 3 scored attempts`);
+    }
+    if (ppq > 1) metaLines.push(`${ppq} pts per question`);
+
     card.innerHTML = `
       <div class="deck-glyph">${deckGlyph(i+1)}</div>
       <div class="deck-info">
         <div class="deck-title">${escapeHtml(entry.title || entry.id)}</div>
         <div class="deck-desc">${escapeHtml(entry.description || '')}</div>
-        <div class="deck-meta">${metaText}</div>
+        <div class="deck-meta">${metaLines.map(escapeHtml).join('<br>')}</div>
       </div>`;
     card.addEventListener('click', () => startDeck(entry.id));
     list.appendChild(card);
@@ -536,13 +490,15 @@ async function fetchDeck(id){
   const res = await fetch(entry.file);
   const deck = await res.json();
   decksById[id] = deck;
+  // Copy deck-level fields to manifest entry for menu display
   entry.title = deck.title;
   entry.description = deck.description;
+  entry.pointsPerQuestion = deck.pointsPerQuestion || 1;
   return deck;
 }
 
 // ═══════════════════════════════════════════════════
-//  QUIZ RUNTIME (core logic unchanged)
+//  QUIZ RUNTIME
 // ═══════════════════════════════════════════════════
 let activeDeck = null;
 let qIndex = 0;
@@ -553,25 +509,21 @@ let wbSelected = null;
 async function startDeck(id){
   activeDeck = await fetchDeck(id);
   qIndex = 0; score = 0;
+
+  // Shuffle all questions, then take questionsPerAttempt (or all if not set)
+  const allQ = activeDeck.questions;
+  const limit = activeDeck.questionsPerAttempt || allQ.length;
+  const shuffled = [...allQ].sort(() => Math.random() - 0.5);
+  activeDeck._sessionQ = shuffled.slice(0, Math.min(limit, allQ.length));
+
   showScreen('quiz');
   renderQuestion();
 }
 
-function safeHtml(s){
-  // Splits on $...$ and $$...$$ math, escapes non-math parts, leaves math raw
-  const parts = (s||'').split(/(\$\$[\s\S]*?\$\$|\$[^$\n]*?\$)/g);
-  return parts.map((p, i) => {
-    if (i % 2 === 1) return p; // it's a math segment, leave it alone
-    const d = document.createElement('div');
-    d.textContent = p;
-    return d.innerHTML;
-  }).join('');
-}
-
 function renderQuestion(){
   answered = false; wbSelected = null;
-  const q = activeDeck.questions[qIndex];
-  const total = activeDeck.questions.length;
+  const q = activeDeck._sessionQ[qIndex];
+  const total = activeDeck._sessionQ.length;
   const card = document.getElementById('qcard');
 
   document.getElementById('progressFill').style.width = (qIndex / total * 100) + '%';
@@ -631,7 +583,7 @@ function normalize(s){ return (s||'').toString().trim().toLowerCase(); }
 
 function handleMcAnswer(idx, btn, wrap){
   if (answered) return;
-  const q = activeDeck.questions[qIndex];
+  const q = activeDeck._sessionQ[qIndex];
   wrap.querySelectorAll('.choice-btn').forEach(b => b.disabled = true);
   if (idx === q.answer){
     btn.classList.add('correct'); score++;
@@ -646,7 +598,7 @@ function handleMcAnswer(idx, btn, wrap){
 
 function handleTypeAnswer(input, submitBtn){
   if (answered) return;
-  const q = activeDeck.questions[qIndex];
+  const q = activeDeck._sessionQ[qIndex];
   const isCorrect = q.answer.map(normalize).includes(normalize(input.value));
   input.disabled = true; submitBtn.disabled = true;
   if (isCorrect){
@@ -661,7 +613,7 @@ function handleTypeAnswer(input, submitBtn){
 
 function handleWordbankAnswer(slot, chips, submitBtn){
   if (answered) return;
-  const q = activeDeck.questions[qIndex];
+  const q = activeDeck._sessionQ[qIndex];
   chips.forEach(c => c.disabled = true); submitBtn.disabled = true;
   const isCorrect = normalize(wbSelected) === normalize(q.answer);
   if (isCorrect){
@@ -677,64 +629,112 @@ function handleWordbankAnswer(slot, chips, submitBtn){
 document.getElementById('nextBtn').addEventListener('click', () => {
   if (!answered) return;
   qIndex++;
-  if (qIndex >= activeDeck.questions.length) finishDeck();
+  if (qIndex >= activeDeck._sessionQ.length) finishDeck();
   else renderQuestion();
 });
 document.getElementById('quitBtn').addEventListener('click', () => showScreen('menu'));
 
 // ═══════════════════════════════════════════════════
-//  FINISH DECK — save to Supabase
+//  FINISH DECK — dual scoring: grade vs leaderboard
 // ═══════════════════════════════════════════════════
 async function finishDeck(){
-  const total = activeDeck.questions.length;
-  const pct = Math.round((score/total)*100);
+  const total = activeDeck._sessionQ.length;
+  const pct   = Math.round((score / total) * 100);
+
   document.getElementById('resultScore').textContent = score + '/' + total;
   document.getElementById('resultSub').textContent =
     pct === 100 ? 'Perfect run.' : pct >= 70 ? 'Solid work.' : 'Keep drilling — repetition builds intuition.';
 
   const arrow = document.getElementById('resultArrow');
-  const angle = -90 + (pct/100)*180;
-  const rad = angle * Math.PI/180;
-  arrow.setAttribute('x2', (60 + 45*Math.cos(rad)).toFixed(1));
-  arrow.setAttribute('y2', (60 + 45*Math.sin(rad)).toFixed(1));
+  const angle = -90 + (pct / 100) * 180;
+  const rad   = angle * Math.PI / 180;
+  arrow.setAttribute('x2', (60 + 45 * Math.cos(rad)).toFixed(1));
+  arrow.setAttribute('y2', (60 + 45 * Math.sin(rad)).toFixed(1));
 
   const savingEl = document.getElementById('savingIndicator');
-  savingEl.textContent = 'Saving score…';
+  savingEl.textContent = 'Saving…';
   showScreen('results');
 
-  // Save attempt to DB
+  // ── Grade: best raw score, unlimited attempts ──
+  const prevBests  = currentProfile?.deck_bests || {};
+  const prevDeck   = prevBests[activeDeck.id] || {};
+  const prevBestRaw = prevDeck.bestRaw || 0;
+  const newBestRaw  = Math.max(prevBestRaw, score);
+
+  // ── Leaderboard points: diminishing returns, capped at 3 attempts ──
+  const prevAttempts  = prevDeck.attempts || 0;
+  const thisAttempt   = prevAttempts + 1;
+  const multiplier    = LB_MULTIPLIERS[Math.min(thisAttempt - 1, LB_MULTIPLIERS.length - 1)];
+  const pointsPerQ    = activeDeck.pointsPerQuestion || 1;
+  const earnedPoints  = Math.round(score * pointsPerQ * multiplier);
+  const prevLbPoints  = prevDeck.lbPoints || 0;
+  const newLbPoints   = prevLbPoints + earnedPoints;
+
+  // ── Show points banner ──
+  const banner = document.getElementById('pointsBanner');
+  const ptsEarned = document.getElementById('ptsEarned');
+  const ptsNote   = document.getElementById('ptsNote');
+  banner.style.display = '';
+
+  if (multiplier === 0){
+    ptsEarned.textContent = '+0 leaderboard pts';
+    ptsNote.textContent   = '4th+ attempt — no more leaderboard points for this deck. Grade still updated.';
+  } else {
+    ptsEarned.textContent = `+${earnedPoints} leaderboard pts`;
+    const multiplierLabels = ['Full points (1st attempt)', '75% points (2nd attempt)', '25% points (3rd attempt)'];
+    ptsNote.textContent = `${multiplierLabels[thisAttempt - 1]} · Grade best: ${newBestRaw}/${total}`;
+  }
+
+  // ── Save attempt to DB ──
   const {error: attemptErr} = await sb.from('attempts').insert({
-    user_id: currentUser.id,
-    deck_id: activeDeck.id,
+    user_id:        currentUser.id,
+    deck_id:        activeDeck.id,
     score,
     total,
-    correct: score
+    correct:        score,
+    points_earned:  earnedPoints,
+    attempt_number: thisAttempt
   });
 
-  if (attemptErr){ savingEl.textContent = '⚠ Could not save score (offline?).'; return; }
+  if (attemptErr){ savingEl.textContent = '⚠ Could not save score.'; return; }
 
-  // Update profile totals + deck bests
-  const prevBests = currentProfile?.deck_bests || {};
-  const prevBest = prevBests[activeDeck.id]?.best || 0;
-  const newBest = Math.max(prevBest, score);
-  const newBests = { ...prevBests, [activeDeck.id]: { best: newBest, total } };
-  const newTotal = (currentProfile?.total_correct || 0) + score;
+  // ── Update profile ──
+  const newBests = {
+    ...prevBests,
+    [activeDeck.id]: {
+      bestRaw:  newBestRaw,   // grade score
+      lbPoints: newLbPoints,  // cumulative LB points for this deck
+      total,
+      attempts: thisAttempt
+    }
+  };
+  const newTotalLbPoints = (currentProfile?.total_correct || 0) + earnedPoints;
 
   await sb.from('profiles').update({
-    total_correct: newTotal,
-    deck_bests: newBests
+    total_correct: newTotalLbPoints,
+    deck_bests:    newBests
   }).eq('id', currentUser.id);
 
-  currentProfile.total_correct = newTotal;
-  currentProfile.deck_bests = newBests;
-  updateScorePill(newTotal);
-  savingEl.textContent = '✓ Score saved.';
+  currentProfile.total_correct = newTotalLbPoints;
+  currentProfile.deck_bests    = newBests;
+  updateScorePill(newTotalLbPoints);
+  savingEl.textContent = '✓ Saved.';
+  renderDeckList(); // refresh meta text in background
 }
 
 document.getElementById('retryBtn').addEventListener('click', () => {
-  qIndex = 0; score = 0; showScreen('quiz'); renderQuestion();
+  document.getElementById('pointsBanner').style.display = 'none';
+  qIndex = 0; score = 0;
+  // Re-shuffle for next attempt
+  const allQ = activeDeck.questions;
+  const limit = activeDeck.questionsPerAttempt || allQ.length;
+  const shuffled = [...allQ].sort(() => Math.random() - 0.5);
+  activeDeck._sessionQ = shuffled.slice(0, Math.min(limit, allQ.length));
+  showScreen('quiz');
+  renderQuestion();
 });
 document.getElementById('menuBtn').addEventListener('click', () => {
+  document.getElementById('pointsBanner').style.display = 'none';
   renderDeckList(); showScreen('menu');
 });
 document.getElementById('lbFromResultBtn').addEventListener('click', () => openLeaderboard(activeDeck?.id));
@@ -742,14 +742,14 @@ document.getElementById('lbFromResultBtn').addEventListener('click', () => openL
 // ═══════════════════════════════════════════════════
 //  LEADERBOARD
 // ═══════════════════════════════════════════════════
-let lbMode = 'all'; // 'all' | 'deck'
+let lbMode = 'all';
 let lbDeckId = null;
 
 async function openLeaderboard(deckId){
   lbDeckId = deckId || null;
   lbMode = 'all';
   document.getElementById('lbTabAll').classList.add('active');
-  document.getElementById('lbTabDeck').classList.toggle('active', false);
+  document.getElementById('lbTabDeck').classList.remove('active');
   document.getElementById('lbTabDeck').style.display = lbDeckId ? '' : 'none';
   showScreen('leaderboard');
   renderLeaderboard();
@@ -766,22 +766,22 @@ async function renderLeaderboard(){
       .eq('lb_opt_in', true)
       .order('total_correct', {ascending: false})
       .limit(50);
-    rows = (data||[]).map(r => ({name: r.username, score: r.total_correct || 0}));
+    rows = (data||[]).map(r => ({name: r.username, score: r.total_correct || 0, label: 'pts'}));
   } else {
-    // per-deck: best score per user from attempts
     const {data} = await sb.from('attempts')
-      .select('user_id, score, profiles(username, lb_opt_in)')
-      .eq('deck_id', lbDeckId)
-      .order('score', {ascending: false});
-    // reduce to best per user
+      .select('user_id, points_earned, profiles(username, lb_opt_in)')
+      .eq('deck_id', lbDeckId);
     const seen = {};
     (data||[]).forEach(r => {
-      const uid = r.user_id;
       if (!r.profiles?.lb_opt_in) return;
-      if (!seen[uid] || r.score > seen[uid].score)
-        seen[uid] = {name: r.profiles.username, score: r.score};
+      const uid = r.user_id;
+      seen[uid] = {
+        name:  r.profiles.username,
+        score: (seen[uid]?.score || 0) + (r.points_earned || 0)
+      };
     });
-    rows = Object.values(seen).sort((a,b) => b.score - a.score).slice(0,50);
+    rows = Object.values(seen).sort((a,b) => b.score - a.score).slice(0, 50);
+    rows.forEach(r => r.label = 'pts');
   }
 
   if (!rows.length){ content.innerHTML = '<p style="color:var(--chalk-dim);text-align:center;padding:30px;">No entries yet.</p>'; return; }
@@ -790,12 +790,12 @@ async function renderLeaderboard(){
     const isYou = row.name === currentProfile?.username;
     const div = document.createElement('div');
     div.className = 'lb-row' + (isYou ? ' lb-you' : '');
-    const rankText = i === 0 ? '🥇' : i === 1 ? '🥈' : i === 2 ? '🥉' : (i+1)+'';
+    const rankText  = i === 0 ? '🥇' : i === 1 ? '🥈' : i === 2 ? '🥉' : (i+1)+'';
     const rankClass = i < 3 ? 'lb-rank gold' : 'lb-rank';
     div.innerHTML = `
       <div class="${rankClass}">${rankText}</div>
       <div class="lb-name">${escapeHtml(row.name)}${isYou ? ' <span style="color:var(--vector);font-size:11px">(you)</span>' : ''}</div>
-      <div class="lb-score">${row.score} ✓</div>`;
+      <div class="lb-score">${row.score} ${row.label}</div>`;
     content.appendChild(div);
   });
 }
@@ -819,25 +819,22 @@ document.getElementById('lbBackBtn').addEventListener('click', () => showScreen(
 //  SETTINGS
 // ═══════════════════════════════════════════════════
 document.getElementById('settingsBtn').addEventListener('click', async () => {
-  await refreshProfile();
-  showScreen('settings');
+  await refreshProfile(); showScreen('settings');
 });
 document.getElementById('settingsBack').addEventListener('click', () => showScreen('menu'));
-
 document.getElementById('lbOptIn').addEventListener('change', async (e) => {
   await sb.from('profiles').update({lb_opt_in: e.target.checked}).eq('id', currentUser.id);
   if (currentProfile) currentProfile.lb_opt_in = e.target.checked;
 });
 
 // ═══════════════════════════════════════════════════
-//  ADMIN VIEW (teacher only)
+//  ADMIN VIEW
 // ═══════════════════════════════════════════════════
 async function openAdmin(){
   showScreen('admin');
   const content = document.getElementById('adminContent');
   content.innerHTML = '<div class="spinner">Loading student data…</div>';
 
-  // All profiles except teacher
   const {data: profiles} = await sb.from('profiles')
     .select('id, username, full_name, total_correct, lb_opt_in, deck_bests')
     .not('id', 'in', `(${TEACHER_IDS.join(',')})`)
@@ -848,13 +845,12 @@ async function openAdmin(){
     return;
   }
 
-  const deckIds = manifest.map(m => m.id);
   let html = `<div style="overflow-x:auto">
     <table class="admin-table">
       <thead><tr>
         <th>Real Name</th>
         <th>Username</th>
-        <th>Total ✓</th>
+        <th>LB Pts</th>
         <th>Leaderboard</th>
       </tr></thead><tbody>`;
 
@@ -865,15 +861,22 @@ async function openAdmin(){
     html += `<tr>
       <td><strong>${escapeHtml(p.full_name)}</strong></td>
       <td style="color:var(--chalk-dim)">@${escapeHtml(p.username)}</td>
-      <td style="font-family:'Space Mono',monospace">${p.total_correct || 0}</td>
+      <td class="lb-pts-pill">${p.total_correct || 0}</td>
       <td>${optBadge}</td>
     </tr>`;
-    // Per-deck breakdown row
+
+    // Per-deck breakdown: show BOTH grade score and LB points
     if (p.deck_bests && Object.keys(p.deck_bests).length){
-      const bests = Object.entries(p.deck_bests)
-        .map(([id, v]) => `<span style="font-size:11px;color:var(--chalk-dim);margin-right:8px">${escapeHtml(id.replace(/-/g,' '))}: <span style="color:var(--vector)">${v.best}/${v.total}</span></span>`)
-        .join('');
-      html += `<tr><td colspan="4" style="padding-top:0;padding-bottom:12px">${bests}</td></tr>`;
+      const bests = Object.entries(p.deck_bests).map(([id, v]) => {
+        const deckLabel = escapeHtml(id.replace(/-/g,' '));
+        const gradeStr  = `<span style="color:var(--correct)">${v.bestRaw ?? v.best ?? '?'}/${v.total}</span>`;
+        const lbStr     = `<span style="color:var(--vector)">${v.lbPoints || 0}pts</span>`;
+        const attStr    = `<span style="color:var(--chalk-dim)">${v.attempts || 0} attempts</span>`;
+        return `<span style="font-size:11px;margin-right:12px;display:inline-block;margin-bottom:4px">
+          <span style="color:var(--chalk-dim)">${deckLabel}:</span> grade ${gradeStr} · lb ${lbStr} · ${attStr}
+        </span>`;
+      }).join('');
+      html += `<tr><td colspan="4" style="padding-top:2px;padding-bottom:14px">${bests}</td></tr>`;
     }
   });
 
