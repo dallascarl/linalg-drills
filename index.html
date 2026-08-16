@@ -108,6 +108,8 @@
   .wb-slot.correct{border-color:var(--correct);color:var(--correct);background:rgba(61,220,151,.08);}
   .wb-slot.wrong{border-color:var(--wrong);color:var(--wrong);background:rgba(255,107,107,.08);}
   .feedback{margin-top:14px;font-size:13px;color:var(--chalk-dim);font-family:'Space Mono',monospace;min-height:18px;}
+  .explanation{margin-top:10px;background:var(--surface-raised);border-left:3px solid var(--vector-dim);border-radius:0 10px 10px 0;padding:10px 14px;font-size:13px;font-family:'Inter',sans-serif;color:var(--chalk-dim);line-height:1.5;display:none;}
+  .explanation.visible{display:block;}
 
   .results{text-align:center;padding-top:30px;}
   .results .big-score{font-family:'Space Mono',monospace;font-size:60px;font-weight:700;color:var(--vector);line-height:1;margin-bottom:6px;}
@@ -219,6 +221,7 @@
     </div>
     <div class="qcard" id="qcard"></div>
     <div class="feedback" id="feedback"></div>
+    <div class="explanation" id="explanation"></div>
     <button class="primary-btn" id="nextBtn" disabled>Next</button>
     <button class="ghost-btn" id="quitBtn">Back to decks</button>
   </section>
@@ -290,6 +293,9 @@ const TEACHER_IDS   = ['1dec7973-fcc4-4fac-b753-fc67b5c724b1'];
 
 // Diminishing returns multipliers: attempt 1, 2, 3, 4+
 const LB_MULTIPLIERS = [1, 0.75, 0.25, 0];
+
+// How many students to show on the leaderboard (change this any time)
+const LEADERBOARD_SIZE = 10;
 
 const sb = supabase.createClient(SUPABASE_URL, SUPABASE_ANON);
 
@@ -529,6 +535,8 @@ function renderQuestion(){
   document.getElementById('progressFill').style.width = (qIndex / total * 100) + '%';
   document.getElementById('progressLabel').textContent = (qIndex+1) + ' / ' + total;
   document.getElementById('feedback').textContent = '';
+  const explEl = document.getElementById('explanation');
+  explEl.textContent = ''; explEl.classList.remove('visible');
   document.getElementById('nextBtn').disabled = true;
   document.getElementById('nextBtn').textContent = (qIndex === total-1) ? 'See results' : 'Next';
 
@@ -581,6 +589,14 @@ function renderQuestion(){
 function lockAnswered(){ answered = true; document.getElementById('nextBtn').disabled = false; }
 function normalize(s){ return (s||'').toString().trim().toLowerCase(); }
 
+function showExplanation(text){
+  if (!text) return;
+  const el = document.getElementById('explanation');
+  el.textContent = text;
+  el.classList.add('visible');
+  MathJax.typesetPromise([el]);
+}
+
 function handleMcAnswer(idx, btn, wrap){
   if (answered) return;
   const q = activeDeck._sessionQ[qIndex];
@@ -592,6 +608,9 @@ function handleMcAnswer(idx, btn, wrap){
     btn.classList.add('wrong');
     wrap.querySelectorAll('.choice-btn')[q.answer].classList.add('correct');
     document.getElementById('feedback').textContent = 'Correct answer: ' + q.choices[q.answer];
+    // Show per-choice explanation if provided
+    const expl = q.explanations?.[idx];
+    showExplanation(expl);
   }
   lockAnswered();
 }
@@ -607,6 +626,7 @@ function handleTypeAnswer(input, submitBtn){
   } else {
     input.classList.add('wrong');
     document.getElementById('feedback').textContent = 'Correct answer: ' + q.answer[0];
+    showExplanation(q.explanation);
   }
   lockAnswered();
 }
@@ -622,6 +642,7 @@ function handleWordbankAnswer(slot, chips, submitBtn){
   } else {
     slot.classList.add('wrong');
     document.getElementById('feedback').textContent = 'Correct answer: ' + q.answer;
+    showExplanation(q.explanation);
   }
   lockAnswered();
 }
@@ -765,7 +786,7 @@ async function renderLeaderboard(){
       .select('username, total_correct, lb_opt_in')
       .eq('lb_opt_in', true)
       .order('total_correct', {ascending: false})
-      .limit(50);
+      .limit(LEADERBOARD_SIZE);
     rows = (data||[]).map(r => ({name: r.username, score: r.total_correct || 0, label: 'pts'}));
   } else {
     const {data} = await sb.from('attempts')
@@ -780,7 +801,7 @@ async function renderLeaderboard(){
         score: (seen[uid]?.score || 0) + (r.points_earned || 0)
       };
     });
-    rows = Object.values(seen).sort((a,b) => b.score - a.score).slice(0, 50);
+    rows = Object.values(seen).sort((a,b) => b.score - a.score).slice(0, LEADERBOARD_SIZE);
     rows.forEach(r => r.label = 'pts');
   }
 
