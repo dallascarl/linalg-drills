@@ -938,12 +938,12 @@ async function openAdmin(){
     .not('id', 'in', `(${TEACHER_IDS.join(',')})`)
     .order('total_correct', {ascending: false});
 
-  if (!profiles?.length){
-    content.innerHTML = '<p style="color:var(--chalk-dim);text-align:center;padding:30px;">No students yet.</p>';
-    return;
-  }
+  let html = '';
 
-  let html = `<div style="overflow-x:auto">
+  if (!profiles?.length){
+    html += '<p style="color:var(--chalk-dim);font-size:13px;margin-bottom:20px;">No students yet.</p>';
+  } else {
+    html += `<div style="overflow-x:auto">
     <table class="admin-table">
       <thead><tr>
         <th>Real Name</th>
@@ -978,7 +978,8 @@ async function openAdmin(){
     }
   });
 
-  html += '</tbody></table></div>';
+    html += '</tbody></table></div>';
+  } // end else (students exist)
 
   // ── Flagged questions ──
   const {data: flags} = await sb.from('flags')
