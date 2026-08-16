@@ -111,6 +111,30 @@
   .explanation{margin-top:10px;background:var(--surface-raised);border-left:3px solid var(--vector-dim);border-radius:0 10px 10px 0;padding:10px 14px;font-size:13px;font-family:'Inter',sans-serif;color:var(--chalk-dim);line-height:1.5;display:none;}
   .explanation.visible{display:block;}
 
+  /* Flag feature */
+  .flag-area{margin-top:12px;display:none;}
+  .flag-area.visible{display:block;}
+  .flag-btn{background:none;border:1px solid #2A3142;border-radius:10px;color:var(--chalk-dim);font-size:12px;font-family:'Inter',sans-serif;padding:6px 12px;cursor:pointer;transition:border-color .15s,color .15s;}
+  .flag-btn:hover{border-color:var(--wrong);color:var(--wrong);}
+  .flag-btn.flagged{border-color:var(--wrong);color:var(--wrong);background:rgba(255,107,107,.08);}
+  .flag-panel{margin-top:8px;display:none;flex-direction:column;gap:8px;}
+  .flag-panel.visible{display:flex;}
+  .flag-input{background:var(--surface-raised);border:1px solid #313850;color:var(--chalk);border-radius:10px;padding:10px 12px;font-size:13px;font-family:'Inter',sans-serif;resize:none;line-height:1.4;}
+  .flag-input:focus{outline:none;border-color:var(--wrong);}
+  .flag-submit{background:var(--wrong);color:#0B0E14;border:none;border-radius:10px;padding:9px 14px;font-size:13px;font-weight:700;font-family:'Space Mono',monospace;cursor:pointer;align-self:flex-start;}
+  .flag-submit:disabled{opacity:.4;cursor:default;}
+  .flag-confirm{font-size:12px;color:var(--correct);font-family:'Space Mono',monospace;display:none;}
+  .flag-confirm.visible{display:block;}
+
+  /* Admin flags section */
+  .flags-section{margin-top:24px;}
+  .flags-section h3{font-family:'Space Mono',monospace;font-size:14px;color:var(--gold);margin:0 0 12px;}
+  .flag-card{background:var(--surface);border:1px solid #2A3142;border-radius:12px;padding:14px 16px;margin-bottom:10px;}
+  .flag-card-deck{font-family:'Space Mono',monospace;font-size:10px;color:var(--vector);text-transform:uppercase;margin-bottom:4px;}
+  .flag-card-q{font-size:13px;color:var(--chalk);margin-bottom:8px;line-height:1.4;}
+  .flag-card-note{font-size:12px;color:var(--chalk-dim);font-style:italic;margin-bottom:6px;}
+  .flag-card-meta{font-size:11px;color:#3A4258;font-family:'Space Mono',monospace;}
+
   .results{text-align:center;padding-top:30px;}
   .results .big-score{font-family:'Space Mono',monospace;font-size:60px;font-weight:700;color:var(--vector);line-height:1;margin-bottom:6px;}
   .results .score-sub{color:var(--chalk-dim);margin-bottom:16px;}
@@ -222,6 +246,17 @@
     <div class="qcard" id="qcard"></div>
     <div class="feedback" id="feedback"></div>
     <div class="explanation" id="explanation"></div>
+
+    <!-- Flag this question -->
+    <div class="flag-area" id="flagArea">
+      <button class="flag-btn" id="flagBtn">🚩 Flag this question</button>
+      <div class="flag-panel" id="flagPanel">
+        <textarea class="flag-input" id="flagNote" rows="2" placeholder="Optional: what do you think is wrong?"></textarea>
+        <button class="flag-submit" id="flagSubmit">Submit flag</button>
+        <div class="flag-confirm" id="flagConfirm">✓ Flagged — thanks! The instructor will review it.</div>
+      </div>
+    </div>
+
     <button class="primary-btn" id="nextBtn" disabled>Next</button>
     <button class="ghost-btn" id="quitBtn">Back to decks</button>
   </section>
@@ -537,6 +572,13 @@ function renderQuestion(){
   document.getElementById('feedback').textContent = '';
   const explEl = document.getElementById('explanation');
   explEl.textContent = ''; explEl.classList.remove('visible');
+  // Reset flag area
+  document.getElementById('flagArea').classList.remove('visible');
+  document.getElementById('flagBtn').classList.remove('flagged');
+  document.getElementById('flagPanel').classList.remove('visible');
+  document.getElementById('flagNote').value = '';
+  document.getElementById('flagConfirm').classList.remove('visible');
+  document.getElementById('flagSubmit').disabled = false;
   document.getElementById('nextBtn').disabled = true;
   document.getElementById('nextBtn').textContent = (qIndex === total-1) ? 'See results' : 'Next';
 
@@ -586,7 +628,11 @@ function renderQuestion(){
   MathJax.typesetPromise([card]);
 }
 
-function lockAnswered(){ answered = true; document.getElementById('nextBtn').disabled = false; }
+function lockAnswered(){
+  answered = true;
+  document.getElementById('nextBtn').disabled = false;
+  document.getElementById('flagArea').classList.add('visible');
+}
 function normalize(s){ return (s||'').toString().trim().toLowerCase(); }
 
 function showExplanation(text){
@@ -596,6 +642,37 @@ function showExplanation(text){
   el.classList.add('visible');
   MathJax.typesetPromise([el]);
 }
+
+// ── Flag button ──
+document.getElementById('flagBtn').addEventListener('click', () => {
+  const panel = document.getElementById('flagPanel');
+  const btn   = document.getElementById('flagBtn');
+  const isOpen = panel.classList.contains('visible');
+  panel.classList.toggle('visible', !isOpen);
+  if (!isOpen) document.getElementById('flagNote').focus();
+});
+
+document.getElementById('flagSubmit').addEventListener('click', async () => {
+  const q       = activeDeck._sessionQ[qIndex];
+  const note    = document.getElementById('flagNote').value.trim();
+  const submitBtn = document.getElementById('flagSubmit');
+  const confirm   = document.getElementById('flagConfirm');
+  const flagBtn   = document.getElementById('flagBtn');
+
+  submitBtn.disabled = true;
+
+  await sb.from('flags').insert({
+    user_id:  currentUser.id,
+    deck_id:  activeDeck.id,
+    question: q.prompt,
+    note:     note || null
+  });
+
+  flagBtn.textContent = '🚩 Flagged';
+  flagBtn.classList.add('flagged');
+  document.getElementById('flagPanel').classList.remove('visible');
+  confirm.classList.add('visible');
+});
 
 function handleMcAnswer(idx, btn, wrap){
   if (answered) return;
@@ -902,6 +979,32 @@ async function openAdmin(){
   });
 
   html += '</tbody></table></div>';
+
+  // ── Flagged questions ──
+  const {data: flags} = await sb.from('flags')
+    .select('deck_id, question, note, created_at, profiles(username)')
+    .order('created_at', {ascending: false});
+
+  if (flags?.length){
+    html += `<div class="flags-section">
+      <h3>🚩 Flagged Questions (${flags.length})</h3>`;
+    flags.forEach(f => {
+      const when = new Date(f.created_at).toLocaleDateString();
+      const who  = f.profiles?.username || 'unknown';
+      const deck = f.deck_id.replace(/-/g,' ');
+      html += `<div class="flag-card">
+        <div class="flag-card-deck">${escapeHtml(deck)}</div>
+        <div class="flag-card-q">${escapeHtml(f.question.slice(0, 120))}${f.question.length > 120 ? '…' : ''}</div>
+        ${f.note ? `<div class="flag-card-note">"${escapeHtml(f.note)}"</div>` : ''}
+        <div class="flag-card-meta">@${escapeHtml(who)} · ${when}</div>
+      </div>`;
+    });
+    html += '</div>';
+  } else {
+    html += `<div class="flags-section"><h3>🚩 Flagged Questions</h3>
+      <p style="color:var(--chalk-dim);font-size:13px;">No flags yet.</p></div>`;
+  }
+
   content.innerHTML = html;
 }
 document.getElementById('adminBack').addEventListener('click', () => showScreen('menu'));
