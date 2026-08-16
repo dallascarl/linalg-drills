@@ -130,7 +130,7 @@
 
     {
       "type": "mc",
-      "prompt": "Which augmented matrix represents an inconsistent system? (REF shown)",
+      "prompt": "Which augmented matrix represents an inconsistent system? ",
       "choices": [
         "$\\begin{bmatrix}1&2&3\\\\0&1&4\\end{bmatrix}$",
         "$\\begin{bmatrix}1&0&2\\\\0&0&0\\end{bmatrix}$",
@@ -264,7 +264,7 @@
 
     {
       "type": "mc",
-      "prompt": "The row $\\begin{bmatrix}0&0&0&5\\end{bmatrix}$ in an augmented matrix (in REF) means the system is:",
+      "prompt": "The row $\\begin{bmatrix}0&0&0&5\\end{bmatrix}$ in an augmented matrix means the system is:",
       "choices": ["Consistent with a free variable", "Homogeneous", "Inconsistent", "Independent"],
       "answer": 2,
       "explanations": [
@@ -308,24 +308,6 @@
         "Close, but the augmented matrix has one extra column for the right-hand side.",
         null,
         "The extra column is in the column direction, not the row direction."
-      ]
-    },
-
-    {
-      "type": "mc",
-      "prompt": "Which is a valid elementary row operation?",
-      "choices": [
-        "Multiply two rows together",
-        "Add a multiple of one row to another row",
-        "Square a row",
-        "Swap a row with a column"
-      ],
-      "answer": 1,
-      "explanations": [
-        "Multiplying rows together is not a linear operation and is not allowed.",
-        null,
-        "Squaring a row is not linear and would change the solution set.",
-        "Rows and columns are fundamentally different — swapping them changes the system entirely."
       ]
     },
 
@@ -432,18 +414,6 @@
       ]
     },
 
-    {
-      "type": "mc",
-      "prompt": "Back-substitution works directly on a system in:",
-      "choices": ["Reduced row echelon form only", "Row echelon form", "Any form", "Only 2×2 systems"],
-      "answer": 1,
-      "explanations": [
-        "Back-substitution also works on (non-reduced) row echelon form, not only RREF.",
-        null,
-        "Back-substitution requires an upper triangular structure — not any form.",
-        "Back-substitution works on any size system in REF."
-      ]
-    },
 
     {
       "type": "mc",
@@ -476,31 +446,6 @@
       ]
     },
 
-    {
-      "type": "mc",
-      "prompt": "The system $\\begin{cases}x_1 + 2x_2 - x_3 = 0 \\\\ 3x_1 - x_2 + 2x_3 = 0 \\\\ -x_1 + x_2 + x_3 = 0\\end{cases}$ is:",
-      "choices": ["Inconsistent", "Consistent with a unique solution", "Homogeneous and definitely has infinitely many solutions", "Homogeneous — consistency must be determined by row reduction"],
-      "answer": 3,
-      "explanations": [
-        "Homogeneous systems always have at least the trivial solution — never inconsistent.",
-        "It may have only the trivial solution — we need to row reduce to know.",
-        "With equal numbers of equations and unknowns, the trivial solution may be the only one.",
-        null
-      ]
-    },
-
-    {
-      "type": "mc",
-      "prompt": "Solving the system $\\begin{bmatrix}1&2&-1\\\\0&0&3\\end{bmatrix}$ (augmented): what is $x_3$?",
-      "choices": ["0", "1", "3", "-1"],
-      "answer": 1,
-      "explanations": [
-        "The second row says $3x_3 = 3$, so $x_3 = 1$, not 0.",
-        null,
-        "That is the coefficient, not the solution — divide: $3x_3=3 \\Rightarrow x_3=1$.",
-        "Sign error — $x_3 = 3/3 = 1$."
-      ]
-    },
 
     {
       "type": "wordbank",
@@ -528,7 +473,7 @@
 
     {
       "type": "wordbank",
-      "prompt": "The solution $\\mathbf{x} = \\mathbf{0}$ to a homogeneous system is called the _____ solution.",
+      "prompt": "The solution of ALL zeros to a homogeneous system is called the _____ solution.",
       "wordbank": ["trivial", "unique", "general", "free"],
       "answer": "trivial",
       "explanation": "The trivial solution is $\\mathbf{x}=\\mathbf{0}$ — it always exists for homogeneous systems and requires no work to find."
@@ -540,14 +485,6 @@
       "wordbank": ["free", "pivot", "basic", "trivial"],
       "answer": "free",
       "explanation": "Free variables correspond to non-pivot columns — they are unconstrained and parameterize the infinite solution set."
-    },
-
-    {
-      "type": "wordbank",
-      "prompt": "A matrix is in row echelon form when all entries below each _____ are zero.",
-      "wordbank": ["pivot", "row", "column", "diagonal"],
-      "answer": "pivot",
-      "explanation": "In REF, each pivot (leading nonzero entry) has zeros below it — this is what creates the staircase pattern."
     },
 
     {
@@ -566,13 +503,6 @@
       "explanation": "The augmented matrix $[A \\mid \\mathbf{b}]$ appends the right-hand side vector to the coefficient matrix, encoding the full system."
     },
 
-    {
-      "type": "wordbank",
-      "prompt": "In RREF, each pivot equals 1 and all other entries in the pivot's _____ are zero.",
-      "wordbank": ["column", "row", "diagonal", "submatrix"],
-      "answer": "column",
-      "explanation": "RREF requires each pivot to be 1 with zeros everywhere else in that column — not just below, but above too."
-    },
 
     {
       "type": "wordbank",
@@ -584,7 +514,7 @@
 
     {
       "type": "type",
-      "prompt": "The augmented matrix $\\begin{bmatrix}1&0&-1&3\\\\0&1&2&-5\\\\0&0&1&4\\end{bmatrix}$ is in REF. How many unknowns does this system have?",
+      "prompt": "Given the augmented matrix $\\begin{bmatrix}1&0&-1&3\\\\0&1&2&-5\\\\0&0&1&4\\end{bmatrix}$. How many unknowns does this system have?",
       "answer": ["3"],
       "explanation": "The augmented matrix has 4 columns. The last column is the right-hand side, so the number of unknowns = 4 - 1 = 3."
     },
@@ -598,14 +528,14 @@
 
     {
       "type": "type",
-      "prompt": "The augmented matrix $\\begin{bmatrix}1&3&-2&5\\\\0&0&1&3\\end{bmatrix}$ is in REF. How many free variables are there?",
+      "prompt": "Given the augmented matrix $\\begin{bmatrix}1&3&-2&5\\\\0&0&1&3\\end{bmatrix}$. How many free variables are there?",
       "answer": ["1"],
       "explanation": "There are 3 variable columns and 2 pivot columns ($x_1$ and $x_3$). That leaves $3 - 2 = 1$ free variable ($x_2$)."
     },
 
     {
       "type": "type",
-      "prompt": "From the augmented matrix $\\begin{bmatrix}1&0&0&7\\\\0&1&0&-3\\\\0&0&1&2\\end{bmatrix}$ (in RREF), what is the value of $x_2$?",
+      "prompt": "From the augmented matrix $\\begin{bmatrix}1&0&0&7\\\\0&1&0&-3\\\\0&0&1&2\\end{bmatrix}$, what is the value of $x_2$?",
       "answer": ["-3"],
       "explanation": "In RREF the solution can be read directly: $x_1=7$, $x_2=-3$, $x_3=2$."
     },
@@ -629,13 +559,6 @@
       "prompt": "An augmented matrix has 5 columns. How many unknowns does the system have?",
       "answer": ["4"],
       "explanation": "The augmented matrix has one extra column for the right-hand side, so unknowns = columns - 1 = 4."
-    },
-
-    {
-      "type": "type",
-      "prompt": "The second row of an augmented matrix (in REF) is $\\begin{bmatrix}0&1&-2&6\\end{bmatrix}$. Back-substituting $x_3 = 1$, what is $x_2$?",
-      "answer": ["8"],
-      "explanation": "$x_2 - 2(1) = 6 \\Rightarrow x_2 = 6 + 2 = 8$."
     },
 
     {
@@ -666,23 +589,6 @@
       "explanation": "From row 1: $x_1 + 2(3) = 4 \\Rightarrow x_1 + 6 = 4 \\Rightarrow x_1 = -2$."
     },
 
-    {
-      "type": "type",
-      "prompt": "A homogeneous system always has at least one solution. What is it? (write as a word)",
-      "answer": ["trivial", "the trivial solution", "zero"],
-      "explanation": "The trivial solution $\\mathbf{x}=\\mathbf{0}$ always satisfies $A\\mathbf{0}=\\mathbf{0}$."
-    },
-
-    {
-      "type": "mc",
-      "prompt": "True or False: An inconsistent system has multiple solutions.",
-      "choices": ["True", "False"],
-      "answer": 1,
-      "explanations": [
-        "Inconsistent means NO solutions — not multiple solutions.",
-        null
-      ]
-    },
 
     {
       "type": "mc",
@@ -851,17 +757,6 @@
 
     {
       "type": "mc",
-      "prompt": "True or False: In RREF, each pivot column has exactly one nonzero entry.",
-      "choices": ["True", "False"],
-      "answer": 0,
-      "explanations": [
-        null,
-        "In RREF, each pivot is 1 and all other entries in that column (above and below) are 0 — exactly one nonzero entry."
-      ]
-    },
-
-    {
-      "type": "mc",
       "prompt": "True or False: A consistent system with 4 unknowns and 2 pivot columns has 2 free variables.",
       "choices": ["True", "False"],
       "answer": 0,
@@ -904,27 +799,6 @@
       ]
     },
 
-    {
-      "type": "mc",
-      "prompt": "True or False: Every row echelon form of a given matrix is unique.",
-      "choices": ["True", "False"],
-      "answer": 1,
-      "explanations": [
-        "REF is not unique — different sequences of row operations can give different REFs. Only the RREF is unique.",
-        null
-      ]
-    },
-
-    {
-      "type": "mc",
-      "prompt": "True or False: The RREF of any given matrix is unique.",
-      "choices": ["True", "False"],
-      "answer": 0,
-      "explanations": [
-        null,
-        "Unlike REF, the RREF of a matrix is always unique regardless of which row operations are used to reach it."
-      ]
-    },
 
     {
       "type": "mc",
@@ -957,27 +831,10 @@
       ]
     },
 
-    {
-      "type": "mc",
-      "prompt": "Which of the following is NOT an elementary row operation?",
-      "choices": [
-        "Swap two rows",
-        "Multiply a row by a nonzero scalar",
-        "Add a multiple of one row to another",
-        "Multiply two rows together"
-      ],
-      "answer": 3,
-      "explanations": [
-        "Swapping rows is a valid elementary row operation (Type I).",
-        "Scaling a row by a nonzero scalar is a valid elementary row operation (Type II).",
-        "Adding a multiple of one row to another is a valid elementary row operation (Type III).",
-        null
-      ]
-    },
 
     {
       "type": "mc",
-      "prompt": "A system has augmented matrix $\\begin{bmatrix}1&-1&2&3\\\\0&0&0&0\\\\0&0&0&0\\end{bmatrix}$ (already in REF). It has:",
+      "prompt": "A system has augmented matrix $\\begin{bmatrix}1&-1&2&3\\\\0&0&0&0\\\\0&0&0&0\\end{bmatrix}$. It has:",
       "choices": [
         "No solution",
         "A unique solution",
@@ -1011,36 +868,6 @@
       ]
     },
 
-    {
-      "type": "mc",
-      "prompt": "How many pivot positions does the RREF $\\begin{bmatrix}1&0&2&0\\\\0&1&-1&0\\\\0&0&0&1\\end{bmatrix}$ have?",
-      "choices": ["2", "3", "4", "1"],
-      "answer": 1,
-      "explanations": [
-        "Count the leading 1s in each row: rows 1, 2, and 3 each have a pivot — that's 3.",
-        null,
-        "There are only 3 rows, so at most 3 pivots.",
-        "Every row has a pivot — there is more than 1."
-      ]
-    },
-
-    {
-      "type": "mc",
-      "prompt": "The last row of the RREF $\\begin{bmatrix}1&0&2&0\\\\0&1&-1&0\\\\0&0&0&1\\end{bmatrix}$ (augmented, 3 unknowns) means:",
-      "choices": [
-        "$x_3 = 1$",
-        "$x_4 = 1$",
-        "The system is inconsistent",
-        "$0 = 0$"
-      ],
-      "answer": 2,
-      "explanations": [
-        "$x_3$ corresponds to column 3, but column 4 is the right-hand side in this 4-column augmented matrix.",
-        "There is no $x_4$ — there are only 3 unknowns.",
-        null,
-        "The row $[0\\ 0\\ 0\\ |\\ 1]$ says $0=1$ — a contradiction, so the system is inconsistent."
-      ]
-    },
 
     {
       "type": "mc",
@@ -1060,36 +887,6 @@
       ]
     },
 
-    {
-      "type": "mc",
-      "prompt": "The solution set of a homogeneous system $A\\mathbf{x}=\\mathbf{0}$ is called the _____ of $A$.",
-      "choices": ["Column space", "Row space", "Null space", "Eigenspace"],
-      "answer": 2,
-      "explanations": [
-        "The column space is the span of the columns of $A$ — different concept.",
-        "The row space is the span of the rows — different concept.",
-        null,
-        "Eigenspaces are related to eigenvalues — a more advanced topic."
-      ]
-    },
-
-    {
-      "type": "mc",
-      "prompt": "Consider: $\\begin{bmatrix}1&2&3\\\\2&4&7\\\\-1&-2&-3\\end{bmatrix}\\begin{bmatrix}x_1\\\\x_2\\\\x_3\\end{bmatrix}=\\begin{bmatrix}0\\\\0\\\\0\\end{bmatrix}$. The third equation is a multiple of the first. This means:",
-      "choices": [
-        "The system is inconsistent",
-        "The system definitely has only the trivial solution",
-        "One equation is redundant — we effectively have 2 equations for 3 unknowns",
-        "The coefficient matrix has rank 3"
-      ],
-      "answer": 2,
-      "explanations": [
-        "Homogeneous systems are always consistent.",
-        "With a redundant equation we effectively have fewer constraints, likely leading to free variables.",
-        null,
-        "A redundant row means the rank is less than 3."
-      ]
-    },
 
     {
       "type": "mc",
