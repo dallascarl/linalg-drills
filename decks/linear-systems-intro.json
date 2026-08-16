@@ -260,23 +260,7 @@
         "Homogeneous is a separate property about the right-hand side, not about uniqueness."
       ]
     },
-    {
-      "type": "mc",
-      "prompt": "Row operations on an augmented matrix:",
-      "choices": [
-        "Change the solution set",
-        "Preserve the solution set",
-        "Only work for square matrices",
-        "Must be done in a specific fixed order"
-      ],
-      "answer": 1,
-      "explanations": [
-        "Row operations are chosen precisely because they do NOT change the solution set.",
-        null,
-        "Row reduction works on any matrix regardless of shape.",
-        "The order of row operations can vary — many valid sequences lead to RREF."
-      ]
-    },
+
     {
       "type": "mc",
       "prompt": "A system of 2 equations in 3 unknowns can have:",
@@ -834,19 +818,7 @@
         "This row represents $0x_1 + 0x_2 + 0x_3 = 3$, i.e., $0 = 3$ — a contradiction, so the system is inconsistent."
       ]
     },
-    {
-      "type": "mc",
-      "prompt": "True or False: Elementary row operations can change whether a system is consistent or inconsistent.",
-      "choices": [
-        "True",
-        "False"
-      ],
-      "answer": 1,
-      "explanations": [
-        "Elementary row operations preserve the solution set exactly — they never change consistency.",
-        null
-      ]
-    },
+
     {
       "type": "mc",
       "prompt": "True or False: The coefficient matrix and augmented matrix always have the same number of rows.",
