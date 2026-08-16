@@ -1,0 +1,1113 @@
+{
+  "id": "linear-systems-intro",
+  "title": "Linear Systems: Intro",
+  "description": "Solutions, consistency, homogeneous systems, matrices",
+  "questionsPerAttempt": 20,
+  "pointsPerQuestion": 1,
+  "questions": [
+
+    {
+      "type": "mc",
+      "prompt": "An inconsistent linear system has:",
+      "choices": ["Exactly one solution", "Infinitely many solutions", "No solution", "At least one free variable"],
+      "answer": 2,
+      "explanations": [
+        "A system with exactly one solution is consistent and independent.",
+        "A system with infinitely many solutions is consistent and dependent.",
+        null,
+        "Free variables mean infinitely many solutions — the system is still consistent."
+      ]
+    },
+
+    {
+      "type": "mc",
+      "prompt": "A homogeneous linear system $A\\mathbf{x} = \\mathbf{0}$ is always:",
+      "choices": ["Inconsistent", "Consistent", "Independent", "In row echelon form"],
+      "answer": 1,
+      "explanations": [
+        "Homogeneous systems always have at least the trivial solution $\\mathbf{x}=\\mathbf{0}$, so they can never be inconsistent.",
+        null,
+        "It may be independent (unique solution) or dependent (infinitely many) — but consistent either way.",
+        "Being homogeneous says nothing about the form of the matrix."
+      ]
+    },
+
+    {
+      "type": "mc",
+      "prompt": "The augmented matrix of a system with $n$ variables has how many columns?",
+      "choices": ["$n$", "$n-1$", "$n+1$", "Depends on the number of equations"],
+      "answer": 2,
+      "explanations": [
+        "The coefficient matrix has $n$ columns, but the augmented matrix adds one more for the right-hand side.",
+        "That would be fewer columns than variables — not correct.",
+        null,
+        "The number of columns in an augmented matrix is always $n+1$, regardless of the number of equations."
+      ]
+    },
+
+    {
+      "type": "mc",
+      "prompt": "The number of variables in a linear system corresponds to the number of _____ in the coefficient matrix.",
+      "choices": ["Rows", "Columns", "Pivots", "Equations"],
+      "answer": 1,
+      "explanations": [
+        "Rows correspond to equations, not variables.",
+        null,
+        "The number of pivots tells you the rank, not directly the number of variables.",
+        "Equations correspond to rows, not variables."
+      ]
+    },
+
+    {
+      "type": "mc",
+      "prompt": "How many solutions can a consistent linear system have?",
+      "choices": ["Exactly one", "Exactly two", "Either exactly one or infinitely many", "Any finite number"],
+      "answer": 2,
+      "explanations": [
+        "A consistent system can also have infinitely many solutions.",
+        "Linear systems can never have exactly two solutions.",
+        null,
+        "Linear systems obey the 0-1-infinity rule — never a finite number other than 0 or 1."
+      ]
+    },
+
+    {
+      "type": "mc",
+      "prompt": "A linear system where the solution contains free variables is called:",
+      "choices": ["Inconsistent", "Independent", "Dependent", "Homogeneous"],
+      "answer": 2,
+      "explanations": [
+        "Inconsistent means no solution at all — free variables indicate a solution exists.",
+        "Independent means exactly one solution — no free variables.",
+        null,
+        "Homogeneous means all constants are zero — unrelated to having free variables."
+      ]
+    },
+
+    {
+      "type": "mc",
+      "prompt": "In a system of 2 equations in 2 unknowns, each equation geometrically represents a:",
+      "choices": ["Point", "Line", "Plane", "Hyperplane"],
+      "answer": 1,
+      "explanations": [
+        "A point is a solution, not an equation.",
+        null,
+        "Planes arise in 3-variable systems.",
+        "Hyperplanes arise in 4+ variable systems."
+      ]
+    },
+
+    {
+      "type": "mc",
+      "prompt": "Each equation in a system of 3 equations in 3 unknowns geometrically represents a:",
+      "choices": ["Line in $\\mathbb{R}^3$", "Point in $\\mathbb{R}^3$", "Plane in $\\mathbb{R}^3$", "Sphere in $\\mathbb{R}^3$"],
+      "answer": 2,
+      "explanations": [
+        "Lines in $\\mathbb{R}^3$ require two equations to pin down, not one.",
+        "A point is a solution, not a single equation.",
+        null,
+        "Spheres are not linear — they involve squared terms."
+      ]
+    },
+
+    {
+      "type": "mc",
+      "prompt": "A system with 5 equations and 3 unknowns:",
+      "choices": [
+        "Must be inconsistent because there are more equations than unknowns",
+        "Must be consistent because there are enough equations",
+        "Could be consistent or inconsistent",
+        "Always has infinitely many solutions"
+      ],
+      "answer": 2,
+      "explanations": [
+        "Having more equations than unknowns does not guarantee inconsistency — some equations may be redundant.",
+        "More equations can actually make it harder to be consistent, not easier.",
+        null,
+        "With more equations than unknowns it is unlikely (but not impossible) to have infinitely many solutions."
+      ]
+    },
+
+    {
+      "type": "mc",
+      "prompt": "Which augmented matrix represents an inconsistent system? (REF shown)",
+      "choices": [
+        "$\\begin{bmatrix}1&2&3\\\\0&1&4\\end{bmatrix}$",
+        "$\\begin{bmatrix}1&0&2\\\\0&0&0\\end{bmatrix}$",
+        "$\\begin{bmatrix}1&3&0\\\\0&0&5\\end{bmatrix}$",
+        "$\\begin{bmatrix}1&0&-1\\\\0&1&2\\end{bmatrix}$"
+      ],
+      "answer": 2,
+      "explanations": [
+        "This is consistent — back substitution gives a unique solution.",
+        "This is consistent with a free variable — infinitely many solutions.",
+        null,
+        "This is consistent — a unique solution exists."
+      ]
+    },
+
+    {
+      "type": "mc",
+      "prompt": "Consider the augmented matrix $\\begin{bmatrix}1&2&-1&4\\\\0&1&3&2\\\\0&0&0&0\\end{bmatrix}$. How many free variables are there?",
+      "choices": ["0", "1", "2", "3"],
+      "answer": 1,
+      "explanations": [
+        "There is at least one non-pivot column among the variable columns.",
+        null,
+        "There are 3 variable columns and 2 pivots, giving only 1 free variable.",
+        "Three free variables would mean no pivots at all."
+      ]
+    },
+
+    {
+      "type": "mc",
+      "prompt": "The trivial solution to a homogeneous system $A\\mathbf{x}=\\mathbf{0}$ is:",
+      "choices": ["$\\mathbf{x} = \\mathbf{1}$", "$\\mathbf{x} = \\mathbf{0}$", "Any vector in the null space", "There is no trivial solution"],
+      "answer": 1,
+      "explanations": [
+        "Plugging in all ones does not generally satisfy a homogeneous system.",
+        null,
+        "The null space contains all solutions including non-trivial ones — the trivial solution is specifically $\\mathbf{x}=\\mathbf{0}$.",
+        "Every homogeneous system has the trivial solution."
+      ]
+    },
+
+    {
+      "type": "mc",
+      "prompt": "A system has the augmented matrix $\\begin{bmatrix}1&0&3\\\\0&1&-2\\end{bmatrix}$. What is the solution?",
+      "choices": [
+        "$x_1 = 3,\\ x_2 = -2$",
+        "$x_1 = -3,\\ x_2 = 2$",
+        "$x_1 = 0,\\ x_2 = 0$",
+        "Infinitely many solutions"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "The last column of the augmented matrix is the right-hand side — sign error here.",
+        "The zero vector is not the solution unless the system is homogeneous and trivial.",
+        "With two pivots for two variables there are no free variables, so the solution is unique."
+      ]
+    },
+
+    {
+      "type": "mc",
+      "prompt": "Which of these systems is homogeneous?",
+      "choices": [
+        "$x_1 + 2x_2 = 3$",
+        "$x_1 - x_2 = 0,\\ 2x_1 + x_2 = 0$",
+        "$x_1 = 1,\\ x_2 = 0$",
+        "$0 = 1$"
+      ],
+      "answer": 1,
+      "explanations": [
+        "The right-hand side is 3, not 0.",
+        null,
+        "The first equation has right-hand side 1, not 0.",
+        "This is a contradiction — inconsistent, not homogeneous."
+      ]
+    },
+
+    {
+      "type": "mc",
+      "prompt": "If a linear system has a unique solution, it is:",
+      "choices": [
+        "Inconsistent and independent",
+        "Consistent and dependent",
+        "Consistent and independent",
+        "Homogeneous"
+      ],
+      "answer": 2,
+      "explanations": [
+        "Inconsistent means no solution — contradicts having a unique solution.",
+        "Dependent means infinitely many solutions — contradicts unique.",
+        null,
+        "Homogeneous is a separate property about the right-hand side, not about uniqueness."
+      ]
+    },
+
+    {
+      "type": "mc",
+      "prompt": "Row operations on an augmented matrix:",
+      "choices": [
+        "Change the solution set",
+        "Preserve the solution set",
+        "Only work for square matrices",
+        "Must be done in a specific fixed order"
+      ],
+      "answer": 1,
+      "explanations": [
+        "Row operations are chosen precisely because they do NOT change the solution set.",
+        null,
+        "Row reduction works on any matrix regardless of shape.",
+        "The order of row operations can vary — many valid sequences lead to RREF."
+      ]
+    },
+
+    {
+      "type": "mc",
+      "prompt": "A system of 2 equations in 3 unknowns can have:",
+      "choices": [
+        "At most one solution",
+        "Exactly two solutions",
+        "No solution or infinitely many solutions",
+        "Only the trivial solution"
+      ],
+      "answer": 2,
+      "explanations": [
+        "With more unknowns than equations (and no contradiction), there will always be free variables.",
+        "Linear systems never have exactly two solutions.",
+        null,
+        "The trivial solution only applies to homogeneous systems."
+      ]
+    },
+
+    {
+      "type": "mc",
+      "prompt": "The row $\\begin{bmatrix}0&0&0&5\\end{bmatrix}$ in an augmented matrix (in REF) means the system is:",
+      "choices": ["Consistent with a free variable", "Homogeneous", "Inconsistent", "Independent"],
+      "answer": 2,
+      "explanations": [
+        "This row says $0 = 5$, which is a contradiction — no free variable can fix this.",
+        "Homogeneous systems have all zeros on the right — this has a 5.",
+        null,
+        "Independent means a unique solution — impossible with a contradiction present."
+      ]
+    },
+
+    {
+      "type": "mc",
+      "prompt": "Three planes in $\\mathbb{R}^3$ have infinitely many intersection points. Which configuration is NOT possible?",
+      "choices": [
+        "All three planes coincide",
+        "The planes intersect along a common line",
+        "The planes intersect at exactly 2 points",
+        "The planes form a consistent dependent system"
+      ],
+      "answer": 2,
+      "explanations": [
+        "Three identical planes give a consistent dependent system with infinitely many solutions.",
+        "Intersecting along a line gives infinitely many solutions — this is possible.",
+        null,
+        "Consistent dependent systems are exactly the case of infinitely many solutions."
+      ]
+    },
+
+    {
+      "type": "mc",
+      "prompt": "An $m \\times n$ augmented matrix represents a system with:",
+      "choices": [
+        "$m$ unknowns and $n$ equations",
+        "$n$ unknowns and $m$ equations",
+        "$n-1$ unknowns and $m$ equations",
+        "$m-1$ unknowns and $n$ equations"
+      ],
+      "answer": 2,
+      "explanations": [
+        "Rows correspond to equations, columns to variables — these are swapped.",
+        "Close, but the augmented matrix has one extra column for the right-hand side.",
+        null,
+        "The extra column is in the column direction, not the row direction."
+      ]
+    },
+
+    {
+      "type": "mc",
+      "prompt": "Which is a valid elementary row operation?",
+      "choices": [
+        "Multiply two rows together",
+        "Add a multiple of one row to another row",
+        "Square a row",
+        "Swap a row with a column"
+      ],
+      "answer": 1,
+      "explanations": [
+        "Multiplying rows together is not a linear operation and is not allowed.",
+        null,
+        "Squaring a row is not linear and would change the solution set.",
+        "Rows and columns are fundamentally different — swapping them changes the system entirely."
+      ]
+    },
+
+    {
+      "type": "mc",
+      "prompt": "The system $\\begin{cases}x_1 + x_2 = 4 \\\\ 2x_1 + 2x_2 = 8\\end{cases}$ has:",
+      "choices": ["No solution", "Exactly one solution", "Exactly two solutions", "Infinitely many solutions"],
+      "answer": 3,
+      "explanations": [
+        "The second equation is just twice the first — it adds no new information, so solutions exist.",
+        "The second equation is redundant, leaving one free variable.",
+        "Linear systems never have exactly two solutions.",
+        null
+      ]
+    },
+
+    {
+      "type": "mc",
+      "prompt": "What does it mean for $(x_1, x_2, x_3) = (1, 0, -2)$ to be a solution to a system?",
+      "choices": [
+        "It satisfies at least one equation in the system",
+        "It satisfies all equations in the system simultaneously",
+        "It is the unique solution",
+        "It is the trivial solution"
+      ],
+      "answer": 1,
+      "explanations": [
+        "A solution must satisfy ALL equations, not just one.",
+        null,
+        "There may be other solutions — being a solution doesn't imply uniqueness.",
+        "The trivial solution has all zeros — $(1,0,-2)$ has nonzero entries."
+      ]
+    },
+
+    {
+      "type": "mc",
+      "prompt": "A homogeneous system with more unknowns than equations:",
+      "choices": [
+        "Must be inconsistent",
+        "Has only the trivial solution",
+        "Must have infinitely many solutions",
+        "Is always in row echelon form"
+      ],
+      "answer": 2,
+      "explanations": [
+        "Homogeneous systems are always consistent — they always have $\\mathbf{x}=\\mathbf{0}$.",
+        "More unknowns than equations guarantees at least one free variable, so there are non-trivial solutions.",
+        null,
+        "Row echelon form is a property of the matrix, not of the system type."
+      ]
+    },
+
+    {
+      "type": "mc",
+      "prompt": "The system represented by $\\begin{bmatrix}1&-2&1&0\\\\0&1&-3&0\\\\0&0&0&0\\end{bmatrix}$ is homogeneous and has:",
+      "choices": [
+        "Only the trivial solution",
+        "No solution",
+        "Infinitely many solutions",
+        "Exactly two solutions"
+      ],
+      "answer": 2,
+      "explanations": [
+        "There is a free variable ($x_3$), so non-trivial solutions exist.",
+        "Homogeneous systems always have at least the trivial solution.",
+        null,
+        "Linear systems never have exactly two solutions."
+      ]
+    },
+
+    {
+      "type": "mc",
+      "prompt": "The coefficient matrix of the system $\\begin{cases}2x_1 - x_2 + 3x_3 = 5 \\\\ x_1 + 4x_3 = -1\\end{cases}$ is:",
+      "choices": [
+        "$\\begin{bmatrix}2&-1&3\\\\1&0&4\\end{bmatrix}$",
+        "$\\begin{bmatrix}2&-1&3&5\\\\1&0&4&-1\\end{bmatrix}$",
+        "$\\begin{bmatrix}2&-1\\\\1&4\\end{bmatrix}$",
+        "$\\begin{bmatrix}5\\\\-1\\end{bmatrix}$"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "This is the augmented matrix — it includes the right-hand side constants.",
+        "This drops the $x_3$ column — missing coefficients.",
+        "This is just the right-hand side vector, not the coefficient matrix."
+      ]
+    },
+
+    {
+      "type": "mc",
+      "prompt": "Which matrix is the augmented matrix for $\\begin{cases}3x_1 + x_2 = 7 \\\\ -x_1 + 2x_2 = 4\\end{cases}$?",
+      "choices": [
+        "$\\begin{bmatrix}3&1\\\\-1&2\\end{bmatrix}$",
+        "$\\begin{bmatrix}3&1&7\\\\-1&2&4\\end{bmatrix}$",
+        "$\\begin{bmatrix}7&4\\\\3&-1\\end{bmatrix}$",
+        "$\\begin{bmatrix}3&-1&7\\\\1&2&4\\end{bmatrix}$"
+      ],
+      "answer": 1,
+      "explanations": [
+        "This is only the coefficient matrix — missing the right-hand side column.",
+        null,
+        "The constants belong in the last column, and the rows correspond to equations.",
+        "The rows and columns are transposed — each row should represent one equation."
+      ]
+    },
+
+    {
+      "type": "mc",
+      "prompt": "Back-substitution works directly on a system in:",
+      "choices": ["Reduced row echelon form only", "Row echelon form", "Any form", "Only 2×2 systems"],
+      "answer": 1,
+      "explanations": [
+        "Back-substitution also works on (non-reduced) row echelon form, not only RREF.",
+        null,
+        "Back-substitution requires an upper triangular structure — not any form.",
+        "Back-substitution works on any size system in REF."
+      ]
+    },
+
+    {
+      "type": "mc",
+      "prompt": "A $4 \\times 6$ augmented matrix represents a system with how many equations and how many unknowns?",
+      "choices": [
+        "4 equations, 6 unknowns",
+        "6 equations, 4 unknowns",
+        "4 equations, 5 unknowns",
+        "6 equations, 5 unknowns"
+      ],
+      "answer": 2,
+      "explanations": [
+        "Rows = equations is correct, but columns in an augmented matrix = unknowns + 1.",
+        "Rows are equations, not columns.",
+        null,
+        "Both counts are wrong here."
+      ]
+    },
+
+    {
+      "type": "mc",
+      "prompt": "If a consistent system has no free variables, it has:",
+      "choices": ["No solution", "Infinitely many solutions", "Exactly one solution", "At least two solutions"],
+      "answer": 2,
+      "explanations": [
+        "Consistent means at least one solution exists.",
+        "Infinitely many solutions require at least one free variable.",
+        null,
+        "No free variables means the solution is fully determined — exactly one."
+      ]
+    },
+
+    {
+      "type": "mc",
+      "prompt": "The system $\\begin{cases}x_1 + 2x_2 - x_3 = 0 \\\\ 3x_1 - x_2 + 2x_3 = 0 \\\\ -x_1 + x_2 + x_3 = 0\\end{cases}$ is:",
+      "choices": ["Inconsistent", "Consistent with a unique solution", "Homogeneous and definitely has infinitely many solutions", "Homogeneous — consistency must be determined by row reduction"],
+      "answer": 3,
+      "explanations": [
+        "Homogeneous systems always have at least the trivial solution — never inconsistent.",
+        "It may have only the trivial solution — we need to row reduce to know.",
+        "With equal numbers of equations and unknowns, the trivial solution may be the only one.",
+        null
+      ]
+    },
+
+    {
+      "type": "mc",
+      "prompt": "Solving the system $\\begin{bmatrix}1&2&-1\\\\0&0&3\\end{bmatrix}$ (augmented): what is $x_3$?",
+      "choices": ["0", "1", "3", "-1"],
+      "answer": 1,
+      "explanations": [
+        "The second row says $3x_3 = 3$, so $x_3 = 1$, not 0.",
+        null,
+        "That is the coefficient, not the solution — divide: $3x_3=3 \\Rightarrow x_3=1$.",
+        "Sign error — $x_3 = 3/3 = 1$."
+      ]
+    },
+
+    {
+      "type": "wordbank",
+      "prompt": "A linear system where all right-hand sides equal zero is called _____.",
+      "wordbank": ["homogeneous", "inconsistent", "dependent", "reduced"],
+      "answer": "homogeneous",
+      "explanation": "Homogeneous means $A\\mathbf{x}=\\mathbf{0}$ — every equation in the system equals zero on the right-hand side."
+    },
+
+    {
+      "type": "wordbank",
+      "prompt": "A system with no solution is called _____.",
+      "wordbank": ["inconsistent", "homogeneous", "dependent", "trivial"],
+      "answer": "inconsistent",
+      "explanation": "Inconsistent means the system has no solution — the equations contradict each other."
+    },
+
+    {
+      "type": "wordbank",
+      "prompt": "A system with infinitely many solutions is called consistent and _____.",
+      "wordbank": ["dependent", "independent", "inconsistent", "homogeneous"],
+      "answer": "dependent",
+      "explanation": "When a consistent system has free variables it has infinitely many solutions and is called dependent."
+    },
+
+    {
+      "type": "wordbank",
+      "prompt": "The solution $\\mathbf{x} = \\mathbf{0}$ to a homogeneous system is called the _____ solution.",
+      "wordbank": ["trivial", "unique", "general", "free"],
+      "answer": "trivial",
+      "explanation": "The trivial solution is $\\mathbf{x}=\\mathbf{0}$ — it always exists for homogeneous systems and requires no work to find."
+    },
+
+    {
+      "type": "wordbank",
+      "prompt": "Variables that can take any value in the solution of a dependent system are called _____ variables.",
+      "wordbank": ["free", "pivot", "basic", "trivial"],
+      "answer": "free",
+      "explanation": "Free variables correspond to non-pivot columns — they are unconstrained and parameterize the infinite solution set."
+    },
+
+    {
+      "type": "wordbank",
+      "prompt": "A matrix is in row echelon form when all entries below each _____ are zero.",
+      "wordbank": ["pivot", "row", "column", "diagonal"],
+      "answer": "pivot",
+      "explanation": "In REF, each pivot (leading nonzero entry) has zeros below it — this is what creates the staircase pattern."
+    },
+
+    {
+      "type": "wordbank",
+      "prompt": "The matrix formed by the coefficients of the variables only (no right-hand side) is the _____ matrix.",
+      "wordbank": ["coefficient", "augmented", "identity", "pivot"],
+      "answer": "coefficient",
+      "explanation": "The coefficient matrix contains only the coefficients of the variables. Adding the right-hand side column produces the augmented matrix."
+    },
+
+    {
+      "type": "wordbank",
+      "prompt": "Adding the right-hand-side constants as an extra column to the coefficient matrix gives the _____ matrix.",
+      "wordbank": ["augmented", "coefficient", "diagonal", "reduced"],
+      "answer": "augmented",
+      "explanation": "The augmented matrix $[A \\mid \\mathbf{b}]$ appends the right-hand side vector to the coefficient matrix, encoding the full system."
+    },
+
+    {
+      "type": "wordbank",
+      "prompt": "In RREF, each pivot equals 1 and all other entries in the pivot's _____ are zero.",
+      "wordbank": ["column", "row", "diagonal", "submatrix"],
+      "answer": "column",
+      "explanation": "RREF requires each pivot to be 1 with zeros everywhere else in that column — not just below, but above too."
+    },
+
+    {
+      "type": "wordbank",
+      "prompt": "A system with exactly one solution is called consistent and _____.",
+      "wordbank": ["independent", "dependent", "homogeneous", "reduced"],
+      "answer": "independent",
+      "explanation": "Independent means no free variables — the solution is uniquely determined."
+    },
+
+    {
+      "type": "type",
+      "prompt": "The augmented matrix $\\begin{bmatrix}1&0&-1&3\\\\0&1&2&-5\\\\0&0&1&4\\end{bmatrix}$ is in REF. How many unknowns does this system have?",
+      "answer": ["3"],
+      "explanation": "The augmented matrix has 4 columns. The last column is the right-hand side, so the number of unknowns = 4 - 1 = 3."
+    },
+
+    {
+      "type": "type",
+      "prompt": "How many equations does the system represented by $\\begin{bmatrix}2&-1&3&0\\\\0&4&-1&2\\\\0&0&5&-3\\end{bmatrix}$ have?",
+      "answer": ["3"],
+      "explanation": "The number of equations equals the number of rows — this matrix has 3 rows, so 3 equations."
+    },
+
+    {
+      "type": "type",
+      "prompt": "The augmented matrix $\\begin{bmatrix}1&3&-2&5\\\\0&0&1&3\\end{bmatrix}$ is in REF. How many free variables are there?",
+      "answer": ["1"],
+      "explanation": "There are 3 variable columns and 2 pivot columns ($x_1$ and $x_3$). That leaves $3 - 2 = 1$ free variable ($x_2$)."
+    },
+
+    {
+      "type": "type",
+      "prompt": "From the augmented matrix $\\begin{bmatrix}1&0&0&7\\\\0&1&0&-3\\\\0&0&1&2\\end{bmatrix}$ (in RREF), what is the value of $x_2$?",
+      "answer": ["-3"],
+      "explanation": "In RREF the solution can be read directly: $x_1=7$, $x_2=-3$, $x_3=2$."
+    },
+
+    {
+      "type": "type",
+      "prompt": "From the system $\\begin{cases}x_1 = 5 \\\\ x_2 = -2 \\\\ x_3 = 0\\end{cases}$, what is $x_3$?",
+      "answer": ["0"],
+      "explanation": "The system is already solved: $x_3 = 0$."
+    },
+
+    {
+      "type": "type",
+      "prompt": "A coefficient matrix has 4 columns. How many variables does the system have?",
+      "answer": ["4"],
+      "explanation": "Each column of the coefficient matrix corresponds to one variable."
+    },
+
+    {
+      "type": "type",
+      "prompt": "An augmented matrix has 5 columns. How many unknowns does the system have?",
+      "answer": ["4"],
+      "explanation": "The augmented matrix has one extra column for the right-hand side, so unknowns = columns - 1 = 4."
+    },
+
+    {
+      "type": "type",
+      "prompt": "The second row of an augmented matrix (in REF) is $\\begin{bmatrix}0&1&-2&6\\end{bmatrix}$. Back-substituting $x_3 = 1$, what is $x_2$?",
+      "answer": ["8"],
+      "explanation": "$x_2 - 2(1) = 6 \\Rightarrow x_2 = 6 + 2 = 8$."
+    },
+
+    {
+      "type": "type",
+      "prompt": "How many solutions does an inconsistent system have?",
+      "answer": ["0", "none", "zero"],
+      "explanation": "Inconsistent means no solution — the equations are contradictory."
+    },
+
+    {
+      "type": "type",
+      "prompt": "A $3 \\times 5$ coefficient matrix represents a system with how many variables?",
+      "answer": ["5"],
+      "explanation": "Columns of the coefficient matrix = number of variables = 5."
+    },
+
+    {
+      "type": "type",
+      "prompt": "A $3 \\times 5$ coefficient matrix represents a system with how many equations?",
+      "answer": ["3"],
+      "explanation": "Rows of any matrix = number of equations = 3."
+    },
+
+    {
+      "type": "type",
+      "prompt": "Solve for $x_1$: the system has augmented matrix $\\begin{bmatrix}1&2&4\\\\0&1&3\\end{bmatrix}$ in REF. Using back-substitution with $x_2 = 3$: what is $x_1$?",
+      "answer": ["-2"],
+      "explanation": "From row 1: $x_1 + 2(3) = 4 \\Rightarrow x_1 + 6 = 4 \\Rightarrow x_1 = -2$."
+    },
+
+    {
+      "type": "type",
+      "prompt": "A homogeneous system always has at least one solution. What is it? (write as a word)",
+      "answer": ["trivial", "the trivial solution", "zero"],
+      "explanation": "The trivial solution $\\mathbf{x}=\\mathbf{0}$ always satisfies $A\\mathbf{0}=\\mathbf{0}$."
+    },
+
+    {
+      "type": "mc",
+      "prompt": "True or False: An inconsistent system has multiple solutions.",
+      "choices": ["True", "False"],
+      "answer": 1,
+      "explanations": [
+        "Inconsistent means NO solutions — not multiple solutions.",
+        null
+      ]
+    },
+
+    {
+      "type": "mc",
+      "prompt": "True or False: Every homogeneous system is consistent.",
+      "choices": ["True", "False"],
+      "answer": 0,
+      "explanations": [
+        null,
+        "Homogeneous systems always have $\\mathbf{x}=\\mathbf{0}$ as a solution, so they are always consistent."
+      ]
+    },
+
+    {
+      "type": "mc",
+      "prompt": "True or False: The number of columns of the augmented matrix equals the number of variables.",
+      "choices": ["True", "False"],
+      "answer": 1,
+      "explanations": [
+        "The augmented matrix has one extra column for the right-hand side constants.",
+        null
+      ]
+    },
+
+    {
+      "type": "mc",
+      "prompt": "True or False: The number of rows of the coefficient matrix equals the number of variables.",
+      "choices": ["True", "False"],
+      "answer": 1,
+      "explanations": [
+        "Rows correspond to equations, not variables. Columns correspond to variables.",
+        null
+      ]
+    },
+
+    {
+      "type": "mc",
+      "prompt": "True or False: A solution to a system must satisfy all equations in the system simultaneously.",
+      "choices": ["True", "False"],
+      "answer": 0,
+      "explanations": [
+        null,
+        "Satisfying only some equations is not sufficient — all equations must be satisfied."
+      ]
+    },
+
+    {
+      "type": "mc",
+      "prompt": "True or False: A linear system can have exactly 2 solutions.",
+      "choices": ["True", "False"],
+      "answer": 1,
+      "explanations": [
+        "Linear systems obey the 0-1-infinity rule: no solution, exactly one, or infinitely many. Never exactly 2.",
+        null
+      ]
+    },
+
+    {
+      "type": "mc",
+      "prompt": "True or False: A system of 2 equations in 4 variables can have no solution.",
+      "choices": ["True", "False"],
+      "answer": 0,
+      "explanations": [
+        null,
+        "Even with fewer equations than unknowns, the equations could still contradict each other."
+      ]
+    },
+
+    {
+      "type": "mc",
+      "prompt": "True or False: If a 3×3 system is consistent, the three planes must intersect at exactly one point.",
+      "choices": ["True", "False"],
+      "answer": 1,
+      "explanations": [
+        "They could also intersect along a line (infinitely many solutions) or even all coincide.",
+        null
+      ]
+    },
+
+    {
+      "type": "mc",
+      "prompt": "True or False: Each equation in a 3-variable system represents a plane in $\\mathbb{R}^3$.",
+      "choices": ["True", "False"],
+      "answer": 0,
+      "explanations": [
+        null,
+        "A single linear equation in 3 variables $ax_1+bx_2+cx_3=d$ defines a plane, not a line."
+      ]
+    },
+
+    {
+      "type": "mc",
+      "prompt": "True or False: If a system has more equations than unknowns, it must be inconsistent.",
+      "choices": ["True", "False"],
+      "answer": 1,
+      "explanations": [
+        "Extra equations can be redundant — for example, $x=1$ and $2x=2$ is consistent with two equations and one unknown.",
+        null
+      ]
+    },
+
+    {
+      "type": "mc",
+      "prompt": "True or False: A system with infinitely many solutions has at least one free variable.",
+      "choices": ["True", "False"],
+      "answer": 0,
+      "explanations": [
+        null,
+        "Free variables are exactly what allow infinitely many solutions — each one adds a dimension of freedom."
+      ]
+    },
+
+    {
+      "type": "mc",
+      "prompt": "True or False: A system with a free variable must be homogeneous.",
+      "choices": ["True", "False"],
+      "answer": 1,
+      "explanations": [
+        "Non-homogeneous systems can also have free variables and infinitely many solutions.",
+        null
+      ]
+    },
+
+    {
+      "type": "mc",
+      "prompt": "True or False: A homogeneous system with more unknowns than equations always has infinitely many solutions.",
+      "choices": ["True", "False"],
+      "answer": 0,
+      "explanations": [
+        null,
+        "More unknowns than equations guarantees at least one free variable, meaning non-trivial solutions always exist."
+      ]
+    },
+
+    {
+      "type": "mc",
+      "prompt": "True or False: The row $[0\\ 0\\ 0\\ |\\ 3]$ in an augmented matrix means the system is inconsistent.",
+      "choices": ["True", "False"],
+      "answer": 0,
+      "explanations": [
+        null,
+        "This row represents $0x_1 + 0x_2 + 0x_3 = 3$, i.e., $0 = 3$ — a contradiction, so the system is inconsistent."
+      ]
+    },
+
+    {
+      "type": "mc",
+      "prompt": "True or False: Elementary row operations can change whether a system is consistent or inconsistent.",
+      "choices": ["True", "False"],
+      "answer": 1,
+      "explanations": [
+        "Elementary row operations preserve the solution set exactly — they never change consistency.",
+        null
+      ]
+    },
+
+    {
+      "type": "mc",
+      "prompt": "True or False: The coefficient matrix and augmented matrix always have the same number of rows.",
+      "choices": ["True", "False"],
+      "answer": 0,
+      "explanations": [
+        null,
+        "Both matrices have one row per equation — the augmented matrix just has one extra column, not row."
+      ]
+    },
+
+    {
+      "type": "mc",
+      "prompt": "True or False: In RREF, each pivot column has exactly one nonzero entry.",
+      "choices": ["True", "False"],
+      "answer": 0,
+      "explanations": [
+        null,
+        "In RREF, each pivot is 1 and all other entries in that column (above and below) are 0 — exactly one nonzero entry."
+      ]
+    },
+
+    {
+      "type": "mc",
+      "prompt": "True or False: A consistent system with 4 unknowns and 2 pivot columns has 2 free variables.",
+      "choices": ["True", "False"],
+      "answer": 0,
+      "explanations": [
+        null,
+        "Free variables = unknowns − pivot columns = 4 − 2 = 2."
+      ]
+    },
+
+    {
+      "type": "mc",
+      "prompt": "True or False: The system $\\begin{cases}x_1 + x_2 = 3 \\\\ 2x_1 + 2x_2 = 7\\end{cases}$ is consistent.",
+      "choices": ["True", "False"],
+      "answer": 1,
+      "explanations": [
+        "Multiply the first equation by 2: $2x_1 + 2x_2 = 6 \\neq 7$ — contradiction. The system is inconsistent.",
+        null
+      ]
+    },
+
+    {
+      "type": "mc",
+      "prompt": "Consider the system $\\begin{cases}x_1 - 2x_2 + x_3 = 0 \\\\ 2x_1 + x_2 - x_3 = 0\\end{cases}$. True or False: This is a homogeneous system.",
+      "choices": ["True", "False"],
+      "answer": 0,
+      "explanations": [
+        null,
+        "Both equations equal 0 on the right-hand side — that is exactly the definition of homogeneous."
+      ]
+    },
+
+    {
+      "type": "mc",
+      "prompt": "True or False: In a system with 3 equations and 3 unknowns, if the determinant of the coefficient matrix is nonzero, the system has a unique solution.",
+      "choices": ["True", "False"],
+      "answer": 0,
+      "explanations": [
+        null,
+        "Nonzero determinant means the matrix is invertible, guaranteeing a unique solution for any right-hand side."
+      ]
+    },
+
+    {
+      "type": "mc",
+      "prompt": "True or False: Every row echelon form of a given matrix is unique.",
+      "choices": ["True", "False"],
+      "answer": 1,
+      "explanations": [
+        "REF is not unique — different sequences of row operations can give different REFs. Only the RREF is unique.",
+        null
+      ]
+    },
+
+    {
+      "type": "mc",
+      "prompt": "True or False: The RREF of any given matrix is unique.",
+      "choices": ["True", "False"],
+      "answer": 0,
+      "explanations": [
+        null,
+        "Unlike REF, the RREF of a matrix is always unique regardless of which row operations are used to reach it."
+      ]
+    },
+
+    {
+      "type": "mc",
+      "prompt": "The system $\\begin{cases}x_1 + 2x_2 = 5 \\\\ 3x_1 + 6x_2 = 15\\end{cases}$ has what kind of solution set?",
+      "choices": ["No solution", "Unique solution", "Infinitely many solutions", "Exactly 3 solutions"],
+      "answer": 2,
+      "explanations": [
+        "The second equation is just 3 times the first — they are not contradictory.",
+        "The second equation gives no new information, leaving one free variable.",
+        null,
+        "Linear systems can never have exactly 3 solutions."
+      ]
+    },
+
+    {
+      "type": "mc",
+      "prompt": "If a $5 \\times 3$ coefficient matrix (5 equations, 3 unknowns) has rank 3 after row reduction, the system:",
+      "choices": [
+        "Definitely has infinitely many solutions",
+        "Has a unique solution if consistent",
+        "Is definitely inconsistent",
+        "Has 2 free variables"
+      ],
+      "answer": 1,
+      "explanations": [
+        "Rank 3 = 3 pivot columns = no free variables. If consistent, the solution is unique.",
+        null,
+        "Rank 3 with 3 unknowns means no free variables. Whether it's consistent depends on the augmented matrix.",
+        "Free variables = unknowns − rank = 3 − 3 = 0."
+      ]
+    },
+
+    {
+      "type": "mc",
+      "prompt": "Which of the following is NOT an elementary row operation?",
+      "choices": [
+        "Swap two rows",
+        "Multiply a row by a nonzero scalar",
+        "Add a multiple of one row to another",
+        "Multiply two rows together"
+      ],
+      "answer": 3,
+      "explanations": [
+        "Swapping rows is a valid elementary row operation (Type I).",
+        "Scaling a row by a nonzero scalar is a valid elementary row operation (Type II).",
+        "Adding a multiple of one row to another is a valid elementary row operation (Type III).",
+        null
+      ]
+    },
+
+    {
+      "type": "mc",
+      "prompt": "A system has augmented matrix $\\begin{bmatrix}1&-1&2&3\\\\0&0&0&0\\\\0&0&0&0\\end{bmatrix}$ (already in REF). It has:",
+      "choices": [
+        "No solution",
+        "A unique solution",
+        "Infinitely many solutions",
+        "Exactly 2 solutions"
+      ],
+      "answer": 2,
+      "explanations": [
+        "There is no contradiction row — the system is consistent.",
+        "There are 2 non-pivot columns among the 3 variable columns — 2 free variables.",
+        null,
+        "Linear systems never have exactly 2 solutions."
+      ]
+    },
+
+    {
+      "type": "mc",
+      "prompt": "The system $\\begin{cases}x_1 - x_2 = 4 \\\\ -2x_1 + 2x_2 = -8\\end{cases}$: after row reducing, what does the second row become?",
+      "choices": [
+        "$\\begin{bmatrix}0&0&0\\end{bmatrix}$",
+        "$\\begin{bmatrix}0&0&8\\end{bmatrix}$",
+        "$\\begin{bmatrix}-2&2&-8\\end{bmatrix}$",
+        "$\\begin{bmatrix}0&1&-4\\end{bmatrix}$"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "The second equation is exactly $-2$ times the first — adding twice row 1 to row 2 gives all zeros.",
+        "That's the second row before row reduction.",
+        "Sign error — the correct operation gives a zero row, not a pivot on $x_2$."
+      ]
+    },
+
+    {
+      "type": "mc",
+      "prompt": "How many pivot positions does the RREF $\\begin{bmatrix}1&0&2&0\\\\0&1&-1&0\\\\0&0&0&1\\end{bmatrix}$ have?",
+      "choices": ["2", "3", "4", "1"],
+      "answer": 1,
+      "explanations": [
+        "Count the leading 1s in each row: rows 1, 2, and 3 each have a pivot — that's 3.",
+        null,
+        "There are only 3 rows, so at most 3 pivots.",
+        "Every row has a pivot — there is more than 1."
+      ]
+    },
+
+    {
+      "type": "mc",
+      "prompt": "The last row of the RREF $\\begin{bmatrix}1&0&2&0\\\\0&1&-1&0\\\\0&0&0&1\\end{bmatrix}$ (augmented, 3 unknowns) means:",
+      "choices": [
+        "$x_3 = 1$",
+        "$x_4 = 1$",
+        "The system is inconsistent",
+        "$0 = 0$"
+      ],
+      "answer": 2,
+      "explanations": [
+        "$x_3$ corresponds to column 3, but column 4 is the right-hand side in this 4-column augmented matrix.",
+        "There is no $x_4$ — there are only 3 unknowns.",
+        null,
+        "The row $[0\\ 0\\ 0\\ |\\ 1]$ says $0=1$ — a contradiction, so the system is inconsistent."
+      ]
+    },
+
+    {
+      "type": "mc",
+      "prompt": "A student says: 'This system has 3 equations and 4 unknowns, so it must have infinitely many solutions.' Is this correct?",
+      "choices": [
+        "Yes — fewer equations than unknowns always means infinitely many solutions",
+        "No — the system could also be inconsistent",
+        "Yes — as long as the system is homogeneous",
+        "No — it could also have a unique solution"
+      ],
+      "answer": 1,
+      "explanations": [
+        "If the system is inconsistent, there are no solutions at all — the student is forgetting this case.",
+        null,
+        "Even homogeneous systems with more unknowns have infinitely many solutions — but the student's claim includes non-homogeneous systems that could be inconsistent.",
+        "With more unknowns than equations, a unique solution is impossible (at least one free variable would remain)."
+      ]
+    },
+
+    {
+      "type": "mc",
+      "prompt": "The solution set of a homogeneous system $A\\mathbf{x}=\\mathbf{0}$ is called the _____ of $A$.",
+      "choices": ["Column space", "Row space", "Null space", "Eigenspace"],
+      "answer": 2,
+      "explanations": [
+        "The column space is the span of the columns of $A$ — different concept.",
+        "The row space is the span of the rows — different concept.",
+        null,
+        "Eigenspaces are related to eigenvalues — a more advanced topic."
+      ]
+    },
+
+    {
+      "type": "mc",
+      "prompt": "Consider: $\\begin{bmatrix}1&2&3\\\\2&4&7\\\\-1&-2&-3\\end{bmatrix}\\begin{bmatrix}x_1\\\\x_2\\\\x_3\\end{bmatrix}=\\begin{bmatrix}0\\\\0\\\\0\\end{bmatrix}$. The third equation is a multiple of the first. This means:",
+      "choices": [
+        "The system is inconsistent",
+        "The system definitely has only the trivial solution",
+        "One equation is redundant — we effectively have 2 equations for 3 unknowns",
+        "The coefficient matrix has rank 3"
+      ],
+      "answer": 2,
+      "explanations": [
+        "Homogeneous systems are always consistent.",
+        "With a redundant equation we effectively have fewer constraints, likely leading to free variables.",
+        null,
+        "A redundant row means the rank is less than 3."
+      ]
+    },
+
+    {
+      "type": "mc",
+      "prompt": "Which statement about a $3 \\times 3$ homogeneous system is always true?",
+      "choices": [
+        "It has infinitely many solutions",
+        "It has only the trivial solution",
+        "It has at least one solution",
+        "It is in row echelon form"
+      ],
+      "answer": 2,
+      "explanations": [
+        "It could have only the trivial solution if the coefficient matrix is invertible.",
+        "It could also have infinitely many solutions if the matrix is singular.",
+        null,
+        "Row echelon form is a property of the matrix representation, not of the system type."
+      ]
+    }
+
+  ]
+}
