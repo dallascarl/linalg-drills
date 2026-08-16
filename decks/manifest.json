@@ -1,6 +1,3 @@
 [
-  { "id": "vectors-basics", "file": "decks/vectors-basics.json" },
-  { "id": "matrix-operations", "file": "decks/matrix-operations.json" },
-  { "id": "eigenvalues", "file": "decks/eigenvalues.json" },
   { "id": "linear-systems-intro", "file": "decks/linear-systems-intro.json" }
 ]
