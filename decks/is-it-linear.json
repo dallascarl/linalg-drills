@@ -1,0 +1,418 @@
+{
+  "id": "is-it-linear",
+  "title": "Is It a Linear System?",
+  "description": "Identify whether a system of equations is linear or not",
+  "questionsPerAttempt": 5,
+  "pointsPerQuestion": 1,
+  "questions": [
+
+    {
+      "type": "mc",
+      "prompt": "Is this a linear system?\n$$x_1 + 2x_2 = 5$$\n$$3x_1 - x_2 = 7$$",
+      "choices": ["Linear system", "Not a linear system"],
+      "answer": 0,
+      "explanations": [null, "Both equations have the form $ax_1 + bx_2 = c$ with no exponents or products of variables."]
+    },
+
+    {
+      "type": "mc",
+      "prompt": "Is this a linear system?\n$$x_1^2 + x_2 = 4$$\n$$x_1 - x_2 = 1$$",
+      "choices": ["Linear system", "Not a linear system"],
+      "answer": 1,
+      "explanations": ["The first equation contains $x_1^2$ — a squared variable makes it nonlinear.", null]
+    },
+
+    {
+      "type": "mc",
+      "prompt": "Is this a linear system?\n$$2x_1 - 3x_2 + x_3 = 0$$\n$$x_1 + x_2 - 4x_3 = 2$$\n$$-x_1 + 2x_2 + x_3 = -1$$",
+      "choices": ["Linear system", "Not a linear system"],
+      "answer": 0,
+      "explanations": [null, "All three equations are of the form $ax_1 + bx_2 + cx_3 = d$ — perfectly linear."]
+    },
+
+    {
+      "type": "mc",
+      "prompt": "Is this a linear system?\n$$x_1 x_2 = 6$$\n$$x_1 + x_2 = 5$$",
+      "choices": ["Linear system", "Not a linear system"],
+      "answer": 1,
+      "explanations": ["The first equation has $x_1 x_2$ — a product of two variables, which is nonlinear.", null]
+    },
+
+    {
+      "type": "mc",
+      "prompt": "Is this a linear system?\n$$5x_1 = 10$$",
+      "choices": ["Linear system", "Not a linear system"],
+      "answer": 0,
+      "explanations": [null, "A single equation in one variable with no exponents or products is linear."]
+    },
+
+    {
+      "type": "mc",
+      "prompt": "Is this a linear system?\n$$2^{x_1} = 8$$",
+      "choices": ["Linear system", "Not a linear system"],
+      "answer": 1,
+      "explanations": ["$2^{x_1}$ is an exponential equation — the variable is in the exponent, making it nonlinear.", null]
+    },
+
+    {
+      "type": "mc",
+      "prompt": "Is this a linear system?\n$$x_1 - x_2 + 3x_3 - x_4 = 0$$\n$$2x_1 + x_2 - x_3 + 4x_4 = 1$$",
+      "choices": ["Linear system", "Not a linear system"],
+      "answer": 0,
+      "explanations": [null, "Both equations are linear combinations of the four variables — no nonlinear terms present."]
+    },
+
+    {
+      "type": "mc",
+      "prompt": "Is this a linear system?\n$$\\sqrt{x_1} + x_2 = 3$$\n$$x_1 - x_2 = 1$$",
+      "choices": ["Linear system", "Not a linear system"],
+      "answer": 1,
+      "explanations": ["$\\sqrt{x_1} = x_1^{1/2}$ is a nonlinear operation on the variable.", null]
+    },
+
+    {
+      "type": "mc",
+      "prompt": "Is this a linear system?\n$$3x_1 + 0x_2 = 9$$\n$$0x_1 + 2x_2 = 4$$",
+      "choices": ["Linear system", "Not a linear system"],
+      "answer": 0,
+      "explanations": [null, "Zero coefficients are still valid in a linear system — both equations are linear."]
+    },
+
+    {
+      "type": "mc",
+      "prompt": "Is this a linear system?\n$$x_1 + x_2^3 = 0$$\n$$2x_1 - x_2 = 5$$",
+      "choices": ["Linear system", "Not a linear system"],
+      "answer": 1,
+      "explanations": ["$x_2^3$ is a variable raised to the third power — that is nonlinear.", null]
+    },
+
+    {
+      "type": "mc",
+      "prompt": "Is this a linear system?\n$$4x_1 - 7x_2 = 3$$\n$$-2x_1 + x_2 = 0$$\n$$x_1 + 3x_2 = -1$$",
+      "choices": ["Linear system", "Not a linear system"],
+      "answer": 0,
+      "explanations": [null, "All three equations are linear combinations of $x_1$ and $x_2$."]
+    },
+
+    {
+      "type": "mc",
+      "prompt": "Is this a linear system?\n$$e^{x_1} + x_2 = 1$$\n$$x_1 - x_2 = 0$$",
+      "choices": ["Linear system", "Not a linear system"],
+      "answer": 1,
+      "explanations": ["$e^{x_1}$ is an exponential with the variable in the exponent — nonlinear.", null]
+    },
+
+    {
+      "type": "mc",
+      "prompt": "Is this a linear system?\n$$x_1 + 2x_2 - x_3 = 7$$",
+      "choices": ["Linear system", "Not a linear system"],
+      "answer": 0,
+      "explanations": [null, "A single linear equation in three variables is still a linear system (with one equation)."]
+    },
+
+    {
+      "type": "mc",
+      "prompt": "Is this a linear system?\n$$x_1^2 - x_2^2 = 0$$\n$$x_1 + x_2 = 4$$",
+      "choices": ["Linear system", "Not a linear system"],
+      "answer": 1,
+      "explanations": ["The first equation has $x_1^2$ and $x_2^2$ — both squared variables make it nonlinear.", null]
+    },
+
+    {
+      "type": "mc",
+      "prompt": "Is this a linear system?\n$$\\frac{1}{2}x_1 - \\frac{3}{4}x_2 = 1$$\n$$2x_1 + x_2 = 8$$",
+      "choices": ["Linear system", "Not a linear system"],
+      "answer": 0,
+      "explanations": [null, "Fractional coefficients are fine — the variables themselves appear to the first power only."]
+    },
+
+    {
+      "type": "mc",
+      "prompt": "Is this a linear system?\n$$x_1 \\cdot x_2 \\cdot x_3 = 1$$\n$$x_1 + x_2 + x_3 = 6$$",
+      "choices": ["Linear system", "Not a linear system"],
+      "answer": 1,
+      "explanations": ["The first equation multiplies all three variables together — a product of variables is nonlinear.", null]
+    },
+
+    {
+      "type": "mc",
+      "prompt": "Is this a linear system?\n$$-x_1 + 4x_2 = 0$$\n$$x_1 - 4x_2 = 0$$",
+      "choices": ["Linear system", "Not a linear system"],
+      "answer": 0,
+      "explanations": [null, "Both equations are linear — note this is also a homogeneous system since both right-hand sides are zero."]
+    },
+
+    {
+      "type": "mc",
+      "prompt": "Is this a linear system?\n$$\\ln(x_1) + x_2 = 5$$\n$$x_1 + x_2 = 7$$",
+      "choices": ["Linear system", "Not a linear system"],
+      "answer": 1,
+      "explanations": ["$\\ln(x_1)$ applies a nonlinear function to the variable — this makes the system nonlinear.", null]
+    },
+
+    {
+      "type": "mc",
+      "prompt": "Is this a linear system?\n$$x_1 + x_2 + x_3 + x_4 + x_5 = 1$$\n$$2x_1 - x_2 + 3x_3 - x_4 + x_5 = 0$$",
+      "choices": ["Linear system", "Not a linear system"],
+      "answer": 0,
+      "explanations": [null, "Five variables is fine — both equations are still linear combinations."]
+    },
+
+    {
+      "type": "mc",
+      "prompt": "Is this a linear system?\n$$x_1 + \\frac{1}{x_2} = 4$$\n$$x_1 - x_2 = 0$$",
+      "choices": ["Linear system", "Not a linear system"],
+      "answer": 1,
+      "explanations": ["$\\frac{1}{x_2} = x_2^{-1}$ — a variable raised to a negative power is nonlinear.", null]
+    },
+
+    {
+      "type": "mc",
+      "prompt": "Is this a linear system?\n$$0 = 0$$",
+      "choices": ["Linear system", "Not a linear system"],
+      "answer": 0,
+      "explanations": [null, "This is a trivially true linear equation — it contains no nonlinear terms."]
+    },
+
+    {
+      "type": "mc",
+      "prompt": "Is this a linear system?\n$$x_1^2 + x_2^2 = 25$$",
+      "choices": ["Linear system", "Not a linear system"],
+      "answer": 1,
+      "explanations": ["This is the equation of a circle — both variables are squared, making it nonlinear.", null]
+    },
+
+    {
+      "type": "mc",
+      "prompt": "Is this a linear system?\n$$3x_1 - 2x_2 = 1$$\n$$6x_1 - 4x_2 = 2$$\n$$-3x_1 + 2x_2 = -1$$",
+      "choices": ["Linear system", "Not a linear system"],
+      "answer": 0,
+      "explanations": [null, "All three equations are linear — they happen to all be multiples of the first, but that doesn't make the system nonlinear."]
+    },
+
+    {
+      "type": "mc",
+      "prompt": "Is this a linear system?\n$$\\sin(x_1) + x_2 = 0$$\n$$x_1 + x_2 = \\pi$$",
+      "choices": ["Linear system", "Not a linear system"],
+      "answer": 1,
+      "explanations": ["$\\sin(x_1)$ is a nonlinear trigonometric function applied to the variable.", null]
+    },
+
+    {
+      "type": "mc",
+      "prompt": "Is this a linear system?\n$$-5x_1 = 15$$\n$$2x_1 = -6$$",
+      "choices": ["Linear system", "Not a linear system"],
+      "answer": 0,
+      "explanations": [null, "Both equations are linear in the single variable $x_1$."]
+    },
+
+    {
+      "type": "mc",
+      "prompt": "Is this a linear system?\n$$x_1 x_2 + x_3 = 4$$\n$$x_1 - 2x_3 = 1$$\n$$x_2 + x_3 = 3$$",
+      "choices": ["Linear system", "Not a linear system"],
+      "answer": 1,
+      "explanations": ["The first equation contains $x_1 x_2$ — a product of two variables is nonlinear.", null]
+    },
+
+    {
+      "type": "mc",
+      "prompt": "Is this a linear system?\n$$x_1 + 2x_2 = 3$$\n$$4x_1 + 5x_2 = 6$$\n$$7x_1 + 8x_2 = 9$$",
+      "choices": ["Linear system", "Not a linear system"],
+      "answer": 0,
+      "explanations": [null, "All three equations are linear combinations of $x_1$ and $x_2$."]
+    },
+
+    {
+      "type": "mc",
+      "prompt": "Is this a linear system?\n$$2^{x_1} + 3^{x_2} = 13$$\n$$x_1 + x_2 = 3$$",
+      "choices": ["Linear system", "Not a linear system"],
+      "answer": 1,
+      "explanations": ["Both $2^{x_1}$ and $3^{x_2}$ are exponential functions with variables in the exponent — nonlinear.", null]
+    },
+
+    {
+      "type": "mc",
+      "prompt": "Is this a linear system?\n$$x_1 - 3x_2 + 2x_3 = 0$$\n$$0 = 0$$\n$$5x_1 + x_2 = -2$$",
+      "choices": ["Linear system", "Not a linear system"],
+      "answer": 0,
+      "explanations": [null, "All equations are linear — the trivial equation $0=0$ is perfectly valid in a linear system."]
+    },
+
+    {
+      "type": "mc",
+      "prompt": "Is this a linear system?\n$$|x_1| + x_2 = 5$$\n$$x_1 - x_2 = 1$$",
+      "choices": ["Linear system", "Not a linear system"],
+      "answer": 1,
+      "explanations": ["The absolute value $|x_1|$ is a nonlinear operation — it creates a V-shaped graph, not a line.", null]
+    },
+
+    {
+      "type": "mc",
+      "prompt": "Is this a linear system?\n$$\\pi x_1 - \\sqrt{2} x_2 = e$$",
+      "choices": ["Linear system", "Not a linear system"],
+      "answer": 0,
+      "explanations": [null, "$\\pi$, $\\sqrt{2}$, and $e$ are all constants (coefficients) — the variables $x_1$ and $x_2$ still appear to the first power only."]
+    },
+
+    {
+      "type": "mc",
+      "prompt": "Is this a linear system?\n$$x_1 + x_2 = 10$$\n$$x_1 - x_2 = 2$$\n$$x_1^2 = 16$$",
+      "choices": ["Linear system", "Not a linear system"],
+      "answer": 1,
+      "explanations": ["The third equation $x_1^2 = 16$ has a squared variable — one nonlinear equation makes the whole system nonlinear.", null]
+    },
+
+    {
+      "type": "mc",
+      "prompt": "Is this a linear system?\n$$0x_1 + 0x_2 + 0x_3 = 0$$",
+      "choices": ["Linear system", "Not a linear system"],
+      "answer": 0,
+      "explanations": [null, "This is a valid (trivially satisfied) linear equation — all coefficients are zero but no nonlinear terms are present."]
+    },
+
+    {
+      "type": "mc",
+      "prompt": "Is this a linear system?\n$$x_1 + x_2 = 4$$\n$$x_2 + x_3 = 5$$\n$$x_1 \\cdot x_3 = 3$$",
+      "choices": ["Linear system", "Not a linear system"],
+      "answer": 1,
+      "explanations": ["The third equation has $x_1 \\cdot x_3$ — multiplying two variables together is nonlinear.", null]
+    },
+
+    {
+      "type": "mc",
+      "prompt": "Is this a linear system?\n$$-x_1 = 0$$\n$$-x_2 = 0$$\n$$-x_3 = 0$$",
+      "choices": ["Linear system", "Not a linear system"],
+      "answer": 0,
+      "explanations": [null, "Each equation is linear in one variable — this is a homogeneous linear system with only the trivial solution."]
+    },
+
+    {
+      "type": "mc",
+      "prompt": "Is this a linear system?\n$$x_1 + x_2^{1/3} = 2$$\n$$x_1 - x_2 = 0$$",
+      "choices": ["Linear system", "Not a linear system"],
+      "answer": 1,
+      "explanations": ["$x_2^{1/3}$ is a cube root — a fractional exponent on a variable is nonlinear.", null]
+    },
+
+    {
+      "type": "mc",
+      "prompt": "Is this a linear system?\n$$100x_1 - 200x_2 = 500$$\n$$-50x_1 + 75x_2 = -125$$",
+      "choices": ["Linear system", "Not a linear system"],
+      "answer": 0,
+      "explanations": [null, "Large coefficients don't affect linearity — both equations are linear combinations of $x_1$ and $x_2$."]
+    },
+
+    {
+      "type": "mc",
+      "prompt": "Is this a linear system?\n$$x_1 + x_2 + x_3 = 6$$\n$$2x_1 + 2x_2 + 2x_3 = 12$$\n$$x_1 x_2 + x_3 = 4$$",
+      "choices": ["Linear system", "Not a linear system"],
+      "answer": 1,
+      "explanations": ["The third equation has $x_1 x_2$ — even though the first two equations are linear, one nonlinear equation makes the system nonlinear.", null]
+    },
+
+    {
+      "type": "mc",
+      "prompt": "Is this a linear system?\n$$\\frac{x_1}{2} + \\frac{x_2}{3} = 1$$\n$$\\frac{x_1}{4} - \\frac{x_2}{6} = \\frac{1}{2}$$",
+      "choices": ["Linear system", "Not a linear system"],
+      "answer": 0,
+      "explanations": [null, "Dividing by a constant is the same as multiplying by a fraction — $\\frac{x_1}{2} = \\frac{1}{2}x_1$ is still linear."]
+    },
+
+    {
+      "type": "mc",
+      "prompt": "Is this a linear system?\n$$x_1 + x_2 = 5$$\n$$x_1 + x_2 = 7$$",
+      "choices": ["Linear system", "Not a linear system"],
+      "answer": 0,
+      "explanations": [null, "Both equations are linear — this system happens to be inconsistent (no solution), but it is still a linear system."]
+    },
+
+    {
+      "type": "mc",
+      "prompt": "Is this a linear system?\n$$e^2 x_1 - x_2 = 0$$\n$$x_1 + \\pi x_2 = 1$$",
+      "choices": ["Linear system", "Not a linear system"],
+      "answer": 0,
+      "explanations": [null, "$e^2$ and $\\pi$ are numeric constants being used as coefficients — the variables $x_1$ and $x_2$ appear to the first power only."]
+    },
+
+    {
+      "type": "mc",
+      "prompt": "Is this a linear system?\n$$x_1 - x_2 + x_3 - x_4 = 0$$\n$$x_1 + x_2 - x_3 + x_4 = 0$$\n$$x_1 + x_2 + x_3 + x_4 = 0$$\n$$x_1 - x_2 - x_3 - x_4 = 0$$",
+      "choices": ["Linear system", "Not a linear system"],
+      "answer": 0,
+      "explanations": [null, "Four equations in four unknowns, all linear — this is also a homogeneous system since every right-hand side is zero."]
+    },
+
+    {
+      "type": "mc",
+      "prompt": "Is this a linear system?\n$$x_1^{0.5} + 2x_2 = 3$$\n$$x_1 - x_2 = -1$$",
+      "choices": ["Linear system", "Not a linear system"],
+      "answer": 1,
+      "explanations": ["$x_1^{0.5} = \\sqrt{x_1}$ — a fractional exponent on a variable makes the equation nonlinear.", null]
+    },
+
+    {
+      "type": "mc",
+      "prompt": "Is this a linear system?\n$$3(x_1 - 2x_2) = 9$$\n$$2(x_1 + x_2) = 4$$",
+      "choices": ["Linear system", "Not a linear system"],
+      "answer": 0,
+      "explanations": [null, "Distributing: $3x_1 - 6x_2 = 9$ and $2x_1 + 2x_2 = 4$ — both are linear after expanding."]
+    },
+
+    {
+      "type": "mc",
+      "prompt": "Is this a linear system?\n$$x_1(x_1 + 1) = 6$$",
+      "choices": ["Linear system", "Not a linear system"],
+      "answer": 1,
+      "explanations": ["Expanding: $x_1^2 + x_1 = 6$ — there is an $x_1^2$ term, making it nonlinear (quadratic).", null]
+    },
+
+    {
+      "type": "mc",
+      "prompt": "Is this a linear system?\n$$x_1 + 2x_2 - x_3 = 4$$\n$$3x_2 + x_3 = 1$$\n$$x_3 = -2$$",
+      "choices": ["Linear system", "Not a linear system"],
+      "answer": 0,
+      "explanations": [null, "All three equations are linear — this system is actually already in a convenient triangular form for back-substitution."]
+    },
+
+    {
+      "type": "mc",
+      "prompt": "Is this a linear system?\n$$\\cos(x_1) = x_2$$\n$$x_1 + x_2 = 1$$",
+      "choices": ["Linear system", "Not a linear system"],
+      "answer": 1,
+      "explanations": ["$\\cos(x_1)$ is a nonlinear trigonometric function applied to the variable $x_1$.", null]
+    },
+
+    {
+      "type": "mc",
+      "prompt": "Is this a linear system?\n$$x_1 - 2x_2 = 3$$\n$$-2x_1 + 4x_2 = -6$$",
+      "choices": ["Linear system", "Not a linear system"],
+      "answer": 0,
+      "explanations": [null, "Both equations are linear — the second is just $-2$ times the first, making the system dependent (infinitely many solutions)."]
+    },
+
+    {
+      "type": "mc",
+      "prompt": "Is this a linear system?\n$$x_1 + x_2 = 3$$\n$$x_2 + x_3 = 5$$\n$$x_1 + x_3 = 4$$\n$$x_1 + x_2 + x_3 = 6$$",
+      "choices": ["Linear system", "Not a linear system"],
+      "answer": 0,
+      "explanations": [null, "Four linear equations in three unknowns — all combinations of the variables appear to the first power only."]
+    },
+
+    {
+      "type": "mc",
+      "prompt": "Is this a linear system?\n$$x_1 - x_2 = 1$$\n$$x_2 - x_3 = 1$$\n$$x_3 - x_1 = 1$$",
+      "choices": ["Linear system", "Not a linear system"],
+      "answer": 0,
+      "explanations": [null, "All three equations are linear — this system is actually inconsistent (adding all three gives $0 = 3$), but it is still a linear system."]
+    },
+
+    {
+      "type": "mc",
+      "prompt": "Is this a linear system?\n$$2x_1 + 3x_2 - x_3 + 4x_4 - x_5 = 7$$\n$$x_1 - x_2 + 2x_3 - x_4 + 3x_5 = -2$$\n$$3x_1 + x_2 + x_3 + 2x_4 - 2x_5 = 5$$",
+      "choices": ["Linear system", "Not a linear system"],
+      "answer": 0,
+      "explanations": [null, "Three equations in five unknowns — every variable appears to the first power only, so this is a linear system."]
+    }
+
+  ]
+}
