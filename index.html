@@ -688,7 +688,7 @@ function handleMcAnswer(idx, btn, wrap){
   } else {
     btn.classList.add('wrong');
     wrap.querySelectorAll('.choice-btn')[q.answer].classList.add('correct');
-    document.getElementById('feedback').innerHTML = 'Correct answer: ' + safeHtml(q.choices[q.answer]); document.getElementById('feedback').className='feedback feedback-wrong'; MathJax.typesetPromise([document.getElementById('feedback')]);
+    const fbElMc = document.getElementById('feedback'); fbElMc.innerHTML = 'Correct answer: <span style="color:var(--correct);font-weight:700">' + safeHtml(q.choices[q.answer]) + '</span>'; fbElMc.className='feedback feedback-wrong'; MathJax.typesetPromise([fbElMc]);
     // Show per-choice explanation if provided
     const expl = q.explanations?.[idx];
     showExplanation(expl);
@@ -706,7 +706,7 @@ function handleTypeAnswer(input, submitBtn){
     document.getElementById('feedback').textContent = 'Correct.'; document.getElementById('feedback').className='feedback feedback-correct';
   } else {
     input.classList.add('wrong');
-    document.getElementById('feedback').innerHTML = 'Correct answer: ' + safeHtml(q.answer[0]); document.getElementById('feedback').className='feedback feedback-wrong'; MathJax.typesetPromise([document.getElementById('feedback')]);
+    const fbElType = document.getElementById('feedback'); fbElType.innerHTML = 'Correct answer: <span style="color:var(--correct);font-weight:700">' + safeHtml(q.answer[0]) + '</span>'; fbElType.className='feedback feedback-wrong'; MathJax.typesetPromise([fbElType]);
     showExplanation(q.explanation);
   }
   lockAnswered();
@@ -722,7 +722,18 @@ function handleWordbankAnswer(slot, chips, submitBtn){
     document.getElementById('feedback').textContent = 'Correct.'; document.getElementById('feedback').className='feedback feedback-correct';
   } else {
     slot.classList.add('wrong');
-    document.getElementById('feedback').innerHTML = 'Correct answer: ' + safeHtml(q.answer); document.getElementById('feedback').className='feedback feedback-wrong'; MathJax.typesetPromise([document.getElementById('feedback')]);
+    // Highlight the correct chip green so students can see the right answer
+    chips.forEach(chip => {
+      if (normalize(chip.textContent) === normalize(q.answer)){
+        chip.style.borderColor = 'var(--correct)';
+        chip.style.color = 'var(--correct)';
+        chip.style.background = 'rgba(61,220,151,.14)';
+      }
+    });
+    const fbEl = document.getElementById('feedback');
+    fbEl.innerHTML = 'Correct answer: <span style="color:var(--correct);font-weight:700">' + safeHtml(q.answer) + '</span>';
+    fbEl.className = 'feedback feedback-wrong';
+    MathJax.typesetPromise([fbEl]);
     showExplanation(q.explanation);
   }
   lockAnswered();
@@ -992,7 +1003,7 @@ async function openAdmin(){
 
   if (flags?.length){
     html += `<div class="flags-section">
-      <h3>🚩 Flagged Questions (${flags.length})</h3>`;
+      <h3>🚩 Flagged Questions (<span id="flagCount">${flags.length}</span>)</h3>`;
     flags.forEach((f, idx) => {
       const when = new Date(f.created_at).toLocaleDateString();
       const who  = f.profiles?.username || 'unknown';
@@ -1018,7 +1029,18 @@ async function openAdmin(){
 async function dismissFlag(idx, flagId){
   await sb.from('flags').delete().eq('id', flagId);
   const card = document.getElementById('flagcard-' + idx);
-  if (card){ card.style.transition = 'opacity .3s'; card.style.opacity = '0'; setTimeout(() => card.remove(), 320); }
+  if (card){
+    card.style.transition = 'opacity .3s';
+    card.style.opacity = '0';
+    setTimeout(() => {
+      card.remove();
+      const countEl = document.getElementById('flagCount');
+      if (countEl){
+        const n = Math.max(0, parseInt(countEl.textContent) - 1);
+        countEl.textContent = n;
+      }
+    }, 320);
+  }
 }
 
 document.getElementById('adminBack').addEventListener('click', () => showScreen('menu'));
