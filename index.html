@@ -998,7 +998,7 @@ async function openAdmin(){
 
   // ── Flagged questions ──
   const {data: flags} = await sb.from('flags')
-    .select('deck_id, question, note, created_at, profiles(username)')
+    .select('id, deck_id, question, note, created_at, profiles(username)')
     .order('created_at', {ascending: false});
 
   if (flags?.length){
