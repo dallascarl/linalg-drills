@@ -108,6 +108,8 @@
   .wb-slot.correct{border-color:var(--correct);color:var(--correct);background:rgba(61,220,151,.08);}
   .wb-slot.wrong{border-color:var(--wrong);color:var(--wrong);background:rgba(255,107,107,.08);}
   .feedback{margin-top:14px;font-size:13px;color:var(--chalk-dim);font-family:'Space Mono',monospace;min-height:18px;}
+  .feedback.feedback-correct{color:var(--correct);}
+  .feedback.feedback-wrong{color:var(--chalk); font-weight:600;}
   .explanation{margin-top:10px;background:var(--surface-raised);border-left:3px solid var(--vector-dim);border-radius:0 10px 10px 0;padding:10px 14px;font-size:13px;font-family:'Inter',sans-serif;color:var(--chalk-dim);line-height:1.5;display:none;}
   .explanation.visible{display:block;}
 
@@ -133,7 +135,9 @@
   .flag-card-deck{font-family:'Space Mono',monospace;font-size:10px;color:var(--vector);text-transform:uppercase;margin-bottom:4px;}
   .flag-card-q{font-size:13px;color:var(--chalk);margin-bottom:8px;line-height:1.4;}
   .flag-card-note{font-size:12px;color:var(--chalk-dim);font-style:italic;margin-bottom:6px;}
-  .flag-card-meta{font-size:11px;color:#3A4258;font-family:'Space Mono',monospace;}
+  .flag-card-meta{font-size:11px;color:var(--chalk-dim);font-family:'Space Mono',monospace;}
+  .flag-dismiss{float:right;background:none;border:1px solid #2A3142;border-radius:8px;color:var(--chalk-dim);font-size:11px;padding:3px 9px;cursor:pointer;font-family:'Inter',sans-serif;margin-left:8px;}
+  .flag-dismiss:hover{border-color:var(--wrong);color:var(--wrong);}
 
   .results{text-align:center;padding-top:30px;}
   .results .big-score{font-family:'Space Mono',monospace;font-size:60px;font-weight:700;color:var(--vector);line-height:1;margin-bottom:6px;}
@@ -249,7 +253,7 @@
 
     <!-- Flag this question -->
     <div class="flag-area" id="flagArea">
-      <button class="flag-btn" id="flagBtn">🚩 Flag this question</button>
+      <button class="flag-btn" id="flagBtn">⚠ Report a problem with this question</button>
       <div class="flag-panel" id="flagPanel">
         <textarea class="flag-input" id="flagNote" rows="2" placeholder="Optional: what do you think is wrong?"></textarea>
         <button class="flag-submit" id="flagSubmit">Submit flag</button>
@@ -668,7 +672,7 @@ document.getElementById('flagSubmit').addEventListener('click', async () => {
     note:     note || null
   });
 
-  flagBtn.textContent = '🚩 Flagged';
+  flagBtn.textContent = '⚠ Reported — thanks!';
   flagBtn.classList.add('flagged');
   document.getElementById('flagPanel').classList.remove('visible');
   confirm.classList.add('visible');
@@ -680,11 +684,11 @@ function handleMcAnswer(idx, btn, wrap){
   wrap.querySelectorAll('.choice-btn').forEach(b => b.disabled = true);
   if (idx === q.answer){
     btn.classList.add('correct'); score++;
-    document.getElementById('feedback').textContent = 'Correct.';
+    document.getElementById('feedback').textContent = 'Correct.'; document.getElementById('feedback').className='feedback feedback-correct';
   } else {
     btn.classList.add('wrong');
     wrap.querySelectorAll('.choice-btn')[q.answer].classList.add('correct');
-    document.getElementById('feedback').textContent = 'Correct answer: ' + q.choices[q.answer];
+    document.getElementById('feedback').textContent = 'Correct answer: ' + q.choices[q.answer]; document.getElementById('feedback').className='feedback feedback-wrong';
     // Show per-choice explanation if provided
     const expl = q.explanations?.[idx];
     showExplanation(expl);
@@ -699,10 +703,10 @@ function handleTypeAnswer(input, submitBtn){
   input.disabled = true; submitBtn.disabled = true;
   if (isCorrect){
     input.classList.add('correct'); score++;
-    document.getElementById('feedback').textContent = 'Correct.';
+    document.getElementById('feedback').textContent = 'Correct.'; document.getElementById('feedback').className='feedback feedback-correct';
   } else {
     input.classList.add('wrong');
-    document.getElementById('feedback').textContent = 'Correct answer: ' + q.answer[0];
+    document.getElementById('feedback').textContent = 'Correct answer: ' + q.answer[0]; document.getElementById('feedback').className='feedback feedback-wrong';
     showExplanation(q.explanation);
   }
   lockAnswered();
@@ -715,10 +719,10 @@ function handleWordbankAnswer(slot, chips, submitBtn){
   const isCorrect = normalize(wbSelected) === normalize(q.answer);
   if (isCorrect){
     slot.classList.add('correct'); score++;
-    document.getElementById('feedback').textContent = 'Correct.';
+    document.getElementById('feedback').textContent = 'Correct.'; document.getElementById('feedback').className='feedback feedback-correct';
   } else {
     slot.classList.add('wrong');
-    document.getElementById('feedback').textContent = 'Correct answer: ' + q.answer;
+    document.getElementById('feedback').textContent = 'Correct answer: ' + q.answer; document.getElementById('feedback').className='feedback feedback-wrong';
     showExplanation(q.explanation);
   }
   lockAnswered();
@@ -989,12 +993,14 @@ async function openAdmin(){
   if (flags?.length){
     html += `<div class="flags-section">
       <h3>🚩 Flagged Questions (${flags.length})</h3>`;
-    flags.forEach(f => {
+    flags.forEach((f, idx) => {
       const when = new Date(f.created_at).toLocaleDateString();
       const who  = f.profiles?.username || 'unknown';
       const deck = f.deck_id.replace(/-/g,' ');
-      html += `<div class="flag-card">
-        <div class="flag-card-deck">${escapeHtml(deck)}</div>
+      html += `<div class="flag-card" id="flagcard-${idx}">
+        <div class="flag-card-deck">${escapeHtml(deck)}
+          <button class="flag-dismiss" onclick="dismissFlag(${idx}, '${f.id}')">✕ Dismiss</button>
+        </div>
         <div class="flag-card-q">${escapeHtml(f.question.slice(0, 120))}${f.question.length > 120 ? '…' : ''}</div>
         ${f.note ? `<div class="flag-card-note">"${escapeHtml(f.note)}"</div>` : ''}
         <div class="flag-card-meta">@${escapeHtml(who)} · ${when}</div>
@@ -1008,6 +1014,13 @@ async function openAdmin(){
 
   content.innerHTML = html;
 }
+// Dismiss a flag — deletes from DB and fades the card out
+async function dismissFlag(idx, flagId){
+  await sb.from('flags').delete().eq('id', flagId);
+  const card = document.getElementById('flagcard-' + idx);
+  if (card){ card.style.transition = 'opacity .3s'; card.style.opacity = '0'; setTimeout(() => card.remove(), 320); }
+}
+
 document.getElementById('adminBack').addEventListener('click', () => showScreen('menu'));
 </script>
 </body>
