@@ -688,7 +688,7 @@ function handleMcAnswer(idx, btn, wrap){
   } else {
     btn.classList.add('wrong');
     wrap.querySelectorAll('.choice-btn')[q.answer].classList.add('correct');
-    document.getElementById('feedback').textContent = 'Correct answer: ' + q.choices[q.answer]; document.getElementById('feedback').className='feedback feedback-wrong';
+    document.getElementById('feedback').innerHTML = 'Correct answer: ' + safeHtml(q.choices[q.answer]); document.getElementById('feedback').className='feedback feedback-wrong'; MathJax.typesetPromise([document.getElementById('feedback')]);
     // Show per-choice explanation if provided
     const expl = q.explanations?.[idx];
     showExplanation(expl);
@@ -706,7 +706,7 @@ function handleTypeAnswer(input, submitBtn){
     document.getElementById('feedback').textContent = 'Correct.'; document.getElementById('feedback').className='feedback feedback-correct';
   } else {
     input.classList.add('wrong');
-    document.getElementById('feedback').textContent = 'Correct answer: ' + q.answer[0]; document.getElementById('feedback').className='feedback feedback-wrong';
+    document.getElementById('feedback').innerHTML = 'Correct answer: ' + safeHtml(q.answer[0]); document.getElementById('feedback').className='feedback feedback-wrong'; MathJax.typesetPromise([document.getElementById('feedback')]);
     showExplanation(q.explanation);
   }
   lockAnswered();
@@ -722,7 +722,7 @@ function handleWordbankAnswer(slot, chips, submitBtn){
     document.getElementById('feedback').textContent = 'Correct.'; document.getElementById('feedback').className='feedback feedback-correct';
   } else {
     slot.classList.add('wrong');
-    document.getElementById('feedback').textContent = 'Correct answer: ' + q.answer; document.getElementById('feedback').className='feedback feedback-wrong';
+    document.getElementById('feedback').innerHTML = 'Correct answer: ' + safeHtml(q.answer); document.getElementById('feedback').className='feedback feedback-wrong'; MathJax.typesetPromise([document.getElementById('feedback')]);
     showExplanation(q.explanation);
   }
   lockAnswered();
