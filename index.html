@@ -508,7 +508,9 @@ function renderDeckList(){
     const ppq = entry.pointsPerQuestion || 1;
 
     let metaLines = [];
-    if (prog){
+    if (entry.ungraded){
+      metaLines.push('JUST FOR FUN · NOT GRADED');
+    } else if (prog){
       metaLines.push(`GRADE BEST: ${prog.bestRaw}/${prog.total}`);
       metaLines.push(`LB PTS EARNED: ${prog.lbPoints || 0} · ${attemptsLeft} scored attempt${attemptsLeft !== 1 ? 's' : ''} left`);
     } else {
@@ -539,6 +541,7 @@ async function fetchDeck(id){
   entry.title = deck.title;
   entry.description = deck.description;
   entry.pointsPerQuestion = deck.pointsPerQuestion || 1;
+  entry.ungraded = deck.ungraded || false;
   return deck;
 }
 
@@ -765,6 +768,20 @@ async function finishDeck(){
   arrow.setAttribute('y2', (60 + 45 * Math.sin(rad)).toFixed(1));
 
   const savingEl = document.getElementById('savingIndicator');
+  const banner = document.getElementById('pointsBanner');
+  const ptsEarned = document.getElementById('ptsEarned');
+  const ptsNote   = document.getElementById('ptsNote');
+
+  // ── Ungraded deck: show score but don't save anything ──
+  if (activeDeck.ungraded){
+    banner.style.display = '';
+    ptsEarned.textContent = 'Just for fun!';
+    ptsNote.textContent   = 'This deck is ungraded — no points or grade recorded.';
+    savingEl.textContent  = '';
+    showScreen('results');
+    return;
+  }
+
   savingEl.textContent = 'Saving…';
   showScreen('results');
 
@@ -998,7 +1015,7 @@ async function openAdmin(){
 
   // ── Flagged questions ──
   const {data: flags} = await sb.from('flags')
-    .select('id, deck_id, question, note, created_at, profiles(username)')
+    .select('deck_id, question, note, created_at, profiles(username)')
     .order('created_at', {ascending: false});
 
   if (flags?.length){
