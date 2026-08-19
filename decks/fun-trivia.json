@@ -1,0 +1,251 @@
+{
+  "id": "fun-trivia",
+  "title": "Fun Trivia",
+  "description": "Pop culture, science, sports & music — practice using the app!",
+  "questionsPerAttempt": 10,
+  "pointsPerQuestion": 1,
+  "ungraded": true,
+  "questions": [
+
+    {
+      "type": "mc",
+      "prompt": "How many planets are in our solar system?",
+      "choices": ["7", "8", "9", "10"],
+      "answer": 1,
+      "explanations": ["Close — but Pluto was reclassified as a dwarf planet in 2006, leaving 8.", null, "There were 9 when Pluto was included, but it was reclassified in 2006.", "Nope — 8 official planets as of 2006."]
+    },
+
+    {
+      "type": "mc",
+      "prompt": "Which band recorded the album 'Abbey Road'?",
+      "choices": ["The Rolling Stones", "The Who", "The Beatles", "Led Zeppelin"],
+      "answer": 2,
+      "explanations": ["The Stones made great albums, but Abbey Road was not one of them.", "The Who were legends, but Abbey Road belongs to someone else.", null, "Led Zeppelin were contemporaries of The Beatles but didn't record Abbey Road."]
+    },
+
+    {
+      "type": "mc",
+      "prompt": "What is the chemical symbol for gold?",
+      "choices": ["Go", "Gd", "Gl", "Au"],
+      "answer": 3,
+      "explanations": ["'Go' is not a chemical symbol.", "'Gd' is the symbol for Gadolinium.", "'Gl' is not a chemical symbol.", null]
+    },
+
+    {
+      "type": "mc",
+      "prompt": "How many sides does a hexagon have?",
+      "choices": ["5", "6", "7", "8"],
+      "answer": 1,
+      "explanations": ["5 sides is a pentagon.", null, "7 sides is a heptagon.", "8 sides is an octagon."]
+    },
+
+    {
+      "type": "mc",
+      "prompt": "Which sport uses a shuttlecock?",
+      "choices": ["Tennis", "Squash", "Badminton", "Pickleball"],
+      "answer": 2,
+      "explanations": ["Tennis uses a felt ball.", "Squash uses a rubber ball.", null, "Pickleball uses a plastic wiffle-style ball."]
+    },
+
+    {
+      "type": "mc",
+      "prompt": "Who painted the Mona Lisa?",
+      "choices": ["Michelangelo", "Raphael", "Leonardo da Vinci", "Donatello"],
+      "answer": 2,
+      "explanations": ["Michelangelo painted the Sistine Chapel ceiling.", "Raphael was a Renaissance master but not the Mona Lisa painter.", null, "Donatello was primarily a sculptor."]
+    },
+
+    {
+      "type": "mc",
+      "prompt": "What is the largest ocean on Earth?",
+      "choices": ["Atlantic", "Indian", "Arctic", "Pacific"],
+      "answer": 3,
+      "explanations": ["The Atlantic is the second largest.", "The Indian Ocean is third.", "The Arctic is the smallest of the five oceans.", null]
+    },
+
+    {
+      "type": "mc",
+      "prompt": "How many strings does a standard guitar have?",
+      "choices": ["4", "5", "6", "7"],
+      "answer": 2,
+      "explanations": ["4 strings is a bass guitar.", "5-string guitars exist but are not standard.", null, "7-string guitars exist but are not standard."]
+    },
+
+    {
+      "type": "mc",
+      "prompt": "Which country invented pizza?",
+      "choices": ["France", "Greece", "Spain", "Italy"],
+      "answer": 3,
+      "explanations": ["France gave us crepes and croissants, not pizza.", "Greece gave us gyros and spanakopita.", "Spain gave us paella.", null]
+    },
+
+    {
+      "type": "mc",
+      "prompt": "What does 'WWW' stand for in a web address?",
+      "choices": ["World Wide Web", "Wide World Web", "World Web Wide", "Web World Wide"],
+      "answer": 0,
+      "explanations": [null, "The order is World Wide Web, not Wide World.", "The correct order is World Wide Web.", "The correct order is World Wide Web."]
+    },
+
+    {
+      "type": "mc",
+      "prompt": "Which planet is known as the Red Planet?",
+      "choices": ["Venus", "Jupiter", "Mars", "Saturn"],
+      "answer": 2,
+      "explanations": ["Venus is the hottest planet and appears yellowish-white.", "Jupiter is the largest planet and has a Great Red Spot, but is not called the Red Planet.", null, "Saturn is known for its rings."]
+    },
+
+    {
+      "type": "mc",
+      "prompt": "How many keys does a standard piano have?",
+      "choices": ["72", "76", "88", "92"],
+      "answer": 2,
+      "explanations": ["72 is not standard.", "76-key pianos exist but are not the standard.", null, "92 is too many — standard is 88."]
+    },
+
+    {
+      "type": "mc",
+      "prompt": "What sport is played at Wimbledon?",
+      "choices": ["Cricket", "Tennis", "Golf", "Polo"],
+      "answer": 1,
+      "explanations": ["Cricket is played at Lords and The Oval.", null, "Golf's major tournaments are The Masters, US Open, The Open, and PGA Championship.", "Polo is played on a grass field, not Wimbledon."]
+    },
+
+    {
+      "type": "mc",
+      "prompt": "How many colors are in a rainbow?",
+      "choices": ["5", "6", "7", "8"],
+      "answer": 2,
+      "explanations": ["Close but not quite — there are 7: red, orange, yellow, green, blue, indigo, violet.", "6 is one short — the classic list has 7 colors.", null, "8 is one too many."]
+    },
+
+    {
+      "type": "mc",
+      "prompt": "Which element has the atomic number 1?",
+      "choices": ["Helium", "Oxygen", "Hydrogen", "Carbon"],
+      "answer": 2,
+      "explanations": ["Helium has atomic number 2.", "Oxygen has atomic number 8.", null, "Carbon has atomic number 6."]
+    },
+
+    {
+      "type": "mc",
+      "prompt": "What is the fastest land animal?",
+      "choices": ["Lion", "Cheetah", "Greyhound", "Pronghorn antelope"],
+      "answer": 1,
+      "explanations": ["Lions can run about 50 mph — fast, but not the fastest.", null, "Greyhounds can reach 45 mph — impressive but not the fastest.", "Pronghorns are the second fastest land animal at around 55 mph."]
+    },
+
+    {
+      "type": "mc",
+      "prompt": "In what year did the first iPhone launch?",
+      "choices": ["2005", "2006", "2007", "2008"],
+      "answer": 2,
+      "explanations": ["2005 predates the iPhone.", "2006 is one year early.", null, "2008 was when the iPhone 3G launched — the original was 2007."]
+    },
+
+    {
+      "type": "mc",
+      "prompt": "How many players are on a standard basketball team on the court at once?",
+      "choices": ["4", "5", "6", "7"],
+      "answer": 1,
+      "explanations": ["4 is not the standard — that's too few.", null, "6 is ice hockey.", "7 is too many for basketball."]
+    },
+
+    {
+      "type": "mc",
+      "prompt": "Which of these is NOT a primary color in traditional painting (RYB model)?",
+      "choices": ["Red", "Blue", "Green", "Yellow"],
+      "answer": 2,
+      "explanations": ["Red is a primary color in the RYB model.", "Blue is a primary color in the RYB model.", null, "Yellow is a primary color in the RYB model."]
+    },
+
+    {
+      "type": "mc",
+      "prompt": "What is the hardest natural substance on Earth?",
+      "choices": ["Quartz", "Titanium", "Diamond", "Obsidian"],
+      "answer": 2,
+      "explanations": ["Quartz is hard (7 on Mohs scale) but not the hardest.", "Titanium is a strong metal but not the hardest natural substance.", null, "Obsidian is volcanic glass — not especially hard."]
+    },
+
+    {
+      "type": "mc",
+      "prompt": "Which artist released the album 'Thriller'?",
+      "choices": ["Prince", "Michael Jackson", "Stevie Wonder", "Whitney Houston"],
+      "answer": 1,
+      "explanations": ["Prince was a contemporary genius but Thriller belongs to someone else.", null, "Stevie Wonder is a legend but didn't record Thriller.", "Whitney Houston had huge albums but not Thriller."]
+    },
+
+    {
+      "type": "mc",
+      "prompt": "How many continents are there on Earth?",
+      "choices": ["5", "6", "7", "8"],
+      "answer": 2,
+      "explanations": ["5 is too few.", "Some models use 6, but the most common answer is 7.", null, "8 is too many."]
+    },
+
+    {
+      "type": "mc",
+      "prompt": "What is the most spoken language in the world by number of native speakers?",
+      "choices": ["English", "Spanish", "Hindi", "Mandarin Chinese"],
+      "answer": 3,
+      "explanations": ["English has the most total speakers but fewer native speakers than Mandarin.", "Spanish has around 480 million native speakers — second or third depending on the source.", "Hindi is close but generally ranked second or third.", null]
+    },
+
+    {
+      "type": "mc",
+      "prompt": "Which sport uses a puck?",
+      "choices": ["Lacrosse", "Field hockey", "Ice hockey", "Polo"],
+      "answer": 2,
+      "explanations": ["Lacrosse uses a rubber ball.", "Field hockey uses a hard round ball.", null, "Polo uses a mallet and a ball."]
+    },
+
+    {
+      "type": "mc",
+      "prompt": "How many minutes are in a full day?",
+      "choices": ["1,024", "1,200", "1,440", "1,560"],
+      "answer": 2,
+      "explanations": ["1,024 is $2^{10}$ — a fun number but not the answer.", "1,200 is 20 hours.", null, "1,560 is 26 hours."]
+    },
+
+    {
+      "type": "mc",
+      "prompt": "What is the currency of Japan?",
+      "choices": ["Yuan", "Won", "Baht", "Yen"],
+      "answer": 3,
+      "explanations": ["Yuan is the currency of China.", "Won is the currency of South Korea.", "Baht is the currency of Thailand.", null]
+    },
+
+    {
+      "type": "mc",
+      "prompt": "Which of these is a programming language?",
+      "choices": ["Cobra", "Viper", "Python", "Mamba"],
+      "answer": 2,
+      "explanations": ["Cobra is a snake, not a programming language.", "Viper is a car and a snake.", null, "Mamba was Kobe Bryant's nickname — not a programming language."]
+    },
+
+    {
+      "type": "mc",
+      "prompt": "What is the tallest mountain in the world?",
+      "choices": ["K2", "Kangchenjunga", "Mount Everest", "Lhotse"],
+      "answer": 2,
+      "explanations": ["K2 is the second highest at 8,611 m.", "Kangchenjunga is third at 8,586 m.", null, "Lhotse is fourth at 8,516 m."]
+    },
+
+    {
+      "type": "mc",
+      "prompt": "How many holes are on a standard golf course?",
+      "choices": ["9", "12", "18", "24"],
+      "answer": 2,
+      "explanations": ["9 holes is a half round.", "12 is not standard.", null, "24 is too many."]
+    },
+
+    {
+      "type": "mc",
+      "prompt": "What does CPU stand for?",
+      "choices": ["Central Processing Unit", "Computer Power Unit", "Central Power Unit", "Computer Processing Unit"],
+      "answer": 0,
+      "explanations": [null, "Power is not part of the acronym.", "'Central' is right but 'Power' is wrong — it's Processing.", "Computer is not part of the acronym — it's Central."]
+    }
+
+  ]
+}
