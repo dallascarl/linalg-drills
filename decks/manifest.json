@@ -1,5 +1,3 @@
 [
-  { "id": "fun-trivia", "file": "decks/fun-trivia.json" },
-  { "id": "Is it linear", "file": "decks/is-it-linear.json" },
-  { "id": "Linear Systems Intro", "file": "decks/linear-systems-intro.json" }
+  { "id": "fun-trivia", "file": "decks/fun-trivia.json" }
 ]
