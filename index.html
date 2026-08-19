@@ -508,7 +508,7 @@ function renderDeckList(){
     const ppq = entry.pointsPerQuestion || 1;
 
     let metaLines = [];
-    if (entry.ungraded){
+    if (entry.){
       metaLines.push('JUST FOR FUN · NOT GRADED');
     } else if (prog){
       metaLines.push(`GRADE BEST: ${prog.bestRaw}/${prog.total}`);
@@ -541,7 +541,7 @@ async function fetchDeck(id){
   entry.title = deck.title;
   entry.description = deck.description;
   entry.pointsPerQuestion = deck.pointsPerQuestion || 1;
-  entry.ungraded = deck.ungraded || false;
+  entry. = deck. || false;
   return deck;
 }
 
@@ -801,9 +801,6 @@ async function finishDeck(){
   const newLbPoints   = prevLbPoints + earnedPoints;
 
   // ── Show points banner ──
-  const banner = document.getElementById('pointsBanner');
-  const ptsEarned = document.getElementById('ptsEarned');
-  const ptsNote   = document.getElementById('ptsNote');
   banner.style.display = '';
 
   if (multiplier === 0){
