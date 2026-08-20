@@ -1,0 +1,241 @@
+{
+  "id": "fun-trivia-2",
+  "title": "Fun Trivia: Mix It Up",
+  "description": "Pop culture, science, sports & music — all question types!",
+  "questionsPerAttempt": 10,
+  "pointsPerQuestion": 1,
+  "ungraded": true,
+  "questions": [
+
+    {
+      "type": "mc",
+      "prompt": "Which movie features the quote 'To infinity and beyond!'?",
+      "choices": ["Shrek", "Toy Story", "The Lion King", "Finding Nemo"],
+      "answer": 1,
+      "explanations": ["Shrek's catchphrase is 'Better out than in!'", null, "Simba never said that.", "Nemo's adventure didn't include space travel."]
+    },
+
+    {
+      "type": "type",
+      "prompt": "How many days are in a leap year?",
+      "answer": ["366"],
+      "explanation": "A regular year has 365 days. A leap year adds one day (Feb 29), giving 366."
+    },
+
+    {
+      "type": "wordbank",
+      "prompt": "The Great Wall of China was built to protect against invasions from the _____.",
+      "wordbank": ["north", "south", "east", "west"],
+      "answer": "north",
+      "explanation": "The Great Wall runs along China's northern border, built to defend against nomadic invasions from the north."
+    },
+
+    {
+      "type": "mc",
+      "prompt": "What is the most-streamed song of all time on Spotify (as of 2024)?",
+      "choices": ["Shape of You – Ed Sheeran", "Blinding Lights – The Weeknd", "Dance Monkey – Tones and I", "Uptown Funk – Bruno Mars"],
+      "answer": 1,
+      "explanations": ["Shape of You held the record for years but was overtaken.", null, "Dance Monkey was a massive hit but not the top streamed.", "Uptown Funk is a classic but not the record holder."]
+    },
+
+    {
+      "type": "type",
+      "prompt": "How many points is a touchdown worth in American football?",
+      "answer": ["6"],
+      "explanation": "A touchdown is worth 6 points. Teams can then attempt a 1-point extra kick or 2-point conversion."
+    },
+
+    {
+      "type": "wordbank",
+      "prompt": "Water is made of hydrogen and _____.",
+      "wordbank": ["oxygen", "nitrogen", "carbon", "helium"],
+      "answer": "oxygen",
+      "explanation": "Water is $H_2O$ — two hydrogen atoms bonded to one oxygen atom."
+    },
+
+    {
+      "type": "mc",
+      "prompt": "Which country is home to the kangaroo?",
+      "choices": ["New Zealand", "South Africa", "Brazil", "Australia"],
+      "answer": 3,
+      "explanations": ["New Zealand is home to the kiwi bird.", "South Africa has lions and elephants but not kangaroos.", "Brazil is home to jaguars and toucans.", null]
+    },
+
+    {
+      "type": "type",
+      "prompt": "How many seconds are in one minute?",
+      "answer": ["60"],
+      "explanation": "One minute = 60 seconds. One hour = 60 minutes = 3,600 seconds."
+    },
+
+    {
+      "type": "wordbank",
+      "prompt": "The Eiffel Tower is located in _____.",
+      "wordbank": ["Paris", "Rome", "London", "Berlin"],
+      "answer": "Paris",
+      "explanation": "The Eiffel Tower was built in Paris, France in 1889 for the World's Fair."
+    },
+
+    {
+      "type": "mc",
+      "prompt": "Which of these is NOT a social media platform?",
+      "choices": ["TikTok", "Snapchat", "Spotify", "Threads"],
+      "answer": 2,
+      "explanations": ["TikTok is a social media platform.", "Snapchat is a social media platform.", null, "Threads is Meta's social media platform."]
+    },
+
+    {
+      "type": "type",
+      "prompt": "How many sides does a triangle have?",
+      "answer": ["3"],
+      "explanation": "Tri- means three. A triangle has 3 sides and 3 angles."
+    },
+
+    {
+      "type": "wordbank",
+      "prompt": "The currency used in the United Kingdom is the _____.",
+      "wordbank": ["pound", "euro", "dollar", "franc"],
+      "answer": "pound",
+      "explanation": "The UK uses the British pound sterling (£). The UK voted to leave the EU in 2016 and never adopted the euro."
+    },
+
+    {
+      "type": "mc",
+      "prompt": "Who wrote the Harry Potter series?",
+      "choices": ["Stephenie Meyer", "J.R.R. Tolkien", "J.K. Rowling", "C.S. Lewis"],
+      "answer": 2,
+      "explanations": ["Stephenie Meyer wrote the Twilight series.", "Tolkien wrote The Lord of the Rings.", null, "C.S. Lewis wrote The Chronicles of Narnia."]
+    },
+
+    {
+      "type": "type",
+      "prompt": "How many letters are in the English alphabet?",
+      "answer": ["26"],
+      "explanation": "The English alphabet has 26 letters, from A to Z."
+    },
+
+    {
+      "type": "wordbank",
+      "prompt": "Lightning McQueen is the main character in the movie _____.",
+      "wordbank": ["Cars", "Turbo", "Speed Racer", "Rush"],
+      "answer": "Cars",
+      "explanation": "Lightning McQueen is the red race car protagonist in Pixar's Cars (2006) and its sequels."
+    },
+
+    {
+      "type": "mc",
+      "prompt": "What does the 'E' stand for in the famous equation $E = mc^2$?",
+      "choices": ["Electricity", "Energy", "Entropy", "Electron"],
+      "answer": 1,
+      "explanations": ["Electricity is not what Einstein had in mind.", null, "Entropy is a thermodynamics concept, not what E stands for here.", "Electron mass is related but E stands for Energy."]
+    },
+
+    {
+      "type": "type",
+      "prompt": "How many players are on each side in a soccer match?",
+      "answer": ["11"],
+      "explanation": "Each soccer team fields 11 players, including the goalkeeper."
+    },
+
+    {
+      "type": "wordbank",
+      "prompt": "The famous painting of a woman with a mysterious smile, the Mona Lisa, was painted by Leonardo da _____.",
+      "wordbank": ["Vinci", "Caprio", "Coelho", "Milano"],
+      "answer": "Vinci",
+      "explanation": "Leonardo da Vinci painted the Mona Lisa around 1503-1519. It now hangs in the Louvre in Paris."
+    },
+
+    {
+      "type": "mc",
+      "prompt": "What is the name of the fictional kingdom in the movie Frozen?",
+      "choices": ["Narnia", "Arendelle", "Agrabah", "Dunbroch"],
+      "answer": 1,
+      "explanations": ["Narnia is from C.S. Lewis's books.", null, "Agrabah is the kingdom in Aladdin.", "Dunbroch is the kingdom in Brave."]
+    },
+
+    {
+      "type": "type",
+      "prompt": "How many zeros are in one million (1,000,000)?",
+      "answer": ["6"],
+      "explanation": "One million = $10^6$, which has 6 zeros: 1,000,000."
+    },
+
+    {
+      "type": "wordbank",
+      "prompt": "The Olympic Games are held every _____ years.",
+      "wordbank": ["four", "two", "three", "five"],
+      "answer": "four",
+      "explanation": "The Summer and Winter Olympics are each held every four years, staggered so one occurs every two years."
+    },
+
+    {
+      "type": "mc",
+      "prompt": "Which planet has the most moons in our solar system?",
+      "choices": ["Jupiter", "Saturn", "Uranus", "Neptune"],
+      "answer": 1,
+      "explanations": ["Jupiter has many moons but Saturn recently took the record.", null, "Uranus has 27 known moons — fewer than Saturn.", "Neptune has 16 known moons."]
+    },
+
+    {
+      "type": "type",
+      "prompt": "How many bones are in the adult human body?",
+      "answer": ["206"],
+      "explanation": "Adults have 206 bones. Babies are born with around 270-300 bones, many of which fuse together as they grow."
+    },
+
+    {
+      "type": "wordbank",
+      "prompt": "In chess, the piece that can only move diagonally is the _____.",
+      "wordbank": ["bishop", "rook", "knight", "pawn"],
+      "answer": "bishop",
+      "explanation": "The bishop moves any number of squares diagonally and stays on the same color square its entire life."
+    },
+
+    {
+      "type": "mc",
+      "prompt": "Which of these musicians is known as the 'King of Pop'?",
+      "choices": ["Elvis Presley", "Prince", "Michael Jackson", "David Bowie"],
+      "answer": 2,
+      "explanations": ["Elvis Presley is the 'King of Rock and Roll'.", "Prince is sometimes called 'The Purple One'.", null, "David Bowie is known as 'Ziggy Stardust' among other personas."]
+    },
+
+    {
+      "type": "type",
+      "prompt": "How many inches are in one foot?",
+      "answer": ["12"],
+      "explanation": "1 foot = 12 inches. 3 feet = 1 yard. 5,280 feet = 1 mile."
+    },
+
+    {
+      "type": "wordbank",
+      "prompt": "The sport of surfing originated in _____.",
+      "wordbank": ["Hawaii", "California", "Australia", "Brazil"],
+      "answer": "Hawaii",
+      "explanation": "Surfing has ancient Polynesian roots and was practiced in Hawaii long before Western contact. It was brought to the mainland US from Hawaii in the early 1900s."
+    },
+
+    {
+      "type": "mc",
+      "prompt": "What is the name of Batman's butler?",
+      "choices": ["Jarvis", "Alfred", "Edwin", "Reginald"],
+      "answer": 1,
+      "explanations": ["Jarvis is Iron Man's AI assistant.", null, "Edwin is not Batman's butler.", "Reginald is not Batman's butler."]
+    },
+
+    {
+      "type": "type",
+      "prompt": "How many fluid ounces are in one cup?",
+      "answer": ["8"],
+      "explanation": "1 cup = 8 fluid ounces. 2 cups = 1 pint. 4 cups = 1 quart. 16 cups = 1 gallon."
+    },
+
+    {
+      "type": "wordbank",
+      "prompt": "The hashtag symbol # is also called a _____.",
+      "wordbank": ["pound", "asterisk", "ampersand", "caret"],
+      "answer": "pound",
+      "explanation": "The # symbol is called a pound sign (or number sign, or hash). On a musical staff it means 'sharp'. On social media it's a hashtag."
+    }
+
+  ]
+}
