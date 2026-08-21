@@ -873,19 +873,6 @@
     },
     {
       "type": "mc",
-      "prompt": "True or False: In a system with 3 equations and 3 unknowns, if the determinant of the coefficient matrix is nonzero, the system has a unique solution.",
-      "choices": [
-        "True",
-        "False"
-      ],
-      "answer": 0,
-      "explanations": [
-        null,
-        "Nonzero determinant means the matrix is invertible, guaranteeing a unique solution for any right-hand side."
-      ]
-    },
-    {
-      "type": "mc",
       "prompt": "The system $\\begin{cases}x_1 + 2x_2 = 5 \\\\ 3x_1 + 6x_2 = 15\\end{cases}$ has what kind of solution set?",
       "choices": [
         "No solution",
