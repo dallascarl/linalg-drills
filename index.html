@@ -210,6 +210,40 @@
       <button class="primary-btn" id="siBtn">Sign In</button>
     </div>
     <p style="text-align:center;font-size:13.5px;color:var(--chalk-dim);">No account? <button class="form-link" id="goSignup">Create one</button></p>
+    <p style="text-align:center;font-size:13px;color:var(--chalk-dim);margin-top:6px;">Forgot your password? <button class="form-link" id="goForgot">Reset it</button></p>
+  </section>
+
+  <section data-screen="forgot">
+    <h1>Reset password.</h1>
+    <p class="sub">Enter your email and we'll send you a reset link.</p>
+    <div class="form-card">
+      <h2>Forgot Password</h2>
+      <div class="field"><label>Email</label><input type="email" id="forgotEmail" placeholder="you@example.com" autocomplete="email"/></div>
+      <div class="form-err" id="forgotErr"></div>
+      <button class="primary-btn" id="forgotBtn">Send Reset Link</button>
+    </div>
+    <p style="text-align:center;font-size:13.5px;color:var(--chalk-dim);">Remember it? <button class="form-link" id="forgotBackBtn">Back to sign in</button></p>
+  </section>
+
+  <section data-screen="forgot-sent">
+    <div style="text-align:center;padding-top:60px;">
+      <div style="font-size:48px;margin-bottom:20px;">📨</div>
+      <h1>Check your email.</h1>
+      <p class="sub">We sent a password reset link to your email. Click it to set a new password.</p>
+      <button class="ghost-btn" id="forgotSentBackBtn">Back to sign in</button>
+    </div>
+  </section>
+
+  <section data-screen="reset-password">
+    <h1>New password.</h1>
+    <p class="sub">Choose a new password for your account.</p>
+    <div class="form-card">
+      <h2>Set New Password</h2>
+      <div class="field"><label>New Password</label><input type="password" id="resetPassword" placeholder="8+ characters" autocomplete="new-password"/></div>
+      <div class="field"><label>Confirm Password</label><input type="password" id="resetConfirm" placeholder="same again" autocomplete="new-password"/></div>
+      <div class="form-err" id="resetErr"></div>
+      <button class="primary-btn" id="resetBtn">Set Password</button>
+    </div>
   </section>
 
   <section data-screen="signup">
@@ -379,6 +413,13 @@ function isTeacher(){ return currentUser && TEACHER_IDS.includes(currentUser.id)
 
 sb.auth.onAuthStateChange(async (event, session) => {
   currentUser = session?.user || null;
+
+  // Supabase fires PASSWORD_RECOVERY when user clicks the reset link in email
+  if (event === 'PASSWORD_RECOVERY'){
+    showScreen('reset-password');
+    return;
+  }
+
   if (currentUser){
     await refreshProfile();
     showHeaderButtons(true);
@@ -409,6 +450,46 @@ document.getElementById('siBtn').addEventListener('click', async () => {
 document.getElementById('goSignup').addEventListener('click', () => showScreen('signup'));
 document.getElementById('goSignin').addEventListener('click', () => showScreen('signin'));
 document.getElementById('backToSignin').addEventListener('click', () => showScreen('signin'));
+
+// Forgot password
+document.getElementById('goForgot').addEventListener('click', () => {
+  document.getElementById('forgotErr').textContent = '';
+  document.getElementById('forgotEmail').value = '';
+  showScreen('forgot');
+});
+document.getElementById('forgotBackBtn').addEventListener('click', () => showScreen('signin'));
+document.getElementById('forgotSentBackBtn').addEventListener('click', () => showScreen('signin'));
+
+document.getElementById('forgotBtn').addEventListener('click', async () => {
+  const email  = document.getElementById('forgotEmail').value.trim();
+  const errEl  = document.getElementById('forgotErr');
+  errEl.textContent = '';
+  if (!email){ errEl.textContent = 'Please enter your email.'; return; }
+  const {error} = await sb.auth.resetPasswordForEmail(email, {
+    redirectTo: window.location.origin + window.location.pathname
+  });
+  if (error){ errEl.textContent = error.message; return; }
+  showScreen('forgot-sent');
+});
+
+// Reset password (after clicking email link)
+document.getElementById('resetBtn').addEventListener('click', async () => {
+  const pass    = document.getElementById('resetPassword').value;
+  const confirm = document.getElementById('resetConfirm').value;
+  const errEl   = document.getElementById('resetErr');
+  errEl.textContent = '';
+  if (pass.length < 8){ errEl.textContent = 'Password must be at least 8 characters.'; return; }
+  if (pass !== confirm){ errEl.textContent = 'Passwords do not match.'; return; }
+  const {error} = await sb.auth.updateUser({password: pass});
+  if (error){ errEl.textContent = error.message; return; }
+  // Success — sign them in and go to menu
+  await sb.auth.signOut();
+  showScreen('signin');
+  document.getElementById('siErr').textContent = '';
+  // Show a success message on the sign-in screen
+  document.getElementById('siErr').style.color = 'var(--correct)';
+  document.getElementById('siErr').textContent = '✓ Password updated! Sign in with your new password.';
+});
 
 document.getElementById('suBtn').addEventListener('click', async () => {
   const fullName = document.getElementById('suFullName').value.trim();
