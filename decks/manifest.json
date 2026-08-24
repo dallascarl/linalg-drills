@@ -3,6 +3,6 @@
   { "id": "fun-trivia-2", "file": "decks/fun-trivia-2.json" },
   { "id": "is-it-linear", "file": "decks/is-it-linear.json" },
   { "id": "linear-systems-intro", "file": "decks/linear-systems-intro.json" },
-  { "id": "row-echelon-form", "file": "decks/row-echelon-form.json” },
-  { "id": "next-step-ref", "file": "decks/next-step-ref.json” }
+  { "id": "row-echelon-form", "file": "decks/row-echelon-form.json" },
+  { "id": "next-step-ref", "file": "decks/next-step-ref.json" }
 ]
