@@ -1,0 +1,1177 @@
+{
+  "id": "is-operation-defined",
+  "title": "Is This Operation Defined?",
+  "description": "Matrix addition, multiplication, scalar multiplication, transpose — and combinations",
+  "questionsPerAttempt": 10,
+  "pointsPerQuestion": 1,
+  "questions": [
+    {
+      "type": "mc",
+      "prompt": "Let $A$ be $2 \\times 3$ and $B$ be $2 \\times 3$. Is $A + B$ defined?",
+      "choices": [
+        "Defined",
+        "Not defined"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "Both matrices are $2 \\times 3$, so they have the same size — addition is defined."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "Let $A$ be $2 \\times 3$ and $B$ be $3 \\times 2$. Is $A + B$ defined?",
+      "choices": [
+        "Defined",
+        "Not defined"
+      ],
+      "answer": 1,
+      "explanations": [
+        "Addition requires both matrices to be the same size. $A$ is $2 \\times 3$ and $B$ is $3 \\times 2$ — different sizes.",
+        null
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "Let $A$ be $4 \\times 4$ and $B$ be $4 \\times 4$. Is $A + B$ defined?",
+      "choices": [
+        "Defined",
+        "Not defined"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "Both are $4 \\times 4$ — same size, so addition is defined."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "Let $A$ be $3 \\times 1$ and $B$ be $1 \\times 3$. Is $A + B$ defined?",
+      "choices": [
+        "Defined",
+        "Not defined"
+      ],
+      "answer": 1,
+      "explanations": [
+        "$A$ is $3 \\times 1$ (a column vector) and $B$ is $1 \\times 3$ (a row vector) — different sizes, addition is not defined.",
+        null
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "Let $A$ be $5 \\times 2$ and $B$ be $5 \\times 2$. Is $A + B$ defined?",
+      "choices": [
+        "Defined",
+        "Not defined"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "Both are $5 \\times 2$ — same size, addition is defined."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "Let $A$ be $3 \\times 4$ and $B$ be $3 \\times 3$. Is $A + B$ defined?",
+      "choices": [
+        "Defined",
+        "Not defined"
+      ],
+      "answer": 1,
+      "explanations": [
+        "$A$ is $3 \\times 4$ and $B$ is $3 \\times 3$ — different numbers of columns, so addition is not defined.",
+        null
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "Let $c = 5$ and $A$ be $3 \\times 4$. Is $cA$ defined?",
+      "choices": [
+        "Defined",
+        "Not defined"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "Scalar multiplication is always defined — any scalar times any matrix is defined."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "Let $c = -2$ and $A$ be $1 \\times 1$. Is $cA$ defined?",
+      "choices": [
+        "Defined",
+        "Not defined"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "Scalar multiplication is always defined regardless of matrix size."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "Let $A$ be $3 \\times 5$. Is $A^T$ defined?",
+      "choices": [
+        "Defined",
+        "Not defined"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "The transpose is always defined. $A^T$ would be $5 \\times 3$."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "Let $A$ be $1 \\times 7$. Is $A^T$ defined?",
+      "choices": [
+        "Defined",
+        "Not defined"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "Transpose is always defined. $A^T$ would be $7 \\times 1$."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "Let $A$ be $2 \\times 3$ and $B$ be $3 \\times 4$. Is $AB$ defined?",
+      "choices": [
+        "Defined",
+        "Not defined"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "The number of columns of $A$ (3) equals the number of rows of $B$ (3). $AB$ is defined and is $2 \\times 4$."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "Let $A$ be $2 \\times 3$ and $B$ be $2 \\times 4$. Is $AB$ defined?",
+      "choices": [
+        "Defined",
+        "Not defined"
+      ],
+      "answer": 1,
+      "explanations": [
+        "Columns of $A$ = 3, rows of $B$ = 2. Since $3 \\neq 2$, $AB$ is not defined.",
+        null
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "Let $A$ be $4 \\times 4$ and $B$ be $4 \\times 4$. Is $AB$ defined?",
+      "choices": [
+        "Defined",
+        "Not defined"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "Columns of $A$ (4) = rows of $B$ (4). $AB$ is defined and is $4 \\times 4$."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "Let $A$ be $3 \\times 2$ and $B$ be $3 \\times 2$. Is $AB$ defined?",
+      "choices": [
+        "Defined",
+        "Not defined"
+      ],
+      "answer": 1,
+      "explanations": [
+        "Columns of $A$ = 2, rows of $B$ = 3. Since $2 \\neq 3$, $AB$ is not defined.",
+        null
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "Let $A$ be $1 \\times 4$ and $B$ be $4 \\times 1$. Is $AB$ defined?",
+      "choices": [
+        "Defined",
+        "Not defined"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "Columns of $A$ (4) = rows of $B$ (4). $AB$ is defined and is $1 \\times 1$ — a scalar."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "Let $A$ be $4 \\times 1$ and $B$ be $1 \\times 4$. Is $AB$ defined?",
+      "choices": [
+        "Defined",
+        "Not defined"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "Columns of $A$ (1) = rows of $B$ (1). $AB$ is defined and is $4 \\times 4$."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "Let $A$ be $3 \\times 3$ and $B$ be $4 \\times 3$. Is $AB$ defined?",
+      "choices": [
+        "Defined",
+        "Not defined"
+      ],
+      "answer": 1,
+      "explanations": [
+        "Columns of $A$ = 3, rows of $B$ = 4. Since $3 \\neq 4$, $AB$ is not defined.",
+        null
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "Let $A$ be $2 \\times 5$ and $B$ be $5 \\times 1$. Is $AB$ defined?",
+      "choices": [
+        "Defined",
+        "Not defined"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "Columns of $A$ (5) = rows of $B$ (5). $AB$ is defined and is $2 \\times 1$."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "Let $A$ be $2 \\times 3$ and $B$ be $3 \\times 4$. Is $BA$ defined?",
+      "choices": [
+        "Defined",
+        "Not defined"
+      ],
+      "answer": 1,
+      "explanations": [
+        "For $BA$: columns of $B$ = 4, rows of $A$ = 2. Since $4 \\neq 2$, $BA$ is not defined. Note: $AB$ is defined but $BA$ is not.",
+        null
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "Let $A$ be $4 \\times 4$ and $B$ be $4 \\times 4$. Is $BA$ defined?",
+      "choices": [
+        "Defined",
+        "Not defined"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "Columns of $B$ (4) = rows of $A$ (4). $BA$ is defined and is $4 \\times 4$."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "Let $A$ be $2 \\times 3$ and $B$ be $3 \\times 4$. Is $A + B$ defined?",
+      "choices": [
+        "Defined",
+        "Not defined"
+      ],
+      "answer": 1,
+      "explanations": [
+        "$A$ is $2 \\times 3$ and $B$ is $3 \\times 4$ — different sizes, addition is not defined. Don't confuse this with $AB$, which IS defined.",
+        null
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "Let $A$ be $3 \\times 3$. Is $A + A^T$ defined?",
+      "choices": [
+        "Defined",
+        "Not defined"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "$A$ is $3 \\times 3$ so $A^T$ is also $3 \\times 3$. Both are the same size — addition is defined."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "Let $A$ be $2 \\times 4$. Is $A + A^T$ defined?",
+      "choices": [
+        "Defined",
+        "Not defined"
+      ],
+      "answer": 1,
+      "explanations": [
+        "$A$ is $2 \\times 4$ and $A^T$ is $4 \\times 2$ — different sizes, so addition is not defined.",
+        null
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "Let $A$ be $3 \\times 2$ and $B$ be $3 \\times 2$. Is $A^T + B^T$ defined?",
+      "choices": [
+        "Defined",
+        "Not defined"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "$A^T$ is $2 \\times 3$ and $B^T$ is $2 \\times 3$ — same size, addition is defined."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "Let $A$ be $3 \\times 2$ and $B$ be $2 \\times 3$. Is $A^T + B$ defined?",
+      "choices": [
+        "Defined",
+        "Not defined"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "$A^T$ is $2 \\times 3$ and $B$ is $2 \\times 3$ — same size, addition is defined."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "Let $A$ be $2 \\times 3$ and $B$ be $3 \\times 4$. Is $(AB)^T$ defined?",
+      "choices": [
+        "Defined",
+        "Not defined"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "First check $AB$: columns of $A$ (3) = rows of $B$ (3), so $AB$ is $2 \\times 4$. Then $(AB)^T$ is $4 \\times 2$. Defined."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "Let $A$ be $2 \\times 3$ and $B$ be $2 \\times 4$. Is $(AB)^T$ defined?",
+      "choices": [
+        "Defined",
+        "Not defined"
+      ],
+      "answer": 1,
+      "explanations": [
+        "First check $AB$: columns of $A$ = 3, rows of $B$ = 2. Since $3 \\neq 2$, $AB$ is not defined, so $(AB)^T$ is also not defined.",
+        null
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "Let $A$ be $3 \\times 4$ and $B$ be $4 \\times 2$. What is the size of $AB$?",
+      "choices": [
+        "$3 \\times 2$",
+        "$4 \\times 4$",
+        "Not defined",
+        "$3 \\times 4$"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "The result of $AB$ where $A$ is $m \\times n$ and $B$ is $n \\times p$ is $m \\times p$ — here $3 \\times 2$.",
+        "Columns of $A$ (4) = rows of $B$ (4) — $AB$ is defined.",
+        "$AB$ takes the outer dimensions: $3 \\times 2$, not $3 \\times 4$."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "Let $A$ be $2 \\times 3$ and $B$ be $3 \\times 2$. What is the size of $AB$?",
+      "choices": [
+        "$3 \\times 3$",
+        "$2 \\times 2$",
+        "Not defined",
+        "$2 \\times 3$"
+      ],
+      "answer": 1,
+      "explanations": [
+        "$AB$ takes outer dimensions — $2 \\times 2$, not $3 \\times 3$.",
+        null,
+        "Columns of $A$ (3) = rows of $B$ (3) — $AB$ is defined.",
+        "$AB$ gives $2 \\times 2$, not $2 \\times 3$."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "Let $A$ be $3 \\times 2$ and $B$ be $2 \\times 3$. What is the size of $BA$?",
+      "choices": [
+        "$2 \\times 2$",
+        "$3 \\times 3$",
+        "Not defined",
+        "$2 \\times 3$"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "$B$ is $2 \\times 3$ and $A$ is $3 \\times 2$: outer dimensions give $2 \\times 2$, not $3 \\times 3$.",
+        "Columns of $B$ (3) = rows of $A$ (3) — $BA$ is defined.",
+        "The result is $2 \\times 2$, not $2 \\times 3$."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "Let $A$ be $3 \\times 2$ and $B$ be $2 \\times 3$. What is the size of $BA$?",
+      "choices": [
+        "$3 \\times 3$",
+        "$2 \\times 2$",
+        "Not defined",
+        "$2 \\times 3$"
+      ],
+      "answer": 1,
+      "explanations": [
+        "$B$ is $2 \\times 3$ and $A$ is $3 \\times 2$: outer dimensions are $2 \\times 2$, not $3 \\times 3$.",
+        null,
+        "Columns of $B$ (3) = rows of $A$ (3) — $BA$ is defined.",
+        "The result is $2 \\times 2$, not $2 \\times 3$."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "Let $A$ be $5 \\times 3$ and $B$ be $3 \\times 5$. Is $AB + BA$ defined?",
+      "choices": [
+        "Defined",
+        "Not defined"
+      ],
+      "answer": 1,
+      "explanations": [
+        "$AB$ is $5 \\times 5$ and $BA$ is $3 \\times 3$ — different sizes, so $AB + BA$ is not defined.",
+        null
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "Let $A$ be $4 \\times 4$ and $B$ be $4 \\times 4$. Is $AB + BA$ defined?",
+      "choices": [
+        "Defined",
+        "Not defined"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "$AB$ is $4 \\times 4$ and $BA$ is $4 \\times 4$ — same size, so $AB + BA$ is defined."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "Let $A$ be $2 \\times 3$, $B$ be $3 \\times 4$, $C$ be $4 \\times 2$. Is $ABC$ defined?",
+      "choices": [
+        "Defined",
+        "Not defined"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "$AB$: columns of $A$ (3) = rows of $B$ (3) ✓, gives $2 \\times 4$. Then $(AB)C$: columns (4) = rows of $C$ (4) ✓, gives $2 \\times 2$. Defined."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "Let $A$ be $2 \\times 3$, $B$ be $3 \\times 4$, $C$ be $3 \\times 2$. Is $ABC$ defined?",
+      "choices": [
+        "Defined",
+        "Not defined"
+      ],
+      "answer": 1,
+      "explanations": [
+        "$AB$ is $2 \\times 4$. Then $(AB)C$: columns of $AB$ = 4, rows of $C$ = 3. Since $4 \\neq 3$, $ABC$ is not defined.",
+        null
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "Let $A$ be $3 \\times 3$ and $B$ be $3 \\times 3$. Is $A^2 + B^2$ defined? (where $A^2 = AA$)",
+      "choices": [
+        "Defined",
+        "Not defined"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "$AA$ is $3 \\times 3$ and $BB$ is $3 \\times 3$. Both are the same size — addition is defined."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "Let $A$ be $2 \\times 3$. Is $A^2$ defined? (where $A^2 = AA$)",
+      "choices": [
+        "Defined",
+        "Not defined"
+      ],
+      "answer": 1,
+      "explanations": [
+        "For $AA$: columns of $A$ = 3, rows of $A$ = 2. Since $3 \\neq 2$, $AA$ is not defined. Only square matrices can be squared.",
+        null
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "Let $A$ be $4 \\times 4$. Is $A^2$ defined? (where $A^2 = AA$)",
+      "choices": [
+        "Defined",
+        "Not defined"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "For $AA$: columns of $A$ (4) = rows of $A$ (4). $A^2$ is defined and is $4 \\times 4$."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "Let $A$ be $3 \\times 2$ and $B$ be $2 \\times 3$. Is $A^T B^T$ defined?",
+      "choices": [
+        "Defined",
+        "Not defined"
+      ],
+      "answer": 1,
+      "explanations": [
+        "$A^T$ is $2 \\times 3$ and $B^T$ is $3 \\times 2$. For $A^T B^T$: columns of $A^T$ (3) vs rows of $B^T$ (3) — wait, that is 3 = 3, so it IS defined as $2 \\times 2$. Check again.",
+        null
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "Let $A$ be $3 \\times 2$ and $B$ be $2 \\times 3$. Is $B^T A^T$ defined?",
+      "choices": [
+        "Defined",
+        "Not defined"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "$B^T$ is $3 \\times 2$ and $A^T$ is $2 \\times 3$. Columns of $B^T$ (2) = rows of $A^T$ (2). Defined — and this equals $(AB)^T$."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "Let $A$ be $2 \\times 3$ and $B$ be $3 \\times 4$. Is $A^T B$ defined?",
+      "choices": [
+        "Defined",
+        "Not defined"
+      ],
+      "answer": 1,
+      "explanations": [
+        "$A^T$ is $3 \\times 2$. For $A^T B$: columns of $A^T$ (2) vs rows of $B$ (3). Since $2 \\neq 3$, not defined.",
+        null
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "Let $A$ be $3 \\times 2$ and $B$ be $3 \\times 4$. Is $A^T B$ defined?",
+      "choices": [
+        "Defined",
+        "Not defined"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "$A^T$ is $2 \\times 3$. Columns of $A^T$ (3) = rows of $B$ (3). $A^T B$ is defined and is $2 \\times 4$."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "Let $A$ be $4 \\times 3$ and $B$ be $4 \\times 3$. Is $A^T B$ defined?",
+      "choices": [
+        "Defined",
+        "Not defined"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "$A^T$ is $3 \\times 4$. Columns of $A^T$ (4) = rows of $B$ (4). $A^T B$ is defined and is $3 \\times 3$."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "Let $A$ be $2 \\times 4$ and $B$ be $3 \\times 4$. Is $AB^T$ defined?",
+      "choices": [
+        "Defined",
+        "Not defined"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "$B^T$ is $4 \\times 3$. Columns of $A$ (4) = rows of $B^T$ (4). $AB^T$ is defined and is $2 \\times 3$."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "Let $A$ be $2 \\times 4$ and $B$ be $2 \\times 3$. Is $AB^T$ defined?",
+      "choices": [
+        "Defined",
+        "Not defined"
+      ],
+      "answer": 1,
+      "explanations": [
+        "$B^T$ is $3 \\times 2$. Columns of $A$ (4) vs rows of $B^T$ (3). Since $4 \\neq 3$, not defined.",
+        null
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "Let $c = 3$ and $A$ be $4 \\times 2$. What is the size of $cA$?",
+      "choices": [
+        "$4 \\times 2$",
+        "$3 \\times 2$",
+        "$4 \\times 3$",
+        "Not defined"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "Scalar multiplication scales every entry — the size stays $4 \\times 2$.",
+        "The scalar $c$ does not become a dimension of the matrix.",
+        "Scalar multiplication is always defined."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "Let $A$ be $3 \\times 5$. What is the size of $A^T$?",
+      "choices": [
+        "$3 \\times 5$",
+        "$5 \\times 3$",
+        "$5 \\times 5$",
+        "Not defined"
+      ],
+      "answer": 1,
+      "explanations": [
+        "$A^T$ flips the dimensions — rows become columns and vice versa.",
+        null,
+        "The transpose does not produce a square matrix from a non-square one.",
+        "Transpose is always defined."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "Let $A$ be $2 \\times 3$ and $B$ be $3 \\times 2$. Is $cA + B^T$ defined for any scalar $c$?",
+      "choices": [
+        "Defined",
+        "Not defined"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "$cA$ is $2 \\times 3$ (scalar mult preserves size). $B^T$ is $2 \\times 3$. Same size — addition is defined."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "Let $A$ be $2 \\times 3$ and $B$ be $2 \\times 3$. Is $cA + dB$ defined for any scalars $c$ and $d$?",
+      "choices": [
+        "Defined",
+        "Not defined"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "$cA$ is $2 \\times 3$ and $dB$ is $2 \\times 3$ — same size, so addition is defined."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "Let $A$ be $3 \\times 3$ and $B$ be $3 \\times 3$. Is $2A - 3B$ defined?",
+      "choices": [
+        "Defined",
+        "Not defined"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "$2A$ and $3B$ are both $3 \\times 3$. Subtraction (adding the negative) of same-size matrices is defined."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "Let $A$ be $3 \\times 4$ and $B$ be $4 \\times 3$. Is $AB - BA$ defined?",
+      "choices": [
+        "Defined",
+        "Not defined"
+      ],
+      "answer": 1,
+      "explanations": [
+        "$AB$ is $3 \\times 3$ and $BA$ is $4 \\times 4$ — different sizes, so $AB - BA$ is not defined.",
+        null
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "Let $A$ be $3 \\times 3$ and $B$ be $3 \\times 3$. Is $AB - BA$ defined?",
+      "choices": [
+        "Defined",
+        "Not defined"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "$AB$ and $BA$ are both $3 \\times 3$ — same size, so subtraction is defined. (The result is called the commutator of $A$ and $B$.)"
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "Let $A$ be $2 \\times 3$, $B$ be $3 \\times 2$. Is $(AB)^2$ defined?",
+      "choices": [
+        "Defined",
+        "Not defined"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "$AB$ is $2 \\times 2$ (square!). So $(AB)^2 = (AB)(AB)$ has columns (2) = rows (2). Defined."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "Let $A$ be $2 \\times 3$, $B$ be $3 \\times 4$. Is $(AB)^2$ defined?",
+      "choices": [
+        "Defined",
+        "Not defined"
+      ],
+      "answer": 1,
+      "explanations": [
+        "$AB$ is $2 \\times 4$ (not square). For $(AB)^2 = (AB)(AB)$: columns of $AB$ (4) $\\neq$ rows of $AB$ (2). Not defined.",
+        null
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "Let $A$ be $3 \\times 2$ and $B$ be $3 \\times 2$. Is $A^T B$ defined?",
+      "choices": [
+        "Defined",
+        "Not defined"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "$A^T$ is $2 \\times 3$. Columns of $A^T$ (3) = rows of $B$ (3). $A^T B$ is $2 \\times 2$. Defined."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "Let $A$ be $m \\times n$ and $B$ be $n \\times m$. Is $AB$ always defined?",
+      "choices": [
+        "Defined",
+        "Not defined"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "Columns of $A$ = $n$ = rows of $B$. $AB$ is always defined and gives an $m \\times m$ matrix."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "Let $A$ be $m \\times n$ and $B$ be $m \\times n$. Is $AB$ always defined?",
+      "choices": [
+        "Defined",
+        "Not defined"
+      ],
+      "answer": 1,
+      "explanations": [
+        "Columns of $A$ = $n$, rows of $B$ = $m$. $AB$ is defined only when $n = m$, i.e., only when $A$ and $B$ are square of the same size.",
+        null
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "Let $A$ be $3 \\times 4$ and $B$ be $3 \\times 4$. Is $A^T + B$ defined?",
+      "choices": [
+        "Defined",
+        "Not defined"
+      ],
+      "answer": 1,
+      "explanations": [
+        "$A^T$ is $4 \\times 3$ and $B$ is $3 \\times 4$ — different sizes, not defined.",
+        null
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "Let $A$ be $4 \\times 3$ and $B$ be $3 \\times 4$. Is $A^T + B$ defined?",
+      "choices": [
+        "Defined",
+        "Not defined"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "$A^T$ is $3 \\times 4$ and $B$ is $3 \\times 4$ — same size, addition is defined."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "Let $A$ be $5 \\times 5$. Is $A + A^T$ defined?",
+      "choices": [
+        "Defined",
+        "Not defined"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "$A$ is $5 \\times 5$ so $A^T$ is also $5 \\times 5$. Same size — addition is defined."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "Let $A$ be $2 \\times 4$ and $B$ be $4 \\times 3$ and $C$ be $2 \\times 3$. Is $AB + C$ defined?",
+      "choices": [
+        "Defined",
+        "Not defined"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "$AB$: columns of $A$ (4) = rows of $B$ (4), so $AB$ is $2 \\times 3$. Then $AB + C$: both are $2 \\times 3$. Defined."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "Let $A$ be $2 \\times 4$ and $B$ be $4 \\times 3$ and $C$ be $3 \\times 2$. Is $AB + C$ defined?",
+      "choices": [
+        "Defined",
+        "Not defined"
+      ],
+      "answer": 1,
+      "explanations": [
+        "$AB$ is $2 \\times 3$ and $C$ is $3 \\times 2$ — different sizes, so $AB + C$ is not defined.",
+        null
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "Let $A$ be $3 \\times 2$, $B$ be $2 \\times 4$, $C$ be $4 \\times 3$. Is $A(B + C)$ defined?",
+      "choices": [
+        "Defined",
+        "Not defined"
+      ],
+      "answer": 1,
+      "explanations": [
+        "First check $B + C$: $B$ is $2 \\times 4$ and $C$ is $4 \\times 3$ — different sizes, so $B + C$ is not defined. The whole expression fails.",
+        null
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "Let $A$ be $3 \\times 2$, $B$ be $2 \\times 4$, $C$ be $2 \\times 4$. Is $A(B + C)$ defined?",
+      "choices": [
+        "Defined",
+        "Not defined"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "$B + C$: both $2 \\times 4$, so $B + C$ is $2 \\times 4$. Then $A(B+C)$: columns of $A$ (2) = rows (2). Defined — result is $3 \\times 4$."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "Let $A$ be $4 \\times 3$ and $B$ be $4 \\times 3$. Is $(A - B)^T$ defined?",
+      "choices": [
+        "Defined",
+        "Not defined"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "$A - B$: both $4 \\times 3$, so $A - B$ is $4 \\times 3$. Transpose is always defined — $(A-B)^T$ is $3 \\times 4$."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "Let $A$ be $3 \\times 2$ and $B$ be $2 \\times 3$. Is $(A + B)^T$ defined?",
+      "choices": [
+        "Defined",
+        "Not defined"
+      ],
+      "answer": 1,
+      "explanations": [
+        "$A + B$: $A$ is $3 \\times 2$ and $B$ is $2 \\times 3$ — different sizes, so $A + B$ is not defined. The transpose of an undefined expression is also undefined.",
+        null
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "Let $A$ be $2 \\times 3$ and $B$ be $3 \\times 2$. Is $A^T A$ defined?",
+      "choices": [
+        "Defined",
+        "Not defined"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "$A^T$ is $3 \\times 2$. Columns of $A^T$ (2) = rows of $A$ (2). $A^T A$ is defined and is $3 \\times 3$."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "Let $A$ be $2 \\times 3$. Is $A A^T$ defined?",
+      "choices": [
+        "Defined",
+        "Not defined"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "$A^T$ is $3 \\times 2$. Columns of $A$ (3) = rows of $A^T$ (3). $AA^T$ is defined and is $2 \\times 2$."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "Let $A$ be $m \\times n$. Is $A^T A$ always defined?",
+      "choices": [
+        "Defined",
+        "Not defined"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "$A^T$ is $n \\times m$. Columns of $A^T$ ($m$) = rows of $A$ ($m$). $A^T A$ is always defined and is $n \\times n$."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "Let $A$ be $m \\times n$. Is $A A^T$ always defined?",
+      "choices": [
+        "Defined",
+        "Not defined"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "$A^T$ is $n \\times m$. Columns of $A$ ($n$) = rows of $A^T$ ($n$). $AA^T$ is always defined and is $m \\times m$."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "Let $A$ be $3 \\times 3$ and $B$ be $3 \\times 3$. Is $A^2 - B^2$ defined?",
+      "choices": [
+        "Defined",
+        "Not defined"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "$A^2 = AA$ is $3 \\times 3$ and $B^2 = BB$ is $3 \\times 3$. Same size — subtraction is defined."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "Let $A$ be $2 \\times 2$ and $B$ be $3 \\times 3$. Is $A^2 + B^2$ defined?",
+      "choices": [
+        "Defined",
+        "Not defined"
+      ],
+      "answer": 1,
+      "explanations": [
+        "$A^2$ is $2 \\times 2$ and $B^2$ is $3 \\times 3$ — different sizes, so $A^2 + B^2$ is not defined.",
+        null
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "Let $A$ be $3 \\times 2$, $B$ be $2 \\times 3$. Is $(BA)^T$ defined?",
+      "choices": [
+        "Defined",
+        "Not defined"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "$BA$: columns of $B$ (3) = rows of $A$ (3) ✓, result is $2 \\times 2$. Transpose of $2 \\times 2$ is $2 \\times 2$. Defined."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "Let $A$ be $1 \\times n$ (a row vector) and $B$ be $1 \\times n$ (a row vector). Is $AB$ defined?",
+      "choices": [
+        "Defined",
+        "Not defined"
+      ],
+      "answer": 1,
+      "explanations": [
+        "Columns of $A$ = $n$, rows of $B$ = 1. Since $n \\neq 1$ for $n > 1$, $AB$ is generally not defined.",
+        null
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "Let $A$ be $n \\times 1$ (a column vector) and $B$ be $1 \\times n$ (a row vector). Is $AB$ defined?",
+      "choices": [
+        "Defined",
+        "Not defined"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "Columns of $A$ (1) = rows of $B$ (1). $AB$ is defined and is $n \\times n$ (an outer product)."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "Let $A$ be $1 \\times n$ (a row vector) and $B$ be $n \\times 1$ (a column vector). Is $AB$ defined?",
+      "choices": [
+        "Defined",
+        "Not defined"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "Columns of $A$ ($n$) = rows of $B$ ($n$). $AB$ is defined and is $1 \\times 1$ — a scalar (the dot product)."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "Let $A$ be $2 \\times 3$, $B$ be $3 \\times 1$, $C$ be $3 \\times 1$. Is $A(B + C)$ defined?",
+      "choices": [
+        "Defined",
+        "Not defined"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "$B + C$: both $3 \\times 1$, so $B + C$ is $3 \\times 1$. Then $A(B+C)$: columns of $A$ (3) = rows (3). Defined — result is $2 \\times 1$."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "Let $A$ be $3 \\times 2$, $B$ be $3 \\times 2$, $C$ be $2 \\times 4$. Is $(A + B)C$ defined?",
+      "choices": [
+        "Defined",
+        "Not defined"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "$A + B$: both $3 \\times 2$, so $A + B$ is $3 \\times 2$. Then $(A+B)C$: columns (2) = rows of $C$ (2). Defined — result is $3 \\times 4$."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "Let $A$ be $2 \\times 3$, $B$ be $3 \\times 2$, $C$ be $2 \\times 3$. Is $(AB)C$ defined?",
+      "choices": [
+        "Defined",
+        "Not defined"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "$AB$: $2 \\times 3$ times $3 \\times 2$ = $2 \\times 2$. Then $(AB)C$: columns (2) = rows of $C$ (2). Defined — result is $2 \\times 3$."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "Let $A$ be $4 \\times 2$ and $B$ be $4 \\times 2$. Is $(A + B)^T (A + B)$ defined?",
+      "choices": [
+        "Defined",
+        "Not defined"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "$A + B$ is $4 \\times 2$. $(A+B)^T$ is $2 \\times 4$. Then $(A+B)^T(A+B)$: columns (4) = rows of $A+B$ (4). Defined — result is $2 \\times 2$."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "Let $A$ be $3 \\times 3$. Is $A + 5A^T$ defined?",
+      "choices": [
+        "Defined",
+        "Not defined"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "$A$ is $3 \\times 3$ and $A^T$ is $3 \\times 3$. Scalar mult keeps size, then addition of same-size matrices is defined."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "Let $A$ be $2 \\times 4$. Is $A + 5A^T$ defined?",
+      "choices": [
+        "Defined",
+        "Not defined"
+      ],
+      "answer": 1,
+      "explanations": [
+        "$A$ is $2 \\times 4$ and $A^T$ is $4 \\times 2$. Even after scalar mult, $5A^T$ is $4 \\times 2$ — different size from $A$. Not defined.",
+        null
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "Let $A$ be $3 \\times 4$, $B$ be $4 \\times 3$. Is $AB + (AB)^T$ defined?",
+      "choices": [
+        "Defined",
+        "Not defined"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "$AB$ is $3 \\times 3$. $(AB)^T$ is $3 \\times 3$. Same size — addition is defined."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "Let $A$ be $2 \\times 3$, $B$ be $3 \\times 2$, $C$ be $2 \\times 3$. Is $AB + BC$ defined?",
+      "choices": [
+        "Defined",
+        "Not defined"
+      ],
+      "answer": 1,
+      "explanations": [
+        "$AB$ is $2 \\times 2$. For $BC$: columns of $B$ (2) vs rows of $C$ (2)... $BC$ is $3 \\times 3$. Then $AB + BC$: $2 \\times 2$ vs $3 \\times 3$ — not defined.",
+        null
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "Let $A$ be $n \\times n$ (square). Is $A + A^T$ always defined?",
+      "choices": [
+        "Defined",
+        "Not defined"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "For any square matrix, $A^T$ is also $n \\times n$. Same size — $A + A^T$ is always defined for square matrices."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "Let $A$ be $3 \\times 2$ and $c$ be a scalar. Is $(cA)^T$ defined?",
+      "choices": [
+        "Defined",
+        "Not defined"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "$cA$ is $3 \\times 2$ (scalar mult preserves size). Transpose is always defined — $(cA)^T$ is $2 \\times 3$."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "Let $A$ be $3 \\times 4$ and $B$ be $4 \\times 3$. Is $3AB - 2BA$ defined?",
+      "choices": [
+        "Defined",
+        "Not defined"
+      ],
+      "answer": 1,
+      "explanations": [
+        "$AB$ is $3 \\times 3$ and $BA$ is $4 \\times 4$ — different sizes, so $3AB - 2BA$ is not defined.",
+        null
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "Let $A$ be $3 \\times 3$ and $B$ be $3 \\times 3$. Is $3AB - 2BA$ defined?",
+      "choices": [
+        "Defined",
+        "Not defined"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "$AB$ and $BA$ are both $3 \\times 3$. Scalar multiples are also $3 \\times 3$. Subtraction of same-size matrices is defined."
+      ]
+    }
+  ]
+}

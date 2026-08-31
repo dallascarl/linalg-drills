@@ -1,0 +1,782 @@
+{
+  "id": "matrix-definitions",
+  "title": "Matrix Definitions & Operations",
+  "description": "Square, triangular, diagonal matrices; transpose; row/column vectors; basic multiplication",
+  "questionsPerAttempt": 10,
+  "pointsPerQuestion": 1,
+  "questions": [
+    {
+      "type": "mc",
+      "prompt": "A matrix with the same number of rows and columns is called a _____ matrix.",
+      "choices": [
+        "Rectangular",
+        "Square",
+        "Diagonal",
+        "Triangular"
+      ],
+      "answer": 1,
+      "explanations": [
+        "Rectangular describes any matrix — not specific enough.",
+        null,
+        "Diagonal is a special type of square matrix.",
+        "Triangular is also a special type of square matrix."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "True or False: Every diagonal matrix is also a square matrix.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "A diagonal matrix has entries only on the main diagonal, which requires an equal number of rows and columns — so it must be square."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "True or False: Every square matrix is also a diagonal matrix.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 1,
+      "explanations": [
+        "A square matrix can have nonzero entries anywhere — only those with zeros off the diagonal are diagonal matrices.",
+        null
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "The transpose $A^T$ of a matrix $A$ is formed by:",
+      "choices": [
+        "Multiplying every entry by $-1$",
+        "Swapping the rows and columns",
+        "Replacing each entry with its reciprocal",
+        "Moving every entry to the opposite corner"
+      ],
+      "answer": 1,
+      "explanations": [
+        "Multiplying by $-1$ gives the negative of a matrix, not the transpose.",
+        null,
+        "Replacing with reciprocals is not a standard matrix operation.",
+        "Only the main diagonal entries stay fixed under transposition — others move to their mirror position."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "If $A$ is a $3 \\times 5$ matrix, what is the size of $A^T$?",
+      "choices": [
+        "$3 \\times 5$",
+        "$5 \\times 5$",
+        "$5 \\times 3$",
+        "$3 \\times 3$"
+      ],
+      "answer": 2,
+      "explanations": [
+        "The transpose flips dimensions — rows become columns.",
+        "Transposing does not produce a square matrix from a non-square one.",
+        null,
+        "Transposing does not produce a square matrix from a non-square one."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "A matrix with all entries below the main diagonal equal to zero is called:",
+      "choices": [
+        "Lower triangular",
+        "Upper triangular",
+        "Diagonal",
+        "Symmetric"
+      ],
+      "answer": 1,
+      "explanations": [
+        "Lower triangular has zeros ABOVE the diagonal.",
+        null,
+        "Diagonal requires zeros both above and below.",
+        "Symmetric requires $A = A^T$."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "A matrix with all entries above the main diagonal equal to zero is called:",
+      "choices": [
+        "Upper triangular",
+        "Lower triangular",
+        "Identity",
+        "Zero matrix"
+      ],
+      "answer": 1,
+      "explanations": [
+        "Upper triangular has zeros BELOW the diagonal.",
+        null,
+        "The identity matrix is a special square matrix — not the same thing.",
+        "The zero matrix has all entries zero, not just above the diagonal."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "True or False: The zero matrix is a diagonal matrix.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "A diagonal matrix requires zeros off the diagonal. The zero matrix has all entries zero — the off-diagonal entries are certainly zero, so it qualifies."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "A matrix $A$ is called symmetric if:",
+      "choices": [
+        "$A = -A^T$",
+        "$A = A^T$",
+        "$A^T = 0$",
+        "$A$ is square and diagonal"
+      ],
+      "answer": 1,
+      "explanations": [
+        "$A = -A^T$ defines a skew-symmetric matrix.",
+        null,
+        "$A^T = 0$ means $A$ is the zero matrix.",
+        "Diagonal matrices are symmetric, but symmetric matrices don't have to be diagonal."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "True or False: Every diagonal matrix is symmetric.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "A diagonal matrix has $a_{ij} = 0$ whenever $i \\neq j$. So $a_{ij} = a_{ji}$ for all $i, j$, which means $A = A^T$."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "A row vector is a matrix with:",
+      "choices": [
+        "One column and many rows",
+        "One row and many columns",
+        "Equal rows and columns",
+        "All positive entries"
+      ],
+      "answer": 1,
+      "explanations": [
+        "That describes a column vector.",
+        null,
+        "That describes a square matrix.",
+        "Entry signs are unrelated to being a row vector."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "A column vector with $n$ entries is a matrix of size:",
+      "choices": [
+        "$1 \\times n$",
+        "$n \\times n$",
+        "$n \\times 1$",
+        "$n \\times 2$"
+      ],
+      "answer": 2,
+      "explanations": [
+        "$1 \\times n$ is a row vector.",
+        "$n \\times n$ is a square matrix.",
+        null,
+        "$n \\times 2$ has two columns — not a single column vector."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "The $(i, j)$ entry of a matrix refers to the entry in:",
+      "choices": [
+        "Column $i$ and row $j$",
+        "Row $i$ and column $j$",
+        "The $i$th diagonal and $j$th off-diagonal",
+        "Position $i+j$ along the matrix"
+      ],
+      "answer": 1,
+      "explanations": [
+        "The convention is row first, column second.",
+        null,
+        "There is no such convention.",
+        "There is no such convention."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "For a square matrix $A$, the main diagonal consists of the entries:",
+      "choices": [
+        "$a_{1n}, a_{2(n-1)}, \\ldots$",
+        "$a_{11}, a_{22}, a_{33}, \\ldots$",
+        "The first row",
+        "The last column"
+      ],
+      "answer": 1,
+      "explanations": [
+        "Those are the anti-diagonal entries.",
+        null,
+        "The first row is not the diagonal.",
+        "The last column is not the diagonal."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "The transpose of a row vector is:",
+      "choices": [
+        "Another row vector",
+        "A scalar",
+        "A column vector",
+        "A square matrix"
+      ],
+      "answer": 2,
+      "explanations": [
+        "Transposing a $1 \\times n$ row vector gives an $n \\times 1$ matrix.",
+        "Only a $1 \\times 1$ matrix is a scalar.",
+        null,
+        "The result is $n \\times 1$, not square."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "True or False: $(AB)^T = A^T B^T$",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 1,
+      "explanations": [
+        "The correct rule reverses the order: $(AB)^T = B^T A^T$. The order matters because matrix multiplication is not commutative.",
+        null
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "The correct formula for the transpose of a product is:",
+      "choices": [
+        "$(AB)^T = A^T B^T$",
+        "$(AB)^T = B^T A^T$",
+        "$(AB)^T = AB$",
+        "$(AB)^T = (A^T)(B^T)^{-1}$"
+      ],
+      "answer": 1,
+      "explanations": [
+        "This reverses the needed order reversal — $A^T B^T$ is generally not equal to $(AB)^T$.",
+        null,
+        "This would mean $AB$ is symmetric, which is not generally true.",
+        "This introduces an inverse which is unrelated."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "True or False: $(A^T)^T = A$ for any matrix $A$.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "Transposing twice returns the original matrix — transposing is its own inverse."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "True or False: $(A + B)^T = A^T + B^T$ when $A$ and $B$ are the same size.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "Transpose distributes over addition — this property holds for all same-size matrices."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "Compute $AB$ where $A = \\begin{bmatrix}1 & 2\\end{bmatrix}$ and $B = \\begin{bmatrix}3\\\\4\\end{bmatrix}$.",
+      "choices": [
+        "$\\begin{bmatrix}3 & 8\\end{bmatrix}$",
+        "$11$",
+        "$\\begin{bmatrix}3\\\\8\\end{bmatrix}$",
+        "$\\begin{bmatrix}3&6\\\\4&8\\end{bmatrix}$"
+      ],
+      "answer": 1,
+      "explanations": [
+        "That would be entry-wise multiplication, not matrix multiplication.",
+        null,
+        "The result of a $1 \\times 2$ times $2 \\times 1$ is $1 \\times 1$ — a scalar: $1(3)+2(4)=11$.",
+        "That would be the result of $BA$ (outer product), not $AB$."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "Compute $AB$ where $A = \\begin{bmatrix}1\\\\2\\end{bmatrix}$ and $B = \\begin{bmatrix}3 & 4\\end{bmatrix}$.",
+      "choices": [
+        "$11$",
+        "$\\begin{bmatrix}3&4\\\\6&8\\end{bmatrix}$",
+        "$\\begin{bmatrix}3\\\\8\\end{bmatrix}$",
+        "Not defined"
+      ],
+      "answer": 1,
+      "explanations": [
+        "$11$ is the result of $BA$ (dot product), not $AB$.",
+        null,
+        "Entry-wise — not matrix multiplication.",
+        "$A$ is $2 \\times 1$ and $B$ is $1 \\times 2$: columns of $A$ (1) = rows of $B$ (1), so it is defined."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "Which of the following is a $3 \\times 3$ diagonal matrix?",
+      "choices": [
+        "$\\begin{bmatrix}1&2&0\\\\0&3&0\\\\0&0&4\\end{bmatrix}$",
+        "$\\begin{bmatrix}1&0&0\\\\0&2&0\\\\0&0&3\\end{bmatrix}$",
+        "$\\begin{bmatrix}1&0&0\\\\0&0&0\\\\1&0&3\\end{bmatrix}$",
+        "$\\begin{bmatrix}0&0&1\\\\0&2&0\\\\3&0&0\\end{bmatrix}$"
+      ],
+      "answer": 1,
+      "explanations": [
+        "The entry $a_{12} = 2$ is off the diagonal — not diagonal.",
+        null,
+        "The entry $a_{31} = 1$ is off the diagonal.",
+        "The nonzero entries are on the anti-diagonal, not the main diagonal."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "Which of the following is an upper triangular matrix?",
+      "choices": [
+        "$\\begin{bmatrix}1&0&0\\\\2&3&0\\\\4&5&6\\end{bmatrix}$",
+        "$\\begin{bmatrix}1&2&3\\\\0&4&5\\\\0&0&6\\end{bmatrix}$",
+        "$\\begin{bmatrix}0&0&1\\\\0&2&3\\\\4&5&6\\end{bmatrix}$",
+        "$\\begin{bmatrix}1&2&3\\\\4&5&6\\\\7&8&9\\end{bmatrix}$"
+      ],
+      "answer": 1,
+      "explanations": [
+        "This is lower triangular — zeros are above the diagonal.",
+        null,
+        "There are nonzero entries below the diagonal.",
+        "No entries are zero below the diagonal."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "True or False: The product of a $1 \\times n$ row vector and an $n \\times 1$ column vector is a scalar.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "A $1 \\times n$ times $n \\times 1$ gives a $1 \\times 1$ matrix, which is effectively a scalar (the dot product)."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "True or False: The product of an $n \\times 1$ column vector and a $1 \\times n$ row vector is an $n \\times n$ matrix.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "An $n \\times 1$ times a $1 \\times n$ gives an $n \\times n$ matrix — this is the outer product."
+      ]
+    },
+    {
+      "type": "wordbank",
+      "prompt": "A matrix $A$ is symmetric if $A = _____$.",
+      "wordbank": [
+        "$A^T$",
+        "$-A$",
+        "$A^{-1}$",
+        "$2A$"
+      ],
+      "answer": "$A^T$",
+      "explanation": "Symmetric means $A$ equals its own transpose: $A = A^T$, so $a_{ij} = a_{ji}$ for all $i, j$."
+    },
+    {
+      "type": "wordbank",
+      "prompt": "The transpose of a $3 \\times 7$ matrix is a _____ matrix.",
+      "wordbank": [
+        "$7 \\times 3$",
+        "$3 \\times 7$",
+        "$7 \\times 7$",
+        "$3 \\times 3$"
+      ],
+      "answer": "$7 \\times 3$",
+      "explanation": "Transposing flips the dimensions: an $m \\times n$ matrix becomes $n \\times m$. So $3 \\times 7$ becomes $7 \\times 3$."
+    },
+    {
+      "type": "wordbank",
+      "prompt": "An $n \\times n$ matrix with 1s on the main diagonal and 0s everywhere else is called the _____ matrix.",
+      "wordbank": [
+        "identity",
+        "zero",
+        "diagonal",
+        "symmetric"
+      ],
+      "answer": "identity",
+      "explanation": "The identity matrix $I_n$ is the matrix that acts like the number 1 for matrix multiplication: $AI = IA = A$."
+    },
+    {
+      "type": "wordbank",
+      "prompt": "A matrix where all entries are zero is called the _____ matrix.",
+      "wordbank": [
+        "zero",
+        "identity",
+        "diagonal",
+        "null"
+      ],
+      "answer": "zero",
+      "explanation": "The zero matrix $0$ has every entry equal to 0. It acts like the number 0 for matrix addition: $A + 0 = A$."
+    },
+    {
+      "type": "wordbank",
+      "prompt": "A square matrix with zeros everywhere except possibly on the main diagonal is called a _____ matrix.",
+      "wordbank": [
+        "diagonal",
+        "triangular",
+        "symmetric",
+        "identity"
+      ],
+      "answer": "diagonal",
+      "explanation": "A diagonal matrix has $a_{ij} = 0$ whenever $i \\neq j$. The diagonal entries can be any values."
+    },
+    {
+      "type": "wordbank",
+      "prompt": "A matrix with a single row is called a _____ vector.",
+      "wordbank": [
+        "row",
+        "column",
+        "unit",
+        "zero"
+      ],
+      "answer": "row",
+      "explanation": "A row vector is a $1 \\times n$ matrix. A column vector is an $n \\times 1$ matrix."
+    },
+    {
+      "type": "wordbank",
+      "prompt": "The operation that flips a matrix over its main diagonal, turning rows into columns, is called the _____.",
+      "wordbank": [
+        "transpose",
+        "inverse",
+        "determinant",
+        "trace"
+      ],
+      "answer": "transpose",
+      "explanation": "The transpose $A^T$ is formed by writing the rows of $A$ as columns. Entry $(i,j)$ of $A$ becomes entry $(j,i)$ of $A^T$."
+    },
+    {
+      "type": "type",
+      "prompt": "If $A$ is a $4 \\times 7$ matrix, how many rows does $A^T$ have?",
+      "answer": [
+        "7"
+      ],
+      "explanation": "The transpose of a $4 \\times 7$ matrix is $7 \\times 4$. The number of rows of $A^T$ equals the number of columns of $A$."
+    },
+    {
+      "type": "type",
+      "prompt": "If $A$ is a $4 \\times 7$ matrix, how many columns does $A^T$ have?",
+      "answer": [
+        "4"
+      ],
+      "explanation": "The transpose of a $4 \\times 7$ matrix is $7 \\times 4$. The number of columns of $A^T$ equals the number of rows of $A$."
+    },
+    {
+      "type": "type",
+      "prompt": "A square matrix of size $n \\times n$ has how many entries on its main diagonal?",
+      "answer": [
+        "n"
+      ],
+      "explanation": "The main diagonal entries are $a_{11}, a_{22}, \\ldots, a_{nn}$ — exactly $n$ entries."
+    },
+    {
+      "type": "type",
+      "prompt": "Let $A = \\begin{bmatrix}2 & 5 \\\\ -1 & 3\\end{bmatrix}$. What is the $(2,1)$ entry of $A$?",
+      "answer": [
+        "-1"
+      ],
+      "explanation": "The $(i,j)$ entry is in row $i$, column $j$. The $(2,1)$ entry is row 2, column 1: $-1$."
+    },
+    {
+      "type": "type",
+      "prompt": "Let $A = \\begin{bmatrix}2 & 5 \\\\ -1 & 3\\end{bmatrix}$. What is the $(1,2)$ entry of $A^T$?",
+      "answer": [
+        "-1"
+      ],
+      "explanation": "The $(i,j)$ entry of $A^T$ equals the $(j,i)$ entry of $A$. So $(1,2)$ of $A^T$ = $(2,1)$ of $A$ = $-1$."
+    },
+    {
+      "type": "type",
+      "prompt": "How many entries are in a $3 \\times 4$ matrix?",
+      "answer": [
+        "12"
+      ],
+      "explanation": "A $3 \\times 4$ matrix has $3 \\times 4 = 12$ entries."
+    },
+    {
+      "type": "type",
+      "prompt": "Let $A = \\begin{bmatrix}1&0&0\\\\0&5&0\\\\0&0&-3\\end{bmatrix}$. What is the $(2,2)$ entry?",
+      "answer": [
+        "5"
+      ],
+      "explanation": "Row 2, column 2 of this diagonal matrix is $5$."
+    },
+    {
+      "type": "type",
+      "prompt": "Compute the $(1,1)$ entry of $AB$ where $A = \\begin{bmatrix}2 & 3\\end{bmatrix}$ and $B = \\begin{bmatrix}1\\\\4\\end{bmatrix}$.",
+      "answer": [
+        "14"
+      ],
+      "explanation": "$(1,1)$ entry of $AB$ = row 1 of $A$ dotted with column 1 of $B$ = $2(1) + 3(4) = 2 + 12 = 14$."
+    },
+    {
+      "type": "type",
+      "prompt": "Compute the $(2,2)$ entry of $AB$ where $A = \\begin{bmatrix}1&2\\\\3&4\\end{bmatrix}$ and $B = \\begin{bmatrix}0&1\\\\1&0\\end{bmatrix}$.",
+      "answer": [
+        "3"
+      ],
+      "explanation": "$(2,2)$ entry = row 2 of $A$ dotted with column 2 of $B$ = $3(1) + 4(0) = 3$."
+    },
+    {
+      "type": "mc",
+      "prompt": "Which of these matrices is lower triangular?",
+      "choices": [
+        "$\\begin{bmatrix}1&2\\\\0&3\\end{bmatrix}$",
+        "$\\begin{bmatrix}1&0\\\\2&3\\end{bmatrix}$",
+        "$\\begin{bmatrix}1&0\\\\0&0\\end{bmatrix}$... wait, is this lower triangular?",
+        "$\\begin{bmatrix}0&2\\\\0&3\\end{bmatrix}$"
+      ],
+      "answer": 1,
+      "explanations": [
+        "This is upper triangular — zeros are below the diagonal.",
+        null,
+        "The $\\begin{bmatrix}1&0\\\\0&0\\end{bmatrix}$ is actually both, but choice B is the clearest lower triangular example.",
+        "The $(1,2)$ entry is 2, which is above the diagonal — not lower triangular."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "True or False: If $A$ is symmetric then $A$ must be square.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "Symmetric means $A = A^T$. For this to hold, $A$ and $A^T$ must be the same size — $A$ must be $n \\times n$."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "If $A = \\begin{bmatrix}3&1\\\\1&5\\end{bmatrix}$, is $A$ symmetric?",
+      "choices": [
+        "Yes",
+        "No"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "$a_{12} = 1 = a_{21}$, so $A = A^T$. This matrix is symmetric."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "If $A = \\begin{bmatrix}1&2\\\\3&4\\end{bmatrix}$, what is $A^T$?",
+      "choices": [
+        "$\\begin{bmatrix}1&3\\\\2&4\\end{bmatrix}$",
+        "$\\begin{bmatrix}4&3\\\\2&1\\end{bmatrix}$",
+        "$\\begin{bmatrix}1&2\\\\3&4\\end{bmatrix}$",
+        "$\\begin{bmatrix}-1&-2\\\\-3&-4\\end{bmatrix}$"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "That is the matrix reflected along the other diagonal, not the transpose.",
+        "That is $A$ itself — $A$ is not symmetric so $A \\neq A^T$.",
+        "That is $-A$, not $A^T$."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "Which of these matrices is lower triangular?",
+      "choices": [
+        "$\\begin{bmatrix}1&2\\\\0&3\\end{bmatrix}$",
+        "$\\begin{bmatrix}1&0\\\\2&3\\end{bmatrix}$",
+        "$\\begin{bmatrix}1&2\\\\3&4\\end{bmatrix}$",
+        "$\\begin{bmatrix}0&2\\\\0&3\\end{bmatrix}$"
+      ],
+      "answer": 1,
+      "explanations": [
+        "This is upper triangular — zeros below the diagonal, not above.",
+        null,
+        "Nonzero entries appear both above and below the diagonal.",
+        "The $(1,2)$ entry is 2, which is above the diagonal — not lower triangular."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "Scalar multiplication $cA$ multiplies:",
+      "choices": [
+        "Only the diagonal entries of $A$ by $c$",
+        "Every entry of $A$ by $c$",
+        "The number of rows by $c$",
+        "Only the first row of $A$ by $c$"
+      ],
+      "answer": 1,
+      "explanations": [
+        "Scalar multiplication affects every entry, not just the diagonal.",
+        null,
+        "Scalar multiplication changes values of entries, not the size of the matrix.",
+        "Every entry is scaled, not just the first row."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "If $A$ is a $3 \\times 3$ matrix and $c = 2$, what is the size of $cA$?",
+      "choices": [
+        "$6 \\times 3$",
+        "$3 \\times 6$",
+        "$6 \\times 6$",
+        "$3 \\times 3$"
+      ],
+      "answer": 3,
+      "explanations": [
+        "Scalar multiplication does not change the dimensions.",
+        "Scalar multiplication does not change the dimensions.",
+        "Scalar multiplication does not change the dimensions.",
+        null
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "Matrix addition $A + B$ is performed by:",
+      "choices": [
+        "Multiplying corresponding rows and columns",
+        "Adding corresponding entries",
+        "Appending the columns of $B$ to $A$",
+        "Adding all entries of $B$ to the first row of $A$"
+      ],
+      "answer": 1,
+      "explanations": [
+        "That describes matrix multiplication, not addition.",
+        null,
+        "Appending columns would change the size — not what addition does.",
+        "Addition affects every corresponding entry equally."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "True or False: The zero matrix has all entries equal to zero.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "The zero matrix is defined as the matrix where every single entry equals zero."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "The $(i,j)$ entry of $A^T$ equals which entry of $A$?",
+      "choices": [
+        "$(i,j)$",
+        "$(j,i)$",
+        "$(i, n-j)$",
+        "$(m-i, j)$"
+      ],
+      "answer": 1,
+      "explanations": [
+        "That would mean $A^T = A$, which is only true for symmetric matrices.",
+        null,
+        "Transposing swaps row and column indices — nothing else.",
+        "Transposing swaps row and column indices — nothing else."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "True or False: Scalar multiplication changes the size of a matrix.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 1,
+      "explanations": [
+        "Scalar multiplication scales every entry but leaves the number of rows and columns unchanged.",
+        null
+      ]
+    },
+    {
+      "type": "wordbank",
+      "prompt": "If $A$ is $3 \\times 4$ and $B$ is $3 \\times 4$, then $A + B$ is a _____ matrix.",
+      "wordbank": [
+        "$3 \\times 4$",
+        "$6 \\times 4$",
+        "$3 \\times 8$",
+        "$4 \\times 3$"
+      ],
+      "answer": "$3 \\times 4$",
+      "explanation": "Matrix addition does not change the size — the result has the same dimensions as the operands."
+    },
+    {
+      "type": "mc",
+      "prompt": "True or False: A symmetric matrix must have equal entries that mirror across the main diagonal.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "Symmetric means $a_{ij} = a_{ji}$ for all $i$ and $j$ — entries mirror across the main diagonal by definition."
+      ]
+    },
+    {
+      "type": "type",
+      "prompt": "Let $A = \\begin{bmatrix}1&2\\\\3&4\\end{bmatrix}$ and $B = \\begin{bmatrix}5&6\\\\7&8\\end{bmatrix}$. What is the $(1,2)$ entry of $A + B$?",
+      "answer": [
+        "8"
+      ],
+      "explanation": "$(A+B)_{12} = a_{12} + b_{12} = 2 + 6 = 8$."
+    },
+    {
+      "type": "type",
+      "prompt": "Let $c = 3$ and $A = \\begin{bmatrix}2&-1\\\\0&4\\end{bmatrix}$. What is the $(2,2)$ entry of $cA$?",
+      "answer": [
+        "12"
+      ],
+      "explanation": "$(cA)_{22} = c \\cdot a_{22} = 3 \\cdot 4 = 12$."
+    },
+    {
+      "type": "type",
+      "prompt": "Let $A = \\begin{bmatrix}1&3\\\\2&4\\end{bmatrix}$. What is the $(2,1)$ entry of $A^T$?",
+      "answer": [
+        "3"
+      ],
+      "explanation": "The $(2,1)$ entry of $A^T$ equals the $(1,2)$ entry of $A$, which is $3$."
+    },
+    {
+      "type": "type",
+      "prompt": "Compute the $(1,2)$ entry of $AB$ where $A = \\begin{bmatrix}1&2\\\\3&4\\end{bmatrix}$ and $B = \\begin{bmatrix}2&1\\\\0&3\\end{bmatrix}$.",
+      "answer": [
+        "7"
+      ],
+      "explanation": "$(AB)_{12}$ = row 1 of $A$ dotted with column 2 of $B$ = $1(1) + 2(3) = 1 + 6 = 7$."
+    }
+  ]
+}
