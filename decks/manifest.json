@@ -5,6 +5,6 @@
   { "id": "linear-systems-intro", "file": "decks/linear-systems-intro.json" },
   { "id": "ref-rref", "file": "decks/ref-rref.json" },
   { "id": "next-step-ref", "file": "decks/next-step-ref.json" },
-  { "id": "matrix-definitions", "file": "decks/matrix-definitions.json" }
+  { "id": "matrix-definitions", "file": "decks/matrix-definitions.json" },
   { "id": "is-operation-defined", "file": "decks/is-operation-defined.json" }
 ]
