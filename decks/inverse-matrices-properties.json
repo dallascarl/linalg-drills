@@ -1,0 +1,1336 @@
+{
+  "id": "inverse-matrices-properties",
+  "title": "Inverse Matrices & Properties",
+  "description": "Matrix arithmetic properties, where the real-number rules break (cancellation & zero-product), matrix polynomials, the inverse of a matrix, the 2x2 inverse formula, and the inverse/transpose theorems (1.4.7-1.4.9)",
+  "questionsPerAttempt": 20,
+  "pointsPerQuestion": 1,
+  "questions": [
+    {
+      "type": "mc",
+      "prompt": "Matrix addition is commutative: $A + B = B + A$ for matrices of the same size.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "Entrywise addition of real numbers is commutative, so adding matrices entrywise is too."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "Matrix addition is associative: $(A + B) + C = A + (B + C)$.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "Grouping doesn't matter for entrywise addition, so this always holds."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "For matrices of the same size, $A - B = B - A$ in general.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 1,
+      "explanations": [
+        "Subtraction is not commutative — $A-B$ and $B-A$ are negatives of each other, not equal in general.",
+        null
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "Matrix multiplication is associative: $A(BC) = (AB)C$, whenever the products are defined.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "Regrouping the factors doesn't change the product, as long as the sizes stay compatible."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "Matrix multiplication distributes over addition: $A(B+C) = AB + AC$, whenever the products are defined.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "This distributive law holds on both the left and the right."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "For square matrices $A$ and $B$ of the same size, $AB = BA$ is always true.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 1,
+      "explanations": [
+        "Matrix multiplication is not commutative in general — order matters.",
+        null
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "$AI = A$ for any matrix $A$ and identity matrix $I$ of matching size.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "The identity matrix acts like the number 1: multiplying by it changes nothing."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "$IA = 0$ (the zero matrix) for any matrix $A$ and identity matrix $I$ of matching size.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 1,
+      "explanations": [
+        "$IA = A$, not $0$ — the identity matrix leaves $A$ unchanged, it doesn't zero it out.",
+        null
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "$A + 0 = A$ for any matrix $A$ and zero matrix $0$ of matching size.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "The zero matrix acts like the number 0 for addition — adding it changes nothing."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "Because $AB \\neq BA$ in general, matrix addition $A+B$ is also not always equal to $B+A$.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 1,
+      "explanations": [
+        "Addition and multiplication are different operations — addition stays commutative even though multiplication isn't.",
+        null
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "If $AB = BA$ happens to hold for one particular pair of matrices $A$ and $B$, it must hold for every pair of square matrices of that size.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 1,
+      "explanations": [
+        "$AB=BA$ can happen for special pairs (like $A=I$) without multiplication being commutative in general.",
+        null
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "$A \\cdot 0 = 0$ (the zero matrix) for any matrix $A$ and zero matrix $0$ of matching size.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "Multiplying anything by the zero matrix produces the zero matrix."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "Scalar multiplication distributes over matrix addition. Which identity is correct?",
+      "choices": [
+        "$c(A+B) = cA + cB$",
+        "$c(A+B) = cA + B$",
+        "$c(AB) = cA + cB$",
+        "$(c+d)A = cA \\cdot dA$"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "This forgets to multiply $c$ into $B$ as well.",
+        "This confuses scalar distributivity with a multiplication rule — there's no $c(AB)$ identity like this.",
+        "This mixes up how scalars combine: $(c+d)A = cA + dA$, not a product."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "Which of the following is generally FALSE for square matrices $A$, $B$, $C$ of the same size?",
+      "choices": [
+        "$(A+B)+C = A+(B+C)$",
+        "$AB = BA$",
+        "$A(B+C) = AB+AC$",
+        "$A(BC)=(AB)C$"
+      ],
+      "answer": 1,
+      "explanations": [
+        "This associative law for addition is always true.",
+        null,
+        "This distributive law is always true.",
+        "This associative law for multiplication is always true."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "For a square matrix $A$ and the identity matrix $I$ of the same size, which is true?",
+      "choices": [
+        "$AI = 0$",
+        "$IA = I$ only, not $A$",
+        "$AI = IA = A$",
+        "$AI$ and $IA$ are never equal"
+      ],
+      "answer": 2,
+      "explanations": [
+        "Multiplying by the identity never zeroes out a matrix.",
+        "$IA$ equals $A$, not $I$, for any matrix $A$.",
+        null,
+        "Multiplying by the identity from either side always gives back $A$."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "Which best describes the identity matrix's role in matrix algebra?",
+      "choices": [
+        "It behaves like the number 0 under multiplication",
+        "It has no special multiplicative role",
+        "It is only defined for $2\\times 2$ matrices",
+        "It behaves like the number 1 under multiplication"
+      ],
+      "answer": 3,
+      "explanations": [
+        "That describes the zero matrix's role under addition, not the identity's role.",
+        "The identity matrix's whole purpose IS its special multiplicative role.",
+        "Identity matrices exist for every size, not just $2\\times 2$.",
+        null
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "If $A$, $B$, $C$ are matrices of compatible sizes, $A(BC)$ equals:",
+      "choices": [
+        "$(AB)C$",
+        "$(AC)B$",
+        "$BC \\cdot A$",
+        "$CA \\cdot B$"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "This reorders the factors — matrix multiplication is not commutative, so order matters.",
+        "This reorders the factors — not what regrouping does.",
+        "This reorders the factors — not what regrouping does."
+      ]
+    },
+    {
+      "type": "wordbank",
+      "prompt": "Matrix multiplication is _____ in general, even when both $AB$ and $BA$ are defined and the same size.",
+      "wordbank": [
+        "not commutative",
+        "commutative",
+        "associative",
+        "distributive"
+      ],
+      "answer": "not commutative",
+      "explanation": "Order matters for matrix multiplication: $AB$ and $BA$ can be completely different matrices."
+    },
+    {
+      "type": "wordbank",
+      "prompt": "For any matrix $A$ and the appropriately-sized identity matrix, $AI = IA = $ _____.",
+      "wordbank": [
+        "$A$",
+        "$I$",
+        "$0$",
+        "$A^T$"
+      ],
+      "answer": "$A$",
+      "explanation": "The identity matrix leaves any matrix unchanged under multiplication, from either side."
+    },
+    {
+      "type": "type",
+      "prompt": "How many entries in a $2 \\times 2$ identity matrix are equal to 1?",
+      "answer": [
+        "2"
+      ],
+      "explanation": "The identity matrix has 1's only on the main diagonal — a $2\\times 2$ identity has two of them."
+    },
+    {
+      "type": "mc",
+      "prompt": "If $AB = AC$ and $A \\neq 0$, then it must be true that $B = C$.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 1,
+      "explanations": [
+        "Unlike real-number cancellation, this can fail for matrices — there exist nonzero $A$ with $AB=AC$ but $B \\neq C$.",
+        null
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "If $AB = 0$ (the zero matrix), then $A = 0$ or $B = 0$ must be true.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 1,
+      "explanations": [
+        "The zero-product property fails for matrices — two nonzero matrices can multiply to give the zero matrix.",
+        null
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "Because matrix multiplication can fail the zero-product property, matrix 'division' is not a well-defined operation in general.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "Without a reliable zero-product property, there's no consistent way to 'undo' multiplication by every matrix."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "For real numbers, if $xy = 0$ then $x=0$ or $y=0$ — but the analogous statement is false for matrices.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "This is exactly the zero-product property failing for matrices, even though it holds for real numbers."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "The real-number cancellation law (if $ax=ay$ and $a \\neq 0$, then $x=y$) fails for matrices because:",
+      "choices": [
+        "matrix multiplication is not commutative",
+        "there exist nonzero matrices $A$ with $AB=AC$ even though $B \\neq C$",
+        "matrices cannot be multiplied together",
+        "the zero matrix does not exist"
+      ],
+      "answer": 1,
+      "explanations": [
+        "Non-commutativity is a separate issue from cancellation failing.",
+        null,
+        "Matrices can absolutely be multiplied when sizes are compatible.",
+        "The zero matrix exists — it's part of what makes these counterexamples work."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "The failure of the zero-product property for matrices means:",
+      "choices": [
+        "the zero matrix cannot be multiplied",
+        "every matrix has a zero product with itself",
+        "two nonzero matrices can multiply to give the zero matrix",
+        "matrices cannot equal zero"
+      ],
+      "answer": 2,
+      "explanations": [
+        "The zero matrix can be multiplied like any other matrix.",
+        "This isn't generally true for an arbitrary matrix.",
+        null,
+        "Matrices certainly can equal the zero matrix."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "Which statement explains why we cannot simply 'divide both sides by $A$' in a matrix equation $AB = AC$?",
+      "choices": [
+        "matrices cannot appear in equations",
+        "$B$ and $C$ must always be equal",
+        "division of matrices is defined but rarely used",
+        "$A$ might not have an inverse, and even when $A$ IS invertible you must multiply by $A^{-1}$ on the correct side"
+      ],
+      "answer": 3,
+      "explanations": [
+        "Matrices appear in equations constantly — that's not the issue.",
+        "That's exactly what can fail — the whole point of this question.",
+        "There is no matrix 'division' operation — only multiplication by an inverse.",
+        null
+      ]
+    },
+    {
+      "type": "type",
+      "prompt": "Let $A=\\begin{bmatrix}1&1\\\\1&1\\end{bmatrix}$, $B=\\begin{bmatrix}2&0\\\\0&2\\end{bmatrix}$. Compute the $(1,1)$ entry of $AB$.",
+      "answer": [
+        "2"
+      ],
+      "explanation": "$(AB)_{11} = 1(2) + 1(0) = 2$."
+    },
+    {
+      "type": "type",
+      "prompt": "Let $A=\\begin{bmatrix}1&1\\\\1&1\\end{bmatrix}$, $C=\\begin{bmatrix}1&1\\\\1&1\\end{bmatrix}$. Compute the $(1,2)$ entry of $AC$.",
+      "answer": [
+        "2"
+      ],
+      "explanation": "$(AC)_{12} = 1(1) + 1(1) = 2$ — matching $(AB)_{12}$, which is exactly why $AB=AC$ even though $B \\neq C$."
+    },
+    {
+      "type": "type",
+      "prompt": "Let $A=\\begin{bmatrix}1&0\\\\0&0\\end{bmatrix}$, $B=\\begin{bmatrix}0&0\\\\0&1\\end{bmatrix}$. What is the $(2,2)$ entry of $AB$?",
+      "answer": [
+        "0"
+      ],
+      "explanation": "$(AB)_{22} = 0(0) + 0(1) = 0$ — in fact $AB$ is the entire zero matrix here."
+    },
+    {
+      "type": "wordbank",
+      "prompt": "Let $A=\\begin{bmatrix}1&0\\\\0&0\\end{bmatrix}$ and $B=\\begin{bmatrix}0&0\\\\0&1\\end{bmatrix}$. Then $AB = $ _____, even though neither $A$ nor $B$ is the zero matrix.",
+      "wordbank": [
+        "the zero matrix",
+        "$A$",
+        "$B$",
+        "the identity matrix"
+      ],
+      "answer": "the zero matrix",
+      "explanation": "$AB = \\begin{bmatrix}0&0\\\\0&0\\end{bmatrix}$ — a nonzero-times-nonzero product that still comes out zero."
+    },
+    {
+      "type": "mc",
+      "prompt": "For a square matrix $A$, the expression $A^2 - 3A + 2I$ is a valid matrix expression (with $I$ the identity matrix of matching size).",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "$A^2$, $3A$, and $2I$ are all matrices of the same size, so they can be combined by addition and subtraction."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "The expression $A^2 + B$, where $A$ is $2\\times 2$ and $B$ is $3\\times 3$, is defined.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 1,
+      "explanations": [
+        "$A^2$ is $2\\times 2$ while $B$ is $3\\times 3$ — matrices must be the same size to add them.",
+        null
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "For a square matrix $A$, $A^2$ means $A$ multiplied by itself: $A^2 = A \\cdot A$.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "Matrix powers are defined the same way as for numbers — repeated multiplication by itself."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "In the expression $A^2 - 3A + 2I$ for a square matrix $A$, the term '$2I$' means:",
+      "choices": [
+        "the number 2 added to every entry of $A$",
+        "2 times the identity matrix, added entrywise",
+        "2 divided by the identity matrix",
+        "the $(2,2)$ entry of $A$"
+      ],
+      "answer": 1,
+      "explanations": [
+        "That would just be $A + 2$, which is not the same as $2I$.",
+        null,
+        "There is no 'division by a matrix' operation here.",
+        "$2I$ is a whole matrix, not a single entry of $A$."
+      ]
+    },
+    {
+      "type": "type",
+      "prompt": "Let $A=\\begin{bmatrix}2&1\\\\1&3\\end{bmatrix}$. What is the $(1,1)$ entry of $A^2$?",
+      "answer": [
+        "5"
+      ],
+      "explanation": "$(A^2)_{11} = 2(2)+1(1) = 5$."
+    },
+    {
+      "type": "type",
+      "prompt": "Let $A=\\begin{bmatrix}2&1\\\\1&3\\end{bmatrix}$. What is the $(1,1)$ entry of $A^2 - 3A + 2I$?",
+      "answer": [
+        "1"
+      ],
+      "explanation": "$(A^2)_{11}=5$, $(3A)_{11}=6$, $(2I)_{11}=2$, so the entry is $5-6+2=1$."
+    },
+    {
+      "type": "type",
+      "prompt": "Let $A=\\begin{bmatrix}2&1\\\\1&3\\end{bmatrix}$. What is the $(2,2)$ entry of $A^2 - 3A + 2I$?",
+      "answer": [
+        "3"
+      ],
+      "explanation": "$(A^2)_{22}=1(1)+3(3)=10$, $(3A)_{22}=9$, $(2I)_{22}=2$, so the entry is $10-9+2=3$."
+    },
+    {
+      "type": "mc",
+      "prompt": "If $A$ is invertible, we write its inverse as $A^{-1}$.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "This is standard notation, directly parallel to $a^{-1}$ for real numbers."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "Just as the real number $0$ has no multiplicative inverse, some nonzero square matrices also have no inverse.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "A nonzero square matrix can still fail to be invertible — for example, any matrix with determinant 0."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "Every square matrix has an inverse.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 1,
+      "explanations": [
+        "Only square matrices CAN have inverses — but not every square matrix does. Singular matrices don't.",
+        null
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "Only square matrices can be invertible.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "Invertibility (in the $AB=BA=I$ sense) requires $A$ and $B$ to be square and the same size."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "A matrix that IS invertible is sometimes called 'singular.'",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 1,
+      "explanations": [
+        "It's the opposite: an invertible matrix is called 'nonsingular.' 'Singular' means it has NO inverse.",
+        null
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "A square matrix $A$ is called invertible if there exists a matrix $B$ such that:",
+      "choices": [
+        "$AB = 0$",
+        "$A + B = I$",
+        "$AB = BA = I$",
+        "$AB = A$"
+      ],
+      "answer": 2,
+      "explanations": [
+        "That would make $B$ related to a very different property, not an inverse.",
+        "Adding to get the identity is not the definition of an inverse.",
+        null,
+        "That would force very special conditions on $B$, not the general definition."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "If $A$ is invertible, its inverse $A^{-1}$ is:",
+      "choices": [
+        "different depending on which side you multiply from",
+        "only defined for diagonal matrices",
+        "always equal to $A$",
+        "unique"
+      ],
+      "answer": 3,
+      "explanations": [
+        "The inverse works the same from either side: $AA^{-1} = A^{-1}A = I$.",
+        "Any invertible square matrix has an inverse, not just diagonal ones.",
+        "$A^{-1} = A$ only in special cases (like $A=I$), not in general.",
+        null
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "Which of these is required for $AB = BA = I$ to define $A^{-1} = B$?",
+      "choices": [
+        "$A$ must be the identity matrix",
+        "$A$ and $B$ must both be symmetric",
+        "$B$ must equal $A$",
+        "$A$ and $B$ must both be square matrices of the same size"
+      ],
+      "answer": 3,
+      "explanations": [
+        "$A$ can be any invertible square matrix, not just the identity.",
+        "Symmetry is not required for a matrix to have an inverse.",
+        "$B$ is the inverse of $A$, not equal to $A$, in general.",
+        null
+      ]
+    },
+    {
+      "type": "wordbank",
+      "prompt": "The real-number analogy for a matrix inverse is: just as $a \\cdot a^{-1} = 1$ for nonzero real numbers, $A \\cdot A^{-1} = $ _____ for an invertible matrix $A$.",
+      "wordbank": [
+        "$I$",
+        "$0$",
+        "$A$",
+        "$-A$"
+      ],
+      "answer": "$I$",
+      "explanation": "The identity matrix $I$ plays the role that $1$ plays for real numbers."
+    },
+    {
+      "type": "wordbank",
+      "prompt": "A matrix that has no inverse is called _____.",
+      "wordbank": [
+        "singular",
+        "invertible",
+        "symmetric",
+        "diagonal"
+      ],
+      "answer": "singular",
+      "explanation": "'Singular' and 'not invertible' mean the same thing — for a $2\\times 2$ matrix, it means $\\det(A) = 0$."
+    },
+    {
+      "type": "mc",
+      "prompt": "Multiplying $A$ by its inverse $A^{-1}$, in either order, always gives the identity matrix $I$.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "That's the defining property of an inverse: $AA^{-1} = A^{-1}A = I$."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "For $A=\\begin{bmatrix}a&b\\\\c&d\\end{bmatrix}$, the $2\\times 2$ inverse formula states $A^{-1} = $",
+      "choices": [
+        "$\\frac{1}{ad-bc}\\begin{bmatrix}d&-b\\\\-c&a\\end{bmatrix}$",
+        "$\\frac{1}{ad-bc}\\begin{bmatrix}a&b\\\\c&d\\end{bmatrix}$",
+        "$(ad-bc)\\begin{bmatrix}d&-b\\\\-c&a\\end{bmatrix}$",
+        "$\\frac{1}{ad+bc}\\begin{bmatrix}d&-b\\\\-c&a\\end{bmatrix}$"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "This just reuses the original matrix — the formula swaps and negates entries.",
+        "This multiplies by the determinant instead of dividing by it.",
+        "This uses $ad+bc$ instead of $ad-bc$ in the denominator."
+      ]
+    },
+    {
+      "type": "type",
+      "prompt": "Let $A=\\begin{bmatrix}2&1\\\\3&2\\end{bmatrix}$ and $A^{-1}=\\begin{bmatrix}2&-1\\\\-3&2\\end{bmatrix}$. Compute the $(1,1)$ entry of $A \\cdot A^{-1}$.",
+      "answer": [
+        "1"
+      ],
+      "explanation": "$(AA^{-1})_{11} = 2(2)+1(-3) = 4-3=1$ — as expected, since $AA^{-1}=I$."
+    },
+    {
+      "type": "type",
+      "prompt": "Let $A=\\begin{bmatrix}2&1\\\\3&2\\end{bmatrix}$ and $A^{-1}=\\begin{bmatrix}2&-1\\\\-3&2\\end{bmatrix}$. Compute the $(1,2)$ entry of $A \\cdot A^{-1}$.",
+      "answer": [
+        "0"
+      ],
+      "explanation": "$(AA^{-1})_{12} = 2(-1)+1(2) = -2+2=0$ — as expected, since $AA^{-1}=I$."
+    },
+    {
+      "type": "type",
+      "prompt": "Compute $\\det(A)$ for $A=\\begin{bmatrix}4&2\\\\3&2\\end{bmatrix}$.",
+      "answer": [
+        "2"
+      ],
+      "explanation": "$\\det(A) = 4(2)-2(3) = 8-6=2$."
+    },
+    {
+      "type": "mc",
+      "prompt": "$(AB)^{-1} = A^{-1}B^{-1}$.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 1,
+      "explanations": [
+        "Order flips: the correct formula is $(AB)^{-1} = B^{-1}A^{-1}$.",
+        null
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "$(A^n)^{-1} = (A^{-1})^n$.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "This is part of Theorem 1.4.7 — inverses and powers commute in this specific sense."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "Because $(A^n)^{-1}=(A^{-1})^n$, it must also be true that $(A+B)^{-1} = A^{-1}+B^{-1}$.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 1,
+      "explanations": [
+        "The power rule for inverses doesn't extend to sums — in fact $A+B$ might not even be invertible when $A$ and $B$ are, and there is no addition rule for inverses like this.",
+        null
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "Because matrix multiplication is not commutative, we must be careful about order when inverting or transposing a product.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "Both $(AB)^{-1}=B^{-1}A^{-1}$ and $(AB)^T=B^TA^T$ reverse the order — a direct consequence of $AB \\neq BA$ in general."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "$(A^{-1})^{-1} = $",
+      "choices": [
+        "$A^{-1}$",
+        "$A$",
+        "$I$",
+        "$A^2$"
+      ],
+      "answer": 1,
+      "explanations": [
+        "Inverting twice returns the original matrix, not $A^{-1}$ again.",
+        null,
+        "$(A^{-1})^{-1}$ equals $A$ itself, not the identity.",
+        "There's no reason inverting twice would square the matrix."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "The correct formula for the inverse of a product is:",
+      "choices": [
+        "$A^{-1}B^{-1}$",
+        "$AB$",
+        "$B^{-1}A^{-1}$",
+        "$A^{-1}+B^{-1}$"
+      ],
+      "answer": 2,
+      "explanations": [
+        "This keeps the original order — but inverting a product reverses the order.",
+        "This is just the product again, not its inverse.",
+        null,
+        "Inverses don't combine by addition."
+      ]
+    },
+    {
+      "type": "type",
+      "prompt": "Let $A=\\begin{bmatrix}2&1\\\\1&1\\end{bmatrix}$, so $A^{-1}=\\begin{bmatrix}1&-1\\\\-1&2\\end{bmatrix}$. What is the $(1,1)$ entry of $(A^{-1})^2$?",
+      "answer": [
+        "2"
+      ],
+      "explanation": "$(A^{-1})^2$ has $(1,1)$ entry $1(1)+(-1)(-1) = 1+1=2$."
+    },
+    {
+      "type": "wordbank",
+      "prompt": "Just as the transpose of a product reverses order, the inverse of a product also reverses order: $(AB)^{-1} = $ _____.",
+      "wordbank": [
+        "$B^{-1}A^{-1}$",
+        "$A^{-1}B^{-1}$",
+        "$AB$",
+        "$BA$"
+      ],
+      "answer": "$B^{-1}A^{-1}$",
+      "explanation": "Both the inverse and the transpose of $AB$ come out with the factors in reverse order."
+    },
+    {
+      "type": "mc",
+      "prompt": "$(kA)^T = kA^T$ for a scalar $k$.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "Transposing doesn't interact with scalar multiplication — the scalar just comes along for the ride."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "$(A^T)^T = A$ for any matrix $A$.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "Transposing twice undoes itself and returns the original matrix."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "For $A=\\begin{bmatrix}1&2\\\\3&1\\end{bmatrix}$ and $B=\\begin{bmatrix}2&0\\\\1&3\\end{bmatrix}$, $(AB)^T = A^TB^T$.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 1,
+      "explanations": [
+        "Order matters: $(AB)^T = B^TA^T$, not $A^TB^T$. Computing both sides gives different matrices here.",
+        null
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "Matrices of the same size, $(A+B)^T = $",
+      "choices": [
+        "$A^T+B^T$",
+        "$A^T-B^T$",
+        "$B^TA^T$",
+        "$(AB)^T$"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "Transpose distributes over addition with a plus sign, not a minus.",
+        "That formula is for the transpose of a PRODUCT, not a sum.",
+        "That's a different combination — not the transpose of a sum."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "$(AB)^T = $",
+      "choices": [
+        "$A^TB^T$",
+        "$B^TA^T$",
+        "$AB$",
+        "$A^T+B^T$"
+      ],
+      "answer": 1,
+      "explanations": [
+        "This keeps the original order — transposing a product reverses the order.",
+        null,
+        "That's the product itself, not its transpose.",
+        "That formula is for the transpose of a sum, not a product."
+      ]
+    },
+    {
+      "type": "type",
+      "prompt": "Let $A=\\begin{bmatrix}1&2\\\\3&1\\end{bmatrix}$, $B=\\begin{bmatrix}2&0\\\\1&3\\end{bmatrix}$. Compute the $(1,1)$ entry of $AB$.",
+      "answer": [
+        "4"
+      ],
+      "explanation": "$(AB)_{11} = 1(2)+2(1) = 4$."
+    },
+    {
+      "type": "mc",
+      "prompt": "$(A+B)C = AC+BC$ for matrices of compatible sizes (the right-distributive law).",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "Matrix multiplication distributes over addition on both sides — left and right."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "$c(dA) = (cd)A$ for scalars $c$ and $d$.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "Scalar multiplication is associative — scaling twice by $c$ then $d$ is the same as scaling once by $cd$."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "$-A$ means reversing the order of the rows of $A$.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 1,
+      "explanations": [
+        "$-A$ means negating every entry of $A$ (multiplying by $-1$) — it has nothing to do with row order.",
+        null
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "$A + (-A) = 0$ (the zero matrix), for any matrix $A$.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "Adding a matrix to its negative cancels every entry, giving the zero matrix — just like $x+(-x)=0$."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "The zero matrix and the identity matrix are the same matrix.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 1,
+      "explanations": [
+        "They're different: the zero matrix has all entries $0$, while the identity matrix has $1$'s on the diagonal and $0$'s elsewhere.",
+        null
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "The identity matrix $I$ is the only matrix that satisfies $AI=A$ for every matrix $A$ of compatible size.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "No other matrix has this universal property — that's exactly what makes $I$ the identity."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "If $A$ is $m \\times n$ and $B$ is $p \\times q$ with $(m,n) \\neq (p,q)$, then $A+B$ is still defined.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 1,
+      "explanations": [
+        "Matrix addition requires both matrices to be exactly the same size — mismatched sizes make $A+B$ undefined.",
+        null
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "Scalar multiplication and matrix multiplication are the same operation.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 1,
+      "explanations": [
+        "They're different operations: scalar multiplication scales every entry by a single number, while matrix multiplication combines two matrices via rows and columns.",
+        null
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "Which property of real-number addition carries over perfectly to matrix addition?",
+      "choices": [
+        "Only commutativity, not associativity",
+        "Commutativity and associativity",
+        "Only associativity, not commutativity",
+        "Neither property carries over"
+      ],
+      "answer": 1,
+      "explanations": [
+        "Associativity carries over too — matrix addition is fully associative.",
+        null,
+        "Commutativity carries over too — matrix addition is fully commutative.",
+        "Both properties carry over perfectly for matrix addition."
+      ]
+    },
+    {
+      "type": "wordbank",
+      "prompt": "The matrix $-A$, added to $A$, gives the _____ matrix.",
+      "wordbank": [
+        "zero",
+        "identity",
+        "same",
+        "inverse"
+      ],
+      "answer": "zero",
+      "explanation": "$A + (-A) = 0$, the zero matrix — just like $x + (-x) = 0$ for real numbers."
+    },
+    {
+      "type": "mc",
+      "prompt": "For matrices, $AB=AC$ does not, on its own, guarantee $B=C$ — even when $A$ is nonzero.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "This is exactly the cancellation law failing — nonzero isn't enough; $A$ also needs to be invertible."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "If $A$ is invertible and $AB=AC$, what can we conclude?",
+      "choices": [
+        "$B$ and $C$ are unrelated",
+        "$B=-C$",
+        "$B=C$ must follow",
+        "No conclusion can be drawn"
+      ],
+      "answer": 2,
+      "explanations": [
+        "We can conclude something specific here — they aren't just unrelated.",
+        "There's no reason $B$ would be the negative of $C$.",
+        null,
+        "We CAN draw a conclusion: multiplying both sides by $A^{-1}$ gives $B=C$."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "Cancellation ($AB=AC \\Rightarrow B=C$) is guaranteed whenever $A$ is invertible.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "Multiplying both sides of $AB=AC$ by $A^{-1}$ on the left gives $B=C$ — this always works when $A^{-1}$ exists."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "The zero-product property (if $AB=0$ then $A=0$ or $B=0$) holds for all square matrices.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 1,
+      "explanations": [
+        "It fails for singular (non-invertible) matrices — two nonzero matrices can multiply to give the zero matrix.",
+        null
+      ]
+    },
+    {
+      "type": "wordbank",
+      "prompt": "For matrices, $AB=0$ does NOT imply that $A=0$ or $B=0$ — this is described as the failure of the _____ property.",
+      "wordbank": [
+        "zero-product",
+        "distributive",
+        "associative",
+        "commutative"
+      ],
+      "answer": "zero-product",
+      "explanation": "The zero-product property holds for real numbers but fails for matrices in general."
+    },
+    {
+      "type": "mc",
+      "prompt": "In the expression $A^2 - 3A + 2I$, all three terms must be matrices of the same size for the expression to make sense.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "Addition and subtraction of matrices require matching sizes — $A^2$, $3A$, and $2I$ all have to match."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "A matrix polynomial like $A^2 - 3A + 2I$ can only be formed for a square matrix $A$.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "$A^2 = A \\cdot A$ requires $A$ to be square for the product to be defined at all."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "Why must $A$ be square in the expression $A^2 - 3A + 2I$?",
+      "choices": [
+        "Because non-square matrices can't be added",
+        "Because $I$ is only defined for square matrices, unlike $A$",
+        "There is no requirement that $A$ be square",
+        "Because $A^2=A \\cdot A$ requires $A$ to be square for the product to be defined"
+      ],
+      "answer": 3,
+      "explanations": [
+        "Addition itself doesn't require square matrices — only matching sizes.",
+        "$I$ is always square, but that's not the reason $A$ itself must be square here.",
+        "$A$ does have to be square, or $A^2$ wouldn't be defined.",
+        null
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "The expression $A^2 - 3A + 2I$ still makes sense even if $A$ is not square.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 1,
+      "explanations": [
+        "If $A$ isn't square, $A^2=A\\cdot A$ isn't even defined, so the whole expression breaks down.",
+        null
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "Two different matrices can each be a valid inverse of the same matrix $A$.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 1,
+      "explanations": [
+        "An inverse, when it exists, is unique — no matrix can have two different inverses.",
+        null
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "If $A$ has an inverse, that inverse must also be a square matrix of the same size as $A$.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "The inverse relation $AB=BA=I$ only type-checks when $A$ and $B$ are square matrices of the same size."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "A non-square matrix can never satisfy $AB=BA=I$ for some matrix $B$.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "If $A$ is $m\\times n$ with $m \\neq n$, then $AB$ and $BA$ would be different sizes — they could never both equal the same identity matrix."
+      ]
+    },
+    {
+      "type": "wordbank",
+      "prompt": "An invertible matrix is also called a(n) _____ matrix.",
+      "wordbank": [
+        "nonsingular",
+        "singular",
+        "diagonal",
+        "symmetric"
+      ],
+      "answer": "nonsingular",
+      "explanation": "'Nonsingular' and 'invertible' mean the same thing."
+    },
+    {
+      "type": "mc",
+      "prompt": "If $AB=I$ for square matrices $A$ and $B$, then $A$ and $B$ can never also satisfy $BA=I$.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 1,
+      "explanations": [
+        "For square matrices, this is actually guaranteed to also happen — a one-sided inverse for square matrices is automatically a two-sided inverse.",
+        null
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "$(ABC)^{-1} = C^{-1}B^{-1}A^{-1}$ follows the same order-reversing pattern as $(AB)^{-1}=B^{-1}A^{-1}$.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "The order-reversing rule extends to any number of invertible factors, not just two."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "The general rule for inverting a product of several matrices is to invert each factor and:",
+      "choices": [
+        "keep the same order",
+        "add them instead of multiplying",
+        "reverse their order",
+        "only invert the first factor"
+      ],
+      "answer": 2,
+      "explanations": [
+        "Keeping the same order gives the wrong formula — the order must reverse.",
+        "Inverses of a product don't combine by addition.",
+        null,
+        "Every factor needs to be inverted, not just the first one."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "$(A^{-1})^{-1}=A$ says that inverting a matrix twice returns the original matrix.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "That's exactly what this theorem states — inversion undoes itself."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "$I^{-1}$ does not exist because the identity matrix cannot be inverted.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 1,
+      "explanations": [
+        "The identity matrix is its own inverse: $I \\cdot I = I$, so $I^{-1}=I$.",
+        null
+      ]
+    },
+    {
+      "type": "wordbank",
+      "prompt": "Inverting a product of matrices reverses their order, the same way _____ a product of matrices reverses their order.",
+      "wordbank": [
+        "transposing",
+        "adding",
+        "scaling",
+        "squaring"
+      ],
+      "answer": "transposing",
+      "explanation": "Both $(AB)^{-1}=B^{-1}A^{-1}$ and $(AB)^T=B^TA^T$ reverse the order of the factors."
+    },
+    {
+      "type": "mc",
+      "prompt": "$(A-B)^T = B^T - A^T$ for matrices of the same size.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 1,
+      "explanations": [
+        "The correct formula is $(A-B)^T = A^T - B^T$ — this version has the sign backwards.",
+        null
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "The transpose of a sum equals the sum of the transposes, but the transpose of a product reverses the order of the factors.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "This is exactly the combination of Theorem 1.4.8 (sums) and Theorem 1.4.9 (products)."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "Because $(AB)^T=B^TA^T$, we can say the transpose of a product 'reverses the order,' just like the inverse of a product does.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "Both operations share this order-reversing behavior when applied to a product."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "The identity matrix is NOT symmetric: $I^T \\neq I$ in general.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 1,
+      "explanations": [
+        "The identity matrix IS symmetric: $I^T = I$, since it's unchanged by swapping rows and columns.",
+        null
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "The zero matrix is symmetric: $0^T = 0$.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "Every entry of the zero matrix is $0$, so swapping rows and columns changes nothing."
+      ]
+    }
+  ]
+}
