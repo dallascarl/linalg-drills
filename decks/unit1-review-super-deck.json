@@ -1,0 +1,1309 @@
+{
+  "id": "unit1-review-super-deck",
+  "title": "Unit 1 Super Review (Days 1-15)",
+  "description": "Comprehensive review covering everything from linear systems and Gaussian elimination through Cramer's Rule: RREF & free variables, matrix operations, linear transformations, the Invertibility Theorem, elementary matrices, inverse matrices, LU decomposition, and determinants. 20 questions pulled per attempt from a pool of 100.",
+  "questionsPerAttempt": 20,
+  "pointsPerQuestion": 1,
+  "questions": [
+    {
+      "type": "mc",
+      "prompt": "Swapping two rows of an augmented matrix changes the solution set of the system.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 1,
+      "explanations": [
+        "Row operations (including swaps) never change the solution set — that's the whole reason we're allowed to use them to solve systems.",
+        null
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "A system in RREF has at most one pivot per row.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "By definition, each nonzero row of RREF has exactly one leading 1 (pivot), and it's the only pivot in that row."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "If a row of the augmented matrix reduces to [0  0  0 | 5], the system is inconsistent.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "That row says 0 = 5, a contradiction — no values of the variables can satisfy it."
+      ]
+    },
+    {
+      "type": "wordbank",
+      "prompt": "A variable whose column has no pivot in RREF is called a _____ variable.",
+      "wordbank": [
+        "free",
+        "pivot",
+        "leading",
+        "basic"
+      ],
+      "answer": "free",
+      "explanation": "Pivot (leading/basic) variables correspond to pivot columns; everything else is free."
+    },
+    {
+      "type": "type",
+      "prompt": "The RREF of a system's augmented matrix is [[1, 0, 3 | 7], [0, 1, -2 | 4]] for variables x, y, z (z is free). If z = t, what is x in terms of t?",
+      "answer": [
+        "7-3t",
+        "7 - 3t",
+        "x=7-3t",
+        "x = 7 - 3t"
+      ],
+      "explanation": "Row 1 reads x + 3z = 7, so x = 7 - 3z = 7 - 3t."
+    },
+    {
+      "type": "mc",
+      "prompt": "A consistent system has more unknowns than equations, and every equation is independent (full row rank). What must be true of its solution set?",
+      "choices": [
+        "It has exactly one solution",
+        "It has infinitely many solutions",
+        "It has no solution",
+        "It cannot be determined without more information"
+      ],
+      "answer": 1,
+      "explanations": [
+        "More unknowns than (independent) equations always leaves at least one free variable.",
+        null,
+        "The system is given as consistent, so 'no solution' is ruled out.",
+        "It CAN be determined: full row rank with more unknowns than equations always forces at least one free variable."
+      ]
+    },
+    {
+      "type": "type",
+      "prompt": "Solve: x + y = 5 and x − y = 1. What is x?",
+      "answer": [
+        "3"
+      ],
+      "explanation": "Adding the two equations: 2x = 6, so x = 3 (and then y = 2)."
+    },
+    {
+      "type": "mc",
+      "prompt": "Every matrix has a unique RREF.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "No matter which sequence of row operations you use, you always land on the same RREF."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "The number of pivots in a matrix's RREF is called its rank.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "Rank is defined exactly this way: the number of pivot positions (equivalently, pivot columns)."
+      ]
+    },
+    {
+      "type": "wordbank",
+      "prompt": "Two systems that have the same solution set (reachable from one another by row operations) are called _____ systems.",
+      "wordbank": [
+        "equivalent",
+        "identical",
+        "parallel",
+        "dependent"
+      ],
+      "answer": "equivalent",
+      "explanation": "'Equivalent' is the standard term — the systems can look different but share every solution."
+    },
+    {
+      "type": "type",
+      "prompt": "In the single equation x + 2y − z = 6, y and z are free. If y = s and z = t, what is x in terms of s and t?",
+      "answer": [
+        "6-2s+t",
+        "6 - 2s + t",
+        "x=6-2s+t",
+        "x = 6 - 2s + t"
+      ],
+      "explanation": "Solve for the pivot variable x: x = 6 - 2y + z = 6 - 2s + t."
+    },
+    {
+      "type": "mc",
+      "prompt": "Which of the following is NOT one of the three elementary row operations?",
+      "choices": [
+        "Swap two rows",
+        "Multiply a row by a nonzero scalar",
+        "Add a multiple of one row to another",
+        "Delete a row"
+      ],
+      "answer": 3,
+      "explanations": [
+        "This is a legal elementary row operation.",
+        "This is a legal elementary row operation (the scalar must be nonzero so it's reversible).",
+        "This is a legal elementary row operation.",
+        null
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "A system can have a free variable in its RREF and still have no solution.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "Free/pivot status comes from the coefficient columns alone. If some OTHER row reduces to [0 0 ... 0 | nonzero], the system is inconsistent regardless of any free variables elsewhere."
+      ]
+    },
+    {
+      "type": "type",
+      "prompt": "Solve: 2x + 3y = 12 and x − y = 1. What is y?",
+      "answer": [
+        "2"
+      ],
+      "explanation": "From the second equation, x = 1 + y. Substituting: 2(1+y) + 3y = 12, so 5y = 10, y = 2."
+    },
+    {
+      "type": "mc",
+      "prompt": "If two augmented matrices are row equivalent, they represent systems with the same solution set.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "Row equivalence means one was reached from the other by row operations, which never change the solution set."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "A = [[1, 2], [3, 4]]  and  B = [[0, -1], [2, 1]]. What is A + B?",
+      "choices": [
+        "[[1, 1], [5, 5]]",
+        "[[1, 3], [5, 5]]",
+        "[[1, 1], [1, 5]]",
+        "[[-1, 1], [5, 3]]"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "Check the (1,2) entry again: 2 + (-1) = 1, not 3.",
+        "Check the (2,1) entry again: 3 + 2 = 5, not 1.",
+        "Entries were subtracted where they should be added, or mismatched."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "A = [[1, 2], [3, 4]]. What is 2A?",
+      "choices": [
+        "[[2, 4], [6, 8]]",
+        "[[2, 2], [3, 4]]",
+        "[[1, 4], [3, 8]]",
+        "[[2, 4], [3, 4]]"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "Every entry must be scaled by 2, not just the first column.",
+        "Every entry must be scaled by 2, not just the second column.",
+        "The bottom row was left unscaled."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "A = [[1, 2], [3, 4]]  and  B = [[0, -1], [2, 1]]. What is AB?",
+      "choices": [
+        "[[4, 1], [8, 1]]",
+        "[[4, 1], [1, 8]]",
+        "[[0, -2], [6, 4]]",
+        "[[1, 4], [1, 8]]"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "The bottom row's entries are swapped — recompute row 2 of A times each column of B.",
+        "This looks like an entrywise product, not matrix multiplication.",
+        "Rows and columns are mixed up — recompute using row·column."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "Using the same A and B (A = [[1, 2], [3, 4]], B = [[0, -1], [2, 1]]), what is BA? (Compare it to AB above.)",
+      "choices": [
+        "[[-3, -4], [5, 8]]",
+        "[[4, 1], [8, 1]]",
+        "[[-3, 5], [-4, 8]]",
+        "[[3, 4], [-5, -8]]"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "That's AB, not BA — order matters, and this problem asks for BA.",
+        "The rows and columns are transposed from the correct answer.",
+        "The signs are flipped from the correct answer."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "(AB)ᵀ = AᵀBᵀ.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 1,
+      "explanations": [
+        "The correct identity reverses the order: (AB)ᵀ = BᵀAᵀ.",
+        null
+      ]
+    },
+    {
+      "type": "wordbank",
+      "prompt": "(AB)ᵀ = _____",
+      "wordbank": [
+        "BᵀAᵀ",
+        "AᵀBᵀ",
+        "ABᵀ",
+        "AᵀB"
+      ],
+      "answer": "BᵀAᵀ",
+      "explanation": "Transposing a product reverses the order of the factors."
+    },
+    {
+      "type": "mc",
+      "prompt": "Matrix multiplication is associative: (AB)C = A(BC).",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "Matrix multiplication is always associative, even though it isn't commutative."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "If AB is the zero matrix, then A must be the zero matrix or B must be the zero matrix.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 1,
+      "explanations": [
+        "Unlike real numbers, matrices can be zero divisors — e.g. A = [[0,1],[0,0]] and B = [[0,1],[0,0]] are both nonzero, but AB = [[0,0],[0,0]].",
+        null
+      ]
+    },
+    {
+      "type": "type",
+      "prompt": "C is a 2×3 matrix. What are the dimensions of Cᵀ (rows × columns)?",
+      "answer": [
+        "3x2",
+        "3×2",
+        "3 x 2"
+      ],
+      "explanation": "Transposing swaps rows and columns: a 2×3 matrix becomes 3×2."
+    },
+    {
+      "type": "mc",
+      "prompt": "For an m×n matrix A and an n×p matrix B, what are the dimensions of the product AB?",
+      "choices": [
+        "m×p",
+        "n×n",
+        "m×n",
+        "p×m"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "n×n would only be right if m = p = n; in general the product is m×p.",
+        "m×n is the shape of A itself, not the product.",
+        "The order is reversed — it's m×p, not p×m."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "A + B is only defined when A and B have the same dimensions.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "Matrix addition is entrywise, so the matrices must line up entry-for-entry — same number of rows and columns."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "For square matrices, A² means A multiplied by itself using matrix multiplication (not each entry squared).",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "A² = A·A using matrix multiplication — squaring entries individually is a different (and much less useful) operation."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "A linear transformation T sends T(e1) = (2, 0) and T(e2) = (0, 3). What is its standard matrix?",
+      "choices": [
+        "[[2, 0], [0, 3]]",
+        "[[0, 2], [3, 0]]",
+        "[[2, 3], [0, 0]]",
+        "[[3, 0], [0, 2]]"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "The images become the COLUMNS in order, not the rows.",
+        "This puts both images into one row instead of separate columns.",
+        "The order of e1 and e2's images is swapped."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "What is the standard matrix of a 90° counterclockwise rotation in R²?",
+      "choices": [
+        "[[0, -1], [1, 0]]",
+        "[[0, 1], [-1, 0]]",
+        "[[1, 0], [0, -1]]",
+        "[[-1, 0], [0, 1]]"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "This is the matrix for a 90° CLOCKWISE rotation instead.",
+        "This is a reflection across the x-axis, not a rotation.",
+        "This is a reflection across the y-axis, not a rotation."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "What is the standard matrix of the projection onto the x-axis, T(x,y) = (x, 0)?",
+      "choices": [
+        "[[1, 0], [0, 0]]",
+        "[[0, 0], [0, 1]]",
+        "[[1, 0], [0, 1]]",
+        "[[0, 1], [0, 0]]"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "This is the projection onto the y-axis instead.",
+        "This is the identity transformation — it doesn't project onto anything.",
+        "This doesn't fix the x-coordinate the way a projection onto the x-axis should."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "What is the standard matrix of a reflection across the y-axis, T(x,y) = (-x, y)?",
+      "choices": [
+        "[[-1, 0], [0, 1]]",
+        "[[1, 0], [0, -1]]",
+        "[[0, -1], [-1, 0]]",
+        "[[-1, 0], [0, -1]]"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "That's a reflection across the x-axis instead.",
+        "That's not a reflection across either axis.",
+        "That's a 180° rotation, not a reflection across the y-axis."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "If T is a linear transformation, then T(0) = 0.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "T(0) = T(0·v) = 0·T(v) = 0 by the scalar (homogeneity) property of linearity."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "T(x, y) = (x + 1, y) is a linear transformation.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 1,
+      "explanations": [
+        "A linear transformation must send 0 to 0, but T(0,0) = (1,0) ≠ (0,0), so this fails immediately.",
+        null
+      ]
+    },
+    {
+      "type": "type",
+      "prompt": "T(x, y) = (3x, x + y). What is T(2, 1)? Give your answer as an ordered pair like (a, b).",
+      "answer": [
+        "(6,3)",
+        "(6, 3)"
+      ],
+      "explanation": "T(2,1) = (3·2, 2+1) = (6, 3)."
+    },
+    {
+      "type": "type",
+      "prompt": "T(x, y) = (x − y, 2y). What is T(4, 1)?",
+      "answer": [
+        "(3,2)",
+        "(3, 2)"
+      ],
+      "explanation": "T(4,1) = (4−1, 2·1) = (3, 2)."
+    },
+    {
+      "type": "mc",
+      "prompt": "The columns of a linear transformation T's standard matrix are:",
+      "choices": [
+        "the images T(e1), T(e2), …, T(en), in order",
+        "the eigenvectors of T",
+        "the domain of T",
+        "the kernel of T"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "Eigenvectors are a completely different (later) topic — not what builds the standard matrix.",
+        "The domain is the space T acts on, not a description of the matrix's columns.",
+        "The kernel is the set of vectors T sends to 0 — it's not the columns of the matrix."
+      ]
+    },
+    {
+      "type": "wordbank",
+      "prompt": "A transformation T: Rⁿ → Rᵐ is linear if and only if T(u+v) = T(u)+T(v) and T(cu) = _____ for every scalar c.",
+      "wordbank": [
+        "cT(u)",
+        "T(u)+c",
+        "c+T(u)",
+        "T(cu)²"
+      ],
+      "answer": "cT(u)",
+      "explanation": "This is the homogeneity condition: scaling the input scales the output by the same factor."
+    },
+    {
+      "type": "mc",
+      "prompt": "Every linear transformation from Rⁿ to Rᵐ can be represented by some m×n matrix.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "This is the Standard Matrix Theorem — the matrix's columns are T(e1), …, T(en)."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "A transformation scales the x-coordinate by 2 and leaves y unchanged: T(x,y) = (2x, y). What is its standard matrix?",
+      "choices": [
+        "[[2, 0], [0, 1]]",
+        "[[1, 0], [0, 2]]",
+        "[[2, 0], [0, 2]]",
+        "[[0, 2], [1, 0]]"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "This scales y instead of x.",
+        "This scales both coordinates by 2, but y should stay unchanged.",
+        "The rows/columns are mixed up."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "If det(A) ≠ 0, then A is invertible.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "A nonzero determinant is one of the equivalent conditions in the Invertibility Theorem."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "If Ax = 0 has a nontrivial solution, then A is invertible.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 1,
+      "explanations": [
+        "A nontrivial solution to Ax=0 is exactly the signal that A is NOT invertible.",
+        null
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "An invertible n×n matrix is row equivalent to the n×n identity matrix.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "Row equivalence to I is another one of the Invertibility Theorem's equivalent conditions."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "For an n×n matrix A, which of these is equivalent to saying A is NOT invertible?",
+      "choices": [
+        "A has n pivot columns",
+        "det(A) = 0",
+        "The columns of A are linearly independent",
+        "Ax = 0 has only the trivial solution"
+      ],
+      "answer": 1,
+      "explanations": [
+        "This describes an INVERTIBLE matrix.",
+        null,
+        "This describes an INVERTIBLE matrix.",
+        "This describes an INVERTIBLE matrix."
+      ]
+    },
+    {
+      "type": "wordbank",
+      "prompt": "A is invertible if and only if the columns of A are linearly _____.",
+      "wordbank": [
+        "independent",
+        "dependent",
+        "orthogonal",
+        "symmetric"
+      ],
+      "answer": "independent",
+      "explanation": "Linear independence of the columns is one of the Invertibility Theorem's equivalent conditions."
+    },
+    {
+      "type": "mc",
+      "prompt": "If A is invertible, then Ax = b has a unique solution for every b.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "x = A⁻¹b always exists and is unique when A is invertible."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "A singular (non-invertible) n×n matrix has n pivot columns.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 1,
+      "explanations": [
+        "A singular matrix has FEWER than n pivot columns — that's exactly why it's singular.",
+        null
+      ]
+    },
+    {
+      "type": "type",
+      "prompt": "An n×n matrix has fewer than n pivot columns in its RREF. Is it invertible? Answer yes or no.",
+      "answer": [
+        "no",
+        "No"
+      ],
+      "explanation": "Fewer than n pivot columns means A is NOT row equivalent to the identity, so A is not invertible."
+    },
+    {
+      "type": "mc",
+      "prompt": "For an n×n matrix A, which of these is NOT equivalent to 'A is invertible'?",
+      "choices": [
+        "The rows of A are linearly independent",
+        "The columns of A span Rⁿ",
+        "A has at least one free variable in Ax = 0",
+        "A is row equivalent to the identity matrix"
+      ],
+      "answer": 2,
+      "explanations": [
+        "This IS equivalent to A being invertible.",
+        "This IS equivalent to A being invertible.",
+        null,
+        "This IS equivalent to A being invertible."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "Every square matrix is invertible.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 1,
+      "explanations": [
+        "Only square matrices with nonzero determinant (full rank) are invertible — plenty of square matrices are singular.",
+        null
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "The matrix [[1, 0, 0], [0, 1, 0], [-3, 0, 1]] is a 3×3 elementary matrix.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "It's the identity matrix after exactly one row operation: add -3·R1 to R3."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "The matrix [[1, -2], [0, 1]] is a 2×2 elementary matrix.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "It's the identity after exactly one row operation: add -2·R2 to R1."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "The elementary matrix [[1, 0], [0, 5]] came from which row operation on the identity matrix?",
+      "choices": [
+        "Multiply R2 by 5",
+        "Add 5·R1 to R2",
+        "Swap R1 and R2",
+        "Multiply R1 by 5"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "Adding a multiple of one row to another wouldn't leave R1 unchanged and only scale R2.",
+        "A row swap wouldn't produce a 5 on the diagonal.",
+        "This would put the 5 in the (1,1) position, not (2,2)."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "The inverse of an elementary matrix is also an elementary matrix.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "Each type of elementary row operation (swap, scale, add-a-multiple) is undone by another elementary row operation of the same type."
+      ]
+    },
+    {
+      "type": "wordbank",
+      "prompt": "Left-multiplying A by an elementary matrix E performs a _____ operation on A.",
+      "wordbank": [
+        "row",
+        "column",
+        "scalar",
+        "transpose"
+      ],
+      "answer": "row",
+      "explanation": "Elementary matrices encode row operations; multiplying on the right instead performs column operations."
+    },
+    {
+      "type": "mc",
+      "prompt": "E = [[1, 0], [3, 1]] represents 'add 3·R1 to R2'. What is E⁻¹?",
+      "choices": [
+        "[[1, 0], [-3, 1]]",
+        "[[1, 0], [3, 1]]",
+        "[[1, 0], [1/3, 1]]",
+        "[[-1, 0], [0, -1]]"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "That's E itself, not its inverse — applying the same operation twice doesn't undo it.",
+        "The multiplier should be negated, not inverted.",
+        "This isn't even a valid elementary matrix for this operation."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "A product of elementary matrices is always invertible.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "Each elementary matrix is invertible, and a product of invertible matrices is invertible."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "An elementary matrix representing 'swap R1 and R2' is its own:",
+      "choices": [
+        "inverse",
+        "determinant",
+        "adjoint",
+        "transpose only, not its inverse"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "A determinant is a number, not a matrix — this doesn't make sense as an answer.",
+        "The adjoint is a different construction entirely.",
+        "It's actually both its own transpose AND its own inverse here — 'transpose only' is too narrow."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "Matrix addition is commutative: A + B = B + A.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "Matrix addition is entrywise, and ordinary number addition is commutative, so the entries add up the same way in either order."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "Matrix multiplication is commutative: AB = BA for all A, B.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 1,
+      "explanations": [
+        "Matrix multiplication is generally NOT commutative — order matters.",
+        null
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "If A and B are square and AB = I, then BA = I as well.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "For square matrices, a one-sided inverse is automatically a two-sided inverse."
+      ]
+    },
+    {
+      "type": "type",
+      "prompt": "A = [[2, 1], [1, 1]]. What is det(A)?",
+      "answer": [
+        "1"
+      ],
+      "explanation": "det(A) = 2·1 - 1·1 = 1."
+    },
+    {
+      "type": "mc",
+      "prompt": "(AB)⁻¹ = A⁻¹B⁻¹.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 1,
+      "explanations": [
+        "The correct identity reverses the order: (AB)⁻¹ = B⁻¹A⁻¹.",
+        null
+      ]
+    },
+    {
+      "type": "wordbank",
+      "prompt": "(AB)⁻¹ = _____",
+      "wordbank": [
+        "B⁻¹A⁻¹",
+        "A⁻¹B⁻¹",
+        "(BA)⁻¹²",
+        "AB⁻¹"
+      ],
+      "answer": "B⁻¹A⁻¹",
+      "explanation": "Just like the transpose, inverting a product reverses the order of the factors."
+    },
+    {
+      "type": "mc",
+      "prompt": "If A is invertible, then (Aᵀ)⁻¹ = (A⁻¹)ᵀ.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "Transpose and inverse commute: (Aᵀ)⁻¹ = (A⁻¹)ᵀ always holds for invertible A."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "The zero matrix has an inverse.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 1,
+      "explanations": [
+        "The zero matrix has determinant 0, so it's never invertible.",
+        null
+      ]
+    },
+    {
+      "type": "type",
+      "prompt": "A = [[2, 1], [1, 1]] (det(A) = 1, so A⁻¹ = [[1, -1], [-1, 2]]) and b = (5, 3). Using x = A⁻¹b, what is x (the first coordinate)?",
+      "answer": [
+        "2"
+      ],
+      "explanation": "x = A⁻¹b = (1·5 + (−1)·3, −1·5 + 2·3) = (2, 1), so the first coordinate is 2."
+    },
+    {
+      "type": "mc",
+      "prompt": "The cancellation law AB = AC implies B = C for any nonzero matrix A.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 1,
+      "explanations": [
+        "Cancellation only works if A is INVERTIBLE, not merely nonzero — a singular nonzero A can still fail cancellation.",
+        null
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "In A = LU (no row swaps needed), L is lower triangular with 1's on the diagonal.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "L records the row-reduction multipliers below a diagonal of 1's — that's the standard convention for LU."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "In A = LU, U is upper triangular.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "U is exactly the row-echelon form reached by forward elimination — upper triangular by construction."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "Every square matrix has an LU decomposition without any row swaps.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 1,
+      "explanations": [
+        "Some matrices require a row swap during elimination, in which case you need a PLU decomposition instead.",
+        null
+      ]
+    },
+    {
+      "type": "wordbank",
+      "prompt": "When row swaps are needed during elimination, we instead compute a _____ decomposition.",
+      "wordbank": [
+        "PLU",
+        "QR",
+        "LDU",
+        "SVD"
+      ],
+      "answer": "PLU",
+      "explanation": "The permutation matrix P records the swaps: A = PLU (or PA = LU)."
+    },
+    {
+      "type": "mc",
+      "prompt": "Why is it useful to compute an LU decomposition of A?",
+      "choices": [
+        "To solve Ax = b efficiently for many different b vectors",
+        "To find the eigenvalues of A instantly",
+        "To make A symmetric",
+        "To compute Aᵀ more quickly"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "LU decomposition doesn't directly give eigenvalues — that's a different (later) topic.",
+        "LU decomposition has nothing to do with symmetry.",
+        "Transposing a matrix doesn't require LU decomposition at all."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "In a PLU decomposition, P is a permutation matrix.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "P just reorders rows to record the row swaps used during elimination, so it's a permutation matrix (identity with rows reordered)."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "The product of two upper triangular matrices (of the same size) is upper triangular.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "Every entry below the diagonal of the product comes out to 0 — upper triangular matrices are closed under multiplication."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "To solve Ax = b using A = LU, what do you solve first?",
+      "choices": [
+        "Ly = b for y",
+        "Ux = b for x",
+        "Ly = x for b",
+        "Ux = y for b"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "You need y from Ly=b before you can use U at all.",
+        "This isn't a meaningful equation to solve first.",
+        "This isn't the right order — L comes first."
+      ]
+    },
+    {
+      "type": "type",
+      "prompt": "Find the determinant: det([[3, 5], [2, 4]])",
+      "answer": [
+        "2"
+      ],
+      "explanation": "det = 3·4 - 5·2 = 12 - 10 = 2."
+    },
+    {
+      "type": "type",
+      "prompt": "Find the determinant: det([[-2, 3], [4, 1]])",
+      "answer": [
+        "-14"
+      ],
+      "explanation": "det = (-2)(1) - (3)(4) = -2 - 12 = -14."
+    },
+    {
+      "type": "mc",
+      "prompt": "det(I) = 1 for an identity matrix of any size.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "The identity matrix is triangular with all 1's on the diagonal, so its determinant is the product of the diagonal: 1."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "If a matrix has a row of all zeros, its determinant is 0.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "Cofactor expansion along the zero row gives a sum of terms that are all multiplied by 0."
+      ]
+    },
+    {
+      "type": "type",
+      "prompt": "Find the determinant of the lower-triangular matrix [[2, 0, 0], [1, 3, 0], [4, 5, 6]].",
+      "answer": [
+        "36"
+      ],
+      "explanation": "For a triangular matrix, det is the product of the diagonal entries: 2 · 3 · 6 = 36."
+    },
+    {
+      "type": "mc",
+      "prompt": "For an upper or lower triangular matrix, det(A) equals:",
+      "choices": [
+        "the product of the diagonal entries",
+        "the sum of the diagonal entries",
+        "the largest diagonal entry",
+        "always 1"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "That would be the trace, not the determinant.",
+        "The determinant isn't simply the largest entry.",
+        "Only true if every diagonal entry happens to multiply to 1 — not a general rule."
+      ]
+    },
+    {
+      "type": "type",
+      "prompt": "Find the determinant of the upper-triangular matrix [[1, 2, 3], [0, 1, 4], [0, 0, 1]].",
+      "answer": [
+        "1"
+      ],
+      "explanation": "Product of the diagonal entries: 1 · 1 · 1 = 1."
+    },
+    {
+      "type": "mc",
+      "prompt": "Swapping two rows of a matrix multiplies its determinant by -1.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "A row swap is one of the elementary operations, and it's the one that flips the determinant's sign."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "The determinant is defined for non-square matrices too.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 1,
+      "explanations": [
+        "The determinant is only defined for square matrices.",
+        null
+      ]
+    },
+    {
+      "type": "wordbank",
+      "prompt": "Expanding a determinant along a row or column using signed minors is called _____ expansion.",
+      "wordbank": [
+        "cofactor",
+        "pivot",
+        "scalar",
+        "adjoint"
+      ],
+      "answer": "cofactor",
+      "explanation": "This is the cofactor (Laplace) expansion method."
+    },
+    {
+      "type": "mc",
+      "prompt": "det(AB) = det(A)·det(B).",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "This multiplicative property of the determinant holds for any two square matrices of the same size."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "det(A+B) = det(A) + det(B) in general.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 1,
+      "explanations": [
+        "There is no such addition rule for determinants — this fails for almost any example you try.",
+        null
+      ]
+    },
+    {
+      "type": "type",
+      "prompt": "A is 2×2 with det(A) = 3. What is det(2A)?",
+      "answer": [
+        "12"
+      ],
+      "explanation": "det(kA) = kⁿdet(A) for n×n A. Here n=2, k=2: det(2A) = 2²·3 = 12."
+    },
+    {
+      "type": "mc",
+      "prompt": "For an n×n matrix A and scalar k, det(kA) equals:",
+      "choices": [
+        "kⁿ·det(A)",
+        "k·det(A)",
+        "det(A) + k",
+        "k²·det(A)"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "This forgets that EVERY row gets scaled by k, not just one.",
+        "This isn't how scaling interacts with determinants at all.",
+        "This is only correct when n = 2 specifically — not the general rule."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "det(Aᵀ) = det(A).",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "Transposing a matrix never changes its determinant — cofactor expansion along a row of A matches expansion along the corresponding column of Aᵀ."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "Adding a multiple of one row to another row changes the value of the determinant.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 1,
+      "explanations": [
+        "This is exactly the one elementary row operation that leaves the determinant unchanged.",
+        null
+      ]
+    },
+    {
+      "type": "type",
+      "prompt": "det(A) = 5. What is det(A⁻¹)?",
+      "answer": [
+        "1/5",
+        "0.2"
+      ],
+      "explanation": "det(A⁻¹) = 1/det(A) = 1/5."
+    },
+    {
+      "type": "mc",
+      "prompt": "A matrix with det(A) = 0 must have linearly dependent columns.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "det(A) = 0 is one of the equivalent conditions in the Invertibility Theorem — it forces the columns to be linearly dependent."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "Cramer's Rule requires det(A) ≠ 0.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "Cramer's Rule divides by det(A), so it only works when det(A) ≠ 0 (i.e., when A is invertible)."
+      ]
+    },
+    {
+      "type": "type",
+      "prompt": "Using Cramer's Rule, det(A) = 2 and det(Aₓ) = 8 (A with the x-column replaced by b). What is x?",
+      "answer": [
+        "4"
+      ],
+      "explanation": "x = det(Aₓ)/det(A) = 8/2 = 4."
+    },
+    {
+      "type": "mc",
+      "prompt": "Cramer's Rule works only for square systems.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "Cramer's Rule relies on det(A), which only exists when A is square, so the method requires as many equations as unknowns."
+      ]
+    },
+    {
+      "type": "wordbank",
+      "prompt": "In Cramer's Rule, Aᵢ is the matrix A with column i replaced by _____.",
+      "wordbank": [
+        "b",
+        "0",
+        "Aᵀ",
+        "I"
+      ],
+      "answer": "b",
+      "explanation": "Aᵢ swaps in the right-hand-side vector b for column i."
+    },
+    {
+      "type": "mc",
+      "prompt": "det(A⁻¹) = 1/det(A).",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "Since det(A)·det(A⁻¹) = det(A·A⁻¹) = det(I) = 1, it follows that det(A⁻¹) = 1/det(A)."
+      ]
+    },
+    {
+      "type": "type",
+      "prompt": "Using the adjoint formula A⁻¹ = (1/det(A))·adj(A): det(A) = 4 and adj(A) has entry 8 in position (1,1). What is (A⁻¹) in position (1,1)?",
+      "answer": [
+        "2"
+      ],
+      "explanation": "(A⁻¹)₁₁ = adj(A)₁₁ / det(A) = 8/4 = 2."
+    },
+    {
+      "type": "mc",
+      "prompt": "If det(A) = 0, Cramer's Rule still gives a valid unique solution via 0/0.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 1,
+      "explanations": [
+        "det(A) = 0 means A isn't invertible — Cramer's Rule simply doesn't apply, not that it gives a 0/0 answer.",
+        null
+      ]
+    }
+  ]
+}
