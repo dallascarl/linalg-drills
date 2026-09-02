@@ -7,5 +7,5 @@
   { "id": "next-step-ref", "file": "decks/next-step-ref.json" },
   { "id": "matrix-definitions", "file": "decks/matrix-definitions.json" },
   { "id": "is-operation-defined", "file": "decks/is-operation-defined.json" },
-    { "id": "unit1-review-super-deck", "file": "decks/unit1-review-super-deck.json" }
+    { "id": "inverse-matrices-properties", "file": "decks/inverse-matrices-properties.json" }
 ]
