@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html lang="en">
 <head>
@@ -473,7 +472,8 @@ sb.auth.onAuthStateChange(async (event, session) => {
   if (currentUser){
     await refreshProfile();
     showHeaderButtons(true);
-    await Promise.all([loadManifest(), loadAppSettings()]);
+    await loadAppSettings();
+    await loadManifest();
     showScreen('menu');
     const params = new URLSearchParams(window.location.search);
     const dp = params.get('deck');
