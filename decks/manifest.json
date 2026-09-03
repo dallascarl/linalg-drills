@@ -9,7 +9,7 @@
   { "id": "is-operation-defined", "file": "decks/is-operation-defined.json" },
   { "id": "inverse-matrices-properties", "file": "decks/inverse-matrices-properties.json" },
   { "id": "lu-decomposition", "file": "decks/lu-decomposition.json" },
-  { "id": "inverse-matrices-properties", "file": "decks/inverse-matrices-properties.json" },
+  { "id": "elementary-matrices", "file": "decks/elementary-matrices.json" },
   { "id": "determinants-properties-day14", "file": "decks/determinants-properties-day14.json" },
   { "id": "unit1-review-super-deck", "file": "decks/unit1-review-super-deck.json" }
 ]
