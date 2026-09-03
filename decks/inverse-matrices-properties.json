@@ -684,14 +684,6 @@
       "explanation": "$(AA^{-1})_{12} = 2(-1)+1(2) = -2+2=0$ — as expected, since $AA^{-1}=I$."
     },
     {
-      "type": "type",
-      "prompt": "Compute $\\det(A)$ for $A=\\begin{bmatrix}4&2\\\\3&2\\end{bmatrix}$.",
-      "answer": [
-        "2"
-      ],
-      "explanation": "$\\det(A) = 4(2)-2(3) = 8-6=2$."
-    },
-    {
       "type": "mc",
       "prompt": "$(AB)^{-1} = A^{-1}B^{-1}$.",
       "choices": [
