@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -178,6 +179,34 @@
   .toggle-slider:before{content:'';position:absolute;width:18px;height:18px;left:3px;top:3px;background:#9AA1B4;border-radius:50%;transition:.2s;}
   .toggle input:checked+.toggle-slider{background:var(--vector);}
   .toggle input:checked+.toggle-slider:before{transform:translateX(18px);background:#0B0E14;}
+
+  /* Section headers in deck list */
+  .section-header{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--chalk-dim);padding:6px 4px 4px;margin-top:16px;border-bottom:1px solid #2A3142;}
+  .section-header:first-child{margin-top:0;}
+  /* New / unseen deck highlight */
+  .deck-card.deck-new{border-color:var(--vector-dim);background:rgba(124,157,255,.06);}
+  .new-badge{display:inline-block;font-family:'Space Mono',monospace;font-size:9px;background:var(--vector);color:#0B0E14;border-radius:4px;padding:1px 5px;margin-left:6px;vertical-align:middle;letter-spacing:.04em;}
+  /* Due date styles */
+  .due-badge{font-family:'Space Mono',monospace;font-size:10px;padding:2px 7px;border-radius:5px;display:inline-block;margin-top:4px;}
+  .due-open{background:rgba(61,220,151,.12);color:var(--correct);}
+  .due-closed{background:rgba(255,107,107,.12);color:var(--wrong);}
+  /* Admin deck controls */
+  .admin-deck-row{display:flex;align-items:center;gap:10px;padding:10px 12px;background:var(--surface);border:1px solid #2A3142;border-radius:12px;margin-bottom:8px;}
+  .admin-deck-name{flex:1;font-size:13px;font-weight:600;}
+  .admin-deck-id{font-family:'Space Mono',monospace;font-size:10px;color:var(--chalk-dim);}
+  .admin-deck-due{font-family:'Space Mono',monospace;font-size:11px;color:var(--chalk-dim);}
+  .date-input{background:var(--surface-raised);border:1px solid #313850;color:var(--chalk);border-radius:8px;padding:5px 8px;font-size:12px;font-family:'Space Mono',monospace;width:130px;}
+  .date-input:focus{outline:none;border-color:var(--vector);}
+  .save-date-btn{font-family:'Space Mono',monospace;font-size:11px;background:var(--vector);color:#0B0E14;border:none;border-radius:7px;padding:5px 10px;cursor:pointer;}
+  /* Instructor control panel */
+  .ctrl-panel{background:var(--surface);border:1px solid #2A3142;border-radius:14px;padding:16px;margin-bottom:16px;}
+  .ctrl-panel h3{font-family:'Space Mono',monospace;font-size:13px;color:var(--gold);margin:0 0 12px;}
+  .ctrl-row{display:flex;align-items:center;justify-content:space-between;padding:8px 0;border-bottom:1px solid #1A1F2C;}
+  .ctrl-row:last-child{border-bottom:none;}
+  .ctrl-label{font-size:13px;}
+  .ctrl-label small{display:block;font-size:11px;color:var(--chalk-dim);}
+  /* LB hidden notice for students */
+  .lb-hidden-notice{text-align:center;padding:40px 20px;color:var(--chalk-dim);font-family:'Space Mono',monospace;font-size:13px;line-height:1.8;}
 
   [data-screen]{display:none;}
   [data-screen].active{display:block;}
@@ -372,6 +401,27 @@ const LEADERBOARD_SIZE = 10;
 
 const sb = supabase.createClient(SUPABASE_URL, SUPABASE_ANON);
 
+// ── App-level settings loaded from Supabase ──
+let appSettings = {
+  hiddenDecks: [],      // array of deck IDs hidden from students
+  deckDueDates: {},     // { deckId: 'YYYY-MM-DD' }
+  leaderboardVisible: true
+};
+
+async function loadAppSettings(){
+  const {data} = await sb.from('settings').select('key, value');
+  if (!data) return;
+  data.forEach(row => {
+    if (row.key === 'hidden_decks')       appSettings.hiddenDecks       = row.value || [];
+    if (row.key === 'deck_due_dates')     appSettings.deckDueDates      = row.value || {};
+    if (row.key === 'leaderboard_visible') appSettings.leaderboardVisible = row.value !== false;
+  });
+}
+
+async function saveSetting(key, value){
+  await sb.from('settings').upsert({key, value}, {onConflict:'key'});
+}
+
 // ═══════════════════════════════════════════════════
 //  SCREEN ROUTER
 // ═══════════════════════════════════════════════════
@@ -423,7 +473,7 @@ sb.auth.onAuthStateChange(async (event, session) => {
   if (currentUser){
     await refreshProfile();
     showHeaderButtons(true);
-    await loadManifest();
+    await Promise.all([loadManifest(), loadAppSettings()]);
     showScreen('menu');
     const params = new URLSearchParams(window.location.search);
     const dp = params.get('deck');
@@ -573,41 +623,86 @@ function renderDeckList(){
       <div class="deck-glyph"><svg width="44" height="44" viewBox="0 0 44 44"><circle cx="22" cy="22" r="20" fill="none" stroke="#FFD166" stroke-width="1.5"/><text x="22" y="28" text-anchor="middle" font-size="16" fill="#FFD166">👁</text></svg></div>
       <div class="deck-info">
         <div class="deck-title" style="color:var(--gold)">Student Dashboard</div>
-        <div class="deck-desc">Grade scores and leaderboard points for all students.</div>
+        <div class="deck-desc">Grade scores, leaderboard points, deck controls.</div>
         <div class="deck-meta" style="color:var(--gold)">INSTRUCTOR ONLY</div>
       </div>`;
     adminCard.addEventListener('click', openAdmin);
     list.appendChild(adminCard);
   }
 
-  manifest.forEach((entry, i) => {
+  // Filter: students only see visible decks; teachers see all with hidden indicator
+  const visibleManifest = isTeacher()
+    ? manifest
+    : manifest.filter(e => !appSettings.hiddenDecks.includes(e.id));
+
+  // Group by section
+  const sections = {};
+  const noSection = [];
+  visibleManifest.forEach(entry => {
+    const sec = entry.section || null;
+    if (sec){ (sections[sec] = sections[sec]||[]).push(entry); }
+    else { noSection.push(entry); }
+  });
+
+  let glyphIdx = 0;
+  function renderEntry(entry){
+    glyphIdx++;
     const card = document.createElement('button');
-    card.className = 'deck-card';
     const prog = currentProfile?.deck_bests?.[entry.id];
+    const isNew = !prog && !entry.ungraded;
+    const isHidden = appSettings.hiddenDecks.includes(entry.id);
     const attempts = prog?.attempts || 0;
     const attemptsLeft = Math.max(0, 3 - attempts);
     const ppq = entry.pointsPerQuestion || 1;
 
+    // Due date logic
+    const dueStr = appSettings.deckDueDates[entry.id];
+    let dueBadge = '';
+    let gradeIsLocked = false;
+    if (dueStr && !entry.ungraded){
+      const now = new Date();
+      const due = new Date(dueStr + 'T23:59:59');
+      gradeIsLocked = now > due;
+      dueBadge = gradeIsLocked
+        ? `<span class="due-badge due-closed">GRADE CLOSED ${dueStr}</span>`
+        : `<span class="due-badge due-open">DUE ${dueStr}</span>`;
+    }
+
     let metaLines = [];
+    if (isHidden && isTeacher()) metaLines.push('🔒 HIDDEN FROM STUDENTS');
     if (entry.ungraded){
       metaLines.push('JUST FOR FUN · NOT GRADED');
     } else if (prog){
       metaLines.push(`GRADE BEST: ${prog.bestRaw}/${prog.total}`);
-      metaLines.push(`LB PTS EARNED: ${prog.lbPoints || 0} · ${attemptsLeft} scored attempt${attemptsLeft !== 1 ? 's' : ''} left`);
+      if (gradeIsLocked) metaLines.push('GRADE LOCKED — still earns LB pts');
+      else metaLines.push(`LB PTS EARNED: ${prog.lbPoints || 0} · ${attemptsLeft} scored attempt${attemptsLeft !== 1 ? 's' : ''} left`);
     } else {
-      metaLines.push(`NOT ATTEMPTED · 3 scored attempts`);
+      metaLines.push(gradeIsLocked ? 'GRADE LOCKED · 3 scored attempts' : 'NOT ATTEMPTED · 3 scored attempts');
     }
     if (ppq > 1) metaLines.push(`${ppq} pts per question`);
 
+    card.className = 'deck-card' + (isNew ? ' deck-new' : '');
+    card.style.opacity = (isHidden && isTeacher()) ? '0.6' : '1';
     card.innerHTML = `
-      <div class="deck-glyph">${deckGlyph(i+1)}</div>
+      <div class="deck-glyph">${deckGlyph(glyphIdx)}</div>
       <div class="deck-info">
-        <div class="deck-title">${escapeHtml(entry.title || entry.id)}</div>
+        <div class="deck-title">${escapeHtml(entry.title || entry.id)}${isNew ? '<span class="new-badge">NEW</span>' : ''}</div>
         <div class="deck-desc">${escapeHtml(entry.description || '')}</div>
+        ${dueBadge}
         <div class="deck-meta">${metaLines.map(escapeHtml).join('<br>')}</div>
       </div>`;
     card.addEventListener('click', () => startDeck(entry.id));
     list.appendChild(card);
+  }
+
+  // Render no-section decks first, then sections
+  noSection.forEach(renderEntry);
+  Object.entries(sections).forEach(([sec, entries]) => {
+    const hdr = document.createElement('div');
+    hdr.className = 'section-header';
+    hdr.textContent = sec;
+    list.appendChild(hdr);
+    entries.forEach(renderEntry);
   });
 }
 
@@ -706,8 +801,10 @@ function renderQuestion(){
       chip.className = 'wb-chip';
       chip.innerHTML = safeHtml(word);
       chip.addEventListener('click', () => {
-        wbSelected = word; slot.textContent = word;
+        wbSelected = word;
+        slot.innerHTML = safeHtml(word);
         slot.classList.add('filled'); submitBtn.disabled = false;
+        MathJax.typesetPromise([slot]);
       });
       chips.push(chip); tray.appendChild(chip);
     });
@@ -866,11 +963,14 @@ async function finishDeck(){
   savingEl.textContent = 'Saving…';
   showScreen('results');
 
-  // ── Grade: best raw score, unlimited attempts ──
+  // ── Grade: best raw score, unlimited attempts (unless past due date) ──
   const prevBests  = currentProfile?.deck_bests || {};
   const prevDeck   = prevBests[activeDeck.id] || {};
   const prevBestRaw = prevDeck.bestRaw || 0;
-  const newBestRaw  = Math.max(prevBestRaw, score);
+  // Check if grade is locked by due date
+  const dueStr = appSettings.deckDueDates[activeDeck.id];
+  const gradeIsLocked = dueStr && (new Date() > new Date(dueStr + 'T23:59:59'));
+  const newBestRaw  = gradeIsLocked ? prevBestRaw : Math.max(prevBestRaw, score);
 
   // ── Leaderboard points: diminishing returns, capped at 3 attempts ──
   const prevAttempts  = prevDeck.attempts || 0;
@@ -890,7 +990,7 @@ async function finishDeck(){
   } else {
     ptsEarned.textContent = `+${earnedPoints} leaderboard pts`;
     const multiplierLabels = ['Full points (1st attempt)', '75% points (2nd attempt)', '25% points (3rd attempt)'];
-    ptsNote.textContent = `${multiplierLabels[thisAttempt - 1]} · Grade best: ${newBestRaw}/${total}`;
+    ptsNote.textContent = `${multiplierLabels[thisAttempt - 1]} · Grade best: ${newBestRaw}/${total}${gradeIsLocked ? ' · GRADE LOCKED (past due)' : ''}`;
   }
 
   // ── Save attempt to DB ──
@@ -965,6 +1065,11 @@ async function openLeaderboard(deckId){
 
 async function renderLeaderboard(){
   const content = document.getElementById('lbContent');
+  // Check leaderboard visibility (students see hidden notice; teacher always sees)
+  if (!appSettings.leaderboardVisible && !isTeacher()){
+    content.innerHTML = '<div class="lb-hidden-notice">🔒<br><br>The leaderboard is<br>currently hidden<br>by your instructor.</div>';
+    return;
+  }
   content.innerHTML = '<div class="spinner">Loading…</div>';
 
   let rows;
@@ -1041,7 +1146,10 @@ document.getElementById('lbOptIn').addEventListener('change', async (e) => {
 async function openAdmin(){
   showScreen('admin');
   const content = document.getElementById('adminContent');
-  content.innerHTML = '<div class="spinner">Loading student data…</div>';
+  content.innerHTML = '<div class="spinner">Loading…</div>';
+
+  // Reload settings so controls reflect current state
+  await loadAppSettings();
 
   const {data: profiles} = await sb.from('profiles')
     .select('id, username, full_name, total_correct, lb_opt_in, deck_bests')
@@ -1050,6 +1158,46 @@ async function openAdmin(){
 
   let html = '';
 
+  // ── INSTRUCTOR CONTROLS ──────────────────────────────────
+  html += `<div class="ctrl-panel">
+    <h3>⚙ Instructor Controls</h3>
+
+    <div class="ctrl-row">
+      <div class="ctrl-label">Leaderboard visible to students
+        <small>When off, students see a "hidden" notice</small>
+      </div>
+      <label class="toggle">
+        <input type="checkbox" id="adminLbToggle" ${appSettings.leaderboardVisible ? 'checked' : ''}/>
+        <span class="toggle-slider"></span>
+      </label>
+    </div>
+  </div>`;
+
+  // ── DECK VISIBILITY + DUE DATES ───────────────────────────
+  html += `<div class="ctrl-panel">
+    <h3>📚 Deck Visibility & Due Dates</h3>`;
+
+  manifest.forEach(entry => {
+    const isHidden = appSettings.hiddenDecks.includes(entry.id);
+    const dueVal   = appSettings.deckDueDates[entry.id] || '';
+    html += `<div class="admin-deck-row">
+      <div style="flex:1;min-width:0">
+        <div class="admin-deck-name">${escapeHtml(entry.title || entry.id)}</div>
+        <div class="admin-deck-id">${escapeHtml(entry.id)}</div>
+      </div>
+      <label class="toggle" title="Visible to students">
+        <input type="checkbox" class="deck-vis-toggle" data-id="${escapeHtml(entry.id)}" ${isHidden ? '' : 'checked'}/>
+        <span class="toggle-slider"></span>
+      </label>
+      <div style="display:flex;align-items:center;gap:6px">
+        <input type="date" class="date-input" data-id="${escapeHtml(entry.id)}" value="${escapeHtml(dueVal)}" title="Grade due date"/>
+        <button class="save-date-btn" data-id="${escapeHtml(entry.id)}">Save</button>
+      </div>
+    </div>`;
+  });
+  html += `</div>`;
+
+  // ── STUDENT TABLE ────────────────────────────────────────
   if (!profiles?.length){
     html += '<p style="color:var(--chalk-dim);font-size:13px;margin-bottom:20px;">No students yet.</p>';
   } else {
@@ -1073,11 +1221,12 @@ async function openAdmin(){
       <td>${optBadge}</td>
     </tr>`;
 
-    // Per-deck breakdown: show BOTH grade score and LB points
     if (p.deck_bests && Object.keys(p.deck_bests).length){
       const bests = Object.entries(p.deck_bests).map(([id, v]) => {
         const deckLabel = escapeHtml(id.replace(/-/g,' '));
-        const gradeStr  = `<span style="color:var(--correct)">${v.bestRaw ?? v.best ?? '?'}/${v.total}</span>`;
+        const dueStr2   = appSettings.deckDueDates[id];
+        const locked    = dueStr2 && (new Date() > new Date(dueStr2 + 'T23:59:59'));
+        const gradeStr  = `<span style="color:var(--correct)">${v.bestRaw ?? v.best ?? '?'}/${v.total}</span>${locked ? ' 🔒' : ''}`;
         const lbStr     = `<span style="color:var(--vector)">${v.lbPoints || 0}pts</span>`;
         const attStr    = `<span style="color:var(--chalk-dim)">${v.attempts || 0} attempts</span>`;
         return `<span style="font-size:11px;margin-right:12px;display:inline-block;margin-bottom:4px">
@@ -1089,7 +1238,7 @@ async function openAdmin(){
   });
 
     html += '</tbody></table></div>';
-  } // end else (students exist)
+  } // end else
 
   // ── Flagged questions ──
   const {data: flags} = await sb.from('flags')
@@ -1119,6 +1268,39 @@ async function openAdmin(){
   }
 
   content.innerHTML = html;
+
+  // ── Wire leaderboard toggle ──
+  document.getElementById('adminLbToggle').addEventListener('change', async (e) => {
+    appSettings.leaderboardVisible = e.target.checked;
+    await saveSetting('leaderboard_visible', e.target.checked);
+  });
+
+  // ── Wire deck visibility toggles ──
+  document.querySelectorAll('.deck-vis-toggle').forEach(cb => {
+    cb.addEventListener('change', async (e) => {
+      const id = e.target.dataset.id;
+      if (e.target.checked){
+        appSettings.hiddenDecks = appSettings.hiddenDecks.filter(d => d !== id);
+      } else {
+        if (!appSettings.hiddenDecks.includes(id)) appSettings.hiddenDecks.push(id);
+      }
+      await saveSetting('hidden_decks', appSettings.hiddenDecks);
+    });
+  });
+
+  // ── Wire due date save buttons ──
+  document.querySelectorAll('.save-date-btn').forEach(btn => {
+    btn.addEventListener('click', async () => {
+      const id  = btn.dataset.id;
+      const inp = document.querySelector(`.date-input[data-id="${id}"]`);
+      const val = inp.value; // 'YYYY-MM-DD' or ''
+      if (val) appSettings.deckDueDates[id] = val;
+      else delete appSettings.deckDueDates[id];
+      await saveSetting('deck_due_dates', appSettings.deckDueDates);
+      btn.textContent = '✓';
+      setTimeout(() => btn.textContent = 'Save', 1500);
+    });
+  });
 }
 // Dismiss a flag — deletes from DB and fades the card out
 async function dismissFlag(idx, flagId){
