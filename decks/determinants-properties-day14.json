@@ -1,0 +1,265 @@
+{
+  "id": "determinants-properties-day13",
+  "title": "Determinants II: Row Reduction & Properties",
+  "description": "Evaluate determinants by row reduction, then apply the key properties (transpose, row operations, scaling, products, invertibility) to predict a determinant without recomputing it (Anton §2.2–2.3).",
+  "questionsPerAttempt": 8,
+  "pointsPerQuestion": 1,
+  "questions": [
+    {
+      "type": "type",
+      "prompt": "Evaluate by row reduction (cofactor expansion gives the same answer): $\\det\\begin{bmatrix} 2 & 1 & -1 \\\\ 1 & 3 & 2 \\\\ 0 & 1 & 4 \\end{bmatrix}$",
+      "answer": [
+        "15"
+      ],
+      "explanation": "Row-reduce to triangular form and multiply the diagonal (tracking any swaps/scalings), or expand by cofactors along any row/column — either way, $\\det = 15$."
+    },
+    {
+      "type": "type",
+      "prompt": "Evaluate by row reduction (cofactor expansion gives the same answer): $\\det\\begin{bmatrix} 1 & 0 & 2 \\\\ -1 & 3 & 1 \\\\ 2 & -2 & 0 \\end{bmatrix}$",
+      "answer": [
+        "-6"
+      ],
+      "explanation": "Row-reduce to triangular form and multiply the diagonal (tracking any swaps/scalings), or expand by cofactors along any row/column — either way, $\\det = -6$."
+    },
+    {
+      "type": "type",
+      "prompt": "Evaluate by row reduction (cofactor expansion gives the same answer): $\\det\\begin{bmatrix} 3 & -1 & 2 \\\\ 0 & 2 & -4 \\\\ 1 & 1 & 1 \\end{bmatrix}$",
+      "answer": [
+        "18"
+      ],
+      "explanation": "Row-reduce to triangular form and multiply the diagonal (tracking any swaps/scalings), or expand by cofactors along any row/column — either way, $\\det = 18$."
+    },
+    {
+      "type": "type",
+      "prompt": "Evaluate by row reduction (cofactor expansion gives the same answer): $\\det\\begin{bmatrix} -2 & 3 & 0 \\\\ 1 & -1 & 2 \\\\ 0 & 4 & 1 \\end{bmatrix}$",
+      "answer": [
+        "15"
+      ],
+      "explanation": "Row-reduce to triangular form and multiply the diagonal (tracking any swaps/scalings), or expand by cofactors along any row/column — either way, $\\det = 15$."
+    },
+    {
+      "type": "type",
+      "prompt": "Evaluate by row reduction (cofactor expansion gives the same answer): $\\det\\begin{bmatrix} 1 & 2 & 3 \\\\ 0 & -1 & 4 \\\\ 2 & 0 & -2 \\end{bmatrix}$",
+      "answer": [
+        "24"
+      ],
+      "explanation": "Row-reduce to triangular form and multiply the diagonal (tracking any swaps/scalings), or expand by cofactors along any row/column — either way, $\\det = 24$."
+    },
+    {
+      "type": "type",
+      "prompt": "Evaluate by row reduction (cofactor expansion gives the same answer): $\\det\\begin{bmatrix} 4 & 0 & -1 \\\\ 2 & 3 & 1 \\\\ -1 & 2 & 0 \\end{bmatrix}$",
+      "answer": [
+        "-15"
+      ],
+      "explanation": "Row-reduce to triangular form and multiply the diagonal (tracking any swaps/scalings), or expand by cofactors along any row/column — either way, $\\det = -15$."
+    },
+    {
+      "type": "type",
+      "prompt": "Evaluate by row reduction (cofactor expansion gives the same answer): $\\det\\begin{bmatrix} 0 & 2 & 1 \\\\ 3 & -1 & -2 \\\\ 1 & 0 & 2 \\end{bmatrix}$",
+      "answer": [
+        "-15"
+      ],
+      "explanation": "Row-reduce to triangular form and multiply the diagonal (tracking any swaps/scalings), or expand by cofactors along any row/column — either way, $\\det = -15$."
+    },
+    {
+      "type": "type",
+      "prompt": "Evaluate by row reduction (cofactor expansion gives the same answer): $\\det\\begin{bmatrix} 2 & -3 & 1 \\\\ 0 & 1 & -2 \\\\ 3 & 0 & 4 \\end{bmatrix}$",
+      "answer": [
+        "23"
+      ],
+      "explanation": "Row-reduce to triangular form and multiply the diagonal (tracking any swaps/scalings), or expand by cofactors along any row/column — either way, $\\det = 23$."
+    },
+    {
+      "type": "mc",
+      "prompt": "You swap two rows of a matrix. What happens to the determinant?",
+      "choices": [
+        "It stays the same",
+        "It flips sign (multiplies by −1)",
+        "It doubles",
+        "It becomes 0"
+      ],
+      "answer": 1,
+      "explanations": [
+        "A row swap is exactly the operation that flips the sign — the determinant does change.",
+        null,
+        "Swapping rows doesn't scale the determinant, it flips its sign.",
+        "Swapping rows never forces the determinant to 0 unless it already was."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "You perform the row replacement $R_2 \\to R_2 + 5R_1$ on a matrix. What happens to the determinant?",
+      "choices": [
+        "It stays the same",
+        "It multiplies by 5",
+        "It flips sign",
+        "It multiplies by 6"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "Row replacement (adding a multiple of one row to another) is the one operation that leaves the determinant completely unchanged.",
+        "Sign flips come from swapping rows, not from a row replacement.",
+        "Row replacement doesn't scale the determinant at all."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "You scale row 2 of a matrix by $-3$. If the original determinant was 8, what is the new determinant?",
+      "choices": [
+        "8",
+        "-24",
+        "24",
+        "-8"
+      ],
+      "answer": 1,
+      "explanations": [
+        "Scaling a row does change the determinant — it's not left alone.",
+        null,
+        "The sign of the scale factor carries through: scaling by $-3$ multiplies the determinant by $-3$, not $3$.",
+        "The full factor of $-3$ applies, not just a sign flip."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "True or False: $\\det(A^T) = \\det(A)$ for any square matrix $A$.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "Transposing swaps rows and columns, but every determinant property that holds for rows also holds for columns — the determinant is unchanged."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "A $3\\times 3$ matrix $A$ has $\\det(A) = 4$. What is $\\det(2A)$?",
+      "choices": [
+        "8",
+        "16",
+        "32",
+        "4"
+      ],
+      "answer": 2,
+      "explanations": [
+        "Doubling every entry scales all 3 rows, not just one — so the factor is $2^3$, not $2$.",
+        "Close, but the exponent should match the size of the matrix: $2^3$, not $2^2$.",
+        null,
+        "$\\det(2A) \\ne \\det(A)$ — scaling the whole matrix does change the determinant."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "$\\det(A) = 5$ and $\\det(B) = -3$ for two $n\\times n$ matrices. What is $\\det(AB)$?",
+      "choices": [
+        "2",
+        "-15",
+        "15",
+        "-8"
+      ],
+      "answer": 1,
+      "explanations": [
+        "Determinants multiply here, they don't add.",
+        null,
+        "Watch the sign — $5 \\times (-3) = -15$, not $15$.",
+        "Determinants multiply under matrix multiplication, they don't subtract."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "True or False: if $\\det(A) \\ne 0$, then $A$ is invertible.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "A nonzero determinant is exactly the invertibility test — row reduction always reaches a full set of nonzero pivots in this case."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "$\\det(A) = 0$ for a square matrix $A$. What can you conclude?",
+      "choices": [
+        "A is invertible",
+        "A is not invertible",
+        "A must be the zero matrix",
+        "Nothing can be concluded"
+      ],
+      "answer": 1,
+      "explanations": [
+        "It's the opposite — a zero determinant rules out invertibility.",
+        null,
+        "Plenty of nonzero matrices have determinant 0 — having a repeated or dependent row is enough.",
+        "The invertibility property gives a definite answer here: not invertible."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "$\\det(A) = 6$ for an invertible matrix $A$. What is $\\det(A^{-1})$?",
+      "choices": [
+        "6",
+        "-6",
+        "1/6",
+        "0"
+      ],
+      "answer": 2,
+      "explanations": [
+        "That's $\\det(A)$ itself, not $\\det(A^{-1})$.",
+        "There's no sign flip involved here.",
+        null,
+        "$A^{-1}$ exists and is itself invertible, so its determinant can't be 0."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "A matrix has two identical rows. What must its determinant be?",
+      "choices": [
+        "0",
+        "1",
+        "It depends on the entries",
+        "It can never be found"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "Two identical rows force a very specific value, not this one.",
+        "This one is fully determined by the fact that two rows match — no other entries matter.",
+        "It's perfectly computable — and it's always the same value."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "True or False: for square matrices $A$ and $B$ of the same size, $\\det(AB) = \\det(BA)$, even though $AB \\ne BA$ in general.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "$\\det(AB) = \\det(A)\\det(B) = \\det(B)\\det(A) = \\det(BA)$ — ordinary number multiplication commutes even when matrix multiplication doesn't."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "You take the transpose of a matrix, then take the transpose again: $(A^T)^T$. What is $\\det\\big((A^T)^T\\big)$ compared to $\\det(A)$?",
+      "choices": [
+        "The same",
+        "Flipped in sign",
+        "Squared",
+        "Impossible to say"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "Transposing never flips a determinant's sign on its own.",
+        "Transposing doesn't square anything.",
+        "$(A^T)^T = A$ exactly, so this is fully determined."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,387 @@
+{
+  "id": "lu-decomposition",
+  "title": "LU Decomposition",
+  "description": "Conceptual review of LU/PLU/LDU decomposition: triangular matrix properties, existence and uniqueness, permutation matrices, and why the decomposition is worth computing (Anton 9.1).",
+  "questionsPerAttempt": 8,
+  "pointsPerQuestion": 1,
+  "questions": [
+    {
+      "type": "mc",
+      "prompt": "The product of two lower triangular matrices (of the same size) is lower triangular.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "Triangular matrices are closed under multiplication: multiplying out $L_1 L_2$, every entry above the diagonal is a sum of products where at least one factor is 0, so it stays lower triangular."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "The product of two upper triangular matrices (of the same size) is upper triangular.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "Same closure property as the lower triangular case, just reflected: the zero pattern above/below the diagonal is preserved under multiplication."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "The sum of two lower triangular matrices is lower triangular.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "Addition is entrywise, so if both matrices have 0's above the diagonal, their sum does too."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "The inverse of an invertible lower triangular matrix is lower triangular.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "This is exactly why solving $Ly=b$ by forward substitution works, and it's part of why $L^{-1}$ shows up as lower triangular when you compute $A^{-1}=U^{-1}L^{-1}$."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "The inverse of an invertible upper triangular matrix is upper triangular.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "Mirror image of the lower triangular case — back substitution on $Ux=y$ only works because $U^{-1}$ is upper triangular too."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "A matrix that is both lower triangular and upper triangular at the same time must be a diagonal matrix.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "Lower triangular forces all entries above the diagonal to be 0; upper triangular forces all entries below the diagonal to be 0. The only entries left are on the diagonal."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "If an invertible matrix $A$ has an LU decomposition, then $A$ has a unique LDU decomposition $A=LDU$, where $L$ and $U$ are required to have 1's on their diagonals and $D$ is a diagonal matrix of the pivots.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "This is exactly the fix for LU's non-uniqueness: once you force $L$ and $U$ to have unit diagonals and pull every pivot out into $D$, there's only one way to split $A$ up this way."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "Every square matrix has a PLU decomposition $PA=LU$ for some permutation matrix $P$, even if $A$ is singular.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "Partial pivoting can always be carried out on a square matrix — you just swap in a nonzero entry when you can, and skip a column entirely (leaving a 0 pivot in $U$) when an entire column below is already 0. $L$ still comes out unit lower triangular either way."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "Every invertible matrix has a standard LU decomposition $A=LU$ (no row swaps needed).",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 1,
+      "explanations": [
+        "Not true — $A=\\begin{bmatrix}0&1\\\\1&0\\end{bmatrix}$ is invertible, but its very first pivot spot is 0, so elimination breaks immediately and a row swap is required. Invertibility guarantees a PLU decomposition, not a swap-free LU one.",
+        null
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "The determinant of a triangular matrix equals the sum of its diagonal entries.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 1,
+      "explanations": [
+        "That's the trace, not the determinant. The determinant of a triangular matrix is the *product* of its diagonal entries.",
+        null
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "If $PA=LU$ (with $L$ the unit lower triangular matrix from the elimination method used in class), then $\\det(A)=\\pm\\det(U)$, with the sign coming from the number of row swaps in $P$.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "Since $\\det(L)=1$ (unit diagonal) and $\\det(P)=\\pm1$, taking determinants of $PA=LU$ gives $\\pm\\det(A)=\\det(U)$, i.e. $\\det(A)=\\pm\\det(U)$."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "A permutation matrix is always invertible, and its inverse equals its transpose.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "Permutation matrices just reorder rows of the identity, so they're always invertible, and undoing a permutation is the same as transposing it: $P^{-1}=P^{T}$."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "In the elimination step $R_{\\text{row}}\\to R_{\\text{row}}-m\\cdot R_{\\text{col}}$, the entry recorded in $L$ at that position is $-m$, the negative of the multiplier.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 1,
+      "explanations": [
+        "It's the other way around — the entry recorded in $L$ is $+m$, the multiplier itself. (The elementary matrix that performs the elimination step has $-m$ in it; $L$ is built from the *inverses* of those elementary matrices, which flips the sign back to $+m$.)",
+        null
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "Once a matrix's LU decomposition is known, solving $Ax=b$ for a new $b$ only requires two triangular solves (forward then back substitution), not a fresh elimination from scratch.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "That's the entire point of computing $L$ and $U$ in the first place — the expensive elimination work happens once, and every new $b$ after that is cheap."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "If a row swap is required partway through elimination, only the rows of $U$ need to be swapped — any multipliers already recorded in $L$ are unaffected.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 1,
+      "explanations": [
+        "The already-recorded multiplier entries in $L$'s earlier columns have to swap right along with the rows, or the final $L$ and $U$ won't actually satisfy $PA=LU$. This is the easiest step to forget.",
+        null
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "Two different pairs $(L,U)$ — each satisfying only “$L$ lower triangular, $U$ upper triangular, $LU=A$” — can have different diagonal entries in $L$.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "Since the definition doesn't pin the diagonal down, you can rescale a row of $L$ by any nonzero $c$ and the matching row of $U$ by $1/c$ and still get a valid decomposition of the same $A$. That's exactly why LU decompositions aren't unique in general."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "If $A$ is invertible and $A=LU$, then $A^{-1}=U^{-1}L^{-1}$.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "This follows from the general rule $(XY)^{-1}=Y^{-1}X^{-1}$ applied to $X=L$, $Y=U$ — and it's useful in its own right, since $U^{-1}$ and $L^{-1}$ are each cheap triangular inverses."
+      ]
+    },
+    {
+      "type": "wordbank",
+      "prompt": "If $E_k E_{k-1}\\cdots E_1 A = U$, then _____ $= E_1^{-1}E_2^{-1}\\cdots E_k^{-1}$.",
+      "wordbank": [
+        "L",
+        "U",
+        "P",
+        "D",
+        "A"
+      ],
+      "answer": "L",
+      "explanation": "Solving for $A$ gives $A=(E_k\\cdots E_1)^{-1}U = E_1^{-1}\\cdots E_k^{-1}U$, so $L=E_1^{-1}\\cdots E_k^{-1}$ — the product of the inverse elementary matrices, in reverse order."
+    },
+    {
+      "type": "wordbank",
+      "prompt": "In the decomposition $A=LDU$ (with $L$ and $U$ unit triangular), $D$ is a _____ matrix containing the pivots.",
+      "wordbank": [
+        "diagonal",
+        "lower triangular",
+        "upper triangular",
+        "permutation"
+      ],
+      "answer": "diagonal",
+      "explanation": "$D$ collects all the pivot values on its diagonal, with 0's everywhere else — that's what lets $L$ and $U$ both be normalized to unit diagonals without losing any information."
+    },
+    {
+      "type": "wordbank",
+      "prompt": "When a row swap is required during elimination, we track it with a _____ matrix, giving $PA=LU$ instead of $A=LU$.",
+      "wordbank": [
+        "permutation",
+        "diagonal",
+        "elementary",
+        "identity"
+      ],
+      "answer": "permutation",
+      "explanation": "$P$ is built from the identity matrix by making the same row swaps you performed during elimination."
+    },
+    {
+      "type": "wordbank",
+      "prompt": "If the elimination step $R_{\\text{row}}\\to R_{\\text{row}}-m\\cdot R_{\\text{col}}$ is used to zero out a below-pivot entry, the corresponding entry recorded in $L$ is _____.",
+      "wordbank": [
+        "m",
+        "-m",
+        "1/m",
+        "m^2"
+      ],
+      "answer": "m",
+      "explanation": "$L$ stores the multiplier itself (not its negative) in the position it came from — that's what makes $L$ fall out for free as you eliminate."
+    },
+    {
+      "type": "wordbank",
+      "prompt": "The determinant of a triangular matrix equals the product of its _____ entries.",
+      "wordbank": [
+        "diagonal",
+        "off-diagonal",
+        "first-row",
+        "largest"
+      ],
+      "answer": "diagonal",
+      "explanation": "Expanding the determinant of a triangular matrix along the first column (or by cofactor expansion in general) collapses to just the product down the diagonal."
+    },
+    {
+      "type": "wordbank",
+      "prompt": "The inverse of a permutation matrix $P$ is always equal to its _____.",
+      "wordbank": [
+        "transpose",
+        "determinant",
+        "trace",
+        "adjugate"
+      ],
+      "answer": "transpose",
+      "explanation": "Permutation matrices are orthogonal: $P^{-1}=P^{T}$, so undoing a permutation is as easy as flipping rows and columns."
+    },
+    {
+      "type": "wordbank",
+      "prompt": "Every square matrix — invertible or not — has a valid _____ decomposition, using a permutation matrix if row swaps are needed along the way.",
+      "wordbank": [
+        "PLU",
+        "LU (never needs P)",
+        "QR",
+        "LDU only"
+      ],
+      "answer": "PLU",
+      "explanation": "Partial pivoting always succeeds on a square matrix, even a singular one, so $PA=LU$ always exists — that's a stronger guarantee than plain $A=LU$."
+    },
+    {
+      "type": "wordbank",
+      "prompt": "The product of two upper triangular matrices is always _____ triangular.",
+      "wordbank": [
+        "upper",
+        "lower",
+        "diagonal",
+        "not necessarily triangular"
+      ],
+      "answer": "upper",
+      "explanation": "Triangular matrices are closed under multiplication, and upper stays upper."
+    },
+    {
+      "type": "wordbank",
+      "prompt": "If $L_1$ and $L_2$ are invertible lower triangular matrices, then $L_1^{-1}$ and $L_1 L_2$ are both _____ triangular.",
+      "wordbank": [
+        "lower",
+        "upper",
+        "diagonal",
+        "not necessarily triangular"
+      ],
+      "answer": "lower",
+      "explanation": "Lower triangular matrices are closed under both inversion and multiplication."
+    },
+    {
+      "type": "wordbank",
+      "prompt": "Taking determinants in $PA=LU$ gives $\\det(P)\\det(A)=\\det(L)\\det(U)$. Since $\\det(L)=1$ for the unit lower triangular $L$ from class's elimination method, this simplifies to $\\det(A)=\\pm\\det(X)$, where $X=$ _____.",
+      "wordbank": [
+        "U",
+        "L",
+        "P",
+        "A"
+      ],
+      "answer": "U",
+      "explanation": "$\\det(P)=\\pm1$ and $\\det(L)=1$, so $\\det(A)=\\det(P)^{-1}\\det(L)\\det(U)=\\pm\\det(U)$."
+    },
+    {
+      "type": "wordbank",
+      "prompt": "The main computational payoff of an LU decomposition is that solving $Ax=b$ for many different $b$'s only needs two cheap _____ solves each time, instead of a full elimination from scratch.",
+      "wordbank": [
+        "triangular",
+        "diagonal",
+        "random",
+        "symmetric"
+      ],
+      "answer": "triangular",
+      "explanation": "Forward substitution on $Ly=b$ (or $Ly=Pb$) and back substitution on $Ux=y$ are both fast — that's the entire reason LU decomposition is worth computing once and reusing."
+    },
+    {
+      "type": "wordbank",
+      "prompt": "A matrix that is simultaneously lower triangular and upper triangular must be a _____ matrix.",
+      "wordbank": [
+        "diagonal",
+        "identity",
+        "zero",
+        "permutation"
+      ],
+      "answer": "diagonal",
+      "explanation": "Being lower triangular kills everything above the diagonal; being upper triangular kills everything below it. Only the diagonal survives."
+    },
+    {
+      "type": "wordbank",
+      "prompt": "In building $L$ from elimination, each below-diagonal entry of $L$ records a _____ used to eliminate that position.",
+      "wordbank": [
+        "multiplier",
+        "pivot",
+        "determinant",
+        "permutation"
+      ],
+      "answer": "multiplier",
+      "explanation": "Instead of throwing the multiplier away after using it to eliminate an entry, you record it directly into $L$ in that same spot."
+    }
+  ]
+}

@@ -1,0 +1,657 @@
+{
+  "id": "elementary-matrices",
+  "title": "Elementary Matrices",
+  "description": "Recognizing elementary matrices, identifying the row operation each one encodes, and finding the inverse of an elementary matrix (Anton 1.5).",
+  "questionsPerAttempt": 10,
+  "pointsPerQuestion": 1,
+  "questions": [
+    {
+      "type": "mc",
+      "prompt": "Is the following a 3\\times3 elementary matrix?\n\n$\\begin{bmatrix} 1 & 0 & -3 \\\\ 0 & 1 & 0 \\\\ 0 & 0 & 1 \\end{bmatrix}$",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "It is elementary: it's the identity matrix after Add $-3\\,R_{3}$ to $R_{1}$ -- exactly one row operation."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "Is the following a 2\\times2 elementary matrix?\n\n$\\begin{bmatrix} 1 & -2 \\\\ 0 & 1 \\end{bmatrix}$",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "It is elementary: it's the identity matrix after Add $-2\\,R_{2}$ to $R_{1}$ -- exactly one row operation."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "Is the following a 3\\times3 elementary matrix?\n\n$\\begin{bmatrix} 1 & -1 & 0 \\\\ 0 & 1 & 0 \\\\ 0 & 0 & 1 \\end{bmatrix}$",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "It is elementary: it's the identity matrix after Subtract $R_{2}$ from $R_{1}$ -- exactly one row operation."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "Is the following a 3\\times3 elementary matrix?\n\n$\\begin{bmatrix} 1 & 0 & 2 \\\\ 0 & 1 & 0 \\\\ 0 & 0 & 1 \\end{bmatrix}$",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "It is elementary: it's the identity matrix after Add $2\\,R_{3}$ to $R_{1}$ -- exactly one row operation."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "Is the following a 3\\times3 elementary matrix?\n\n$\\begin{bmatrix} 4 & 0 & 0 \\\\ 0 & 1 & 0 \\\\ 0 & 0 & 1 \\end{bmatrix}$",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "It is elementary: it's the identity matrix after Multiply $R_{1}$ by $4$ -- exactly one row operation."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "Is the following a 2\\times2 elementary matrix?\n\n$\\begin{bmatrix} 1 & 0 \\\\ 0 & -3 \\end{bmatrix}$",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "It is elementary: it's the identity matrix after Multiply $R_{2}$ by $-3$ -- exactly one row operation."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "Is the following a 3\\times3 elementary matrix?\n\n$\\begin{bmatrix} 1 & 0 & 3 \\\\ 0 & 1 & 0 \\\\ 0 & 0 & 1 \\end{bmatrix}$",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "It is elementary: it's the identity matrix after Add $3\\,R_{3}$ to $R_{1}$ -- exactly one row operation."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "Is the following a 2\\times2 elementary matrix?\n\n$\\begin{bmatrix} 1 & 0 \\\\ 0 & 3 \\end{bmatrix}$",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "It is elementary: it's the identity matrix after Multiply $R_{2}$ by $3$ -- exactly one row operation."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "Is the following a 3\\times3 elementary matrix?\n\n$\\begin{bmatrix} 1 & 0 & 0 \\\\ -3 & 1 & 0 \\\\ 0 & 0 & 1 \\end{bmatrix}$",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "It is elementary: it's the identity matrix after Add $-3\\,R_{1}$ to $R_{2}$ -- exactly one row operation."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "Is the following a 2\\times2 elementary matrix?\n\n$\\begin{bmatrix} 3 & 0 \\\\ 0 & 3 \\end{bmatrix}$",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 1,
+      "explanations": [
+        "Not quite -- two different rows are each scaled -- that's two row operations combined, not one.",
+        null
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "Is the following a 3\\times3 elementary matrix?\n\n$\\begin{bmatrix} 1 & 0 & 0 \\\\ 2 & 1 & 1 \\\\ 0 & 0 & 1 \\end{bmatrix}$",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 1,
+      "explanations": [
+        "Not quite -- one row has more than one nonzero off-diagonal entry -- that combines a scale and an addition, not a single operation.",
+        null
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "Is the following a 2\\times2 elementary matrix?\n\n$\\begin{bmatrix} 0 & 0 \\\\ 0 & 1 \\end{bmatrix}$",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 1,
+      "explanations": [
+        "Not quite -- it has a zero row, so it isn't even invertible -- an elementary matrix is always invertible.",
+        null
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "Is the following a 3\\times3 elementary matrix?\n\n$\\begin{bmatrix} 1 & 0 & 0 \\\\ 0 & 1 & 0 \\\\ 0 & 1 & 0 \\end{bmatrix}$",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 1,
+      "explanations": [
+        "Not quite -- it has two identical rows, so it's singular -- an elementary matrix is always invertible.",
+        null
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "Is the following a 2\\times2 elementary matrix?\n\n$\\begin{bmatrix} -2 & 0 \\\\ 0 & 2 \\end{bmatrix}$",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 1,
+      "explanations": [
+        "Not quite -- two different rows are each scaled -- that's two row operations combined, not one.",
+        null
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "Is the following a 3\\times3 elementary matrix?\n\n$\\begin{bmatrix} 1 & 0 & 0 \\\\ 0 & 1 & 0 \\\\ -1 & 3 & 1 \\end{bmatrix}$",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 1,
+      "explanations": [
+        "Not quite -- one row has more than one nonzero off-diagonal entry -- that combines a scale and an addition, not a single operation.",
+        null
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "Is the following a 2\\times2 elementary matrix?\n\n$\\begin{bmatrix} 1 & 0 \\\\ 0 & 0 \\end{bmatrix}$",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 1,
+      "explanations": [
+        "Not quite -- it has a zero row, so it isn't even invertible -- an elementary matrix is always invertible.",
+        null
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "Is the following a $3\\times3$ elementary matrix?\n\n$\\begin{bmatrix} 0 & 1 & 0 \\\\ 0 & 0 & 1 \\\\ 1 & 0 & 0 \\end{bmatrix}$",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 1,
+      "explanations": [
+        "Not quite -- this permutation matrix cycles all three rows. It's a product of *two* row swaps, not a single elementary row operation.",
+        null
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "This 3\\times3 matrix is the identity matrix after ONE elementary row operation. Which row operation was applied?\n\n$\\begin{bmatrix} -1 & 0 & 0 \\\\ 0 & 1 & 0 \\\\ 0 & 0 & 1 \\end{bmatrix}$",
+      "choices": [
+        "Multiply $R_{1}$ by $1$",
+        "Multiply $R_{1}$ by $-1$",
+        "Multiply $R_{2}$ by $-1$",
+        "Multiply $R_{1}$ by $-2$"
+      ],
+      "answer": 1,
+      "explanations": null,
+      "explanation": "Compare column by column to the identity matrix: the only change is consistent with 'Multiply $R_{1}$ by $-1$'."
+    },
+    {
+      "type": "mc",
+      "prompt": "This 3\\times3 matrix is the identity matrix after ONE elementary row operation. Which row operation was applied?\n\n$\\begin{bmatrix} 1 & 0 & 0 \\\\ 0 & 1 & 0 \\\\ 0 & 3 & 1 \\end{bmatrix}$",
+      "choices": [
+        "Add $-3\\,R_{2}$ to $R_{3}$",
+        "Add $3\\,R_{2}$ to $R_{3}$",
+        "Add $3\\,R_{3}$ to $R_{2}$",
+        "Multiply $R_{3}$ by $3$"
+      ],
+      "answer": 1,
+      "explanations": null,
+      "explanation": "Compare column by column to the identity matrix: the only change is consistent with 'Add $3\\,R_{2}$ to $R_{3}$'."
+    },
+    {
+      "type": "mc",
+      "prompt": "This 3\\times3 matrix is the identity matrix after ONE elementary row operation. Which row operation was applied?\n\n$\\begin{bmatrix} 1 & 5 & 0 \\\\ 0 & 1 & 0 \\\\ 0 & 0 & 1 \\end{bmatrix}$",
+      "choices": [
+        "Add $5\\,R_{1}$ to $R_{2}$",
+        "Add $-5\\,R_{2}$ to $R_{1}$",
+        "Multiply $R_{1}$ by $5$",
+        "Add $5\\,R_{2}$ to $R_{1}$"
+      ],
+      "answer": 3,
+      "explanations": null,
+      "explanation": "Compare column by column to the identity matrix: the only change is consistent with 'Add $5\\,R_{2}$ to $R_{1}$'."
+    },
+    {
+      "type": "mc",
+      "prompt": "This 3\\times3 matrix is the identity matrix after ONE elementary row operation. Which row operation was applied?\n\n$\\begin{bmatrix} 1 & 0 & 0 \\\\ 0 & -1 & 0 \\\\ 0 & 0 & 1 \\end{bmatrix}$",
+      "choices": [
+        "Multiply $R_{2}$ by $1$",
+        "Multiply $R_{2}$ by $-2$",
+        "Multiply $R_{2}$ by $-1$",
+        "Multiply $R_{1}$ by $-1$"
+      ],
+      "answer": 2,
+      "explanations": null,
+      "explanation": "Compare column by column to the identity matrix: the only change is consistent with 'Multiply $R_{2}$ by $-1$'."
+    },
+    {
+      "type": "mc",
+      "prompt": "This 3\\times3 matrix is the identity matrix after ONE elementary row operation. Which row operation was applied?\n\n$\\begin{bmatrix} 1 & 0 & 0 \\\\ 0 & 1 & 0 \\\\ 2 & 0 & 1 \\end{bmatrix}$",
+      "choices": [
+        "Add $2\\,R_{3}$ to $R_{1}$",
+        "Multiply $R_{3}$ by $2$",
+        "Add $-2\\,R_{1}$ to $R_{3}$",
+        "Add $2\\,R_{1}$ to $R_{3}$"
+      ],
+      "answer": 3,
+      "explanations": null,
+      "explanation": "Compare column by column to the identity matrix: the only change is consistent with 'Add $2\\,R_{1}$ to $R_{3}$'."
+    },
+    {
+      "type": "mc",
+      "prompt": "This 2\\times2 matrix is the identity matrix after ONE elementary row operation. Which row operation was applied?\n\n$\\begin{bmatrix} 1 & 0 \\\\ 5 & 1 \\end{bmatrix}$",
+      "choices": [
+        "Add $5\\,R_{1}$ to $R_{2}$",
+        "Multiply $R_{2}$ by $5$",
+        "Add $-5\\,R_{1}$ to $R_{2}$",
+        "Add $5\\,R_{2}$ to $R_{1}$"
+      ],
+      "answer": 0,
+      "explanations": null,
+      "explanation": "Compare column by column to the identity matrix: the only change is consistent with 'Add $5\\,R_{1}$ to $R_{2}$'."
+    },
+    {
+      "type": "mc",
+      "prompt": "This 3\\times3 matrix is the identity matrix after ONE elementary row operation. Which row operation was applied?\n\n$\\begin{bmatrix} 1 & 0 & 0 \\\\ 0 & 1 & 3 \\\\ 0 & 0 & 1 \\end{bmatrix}$",
+      "choices": [
+        "Multiply $R_{2}$ by $3$",
+        "Add $-3\\,R_{3}$ to $R_{2}$",
+        "Add $3\\,R_{2}$ to $R_{3}$",
+        "Add $3\\,R_{3}$ to $R_{2}$"
+      ],
+      "answer": 3,
+      "explanations": null,
+      "explanation": "Compare column by column to the identity matrix: the only change is consistent with 'Add $3\\,R_{3}$ to $R_{2}$'."
+    },
+    {
+      "type": "mc",
+      "prompt": "This 3\\times3 matrix is the identity matrix after ONE elementary row operation. Which row operation was applied?\n\n$\\begin{bmatrix} 1 & 0 & 5 \\\\ 0 & 1 & 0 \\\\ 0 & 0 & 1 \\end{bmatrix}$",
+      "choices": [
+        "Multiply $R_{1}$ by $5$",
+        "Add $5\\,R_{1}$ to $R_{3}$",
+        "Add $-5\\,R_{3}$ to $R_{1}$",
+        "Add $5\\,R_{3}$ to $R_{1}$"
+      ],
+      "answer": 3,
+      "explanations": null,
+      "explanation": "Compare column by column to the identity matrix: the only change is consistent with 'Add $5\\,R_{3}$ to $R_{1}$'."
+    },
+    {
+      "type": "mc",
+      "prompt": "This 3\\times3 matrix is the identity matrix after ONE elementary row operation. Which row operation was applied?\n\n$\\begin{bmatrix} 1 & 0 & 0 \\\\ 0 & 1 & 0 \\\\ 0 & 0 & -2 \\end{bmatrix}$",
+      "choices": [
+        "Multiply $R_{3}$ by $2$",
+        "Multiply $R_{1}$ by $-2$",
+        "Multiply $R_{3}$ by $-2$",
+        "Multiply $R_{3}$ by $-1$"
+      ],
+      "answer": 2,
+      "explanations": null,
+      "explanation": "Compare column by column to the identity matrix: the only change is consistent with 'Multiply $R_{3}$ by $-2$'."
+    },
+    {
+      "type": "mc",
+      "prompt": "This 3\\times3 matrix is the identity matrix after ONE elementary row operation. Which row operation was applied?\n\n$\\begin{bmatrix} 1 & 0 & 0 \\\\ 3 & 1 & 0 \\\\ 0 & 0 & 1 \\end{bmatrix}$",
+      "choices": [
+        "Add $3\\,R_{1}$ to $R_{2}$",
+        "Multiply $R_{2}$ by $3$",
+        "Add $3\\,R_{2}$ to $R_{1}$",
+        "Add $-3\\,R_{1}$ to $R_{2}$"
+      ],
+      "answer": 0,
+      "explanations": null,
+      "explanation": "Compare column by column to the identity matrix: the only change is consistent with 'Add $3\\,R_{1}$ to $R_{2}$'."
+    },
+    {
+      "type": "mc",
+      "prompt": "This 3\\times3 matrix is the identity matrix after ONE elementary row operation. Which row operation was applied?\n\n$\\begin{bmatrix} -3 & 0 & 0 \\\\ 0 & 1 & 0 \\\\ 0 & 0 & 1 \\end{bmatrix}$",
+      "choices": [
+        "Multiply $R_{1}$ by $3$",
+        "Multiply $R_{2}$ by $-3$",
+        "Multiply $R_{1}$ by $-3$",
+        "Multiply $R_{1}$ by $-2$"
+      ],
+      "answer": 2,
+      "explanations": null,
+      "explanation": "Compare column by column to the identity matrix: the only change is consistent with 'Multiply $R_{1}$ by $-3$'."
+    },
+    {
+      "type": "mc",
+      "prompt": "This 2\\times2 matrix is the identity matrix after ONE elementary row operation. Which row operation was applied?\n\n$\\begin{bmatrix} 2 & 0 \\\\ 0 & 1 \\end{bmatrix}$",
+      "choices": [
+        "Multiply $R_{2}$ by $2$",
+        "Multiply $R_{1}$ by $-2$",
+        "Multiply $R_{1}$ by $3$",
+        "Multiply $R_{1}$ by $2$"
+      ],
+      "answer": 3,
+      "explanations": null,
+      "explanation": "Compare column by column to the identity matrix: the only change is consistent with 'Multiply $R_{1}$ by $2$'."
+    },
+    {
+      "type": "mc",
+      "prompt": "This 3\\times3 matrix is the identity matrix after ONE elementary row operation. Which row operation was applied?\n\n$\\begin{bmatrix} 1 & 0 & 0 \\\\ 0 & 1 & 0 \\\\ 0 & -2 & 1 \\end{bmatrix}$",
+      "choices": [
+        "Add $-2\\,R_{2}$ to $R_{3}$",
+        "Add $-2\\,R_{3}$ to $R_{2}$",
+        "Multiply $R_{3}$ by $-2$",
+        "Add $2\\,R_{2}$ to $R_{3}$"
+      ],
+      "answer": 0,
+      "explanations": null,
+      "explanation": "Compare column by column to the identity matrix: the only change is consistent with 'Add $-2\\,R_{2}$ to $R_{3}$'."
+    },
+    {
+      "type": "mc",
+      "prompt": "This 3\\times3 matrix is the identity matrix after ONE elementary row operation. Which row operation was applied?\n\n$\\begin{bmatrix} 1 & 0 & -1 \\\\ 0 & 1 & 0 \\\\ 0 & 0 & 1 \\end{bmatrix}$",
+      "choices": [
+        "Add $-1\\,R_{1}$ to $R_{3}$",
+        "Subtract $R_{3}$ from $R_{1}$",
+        "Add $1\\,R_{3}$ to $R_{1}$",
+        "Multiply $R_{1}$ by $-1$"
+      ],
+      "answer": 1,
+      "explanations": null,
+      "explanation": "Compare column by column to the identity matrix: the only change is consistent with 'Subtract $R_{3}$ from $R_{1}$'."
+    },
+    {
+      "type": "mc",
+      "prompt": "This 3\\times3 matrix is the identity matrix after ONE elementary row operation. Which row operation was applied?\n\n$\\begin{bmatrix} 1 & 0 & 0 \\\\ 0 & -3 & 0 \\\\ 0 & 0 & 1 \\end{bmatrix}$",
+      "choices": [
+        "Multiply $R_{1}$ by $-3$",
+        "Multiply $R_{2}$ by $-2$",
+        "Multiply $R_{2}$ by $-3$",
+        "Multiply $R_{2}$ by $3$"
+      ],
+      "answer": 2,
+      "explanations": null,
+      "explanation": "Compare column by column to the identity matrix: the only change is consistent with 'Multiply $R_{2}$ by $-3$'."
+    },
+    {
+      "type": "mc",
+      "prompt": "This 2\\times2 matrix is the identity matrix after ONE elementary row operation. Which row operation was applied?\n\n$\\begin{bmatrix} 1 & -3 \\\\ 0 & 1 \\end{bmatrix}$",
+      "choices": [
+        "Multiply $R_{1}$ by $-3$",
+        "Add $-3\\,R_{2}$ to $R_{1}$",
+        "Add $3\\,R_{2}$ to $R_{1}$",
+        "Add $-3\\,R_{1}$ to $R_{2}$"
+      ],
+      "answer": 1,
+      "explanations": null,
+      "explanation": "Compare column by column to the identity matrix: the only change is consistent with 'Add $-3\\,R_{2}$ to $R_{1}$'."
+    },
+    {
+      "type": "mc",
+      "prompt": "This 3\\times3 matrix is the identity matrix after ONE elementary row operation. Which row operation was applied?\n\n$\\begin{bmatrix} 1 & 0 & 0 \\\\ 0 & 1 & 5 \\\\ 0 & 0 & 1 \\end{bmatrix}$",
+      "choices": [
+        "Add $5\\,R_{3}$ to $R_{2}$",
+        "Multiply $R_{2}$ by $5$",
+        "Add $-5\\,R_{3}$ to $R_{2}$",
+        "Add $5\\,R_{2}$ to $R_{3}$"
+      ],
+      "answer": 0,
+      "explanations": null,
+      "explanation": "Compare column by column to the identity matrix: the only change is consistent with 'Add $5\\,R_{3}$ to $R_{2}$'."
+    },
+    {
+      "type": "mc",
+      "prompt": "This 2\\times2 elementary matrix corresponds to: Add $2\\,R_{1}$ to $R_{2}$.\n\nWhat is its inverse?\n\n$\\begin{bmatrix} 1 & 0 \\\\ 2 & 1 \\end{bmatrix}$",
+      "choices": [
+        "$\\begin{bmatrix} 1 & 0 \\\\ 2 & 1 \\end{bmatrix}$",
+        "$\\begin{bmatrix} 1 & -2 \\\\ 0 & 1 \\end{bmatrix}$",
+        "$\\begin{bmatrix} 1 & 0 \\\\ -2 & 1 \\end{bmatrix}$",
+        "$\\begin{bmatrix} 1 & 0 \\\\ 0 & 1 \\end{bmatrix}$"
+      ],
+      "answer": 2,
+      "explanations": null,
+      "explanation": "An elementary matrix's inverse just undoes the row operation. Since this one is 'Add $2\\,R_{1}$ to $R_{2}$', the inverse is the matrix for the operation that reverses it."
+    },
+    {
+      "type": "mc",
+      "prompt": "This 2\\times2 elementary matrix corresponds to: Add $3\\,R_{1}$ to $R_{2}$.\n\nWhat is its inverse?\n\n$\\begin{bmatrix} 1 & 0 \\\\ 3 & 1 \\end{bmatrix}$",
+      "choices": [
+        "$\\begin{bmatrix} 1 & 0 \\\\ 3 & 1 \\end{bmatrix}$",
+        "$\\begin{bmatrix} 1 & -3 \\\\ 0 & 1 \\end{bmatrix}$",
+        "$\\begin{bmatrix} 1 & 0 \\\\ 0 & 1 \\end{bmatrix}$",
+        "$\\begin{bmatrix} 1 & 0 \\\\ -3 & 1 \\end{bmatrix}$"
+      ],
+      "answer": 3,
+      "explanations": null,
+      "explanation": "An elementary matrix's inverse just undoes the row operation. Since this one is 'Add $3\\,R_{1}$ to $R_{2}$', the inverse is the matrix for the operation that reverses it."
+    },
+    {
+      "type": "mc",
+      "prompt": "This 3\\times3 elementary matrix corresponds to: Add $2\\,R_{1}$ to $R_{2}$.\n\nWhat is its inverse?\n\n$\\begin{bmatrix} 1 & 0 & 0 \\\\ 2 & 1 & 0 \\\\ 0 & 0 & 1 \\end{bmatrix}$",
+      "choices": [
+        "$\\begin{bmatrix} 1 & 0 & 0 \\\\ -2 & 1 & 0 \\\\ 0 & 0 & 1 \\end{bmatrix}$",
+        "$\\begin{bmatrix} 1 & 0 & 0 \\\\ 2 & 1 & 0 \\\\ 0 & 0 & 1 \\end{bmatrix}$",
+        "$\\begin{bmatrix} 1 & -2 & 0 \\\\ 0 & 1 & 0 \\\\ 0 & 0 & 1 \\end{bmatrix}$",
+        "$\\begin{bmatrix} 1 & 0 & 0 \\\\ 0 & 1 & 0 \\\\ 0 & 0 & 1 \\end{bmatrix}$"
+      ],
+      "answer": 0,
+      "explanations": null,
+      "explanation": "An elementary matrix's inverse just undoes the row operation. Since this one is 'Add $2\\,R_{1}$ to $R_{2}$', the inverse is the matrix for the operation that reverses it."
+    },
+    {
+      "type": "mc",
+      "prompt": "This 3\\times3 elementary matrix corresponds to: Add $5\\,R_{1}$ to $R_{2}$.\n\nWhat is its inverse?\n\n$\\begin{bmatrix} 1 & 0 & 0 \\\\ 5 & 1 & 0 \\\\ 0 & 0 & 1 \\end{bmatrix}$",
+      "choices": [
+        "$\\begin{bmatrix} 1 & 0 & 0 \\\\ -5 & 1 & 0 \\\\ 0 & 0 & 1 \\end{bmatrix}$",
+        "$\\begin{bmatrix} 1 & 0 & 0 \\\\ 5 & 1 & 0 \\\\ 0 & 0 & 1 \\end{bmatrix}$",
+        "$\\begin{bmatrix} 1 & -5 & 0 \\\\ 0 & 1 & 0 \\\\ 0 & 0 & 1 \\end{bmatrix}$",
+        "$\\begin{bmatrix} 1 & 0 & 0 \\\\ 0 & 1 & 0 \\\\ 0 & 0 & 1 \\end{bmatrix}$"
+      ],
+      "answer": 0,
+      "explanations": null,
+      "explanation": "An elementary matrix's inverse just undoes the row operation. Since this one is 'Add $5\\,R_{1}$ to $R_{2}$', the inverse is the matrix for the operation that reverses it."
+    },
+    {
+      "type": "mc",
+      "prompt": "This 3\\times3 elementary matrix corresponds to: Add $2\\,R_{2}$ to $R_{1}$.\n\nWhat is its inverse?\n\n$\\begin{bmatrix} 1 & 2 & 0 \\\\ 0 & 1 & 0 \\\\ 0 & 0 & 1 \\end{bmatrix}$",
+      "choices": [
+        "$\\begin{bmatrix} 1 & 2 & 0 \\\\ 0 & 1 & 0 \\\\ 0 & 0 & 1 \\end{bmatrix}$",
+        "$\\begin{bmatrix} 1 & 0 & 0 \\\\ -2 & 1 & 0 \\\\ 0 & 0 & 1 \\end{bmatrix}$",
+        "$\\begin{bmatrix} 1 & -2 & 0 \\\\ 0 & 1 & 0 \\\\ 0 & 0 & 1 \\end{bmatrix}$",
+        "$\\begin{bmatrix} 1 & 0 & 0 \\\\ 0 & 1 & 0 \\\\ 0 & 0 & 1 \\end{bmatrix}$"
+      ],
+      "answer": 2,
+      "explanations": null,
+      "explanation": "An elementary matrix's inverse just undoes the row operation. Since this one is 'Add $2\\,R_{2}$ to $R_{1}$', the inverse is the matrix for the operation that reverses it."
+    },
+    {
+      "type": "mc",
+      "prompt": "This 3\\times3 elementary matrix corresponds to: Subtract $R_{1}$ from $R_{2}$.\n\nWhat is its inverse?\n\n$\\begin{bmatrix} 1 & 0 & 0 \\\\ -1 & 1 & 0 \\\\ 0 & 0 & 1 \\end{bmatrix}$",
+      "choices": [
+        "$\\begin{bmatrix} 1 & 0 & 0 \\\\ -1 & 1 & 0 \\\\ 0 & 0 & 1 \\end{bmatrix}$",
+        "$\\begin{bmatrix} 1 & 1 & 0 \\\\ 0 & 1 & 0 \\\\ 0 & 0 & 1 \\end{bmatrix}$",
+        "$\\begin{bmatrix} 1 & 0 & 0 \\\\ 1 & 1 & 0 \\\\ 0 & 0 & 1 \\end{bmatrix}$",
+        "$\\begin{bmatrix} 1 & 0 & 0 \\\\ 0 & 1 & 0 \\\\ 0 & 0 & 1 \\end{bmatrix}$"
+      ],
+      "answer": 2,
+      "explanations": null,
+      "explanation": "An elementary matrix's inverse just undoes the row operation. Since this one is 'Subtract $R_{1}$ from $R_{2}$', the inverse is the matrix for the operation that reverses it."
+    },
+    {
+      "type": "mc",
+      "prompt": "This 3\\times3 elementary matrix corresponds to: Multiply $R_{3}$ by $2$.\n\nWhat is its inverse?\n\n$\\begin{bmatrix} 1 & 0 & 0 \\\\ 0 & 1 & 0 \\\\ 0 & 0 & 2 \\end{bmatrix}$",
+      "choices": [
+        "$\\begin{bmatrix} 1 & 0 & 0 \\\\ 0 & 1 & 0 \\\\ 0 & 0 & 2 \\end{bmatrix}$",
+        "$\\begin{bmatrix} 1 & 0 & 0 \\\\ 0 & 1 & 0 \\\\ 0 & 0 & \\frac{1}{2} \\end{bmatrix}$",
+        "$\\begin{bmatrix} 1 & 0 & 0 \\\\ 0 & 1 & 0 \\\\ 0 & 0 & -\\frac{1}{2} \\end{bmatrix}$",
+        "$\\begin{bmatrix} 1 & 0 & 0 \\\\ 0 & 1 & 0 \\\\ 0 & 0 & -2 \\end{bmatrix}$"
+      ],
+      "answer": 1,
+      "explanations": null,
+      "explanation": "An elementary matrix's inverse just undoes the row operation. Since this one is 'Multiply $R_{3}$ by $2$', the inverse is the matrix for the operation that reverses it."
+    },
+    {
+      "type": "mc",
+      "prompt": "This 2\\times2 elementary matrix corresponds to: Multiply $R_{2}$ by $2$.\n\nWhat is its inverse?\n\n$\\begin{bmatrix} 1 & 0 \\\\ 0 & 2 \\end{bmatrix}$",
+      "choices": [
+        "$\\begin{bmatrix} 1 & 0 \\\\ 0 & \\frac{1}{2} \\end{bmatrix}$",
+        "$\\begin{bmatrix} 1 & 0 \\\\ 0 & 2 \\end{bmatrix}$",
+        "$\\begin{bmatrix} 1 & 0 \\\\ 0 & -\\frac{1}{2} \\end{bmatrix}$",
+        "$\\begin{bmatrix} 1 & 0 \\\\ 0 & -2 \\end{bmatrix}$"
+      ],
+      "answer": 0,
+      "explanations": null,
+      "explanation": "An elementary matrix's inverse just undoes the row operation. Since this one is 'Multiply $R_{2}$ by $2$', the inverse is the matrix for the operation that reverses it."
+    },
+    {
+      "type": "mc",
+      "prompt": "This 3\\times3 elementary matrix corresponds to: Add $-2\\,R_{3}$ to $R_{2}$.\n\nWhat is its inverse?\n\n$\\begin{bmatrix} 1 & 0 & 0 \\\\ 0 & 1 & -2 \\\\ 0 & 0 & 1 \\end{bmatrix}$",
+      "choices": [
+        "$\\begin{bmatrix} 1 & 0 & 0 \\\\ 0 & 1 & -2 \\\\ 0 & 0 & 1 \\end{bmatrix}$",
+        "$\\begin{bmatrix} 1 & 0 & 0 \\\\ 0 & 1 & 2 \\\\ 0 & 0 & 1 \\end{bmatrix}$",
+        "$\\begin{bmatrix} 1 & 0 & 0 \\\\ 0 & 1 & 0 \\\\ 0 & 2 & 1 \\end{bmatrix}$",
+        "$\\begin{bmatrix} 1 & 0 & 0 \\\\ 0 & 1 & 0 \\\\ 0 & 0 & 1 \\end{bmatrix}$"
+      ],
+      "answer": 1,
+      "explanations": null,
+      "explanation": "An elementary matrix's inverse just undoes the row operation. Since this one is 'Add $-2\\,R_{3}$ to $R_{2}$', the inverse is the matrix for the operation that reverses it."
+    },
+    {
+      "type": "mc",
+      "prompt": "This 2\\times2 elementary matrix corresponds to: Multiply $R_{1}$ by $3$.\n\nWhat is its inverse?\n\n$\\begin{bmatrix} 3 & 0 \\\\ 0 & 1 \\end{bmatrix}$",
+      "choices": [
+        "$\\begin{bmatrix} \\frac{1}{3} & 0 \\\\ 0 & 1 \\end{bmatrix}$",
+        "$\\begin{bmatrix} 3 & 0 \\\\ 0 & 1 \\end{bmatrix}$",
+        "$\\begin{bmatrix} -\\frac{1}{3} & 0 \\\\ 0 & 1 \\end{bmatrix}$",
+        "$\\begin{bmatrix} -3 & 0 \\\\ 0 & 1 \\end{bmatrix}$"
+      ],
+      "answer": 0,
+      "explanations": null,
+      "explanation": "An elementary matrix's inverse just undoes the row operation. Since this one is 'Multiply $R_{1}$ by $3$', the inverse is the matrix for the operation that reverses it."
+    },
+    {
+      "type": "mc",
+      "prompt": "This 2\\times2 elementary matrix corresponds to: Subtract $R_{2}$ from $R_{1}$.\n\nWhat is its inverse?\n\n$\\begin{bmatrix} 1 & -1 \\\\ 0 & 1 \\end{bmatrix}$",
+      "choices": [
+        "$\\begin{bmatrix} 1 & 1 \\\\ 0 & 1 \\end{bmatrix}$",
+        "$\\begin{bmatrix} 1 & -1 \\\\ 0 & 1 \\end{bmatrix}$",
+        "$\\begin{bmatrix} 1 & 0 \\\\ 1 & 1 \\end{bmatrix}$",
+        "$\\begin{bmatrix} 1 & 0 \\\\ 0 & 1 \\end{bmatrix}$"
+      ],
+      "answer": 0,
+      "explanations": null,
+      "explanation": "An elementary matrix's inverse just undoes the row operation. Since this one is 'Subtract $R_{2}$ from $R_{1}$', the inverse is the matrix for the operation that reverses it."
+    },
+    {
+      "type": "mc",
+      "prompt": "This 3\\times3 elementary matrix corresponds to: Multiply $R_{2}$ by $4$.\n\nWhat is its inverse?\n\n$\\begin{bmatrix} 1 & 0 & 0 \\\\ 0 & 4 & 0 \\\\ 0 & 0 & 1 \\end{bmatrix}$",
+      "choices": [
+        "$\\begin{bmatrix} 1 & 0 & 0 \\\\ 0 & 4 & 0 \\\\ 0 & 0 & 1 \\end{bmatrix}$",
+        "$\\begin{bmatrix} 1 & 0 & 0 \\\\ 0 & -\\frac{1}{4} & 0 \\\\ 0 & 0 & 1 \\end{bmatrix}$",
+        "$\\begin{bmatrix} 1 & 0 & 0 \\\\ 0 & -4 & 0 \\\\ 0 & 0 & 1 \\end{bmatrix}$",
+        "$\\begin{bmatrix} 1 & 0 & 0 \\\\ 0 & \\frac{1}{4} & 0 \\\\ 0 & 0 & 1 \\end{bmatrix}$"
+      ],
+      "answer": 3,
+      "explanations": null,
+      "explanation": "An elementary matrix's inverse just undoes the row operation. Since this one is 'Multiply $R_{2}$ by $4$', the inverse is the matrix for the operation that reverses it."
+    },
+    {
+      "type": "mc",
+      "prompt": "This 2\\times2 elementary matrix corresponds to: Subtract $R_{1}$ from $R_{2}$.\n\nWhat is its inverse?\n\n$\\begin{bmatrix} 1 & 0 \\\\ -1 & 1 \\end{bmatrix}$",
+      "choices": [
+        "$\\begin{bmatrix} 1 & 0 \\\\ 1 & 1 \\end{bmatrix}$",
+        "$\\begin{bmatrix} 1 & 0 \\\\ -1 & 1 \\end{bmatrix}$",
+        "$\\begin{bmatrix} 1 & 1 \\\\ 0 & 1 \\end{bmatrix}$",
+        "$\\begin{bmatrix} 1 & 0 \\\\ 0 & 1 \\end{bmatrix}$"
+      ],
+      "answer": 0,
+      "explanations": null,
+      "explanation": "An elementary matrix's inverse just undoes the row operation. Since this one is 'Subtract $R_{1}$ from $R_{2}$', the inverse is the matrix for the operation that reverses it."
+    },
+    {
+      "type": "mc",
+      "prompt": "This 3\\times3 elementary matrix corresponds to: Multiply $R_{3}$ by $-1$.\n\nWhat is its inverse?\n\n$\\begin{bmatrix} 1 & 0 & 0 \\\\ 0 & 1 & 0 \\\\ 0 & 0 & -1 \\end{bmatrix}$",
+      "choices": [
+        "$\\begin{bmatrix} 1 & 0 & 0 \\\\ 0 & 1 & 0 \\\\ 0 & 0 & -1 \\end{bmatrix}$",
+        "$\\begin{bmatrix} 1 & 0 & 0 \\\\ 0 & 1 & 0 \\\\ 0 & 0 & 1 \\end{bmatrix}$"
+      ],
+      "answer": 0,
+      "explanations": null,
+      "explanation": "An elementary matrix's inverse just undoes the row operation. Since this one is 'Multiply $R_{3}$ by $-1$', the inverse is the matrix for the operation that reverses it."
+    },
+    {
+      "type": "mc",
+      "prompt": "This 2\\times2 elementary matrix corresponds to: Add $-3\\,R_{1}$ to $R_{2}$.\n\nWhat is its inverse?\n\n$\\begin{bmatrix} 1 & 0 \\\\ -3 & 1 \\end{bmatrix}$",
+      "choices": [
+        "$\\begin{bmatrix} 1 & 0 \\\\ -3 & 1 \\end{bmatrix}$",
+        "$\\begin{bmatrix} 1 & 0 \\\\ 3 & 1 \\end{bmatrix}$",
+        "$\\begin{bmatrix} 1 & 3 \\\\ 0 & 1 \\end{bmatrix}$",
+        "$\\begin{bmatrix} 1 & 0 \\\\ 0 & 1 \\end{bmatrix}$"
+      ],
+      "answer": 1,
+      "explanations": null,
+      "explanation": "An elementary matrix's inverse just undoes the row operation. Since this one is 'Add $-3\\,R_{1}$ to $R_{2}$', the inverse is the matrix for the operation that reverses it."
+    },
+    {
+      "type": "mc",
+      "prompt": "This 2\\times2 elementary matrix corresponds to: Multiply $R_{1}$ by $4$.\n\nWhat is its inverse?\n\n$\\begin{bmatrix} 4 & 0 \\\\ 0 & 1 \\end{bmatrix}$",
+      "choices": [
+        "$\\begin{bmatrix} 4 & 0 \\\\ 0 & 1 \\end{bmatrix}$",
+        "$\\begin{bmatrix} -\\frac{1}{4} & 0 \\\\ 0 & 1 \\end{bmatrix}$",
+        "$\\begin{bmatrix} -4 & 0 \\\\ 0 & 1 \\end{bmatrix}$",
+        "$\\begin{bmatrix} \\frac{1}{4} & 0 \\\\ 0 & 1 \\end{bmatrix}$"
+      ],
+      "answer": 3,
+      "explanations": null,
+      "explanation": "An elementary matrix's inverse just undoes the row operation. Since this one is 'Multiply $R_{1}$ by $4$', the inverse is the matrix for the operation that reverses it."
+    }
+  ]
+}
