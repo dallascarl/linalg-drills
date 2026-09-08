@@ -1,0 +1,551 @@
+{
+  "id": "vectors-3-1",
+  "title": "Vectors (3.1)",
+  "description": "Vector arithmetic in Rⁿ: addition, subtraction, scalar multiplication, linear combinations, checking whether two vectors are parallel, and the basic properties of vector algebra. 10 questions pulled per attempt from a pool of 50.",
+  "questionsPerAttempt": 10,
+  "pointsPerQuestion": 1,
+  "questions": [
+    {
+      "type": "type",
+      "prompt": "u = (2, 5), v = (-3, 4). What is u + v?",
+      "answer": [
+        "(-1, 9)",
+        "-1, 9"
+      ],
+      "explanation": "Add component-wise: (2-3, 5+4) = (-1, 9)."
+    },
+    {
+      "type": "type",
+      "prompt": "u = (1, -2, 3), v = (4, 0, -5). What is u + v?",
+      "answer": [
+        "(5, -2, -2)",
+        "5, -2, -2"
+      ],
+      "explanation": "Add component-wise: (1+4, -2+0, 3-5) = (5, -2, -2)."
+    },
+    {
+      "type": "type",
+      "prompt": "u = (3, 4), v = (3, 4). What is u - v?",
+      "answer": [
+        "(0, 0)",
+        "0, 0"
+      ],
+      "explanation": "Subtracting a vector from itself always gives the zero vector."
+    },
+    {
+      "type": "type",
+      "prompt": "u = (-1, 2, 2), v = (3, -1, 4). What is u - v?",
+      "answer": [
+        "(-4, 3, -2)",
+        "-4, 3, -2"
+      ],
+      "explanation": "Subtract component-wise: (-1-3, 2-(-1), 2-4) = (-4, 3, -2)."
+    },
+    {
+      "type": "type",
+      "prompt": "u = (2, -3), v = (5, 1). What is v - u?",
+      "answer": [
+        "(3, 4)",
+        "3, 4"
+      ],
+      "explanation": "Subtract component-wise: (5-2, 1-(-3)) = (3, 4)."
+    },
+    {
+      "type": "type",
+      "prompt": "u = (0, 0, 5), v = (2, -2, 3). What is u + v?",
+      "answer": [
+        "(2, -2, 8)",
+        "2, -2, 8"
+      ],
+      "explanation": "Add component-wise: (0+2, 0-2, 5+3) = (2, -2, 8)."
+    },
+    {
+      "type": "type",
+      "prompt": "u = (1, 1, 1, 1), v = (2, -1, 0, 3) (vectors in R⁴). What is u + v?",
+      "answer": [
+        "(3, 0, 1, 4)",
+        "3, 0, 1, 4"
+      ],
+      "explanation": "Add component-wise: (1+2, 1-1, 1+0, 1+3) = (3, 0, 1, 4)."
+    },
+    {
+      "type": "type",
+      "prompt": "u = (6, -2), v = (-6, 2). What is u + v?",
+      "answer": [
+        "(0, 0)",
+        "0, 0"
+      ],
+      "explanation": "v is the additive inverse of u, so u + v = 0."
+    },
+    {
+      "type": "type",
+      "prompt": "u = (4, -1, 3), v = (-4, 1, -3). What is u + v?",
+      "answer": [
+        "(0, 0, 0)",
+        "0, 0, 0"
+      ],
+      "explanation": "v is the additive inverse of u, so u + v = 0."
+    },
+    {
+      "type": "type",
+      "prompt": "u = (5, 2), v = (-3, -7). What is u - v?",
+      "answer": [
+        "(8, 9)",
+        "8, 9"
+      ],
+      "explanation": "Subtract component-wise: (5-(-3), 2-(-7)) = (8, 9)."
+    },
+    {
+      "type": "type",
+      "prompt": "u = (3, -2). What is 4u?",
+      "answer": [
+        "(12, -8)",
+        "12, -8"
+      ],
+      "explanation": "Multiply every component by 4: (12, -8)."
+    },
+    {
+      "type": "type",
+      "prompt": "u = (1, 5, -3). What is -2u?",
+      "answer": [
+        "(-2, -10, 6)",
+        "-2, -10, 6"
+      ],
+      "explanation": "Multiply every component by -2: (-2, -10, 6)."
+    },
+    {
+      "type": "type",
+      "prompt": "u = (6, 9). What is (1/3)u?",
+      "answer": [
+        "(2, 3)",
+        "2, 3"
+      ],
+      "explanation": "Multiply every component by 1/3: (2, 3)."
+    },
+    {
+      "type": "type",
+      "prompt": "u = (-4, 8, -12). What is (1/4)u?",
+      "answer": [
+        "(-1, 2, -3)",
+        "-1, 2, -3"
+      ],
+      "explanation": "Multiply every component by 1/4: (-1, 2, -3)."
+    },
+    {
+      "type": "type",
+      "prompt": "u = (2, -5). What is -u?",
+      "answer": [
+        "(-2, 5)",
+        "-2, 5"
+      ],
+      "explanation": "Negating a vector negates every component: (-2, 5)."
+    },
+    {
+      "type": "type",
+      "prompt": "u = (0, 3, -1). What is 5u?",
+      "answer": [
+        "(0, 15, -5)",
+        "0, 15, -5"
+      ],
+      "explanation": "Multiply every component by 5: (0, 15, -5)."
+    },
+    {
+      "type": "type",
+      "prompt": "u = (10, -4). What is 0.5u?",
+      "answer": [
+        "(5, -2)",
+        "5, -2"
+      ],
+      "explanation": "Multiply every component by 0.5: (5, -2)."
+    },
+    {
+      "type": "type",
+      "prompt": "u = (7, 2, -1, 4) (a vector in R⁴). What is 3u?",
+      "answer": [
+        "(21, 6, -3, 12)",
+        "21, 6, -3, 12"
+      ],
+      "explanation": "Multiply every component by 3: (21, 6, -3, 12)."
+    },
+    {
+      "type": "type",
+      "prompt": "u = (1, 2), v = (3, -1). What is 2u + v?",
+      "answer": [
+        "(5, 3)",
+        "5, 3"
+      ],
+      "explanation": "2u = (2,4); 2u+v = (2+3, 4-1) = (5, 3)."
+    },
+    {
+      "type": "type",
+      "prompt": "u = (2, 0, -1), v = (1, 4, 2). What is 3u - v?",
+      "answer": [
+        "(5, -4, -5)",
+        "5, -4, -5"
+      ],
+      "explanation": "3u = (6,0,-3); 3u-v = (6-1, 0-4, -3-2) = (5, -4, -5)."
+    },
+    {
+      "type": "type",
+      "prompt": "u = (-1, 3), v = (2, 2). What is u - 2v?",
+      "answer": [
+        "(-5, -1)",
+        "-5, -1"
+      ],
+      "explanation": "2v = (4,4); u-2v = (-1-4, 3-4) = (-5, -1)."
+    },
+    {
+      "type": "type",
+      "prompt": "u = (4, -2, 1), v = (0, 3, -2). What is -u + 2v?",
+      "answer": [
+        "(-4, 8, -5)",
+        "-4, 8, -5"
+      ],
+      "explanation": "-u = (-4,2,-1); 2v=(0,6,-4); sum = (-4+0, 2+6, -1-4) = (-4, 8, -5)."
+    },
+    {
+      "type": "type",
+      "prompt": "u = (1, 1), v = (-1, 1). What is 3u + 2v?",
+      "answer": [
+        "(1, 5)",
+        "1, 5"
+      ],
+      "explanation": "3u = (3,3); 2v = (-2,2); sum = (1, 5)."
+    },
+    {
+      "type": "type",
+      "prompt": "u = (2, 2, 2), v = (1, -1, 0). What is u + 3v?",
+      "answer": [
+        "(5, -1, 2)",
+        "5, -1, 2"
+      ],
+      "explanation": "3v = (3,-3,0); u+3v = (2+3, 2-3, 2+0) = (5, -1, 2)."
+    },
+    {
+      "type": "type",
+      "prompt": "u = (5, 0), v = (0, 5). What is 2u - 3v?",
+      "answer": [
+        "(10, -15)",
+        "10, -15"
+      ],
+      "explanation": "2u = (10,0); 3v = (0,15); 2u-3v = (10, -15)."
+    },
+    {
+      "type": "type",
+      "prompt": "u = (-2, 1, 3), v = (4, -1, 0). What is 2u + v?",
+      "answer": [
+        "(0, 1, 6)",
+        "0, 1, 6"
+      ],
+      "explanation": "2u = (-4,2,6); 2u+v = (-4+4, 2-1, 6+0) = (0, 1, 6)."
+    },
+    {
+      "type": "mc",
+      "prompt": "u = (2, 3), v = (4, 6). v is a scalar multiple of u (parallel).",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "v = 2u, since (4,6) = 2(2,3)."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "u = (1, -2), v = (-3, 6). v is a scalar multiple of u (parallel).",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "v = -3u, since (-3,6) = -3(1,-2)."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "u = (3, 1), v = (6, 3). v is a scalar multiple of u (parallel).",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 1,
+      "explanations": [
+        "If v=ku, matching the first components needs k=2, but then 2(3,1)=(6,2)≠(6,3) — the components aren't proportional.",
+        null
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "u = (2, 4, 6), v = (1, 2, 3). u is a scalar multiple of v (parallel).",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "u = 2v, since every component of u is exactly twice the matching component of v."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "u = (1, 0, 2), v = (2, 1, 4). v is a scalar multiple of u (parallel).",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 1,
+      "explanations": [
+        "Matching the first components needs k=2, but the second components would need 2(0)=1, which is false — not proportional.",
+        null
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "Which vector is parallel to u = (3, -6)?",
+      "choices": [
+        "(1, -2)",
+        "(2, -3)",
+        "(1, 2)",
+        "(-2, 3)"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "Check the ratios: 3/2 = 1.5 but -6/-3 = 2 — not proportional to u.",
+        "Check the ratios: 3/1 = 3 but -6/2 = -3 — not proportional to u.",
+        "Check the ratios: 3/-2 = -1.5 but -6/3 = -2 — not proportional to u."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "u = (0, 5), v = (0, -3). v is a scalar multiple of u (parallel).",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "v = (-3/5)u — both vectors lie along the y-axis, so one is always a scalar multiple of the other."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "u = (1, 1, 1), v = (2, 2, 3). v is a scalar multiple of u (parallel).",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 1,
+      "explanations": [
+        "The first two components would need the same ratio k=2, but the third component would then need to be 2 as well, not 3 — not proportional.",
+        null
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "Vector addition in Rⁿ is commutative: u + v = v + u.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "Addition is entrywise, and ordinary number addition is commutative, so this holds in every component."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "Vector addition in Rⁿ is associative: (u + v) + w = u + (v + w).",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "Addition is entrywise, and ordinary number addition is associative, so this holds in every component."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "Scalar multiplication distributes over vector addition: k(u + v) = ku + kv.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "This holds component-by-component since ordinary multiplication distributes over addition."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "Scalar multiplication distributes over scalar addition: (k + m)u = ku + mu.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "This holds component-by-component since ordinary multiplication distributes over addition."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "The zero vector 0 is the unique vector such that u + 0 = u for every vector u.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "This is exactly the defining (additive identity) property of the zero vector."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "Every vector u has an additive inverse -u such that u + (-u) = 0.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "-u is just u with every component negated, and adding negatives component-wise gives the zero vector."
+      ]
+    },
+    {
+      "type": "wordbank",
+      "prompt": "For any vector u, 1 · u = _____.",
+      "wordbank": [
+        "u",
+        "0",
+        "-u",
+        "2u"
+      ],
+      "answer": "u",
+      "explanation": "Multiplying by the scalar 1 leaves every component unchanged."
+    },
+    {
+      "type": "wordbank",
+      "prompt": "0 · u = _____ (using 0 as a scalar).",
+      "wordbank": [
+        "0",
+        "u",
+        "-u",
+        "1"
+      ],
+      "answer": "0",
+      "explanation": "Multiplying every component by the scalar 0 gives the zero vector."
+    },
+    {
+      "type": "mc",
+      "prompt": "In Rⁿ, how many components does a vector have?",
+      "choices": [
+        "Exactly 2",
+        "Exactly 3",
+        "Exactly n",
+        "It depends on the vector, not on n"
+      ],
+      "answer": 2,
+      "explanations": [
+        "This is only true for vectors specifically in R².",
+        "This is only true for vectors specifically in R³.",
+        null,
+        "By definition, EVERY vector in Rⁿ has exactly n components."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "Two vectors in Rⁿ are equal if and only if all of their corresponding components are equal.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "Vector equality is defined entrywise — every component must match."
+      ]
+    },
+    {
+      "type": "type",
+      "prompt": "If (2x, y+1) = (8, 5), what is x + y?",
+      "answer": [
+        "8"
+      ],
+      "explanation": "2x=8 gives x=4; y+1=5 gives y=4; so x+y = 4+4 = 8."
+    },
+    {
+      "type": "type",
+      "prompt": "A vector in R⁵ has how many components?",
+      "answer": [
+        "5"
+      ],
+      "explanation": "By definition, a vector in Rⁿ has n components, so R⁵ vectors have 5."
+    },
+    {
+      "type": "mc",
+      "prompt": "Which of the following is a vector in R³?",
+      "choices": [
+        "(1, 2, 3)",
+        "(1, 2)",
+        "(1, 2, 3, 4)",
+        "3"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "This has only 2 components — it's a vector in R², not R³.",
+        "This has 4 components — it's a vector in R⁴, not R³.",
+        "This is a single scalar, not a vector at all."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "The vectors (1, 2, 3) and (1, 2, 3, 0) are equal.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 1,
+      "explanations": [
+        "They have different numbers of components (3 vs 4) — they live in different spaces (R³ vs R⁴) and can never be equal, even though the extra entry is 0.",
+        null
+      ]
+    },
+    {
+      "type": "type",
+      "prompt": "What is the zero vector in R⁴?",
+      "answer": [
+        "(0, 0, 0, 0)",
+        "0, 0, 0, 0"
+      ],
+      "explanation": "The zero vector in Rⁿ has n components, all equal to 0."
+    },
+    {
+      "type": "mc",
+      "prompt": "The order of components in a vector matters: (1, 2) and (2, 1) are different vectors.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "Vector equality requires matching components in the same positions — swapping components generally gives a different vector."
+      ]
+    }
+  ]
+}

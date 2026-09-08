@@ -1,0 +1,1017 @@
+{
+  "id": "dot-product-concept-3-2",
+  "title": "Dot Product — Concepts, Cauchy-Schwarz & Triangle Inequality (3.2)",
+  "description": "Conceptual True/False, multiple choice, and fill-in-the-blank questions on the properties of the dot product, the Cauchy-Schwarz Inequality, the Triangle Inequality, orthogonality, the angle formula, unit vectors, and norm properties. 15 questions pulled per attempt from a pool of 80.",
+  "questionsPerAttempt": 15,
+  "pointsPerQuestion": 1,
+  "questions": [
+    {
+      "type": "mc",
+      "prompt": "u · v = v · u for all vectors u, v (the dot product is symmetric).",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "Each term uᵢvᵢ equals vᵢuᵢ, so summing gives the same total either way."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "u · (v + w) = u · v + u · w (the dot product distributes over vector addition).",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "This is the distributive property of the dot product."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "(u + v) · w = u · w + v · w.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "This is the same distributive property applied on the other side."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "k(u · v) = (ku) · v for any scalar k.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "Scaling one vector by k scales the whole dot product by k — this is the homogeneity property."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "u · v is always a vector.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 1,
+      "explanations": [
+        "The dot product of two vectors is always a scalar (a single number), never a vector.",
+        null
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "u · u ≥ 0 for every vector u.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "u·u is a sum of squares, which can never be negative."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "u · u = 0 if and only if u is the zero vector.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "A sum of squares is 0 only when every term is 0, which means every component of u is 0."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "u · v = 0 whenever u ≠ v.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 1,
+      "explanations": [
+        "u·v = 0 means u and v are orthogonal — that has nothing to do with whether they're equal. Most distinct vectors are NOT orthogonal.",
+        null
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "The dot product is only defined for vectors of the same dimension.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "You need matching numbers of components to multiply and add them term-by-term."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "u · (v − w) = u · v − u · w.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "This follows from the distributive property applied to v + (-w)."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "Which of the following correctly states the distributive property of the dot product?",
+      "choices": [
+        "u · (v + w) = u · v + u · w",
+        "u · (v + w) = (u · v) + w",
+        "u · (v + w) = u · v · w",
+        "u · (v + w) = u + v · w"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "This mixes a scalar (u·v) with a vector (w) using +, which doesn't even typecheck.",
+        "The dot product doesn't chain like ordinary multiplication of three things this way.",
+        "This mixes a vector (u) with a scalar (v·w) using +, which doesn't even typecheck."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "(2u) · (3v) = 6(u · v).",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "Scalars pull out of each side: (2u)·(3v) = 2·3·(u·v) = 6(u·v)."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "If u · v = u · w, then v = w.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 1,
+      "explanations": [
+        "This cancellation is NOT valid for dot products — u·(v-w)=0 just means v-w is orthogonal to u, not that v-w=0.",
+        null
+      ]
+    },
+    {
+      "type": "wordbank",
+      "prompt": "The dot product u · v is always a _____ (not a vector).",
+      "wordbank": [
+        "scalar",
+        "matrix",
+        "vector",
+        "function"
+      ],
+      "answer": "scalar",
+      "explanation": "u·v is a single real number, by definition."
+    },
+    {
+      "type": "mc",
+      "prompt": "u · v = ||u|| ||v|| cos θ, where θ is the angle between u and v.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "This is the standard geometric formula for the dot product."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "Which property does 'u · u ≥ 0, with equality only for the zero vector' represent?",
+      "choices": [
+        "Positive definiteness",
+        "Symmetry",
+        "Homogeneity",
+        "Distributivity"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "Symmetry is about u·v = v·u, a different property.",
+        "Homogeneity is about scalars pulling out of the dot product, a different property.",
+        "Distributivity is about the dot product spreading over vector sums, a different property."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "0 · v = 0 (the zero vector dotted with anything gives 0) for every vector v.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "Every term in the sum is 0·vᵢ = 0, so the total is 0."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "u · v depends on the order in which u and v are listed — u · v ≠ v · u in general.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 1,
+      "explanations": [
+        "The dot product is symmetric: u·v = v·u always, regardless of order.",
+        null
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "The Cauchy-Schwarz Inequality states |u · v| ≤ ||u|| ||v|| for all vectors u, v.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "This is the exact statement of Cauchy-Schwarz."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "Cauchy-Schwarz can be violated for some pairs of vectors in R³.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 1,
+      "explanations": [
+        "Cauchy-Schwarz holds for ALL vectors in Rⁿ, with no exceptions.",
+        null
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "Equality holds in Cauchy-Schwarz exactly when u and v are parallel (one is a scalar multiple of the other, or one is zero).",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "This is the equality condition for Cauchy-Schwarz."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "Which quantity is bounded above by ||u|| ||v|| according to Cauchy-Schwarz?",
+      "choices": [
+        "|u · v|",
+        "u + v",
+        "||u|| + ||v||",
+        "u · v (without the absolute value, so it can exceed the bound)"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "u+v is a vector — Cauchy-Schwarz is a bound on a number, not a vector.",
+        "||u||+||v|| is the bound in the Triangle Inequality, not Cauchy-Schwarz.",
+        "Without the absolute value, u·v could be very negative — it's |u·v| that Cauchy-Schwarz bounds."
+      ]
+    },
+    {
+      "type": "type",
+      "prompt": "||u|| = 3 and ||v|| = 4. What is the maximum possible value of |u · v|?",
+      "answer": [
+        "12"
+      ],
+      "explanation": "Cauchy-Schwarz gives |u·v| ≤ ||u||·||v|| = 3·4 = 12, achieved when u and v are parallel."
+    },
+    {
+      "type": "mc",
+      "prompt": "Cauchy-Schwarz guarantees that (u·v)/(||u|| ||v||) always lies between -1 and 1.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "This is exactly what makes cos θ = (u·v)/(||u||·||v||) well-defined — Cauchy-Schwarz keeps the ratio in [-1,1]."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "If |u · v| = ||u|| ||v|| exactly, then u and v must be orthogonal.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 1,
+      "explanations": [
+        "Equality in Cauchy-Schwarz happens when u and v are PARALLEL, not orthogonal — orthogonal is the opposite extreme, where u·v=0.",
+        null
+      ]
+    },
+    {
+      "type": "type",
+      "prompt": "u = (3, 4), v = (6, 8). What is |u · v|?",
+      "answer": [
+        "50"
+      ],
+      "explanation": "u·v = 3(6)+4(8) = 18+32 = 50. (Note ||u||=5, ||v||=10, so ||u||·||v||=50 too — equality holds because v=2u, i.e., u and v are parallel.)"
+    },
+    {
+      "type": "mc",
+      "prompt": "Cauchy-Schwarz applies only to vectors in R² and R³, not general Rⁿ.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 1,
+      "explanations": [
+        "Cauchy-Schwarz holds for vectors in Rⁿ for any n.",
+        null
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "For which pair of vectors does equality hold in Cauchy-Schwarz?",
+      "choices": [
+        "u=(1,2), v=(2,4)",
+        "u=(1,2), v=(2,1)",
+        "u=(1,0), v=(0,1)",
+        "u=(1,1), v=(1,-1)"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "These are not scalar multiples of each other — not parallel.",
+        "These are orthogonal (u·v=0), the opposite extreme from equality in Cauchy-Schwarz.",
+        "These are orthogonal (u·v=0), the opposite extreme from equality in Cauchy-Schwarz."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "Cauchy-Schwarz is the key fact that makes the angle between two vectors well-defined.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "Because Cauchy-Schwarz keeps (u·v)/(||u||·||v||) between -1 and 1, it's always a valid cosine value."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "If u and v are orthogonal and both nonzero, how does |u · v| compare to ||u|| ||v||?",
+      "choices": [
+        "|u·v| = 0, which is strictly less than ||u||·||v|| (since both norms are positive)",
+        "|u·v| = ||u||·||v||",
+        "|u·v| > ||u||·||v||",
+        "Cannot be determined"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "Orthogonal vectors have u·v=0, which is the opposite of the equality (parallel) case.",
+        "Cauchy-Schwarz says |u·v| can never exceed ||u||·||v||.",
+        "It CAN be determined: orthogonality means u·v=0 exactly."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "The Cauchy-Schwarz Inequality is used to prove the Triangle Inequality.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "The standard proof of the Triangle Inequality for norms uses Cauchy-Schwarz as its key step."
+      ]
+    },
+    {
+      "type": "wordbank",
+      "prompt": "Cauchy-Schwarz becomes an equality precisely when u and v are _____.",
+      "wordbank": [
+        "parallel",
+        "orthogonal",
+        "equal",
+        "unit vectors"
+      ],
+      "answer": "parallel",
+      "explanation": "Equality in |u·v| ≤ ||u||·||v|| happens exactly when one vector is a scalar multiple of the other."
+    },
+    {
+      "type": "mc",
+      "prompt": "|u · v| ≤ ||u|| ||v|| can be a strict inequality even when u and v are both nonzero and not parallel.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "Whenever u and v are nonzero and not parallel, the inequality is strict — equality is the special (parallel) case only."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "If ||u|| = 2 and ||v|| = 7, and u, v are not parallel, then |u · v| = 14 is impossible.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "14 = ||u||·||v|| would be the maximum allowed by Cauchy-Schwarz, achieved only when u and v ARE parallel — so it's impossible here."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "The Triangle Inequality states ||u + v|| ≤ ||u|| + ||v||.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "This is the exact statement of the Triangle Inequality for vector norms."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "Equality holds in the Triangle Inequality when u and v point in exactly the same direction (or one is zero).",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "This is the equality condition — the 'straight line' case where no direction is 'wasted'."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "The Triangle Inequality can fail for vectors in R³.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 1,
+      "explanations": [
+        "It holds for all vectors in Rⁿ, no exceptions.",
+        null
+      ]
+    },
+    {
+      "type": "type",
+      "prompt": "||u|| = 6 and ||v|| = 9. What is the maximum possible value of ||u + v||?",
+      "answer": [
+        "15"
+      ],
+      "explanation": "Triangle Inequality: ||u+v|| ≤ ||u||+||v|| = 6+9 = 15, achieved when u and v point the same direction."
+    },
+    {
+      "type": "type",
+      "prompt": "||u|| = 5 and ||v|| = 5, and v = -u (opposite directions). What is ||u + v||?",
+      "answer": [
+        "0"
+      ],
+      "explanation": "u+v = u+(-u) = 0, and ||0|| = 0 — the minimum possible value of ||u+v||."
+    },
+    {
+      "type": "mc",
+      "prompt": "||u + v|| can be strictly less than ||u|| + ||v||.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "This is the typical case — equality only happens in the special same-direction case."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "Which geometric fact does the Triangle Inequality reflect?",
+      "choices": [
+        "The direct path (u+v) is never longer than going 'the long way' (||u|| then ||v||)",
+        "Every triangle has three equal sides",
+        "Perpendicular vectors always have equal norms",
+        "The dot product is always nonnegative"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "The Triangle Inequality says nothing about equal sides.",
+        "It says nothing about perpendicularity specifically.",
+        "The dot product can absolutely be negative — that's not what this inequality is about."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "||u − v|| ≥ | ||u|| − ||v|| | (the reverse triangle inequality) also follows from the standard Triangle Inequality.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "This is a standard companion result derived the same way."
+      ]
+    },
+    {
+      "type": "type",
+      "prompt": "||u|| = 10 and ||v|| = 3. What is the MINIMUM possible value of ||u + v||?",
+      "answer": [
+        "7"
+      ],
+      "explanation": "The reverse triangle inequality gives ||u+v|| ≥ | ||u||-||v|| | = |10-3| = 7, achieved when u and v point in opposite directions."
+    },
+    {
+      "type": "mc",
+      "prompt": "The Triangle Inequality is proved using the Cauchy-Schwarz Inequality.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "The standard proof expands ||u+v||² and bounds the cross term u·v using Cauchy-Schwarz."
+      ]
+    },
+    {
+      "type": "wordbank",
+      "prompt": "Equality in the Triangle Inequality ||u+v|| = ||u||+||v|| holds when u and v point in the _____ direction.",
+      "wordbank": [
+        "same",
+        "opposite",
+        "perpendicular",
+        "random"
+      ],
+      "answer": "same",
+      "explanation": "The inequality becomes an equality only in the 'straight line, same way' case."
+    },
+    {
+      "type": "type",
+      "prompt": "u = (3, 4), v = (6, 8). What is ||u + v||?",
+      "answer": [
+        "15"
+      ],
+      "explanation": "u+v = (9,12), so ||u+v|| = √(81+144) = 15. Note ||u||=5 and ||v||=10 sum to 15 too — equality holds because v=2u (same direction)."
+    },
+    {
+      "type": "mc",
+      "prompt": "For any two vectors, ||u|| + ||v|| ≤ ||u + v||.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 1,
+      "explanations": [
+        "This has the inequality backwards — the Triangle Inequality says ||u+v|| ≤ ||u||+||v||, not the reverse.",
+        null
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "The Triangle Inequality applies to vectors of any dimension n.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "It holds for vectors in Rⁿ for every n."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "u and v are nonzero and point in exactly opposite directions. How does ||u+v|| compare to ||u||+||v||?",
+      "choices": [
+        "||u+v|| < ||u||+||v|| (strict inequality)",
+        "||u+v|| = ||u||+||v||",
+        "||u+v|| > ||u||+||v||",
+        "Cannot be compared"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "Equality needs u and v to point in the SAME direction, not opposite.",
+        "The Triangle Inequality forbids ||u+v|| from ever exceeding ||u||+||v||.",
+        "It CAN be compared: opposite directions always give a strict inequality here."
+      ]
+    },
+    {
+      "type": "type",
+      "prompt": "||u|| = 7, ||v|| = 7, and u = v. What is ||u + v||?",
+      "answer": [
+        "14"
+      ],
+      "explanation": "u+v = 2u, so ||u+v|| = 2||u|| = 14 — this matches ||u||+||v||=14 too, since u and v trivially point the same direction."
+    },
+    {
+      "type": "mc",
+      "prompt": "Two vectors are orthogonal if and only if their dot product is 0.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "This is the definition of orthogonality."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "The zero vector is orthogonal to every vector.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "0 · v = 0 for every v, so by definition the zero vector is orthogonal to everything."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "If u and v are orthogonal, then ||u + v||² = ||u||² + ||v||² (a vector version of the Pythagorean theorem).",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "Expanding ||u+v||² = u·u + 2u·v + v·v, the cross term 2u·v vanishes when u·v=0."
+      ]
+    },
+    {
+      "type": "type",
+      "prompt": "u and v are orthogonal with ||u|| = 3 and ||v|| = 4. What is ||u + v||?",
+      "answer": [
+        "5"
+      ],
+      "explanation": "By the Pythagorean-style rule for orthogonal vectors, ||u+v|| = √(3²+4²) = √25 = 5."
+    },
+    {
+      "type": "mc",
+      "prompt": "Orthogonal vectors always have the same norm.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 1,
+      "explanations": [
+        "Orthogonality is about direction (a 90° angle) and has nothing to do with the vectors' lengths.",
+        null
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "Which pair of vectors is orthogonal?",
+      "choices": [
+        "(2, 3) and (3, -2)",
+        "(2, 3) and (3, 2)",
+        "(2, 3) and (4, 6)",
+        "(2, 3) and (2, 3)"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "(2,3)·(3,2) = 6+6 = 12 ≠ 0 — not orthogonal.",
+        "(2,3)·(4,6) = 8+18 = 26 ≠ 0 — not orthogonal.",
+        "(2,3)·(2,3) = 4+9 = 13 ≠ 0 — not orthogonal (and a vector is never orthogonal to itself unless it's the zero vector)."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "A set of vectors can contain at most 2 mutually orthogonal nonzero vectors in Rⁿ.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 1,
+      "explanations": [
+        "In Rⁿ you can have up to n mutually orthogonal nonzero vectors — e.g., the n standard basis vectors.",
+        null
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "The standard basis vectors e₁, e₂, ..., eₙ in Rⁿ are mutually orthogonal.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "Any two distinct standard basis vectors have dot product 0, since they never share a nonzero component in the same position."
+      ]
+    },
+    {
+      "type": "type",
+      "prompt": "How many mutually orthogonal nonzero vectors can you have at most in R⁵?",
+      "answer": [
+        "5"
+      ],
+      "explanation": "You can have at most n mutually orthogonal nonzero vectors in Rⁿ; here n=5."
+    },
+    {
+      "type": "mc",
+      "prompt": "Orthogonal and parallel are two names for the same relationship between vectors.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 1,
+      "explanations": [
+        "They're opposite extremes: parallel means the angle is 0° or 180°, orthogonal means the angle is exactly 90°.",
+        null
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "If u is orthogonal to both v and w, then u is orthogonal to v + w.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "u·(v+w) = u·v + u·w = 0+0 = 0, by the distributive property of the dot product."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "u = (1, 2, -1) is orthogonal to which of these?",
+      "choices": [
+        "(2, 1, 4)",
+        "(1, 1, 1)",
+        "(3, -1, 0)",
+        "(1, 2, -1)"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "u·(1,1,1) = 1+2-1 = 2 ≠ 0 — not orthogonal.",
+        "u·(3,-1,0) = 3-2+0 = 1 ≠ 0 — not orthogonal.",
+        "u·(1,2,-1) = 1+4+1 = 6 ≠ 0 — not orthogonal (and it's u itself, which is never orthogonal to itself unless it's 0)."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "cos θ = (u · v) / (||u|| ||v||) gives the cosine of the angle between nonzero vectors u and v.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "This is the standard angle formula."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "The angle formula requires both u and v to be nonzero vectors.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "If either vector is 0, its norm would be 0, making the formula undefined (division by zero)."
+      ]
+    },
+    {
+      "type": "type",
+      "prompt": "u = (1, 0), v = (0, 1). What is cos θ between them?",
+      "answer": [
+        "0"
+      ],
+      "explanation": "u·v = 0, so cos θ = 0/(1·1) = 0, confirming θ=90°."
+    },
+    {
+      "type": "mc",
+      "prompt": "A unit vector is a vector with norm (length) equal to 1.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "This is the definition of a unit vector."
+      ]
+    },
+    {
+      "type": "type",
+      "prompt": "What is ||u|| if u is a unit vector?",
+      "answer": [
+        "1"
+      ],
+      "explanation": "By definition, a unit vector has norm exactly 1."
+    },
+    {
+      "type": "type",
+      "prompt": "u = (3, 4). What unit vector points in the same direction as u? Give your answer as (a, b).",
+      "answer": [
+        "(0.6, 0.8)",
+        "0.6, 0.8",
+        "(3/5, 4/5)",
+        "3/5, 4/5"
+      ],
+      "explanation": "Divide by ||u||=5: (3/5, 4/5) = (0.6, 0.8)."
+    },
+    {
+      "type": "mc",
+      "prompt": "Every nonzero vector can be turned into a unit vector by dividing by its own norm.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "u/||u|| always has norm 1, as long as u ≠ 0."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "If cos θ = -1 for the angle between two nonzero vectors, what does that tell you?",
+      "choices": [
+        "u and v point in exactly opposite directions (θ = 180°)",
+        "u and v are orthogonal (θ = 90°)",
+        "u and v point in the same direction (θ = 0°)",
+        "u and v have the same norm"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "Orthogonal vectors have cos θ = 0, not -1.",
+        "Same direction gives cos θ = 1, not -1.",
+        "cos θ says nothing about the vectors' lengths, only their relative direction."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "If cos θ = 1, what does that tell you about u and v?",
+      "choices": [
+        "They point in the same direction (θ = 0°)",
+        "They are orthogonal",
+        "They point in opposite directions",
+        "Nothing can be concluded"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "Orthogonal vectors have cos θ = 0, not 1.",
+        "Opposite directions give cos θ = -1, not 1.",
+        "cos θ = 1 is very informative: it pins down θ = 0° exactly."
+      ]
+    },
+    {
+      "type": "type",
+      "prompt": "u = (5, 0), v = (0, -5). What is cos θ between them?",
+      "answer": [
+        "0"
+      ],
+      "explanation": "u·v = 0, so cos θ = 0/(5·5) = 0."
+    },
+    {
+      "type": "mc",
+      "prompt": "||u|| = √(u · u).",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "This is the definition of the norm in terms of the dot product."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "||ku|| = k·||u|| for any scalar k (including negative k).",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 1,
+      "explanations": [
+        "It's ||ku|| = |k|·||u|| — the absolute value of k, since a norm can never be negative.",
+        null
+      ]
+    },
+    {
+      "type": "type",
+      "prompt": "u = (3, 4) and k = -2. What is ||ku||?",
+      "answer": [
+        "10"
+      ],
+      "explanation": "ku = (-6,-8), so ||ku|| = √(36+64) = 10. (Also |k|·||u|| = 2·5 = 10.)"
+    },
+    {
+      "type": "mc",
+      "prompt": "||u|| ≥ 0 for every vector u, with equality only when u is the zero vector.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "A norm is a square root of a sum of squares, so it's always nonnegative, and it's 0 only when every component is 0."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "||u||² = u · u.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "This is immediate from ||u|| = √(u·u)."
+      ]
+    },
+    {
+      "type": "wordbank",
+      "prompt": "||ku|| = _____ · ||u||, where the blank must always be nonnegative.",
+      "wordbank": [
+        "|k|",
+        "k",
+        "k²",
+        "1/k"
+      ],
+      "answer": "|k|",
+      "explanation": "Norm can never be negative, so the scaling factor must be |k|, not k itself."
+    },
+    {
+      "type": "type",
+      "prompt": "u = (0, 0, 0). What is ||u||?",
+      "answer": [
+        "0"
+      ],
+      "explanation": "The zero vector has norm 0."
+    },
+    {
+      "type": "mc",
+      "prompt": "The norm of a vector can be negative if the vector has negative components.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 1,
+      "explanations": [
+        "Norm is always √(sum of squares), which is never negative regardless of the components' signs.",
+        null
+      ]
+    }
+  ]
+}

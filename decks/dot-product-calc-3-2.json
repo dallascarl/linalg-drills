@@ -1,0 +1,509 @@
+{
+  "id": "dot-product-calc-3-2",
+  "title": "Dot Product — Calculation Drills (3.2)",
+  "description": "Mental-math-friendly calculations for the dot product: computing u·v, norms/magnitudes, classifying an angle as acute/right/obtuse from the sign of u·v, checking orthogonality, and distance between points. 10 questions pulled per attempt from a pool of 50.",
+  "questionsPerAttempt": 10,
+  "pointsPerQuestion": 1,
+  "questions": [
+    {
+      "type": "type",
+      "prompt": "u = (2, 3), v = (4, -1). What is u · v?",
+      "answer": [
+        "5"
+      ],
+      "explanation": "u·v = 2(4)+3(-1) = 8-3 = 5."
+    },
+    {
+      "type": "type",
+      "prompt": "u = (1, 5), v = (-2, 2). What is u · v?",
+      "answer": [
+        "8"
+      ],
+      "explanation": "u·v = 1(-2)+5(2) = -2+10 = 8."
+    },
+    {
+      "type": "type",
+      "prompt": "u = (3, -4), v = (2, 5). What is u · v?",
+      "answer": [
+        "-14"
+      ],
+      "explanation": "u·v = 3(2)+(-4)(5) = 6-20 = -14."
+    },
+    {
+      "type": "type",
+      "prompt": "u = (0, 6), v = (3, -3). What is u · v?",
+      "answer": [
+        "-18"
+      ],
+      "explanation": "u·v = 0(3)+6(-3) = -18."
+    },
+    {
+      "type": "type",
+      "prompt": "u = (1, 2, 3), v = (4, -2, 1). What is u · v?",
+      "answer": [
+        "3"
+      ],
+      "explanation": "u·v = 1(4)+2(-2)+3(1) = 4-4+3 = 3."
+    },
+    {
+      "type": "type",
+      "prompt": "u = (2, 0, -1), v = (3, 5, 2). What is u · v?",
+      "answer": [
+        "4"
+      ],
+      "explanation": "u·v = 2(3)+0(5)+(-1)(2) = 6+0-2 = 4."
+    },
+    {
+      "type": "type",
+      "prompt": "u = (-1, -1, -1), v = (2, 3, 4). What is u · v?",
+      "answer": [
+        "-9"
+      ],
+      "explanation": "u·v = -2-3-4 = -9."
+    },
+    {
+      "type": "type",
+      "prompt": "u = (5, 0, 0), v = (0, 5, 0). What is u · v?",
+      "answer": [
+        "0"
+      ],
+      "explanation": "u·v = 0+0+0 = 0 (no matching nonzero components)."
+    },
+    {
+      "type": "type",
+      "prompt": "u = (3, 3), v = (3, 3). What is u · v?",
+      "answer": [
+        "18"
+      ],
+      "explanation": "u·v = 3(3)+3(3) = 9+9 = 18."
+    },
+    {
+      "type": "type",
+      "prompt": "u = (6, -2), v = (-1, -3). What is u · v?",
+      "answer": [
+        "0"
+      ],
+      "explanation": "u·v = 6(-1)+(-2)(-3) = -6+6 = 0."
+    },
+    {
+      "type": "type",
+      "prompt": "u = (1, -1, 2), v = (3, 3, 0). What is u · v?",
+      "answer": [
+        "0"
+      ],
+      "explanation": "u·v = 3-3+0 = 0."
+    },
+    {
+      "type": "type",
+      "prompt": "u = (4, 1), v = (2, 3). What is u · v?",
+      "answer": [
+        "11"
+      ],
+      "explanation": "u·v = 4(2)+1(3) = 8+3 = 11."
+    },
+    {
+      "type": "type",
+      "prompt": "u = (-3, 2, 1), v = (1, 4, 5). What is u · v?",
+      "answer": [
+        "10"
+      ],
+      "explanation": "u·v = -3+8+5 = 10."
+    },
+    {
+      "type": "type",
+      "prompt": "u = (7, -2), v = (-3, 5). What is u · v?",
+      "answer": [
+        "-31"
+      ],
+      "explanation": "u·v = 7(-3)+(-2)(5) = -21-10 = -31."
+    },
+    {
+      "type": "type",
+      "prompt": "u = (2, 2, 2), v = (5, 5, 5). What is u · v?",
+      "answer": [
+        "30"
+      ],
+      "explanation": "u·v = 10+10+10 = 30."
+    },
+    {
+      "type": "type",
+      "prompt": "u = (1, 0, 0), v = (0, 1, 0). What is u · v?",
+      "answer": [
+        "0"
+      ],
+      "explanation": "u·v = 0+0+0 = 0 — the standard basis vectors e₁ and e₂ are orthogonal."
+    },
+    {
+      "type": "type",
+      "prompt": "u = (3, 4). What is ||u||?",
+      "answer": [
+        "5"
+      ],
+      "explanation": "||u|| = √(9+16) = √25 = 5."
+    },
+    {
+      "type": "type",
+      "prompt": "u = (6, 8). What is ||u||?",
+      "answer": [
+        "10"
+      ],
+      "explanation": "||u|| = √(36+64) = √100 = 10."
+    },
+    {
+      "type": "type",
+      "prompt": "u = (5, 12). What is ||u||?",
+      "answer": [
+        "13"
+      ],
+      "explanation": "||u|| = √(25+144) = √169 = 13."
+    },
+    {
+      "type": "type",
+      "prompt": "u = (8, 15). What is ||u||?",
+      "answer": [
+        "17"
+      ],
+      "explanation": "||u|| = √(64+225) = √289 = 17."
+    },
+    {
+      "type": "type",
+      "prompt": "u = (7, 24). What is ||u||?",
+      "answer": [
+        "25"
+      ],
+      "explanation": "||u|| = √(49+576) = √625 = 25."
+    },
+    {
+      "type": "type",
+      "prompt": "u = (9, 12). What is ||u||?",
+      "answer": [
+        "15"
+      ],
+      "explanation": "||u|| = √(81+144) = √225 = 15."
+    },
+    {
+      "type": "type",
+      "prompt": "u = (1, 0, 0). What is ||u||?",
+      "answer": [
+        "1"
+      ],
+      "explanation": "||u|| = √(1+0+0) = 1."
+    },
+    {
+      "type": "type",
+      "prompt": "u = (2, 3, 6). What is ||u||?",
+      "answer": [
+        "7"
+      ],
+      "explanation": "||u|| = √(4+9+36) = √49 = 7."
+    },
+    {
+      "type": "type",
+      "prompt": "u = (1, 2, 2). What is ||u||?",
+      "answer": [
+        "3"
+      ],
+      "explanation": "||u|| = √(1+4+4) = √9 = 3."
+    },
+    {
+      "type": "type",
+      "prompt": "u = (4, 4, 7). What is ||u||?",
+      "answer": [
+        "9"
+      ],
+      "explanation": "||u|| = √(16+16+49) = √81 = 9."
+    },
+    {
+      "type": "type",
+      "prompt": "u = (0, -5). What is ||u||?",
+      "answer": [
+        "5"
+      ],
+      "explanation": "||u|| = √(0+25) = 5."
+    },
+    {
+      "type": "type",
+      "prompt": "u = (-6, 8). What is ||u||?",
+      "answer": [
+        "10"
+      ],
+      "explanation": "||u|| = √(36+64) = √100 = 10."
+    },
+    {
+      "type": "type",
+      "prompt": "u = (3, 0, 4). What is ||u||?",
+      "answer": [
+        "5"
+      ],
+      "explanation": "||u|| = √(9+0+16) = √25 = 5."
+    },
+    {
+      "type": "type",
+      "prompt": "u = (12, -5). What is ||u||?",
+      "answer": [
+        "13"
+      ],
+      "explanation": "||u|| = √(144+25) = √169 = 13."
+    },
+    {
+      "type": "mc",
+      "prompt": "u = (2, 1), v = (3, 4). Is the angle between u and v acute, right, or obtuse?",
+      "choices": [
+        "Acute",
+        "Right",
+        "Obtuse"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "u·v = 6+4 = 10, which is positive, not zero — so it's not a right angle.",
+        "u·v = 6+4 = 10, which is positive — a positive dot product means the angle is acute, not obtuse."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "u = (1, -1), v = (1, 1). Is the angle between u and v acute, right, or obtuse?",
+      "choices": [
+        "Acute",
+        "Right",
+        "Obtuse"
+      ],
+      "answer": 1,
+      "explanations": [
+        "u·v = 1-1 = 0, which means the angle is exactly 90° (right), not acute.",
+        null,
+        "u·v = 1-1 = 0, which means the angle is exactly 90° (right), not obtuse."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "u = (-2, 3), v = (4, 1). Is the angle between u and v acute, right, or obtuse?",
+      "choices": [
+        "Acute",
+        "Right",
+        "Obtuse"
+      ],
+      "answer": 2,
+      "explanations": [
+        "u·v = -8+3 = -5, which is negative — a negative dot product means the angle is obtuse, not acute.",
+        "u·v = -8+3 = -5, which is not zero, so it's not a right angle.",
+        null
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "u = (1, 2), v = (-3, 1). Is the angle between u and v acute, right, or obtuse?",
+      "choices": [
+        "Acute",
+        "Right",
+        "Obtuse"
+      ],
+      "answer": 2,
+      "explanations": [
+        "u·v = -3+2 = -1, which is negative — a negative dot product means the angle is obtuse, not acute.",
+        "u·v = -3+2 = -1, which is not zero, so it's not a right angle.",
+        null
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "u = (3, 3), v = (3, -3). Is the angle between u and v acute, right, or obtuse?",
+      "choices": [
+        "Acute",
+        "Right",
+        "Obtuse"
+      ],
+      "answer": 1,
+      "explanations": [
+        "u·v = 9-9 = 0, which means the angle is exactly 90° (right), not acute.",
+        null,
+        "u·v = 9-9 = 0, which means the angle is exactly 90° (right), not obtuse."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "u = (5, 1), v = (1, 5). Is the angle between u and v acute, right, or obtuse?",
+      "choices": [
+        "Acute",
+        "Right",
+        "Obtuse"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "u·v = 5+5 = 10, which is positive, not zero — so it's not a right angle.",
+        "u·v = 5+5 = 10, which is positive — a positive dot product means the angle is acute, not obtuse."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "u = (2, -5), v = (3, 1). Is the angle between u and v acute, right, or obtuse?",
+      "choices": [
+        "Acute",
+        "Right",
+        "Obtuse"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "u·v = 6-5 = 1, which is positive, not zero — so it's not a right angle.",
+        "u·v = 6-5 = 1, which is positive — a positive dot product means the angle is acute, not obtuse."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "u = (4, 2), v = (-1, 3). Is the angle between u and v acute, right, or obtuse?",
+      "choices": [
+        "Acute",
+        "Right",
+        "Obtuse"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "u·v = -4+6 = 2, which is positive, not zero — so it's not a right angle.",
+        "u·v = -4+6 = 2, which is positive — a positive dot product means the angle is acute, not obtuse."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "u = (2, 3), v = (-4, 1). Is the angle between u and v acute, right, or obtuse?",
+      "choices": [
+        "Acute",
+        "Right",
+        "Obtuse"
+      ],
+      "answer": 2,
+      "explanations": [
+        "u·v = -8+3 = -5, which is negative — a negative dot product means the angle is obtuse, not acute.",
+        "u·v = -8+3 = -5, which is not zero, so it's not a right angle.",
+        null
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "u = (6, -2), v = (1, 3). Is the angle between u and v acute, right, or obtuse?",
+      "choices": [
+        "Acute",
+        "Right",
+        "Obtuse"
+      ],
+      "answer": 1,
+      "explanations": [
+        "u·v = 6-6 = 0, which means the angle is exactly 90° (right), not acute.",
+        null,
+        "u·v = 6-6 = 0, which means the angle is exactly 90° (right), not obtuse."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "u = (3, 4), v = (4, -3). u and v are orthogonal.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "u·v = 12-12 = 0, so they're orthogonal."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "u = (1, 2, 3), v = (3, 0, -1). u and v are orthogonal.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "u·v = 3+0-3 = 0, so they're orthogonal."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "u = (2, 5), v = (5, 2). u and v are orthogonal.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 1,
+      "explanations": [
+        "u·v = 10+10 = 20 ≠ 0, so they are NOT orthogonal.",
+        null
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "u = (1, 1, 1), v = (1, -1, 0). u and v are orthogonal.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "u·v = 1-1+0 = 0, so they're orthogonal."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "u = (4, -1), v = (1, 4). u and v are orthogonal.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "u·v = 4-4 = 0, so they're orthogonal."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "u = (2, 3, -1), v = (1, 1, 1). u and v are orthogonal.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 1,
+      "explanations": [
+        "u·v = 2+3-1 = 4 ≠ 0, so they are NOT orthogonal.",
+        null
+      ]
+    },
+    {
+      "type": "type",
+      "prompt": "P = (1, 2), Q = (4, 6). What is the distance between P and Q?",
+      "answer": [
+        "5"
+      ],
+      "explanation": "Distance = ||Q-P|| = ||(3,4)|| = √(9+16) = 5."
+    },
+    {
+      "type": "type",
+      "prompt": "P = (0, 0), Q = (6, 8). What is the distance between P and Q?",
+      "answer": [
+        "10"
+      ],
+      "explanation": "Distance = ||Q-P|| = ||(6,8)|| = √(36+64) = 10."
+    },
+    {
+      "type": "type",
+      "prompt": "P = (2, 3, 1), Q = (2, 3, 7). What is the distance between P and Q?",
+      "answer": [
+        "6"
+      ],
+      "explanation": "Distance = ||Q-P|| = ||(0,0,6)|| = 6."
+    },
+    {
+      "type": "type",
+      "prompt": "P = (1, 1, 1), Q = (4, 5, 1). What is the distance between P and Q?",
+      "answer": [
+        "5"
+      ],
+      "explanation": "Distance = ||Q-P|| = ||(3,4,0)|| = √(9+16+0) = 5."
+    }
+  ]
+}
