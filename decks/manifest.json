@@ -11,5 +11,8 @@
   { "id": "lu-decomposition", "file": "decks/lu-decomposition.json", "section": "Test 1"  },
   { "id": "elementary-matrices", "file": "decks/elementary-matrices.json", "section": "Test 1"  },
   { "id": "determinants-properties-day14", "file": "decks/determinants-properties-day14.json", "section": "Test 1"  },
-  { "id": "unit1-review-super-deck", "file": "decks/unit1-review-super-deck.json", "section": "Test 1"  }
+  { "id": "unit1-review-super-deck", "file": "decks/unit1-review-super-deck.json", "section": "Test 1"  },
+    { "id": "vectors-3-1", "file": "decks/vectors-3-1.json", "section": "Test 2" },
+    { "id": "dot-product-calc-3-2", "file": "decks/dot-product-calc-3-2.json", "section": "Test 2" },
+    { "id": "dot-product-concept-3-2", "file": "decks/dot-product-concept-3-2.json", "section": "Test 2" }
 ]
