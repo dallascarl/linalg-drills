@@ -1,0 +1,394 @@
+{
+  "id": "orthogonality-3-3",
+  "title": "Orthogonality (3.3)",
+  "description": "Checking whether vectors are orthogonal, decomposing a vector into components parallel/perpendicular to another (proj/comp), projection theorems, and distance from a point to a line or plane. 5 questions pulled per attempt from a pool of 30.",
+  "questionsPerAttempt": 5,
+  "pointsPerQuestion": 1,
+  "questions": [
+    {
+      "type": "mc",
+      "prompt": "Are u = (3, -2) and v = (4, 6) orthogonal?",
+      "choices": [
+        "Orthogonal",
+        "Not orthogonal"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "u \u00b7 v = (3)(4) + (-2)(6) = 0. Since u \u00b7 v = 0, they ARE orthogonal."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "Are u = (1, 2, 3) and v = (4, -2, 1) orthogonal?",
+      "choices": [
+        "Orthogonal",
+        "Not orthogonal"
+      ],
+      "answer": 1,
+      "explanations": [
+        "u \u00b7 v = (1)(4) + (2)(-2) + (3)(1) = 3. Since u \u00b7 v = 3 \u2260 0, they are NOT orthogonal.",
+        null
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "Are u = (5, 0) and v = (0, -7) orthogonal?",
+      "choices": [
+        "Orthogonal",
+        "Not orthogonal"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "u \u00b7 v = (5)(0) + (0)(-7) = 0. Since u \u00b7 v = 0, they ARE orthogonal."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "Are u = (2, 3) and v = (6, -4) orthogonal?",
+      "choices": [
+        "Orthogonal",
+        "Not orthogonal"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "u \u00b7 v = (2)(6) + (3)(-4) = 0. Since u \u00b7 v = 0, they ARE orthogonal."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "Are u = (1, 1, 1) and v = (1, 1, -2) orthogonal?",
+      "choices": [
+        "Orthogonal",
+        "Not orthogonal"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "u \u00b7 v = (1)(1) + (1)(1) + (1)(-2) = 0. Since u \u00b7 v = 0, they ARE orthogonal."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "Are u = (2, -1, 3) and v = (1, 2, 1) orthogonal?",
+      "choices": [
+        "Orthogonal",
+        "Not orthogonal"
+      ],
+      "answer": 1,
+      "explanations": [
+        "u \u00b7 v = (2)(1) + (-1)(2) + (3)(1) = 3. Since u \u00b7 v = 3 \u2260 0, they are NOT orthogonal.",
+        null
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "Are u = (4, 5) and v = (5, -4) orthogonal?",
+      "choices": [
+        "Orthogonal",
+        "Not orthogonal"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "u \u00b7 v = (4)(5) + (5)(-4) = 0. Since u \u00b7 v = 0, they ARE orthogonal."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "Are u = (1, 0, 0) and v = (0, 1, 0) orthogonal?",
+      "choices": [
+        "Orthogonal",
+        "Not orthogonal"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "u \u00b7 v = (1)(0) + (0)(1) + (0)(0) = 0. Since u \u00b7 v = 0, they ARE orthogonal."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "Are u = (3, 3, 3) and v = (1, 1, 1) orthogonal?",
+      "choices": [
+        "Orthogonal",
+        "Not orthogonal"
+      ],
+      "answer": 1,
+      "explanations": [
+        "u \u00b7 v = (3)(1) + (3)(1) + (3)(1) = 9. Since u \u00b7 v = 9 \u2260 0, they are NOT orthogonal.",
+        null
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "Are u = (0, 0) and v = (5, -2) orthogonal?",
+      "choices": [
+        "Orthogonal",
+        "Not orthogonal"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "u \u00b7 v = (0)(5) + (0)(-2) = 0. Since u \u00b7 v = 0, they ARE orthogonal."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "If w is the vector component of u orthogonal to a, what is w \u00b7 a?",
+      "choices": [
+        "0",
+        "\u2016a\u2016",
+        "undefined",
+        "\u2016u\u2016"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "w is defined to be perpendicular to a, so w \u00b7 a = 0 always \u2014 that's the whole point of calling it the 'orthogonal component'.",
+        "w \u00b7 a is always a defined real number, not undefined.",
+        "There's no reason w \u00b7 a would equal \u2016u\u2016."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "Every vector u can be written as u = w\u2081 + w\u2082, where w\u2081 is parallel to a. What must be true about w\u2082?",
+      "choices": [
+        "w\u2082 is orthogonal to a",
+        "w\u2082 is parallel to a",
+        "w\u2082 equals u",
+        "w\u2082 is always the zero vector"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "If w\u2082 were also parallel to a, the decomposition wouldn't split u into two genuinely different directions.",
+        "w\u2082 = u only in the special case where u is already orthogonal to a.",
+        "w\u2082 is zero only when u itself is parallel to a."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "The vector component of u along a, proj_a u, is always parallel to a.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "By definition, proj_a u = (u\u00b7a/\u2016a\u2016\u00b2)a \u2014 a scalar multiple of a, hence parallel to it."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "If u is orthogonal to a, then proj_a u is the zero vector.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "proj_a u = (u\u00b7a/\u2016a\u2016\u00b2)a. If u\u00b7a = 0, the whole expression is 0."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "Which best describes proj_a u geometrically?",
+      "choices": [
+        "The 'shadow' u casts onto the line through a",
+        "The angle between u and a",
+        "The vector component of a along u",
+        "Always equal to u itself"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "The angle is a scalar, not the vector proj_a u.",
+        "proj_a u projects u onto a's line, not the other way around.",
+        "proj_a u = u only when u is already parallel to a."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "The scalar projection comp_a u = (u \u00b7 a)/\u2016a\u2016 can be negative.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "If the angle between u and a is obtuse, u \u00b7 a < 0, so comp_a u < 0 \u2014 it points 'backward' along a's direction."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "If u \u00b7 a < 0, what does that tell you about comp_a u?",
+      "choices": [
+        "It's negative \u2014 u leans somewhat opposite to a",
+        "It's always zero",
+        "It's undefined",
+        "It's always positive"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "comp_a u = (u\u00b7a)/\u2016a\u2016, and dividing a negative number by the positive length \u2016a\u2016 keeps it negative.",
+        "comp_a u is undefined only if a is the zero vector.",
+        "A negative numerator over a positive \u2016a\u2016 can't give a positive result."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "Every nonzero vector u in R\u207f can be split into a component along a and a component orthogonal to a, for any nonzero vector a.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "This is exactly the projection decomposition u = proj_a u + (u \u2212 proj_a u), and it always works as long as a \u2260 0."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "The zero vector is orthogonal to every vector.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "For any vector v, 0 \u00b7 v = 0, so by definition the zero vector is orthogonal to v \u2014 for every v, including itself."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "If u and v are orthogonal vectors, then for all nonzero scalars k and m, ku and mv are also orthogonal.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "(ku)\u00b7(mv) = km(u\u00b7v) = km(0) = 0, so ku and mv are orthogonal no matter what nonzero k and m are."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "The orthogonal projection of u on a (proj_a u) is perpendicular to the vector component of u orthogonal to a.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "proj_a u is parallel to a, and the 'orthogonal to a' component is, by definition, perpendicular to a \u2014 so the two pieces are perpendicular to each other."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "If a and b are orthogonal vectors, then for every vector u, proj_a(proj_b(u)) = 0.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "proj_b(u) is some scalar multiple of b. Projecting a scalar multiple of b onto a involves the dot product b\u00b7a, which is 0 since a \u27c2 b \u2014 so the result is always the zero vector."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "If a and u are nonzero vectors, then proj_a(proj_a(u)) = proj_a(u).",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "proj_a(u) is already parallel to a, and projecting a vector that's already parallel to a back onto a just returns that same vector \u2014 projection is idempotent."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "If proj_a u = proj_a v for some nonzero vector a, then u must equal v.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 1,
+      "explanations": [
+        "Equal projections onto a only mean u and v have the same component along a \u2014 they can still differ in their component orthogonal to a. Example: a=(1,0), u=(1,5), v=(1,-3) both project to (1,0).",
+        null
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "For all vectors u and v, \u2016u + v\u2016 = \u2016u\u2016 + \u2016v\u2016.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 1,
+      "explanations": [
+        "This (the Triangle Inequality becoming an equality) only happens when u and v point in the same direction. In general \u2016u+v\u2016 \u2264 \u2016u\u2016+\u2016v\u2016, with strict inequality most of the time.",
+        null
+      ]
+    },
+    {
+      "type": "type",
+      "prompt": "u = (6, 8), a = (1, 0). Find \u2016proj_a u\u2016.",
+      "answer": [
+        "6"
+      ],
+      "explanation": "u\u00b7a = 6(1)+8(0) = 6. \u2016a\u2016 = 1. \u2016proj_a u\u2016 = |u\u00b7a|/\u2016a\u2016 = 6/1 = 6."
+    },
+    {
+      "type": "type",
+      "prompt": "Find the distance from the point (-3, 1) to the line 4x + 3y + 4 = 0.",
+      "answer": [
+        "1"
+      ],
+      "explanation": "D = |4(-3)+3(1)+4| / \u221a(4\u00b2+3\u00b2) = |-12+3+4| / 5 = |-5|/5 = 1."
+    },
+    {
+      "type": "type",
+      "prompt": "Find the distance from the point (3, 1, -2) to the plane x + 2y - 2z = 4.",
+      "answer": [
+        "5/3",
+        "1.67",
+        "1.666",
+        "1.6667"
+      ],
+      "explanation": "D = |1(3)+2(1)-2(-2)-4| / \u221a(1\u00b2+2\u00b2+2\u00b2) = |3+2+4-4| / 3 = 5/3 \u2248 1.67."
+    },
+    {
+      "type": "type",
+      "prompt": "u = (6, 2), a = (3, -9). Find comp_a u (the scalar projection of u onto a).",
+      "answer": [
+        "0"
+      ],
+      "explanation": "u\u00b7a = 6(3)+2(-9) = 18-18 = 0. comp_a u = (u\u00b7a)/\u2016a\u2016 = 0/\u221a90 = 0 \u2014 u is actually orthogonal to a here."
+    },
+    {
+      "type": "type",
+      "prompt": "a = (2, 0, 0), u = (5, -3, 7). Find the vector component of u along a (proj_a u).",
+      "answer": [
+        "(5, 0, 0)",
+        "5, 0, 0"
+      ],
+      "explanation": "u\u00b7a = 5(2)+(-3)(0)+7(0) = 10. \u2016a\u2016\u00b2 = 4. proj_a u = (10/4)(2,0,0) = (5, 0, 0)."
+    }
+  ]
+}
