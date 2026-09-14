@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -47,8 +48,9 @@
   header.top{display:flex;align-items:center;justify-content:space-between;margin-bottom:28px;gap:10px;}
   .brand{font-family:'Space Mono',monospace;font-weight:700;font-size:15px;letter-spacing:.02em;color:var(--chalk-dim);display:flex;align-items:center;gap:8px;flex:none;}
   .brand .bracket{color:var(--vector);}
-  .header-right{display:flex;align-items:center;gap:8px;}
+  .header-right{display:flex;align-items:center;gap:8px;flex-wrap:wrap;justify-content:flex-end;}
   .score-pill{font-family:'Space Mono',monospace;font-size:12px;background:var(--surface);border:1px solid var(--vector-dim);border-radius:999px;padding:5px 11px;color:var(--vector);cursor:default;}
+  .score-pill-grade{color:var(--correct);border-color:rgba(61,220,151,.4);}
   .icon-btn{background:var(--surface);border:1px solid #2A3142;border-radius:10px;color:var(--chalk-dim);padding:6px 10px;font-size:14px;cursor:pointer;font-family:inherit;transition:border-color .15s;}
   .icon-btn:hover{border-color:var(--vector-dim);color:var(--chalk);}
 
@@ -165,6 +167,9 @@
   .badge-in{background:rgba(61,220,151,.12);color:var(--correct);}
   .grade-pill{font-family:'Space Mono',monospace;font-size:12px;color:var(--correct);}
   .lb-pts-pill{font-family:'Space Mono',monospace;font-size:12px;color:var(--vector);}
+  .expand-btn{background:none;border:1px solid #2A3142;border-radius:6px;color:var(--chalk-dim);font-size:11px;width:26px;height:26px;line-height:1;cursor:pointer;font-family:inherit;transition:border-color .15s,color .15s;}
+  .expand-btn:hover{border-color:var(--vector-dim);color:var(--chalk);}
+  .student-detail td{background:rgba(124,157,255,.03);}
 
   .settings-panel{background:var(--surface);border:1px solid #2A3142;border-radius:18px;padding:22px;}
   .settings-panel h2{font-family:'Space Mono',monospace;font-size:16px;margin:0 0 18px;}
@@ -220,6 +225,7 @@
   <header class="top">
     <div class="brand"><span class="bracket">[</span>LINALG<span class="bracket">]</span></div>
     <div class="header-right">
+      <div class="score-pill score-pill-grade" id="gradePill" style="display:none" title="Grade score — best raw score on currently visible graded decks">…</div>
       <div class="score-pill" id="globalScorePill" style="display:none">0 pts</div>
       <button class="icon-btn" id="lbHeaderBtn" style="display:none" title="Leaderboard">🏆</button>
       <button class="icon-btn" id="settingsBtn" style="display:none" title="Settings">⚙︎</button>
@@ -474,6 +480,7 @@ sb.auth.onAuthStateChange(async (event, session) => {
     showHeaderButtons(true);
     await loadAppSettings();
     await loadManifest();
+    updateGradePill();
     showScreen('menu');
     const params = new URLSearchParams(window.location.search);
     const dp = params.get('deck');
@@ -485,7 +492,7 @@ sb.auth.onAuthStateChange(async (event, session) => {
 });
 
 function showHeaderButtons(on){
-  ['globalScorePill','lbHeaderBtn','settingsBtn','signOutBtn'].forEach(id => {
+  ['gradePill','globalScorePill','lbHeaderBtn','settingsBtn','signOutBtn'].forEach(id => {
     document.getElementById(id).style.display = on ? '' : 'none';
   });
 }
@@ -719,6 +726,42 @@ async function fetchDeck(id){
   entry.pointsPerQuestion = deck.pointsPerQuestion || 1;
   entry.ungraded = deck.ungraded || false;
   return deck;
+}
+
+// ── Grade summary (xx/yy) — shared by the header pill and instructor dashboard ──
+// yy = total graded questions across decks currently visible to students.
+// xx = sum of a profile's best raw grade on those same decks.
+async function getVisibleGradedDeckTotals(){
+  const visible = manifest.filter(e => !appSettings.hiddenDecks.includes(e.id) && !e.ungraded);
+  const totals = {};
+  for (const entry of visible){
+    try {
+      const deck = decksById[entry.id] || await fetchDeck(entry.id);
+      totals[entry.id] = deck.questionsPerAttempt || deck.questions.length;
+    } catch (e) {
+      // Skip a deck that fails to load rather than breaking the whole summary
+    }
+  }
+  return totals;
+}
+
+function computeGrade(profile, deckTotals){
+  const bests = profile?.deck_bests || {};
+  let earned = 0, max = 0;
+  Object.entries(deckTotals).forEach(([id, total]) => {
+    max += total;
+    earned += bests[id]?.bestRaw || 0;
+  });
+  return {earned, max};
+}
+
+async function updateGradePill(){
+  const pill = document.getElementById('gradePill');
+  if (!currentUser || isTeacher()){ pill.style.display = 'none'; return; }
+  const deckTotals = await getVisibleGradedDeckTotals();
+  const {earned, max} = computeGrade(currentProfile, deckTotals);
+  pill.textContent = `${earned}/${max}`;
+  pill.style.display = '';
 }
 
 // ═══════════════════════════════════════════════════
@@ -1026,6 +1069,7 @@ async function finishDeck(){
   currentProfile.total_correct = newTotalLbPoints;
   currentProfile.deck_bests    = newBests;
   updateScorePill(newTotalLbPoints);
+  updateGradePill();
   savingEl.textContent = '✓ Saved.';
   renderDeckList(); // refresh meta text in background
 }
@@ -1156,6 +1200,9 @@ async function openAdmin(){
     .not('id', 'in', `(${TEACHER_IDS.join(',')})`)
     .order('total_correct', {ascending: false});
 
+  const deckTotals = await getVisibleGradedDeckTotals();
+  const overallMax  = Object.values(deckTotals).reduce((a,b) => a+b, 0);
+
   let html = '';
 
   // ── INSTRUCTOR CONTROLS ──────────────────────────────────
@@ -1204,23 +1251,29 @@ async function openAdmin(){
     html += `<div style="overflow-x:auto">
     <table class="admin-table">
       <thead><tr>
+        <th></th>
         <th>Real Name</th>
         <th>Username</th>
+        <th>Grade<br><span style="font-weight:400;color:var(--chalk-dim);font-size:10px">out of ${overallMax}</span></th>
         <th>LB Pts</th>
         <th>Leaderboard</th>
       </tr></thead><tbody>`;
 
-  profiles.forEach(p => {
+  profiles.forEach((p, idx) => {
     const optBadge = p.lb_opt_in !== false
       ? '<span class="badge badge-in">visible</span>'
       : '<span class="badge badge-opt">opted out</span>';
+    const g = computeGrade(p, deckTotals);
     html += `<tr>
+      <td><button class="expand-btn" data-idx="${idx}" aria-label="Expand details">▶</button></td>
       <td><strong>${escapeHtml(p.full_name)}</strong></td>
       <td style="color:var(--chalk-dim)">@${escapeHtml(p.username)}</td>
+      <td class="grade-pill">${g.earned}/${g.max}</td>
       <td class="lb-pts-pill">${p.total_correct || 0}</td>
       <td>${optBadge}</td>
     </tr>`;
 
+    html += `<tr class="student-detail" data-idx="${idx}" style="display:none"><td colspan="6" style="padding-top:2px;padding-bottom:14px">`;
     if (p.deck_bests && Object.keys(p.deck_bests).length){
       const bests = Object.entries(p.deck_bests).map(([id, v]) => {
         const deckLabel = escapeHtml(id.replace(/-/g,' '));
@@ -1233,8 +1286,11 @@ async function openAdmin(){
           <span style="color:var(--chalk-dim)">${deckLabel}:</span> grade ${gradeStr} · lb ${lbStr} · ${attStr}
         </span>`;
       }).join('');
-      html += `<tr><td colspan="4" style="padding-top:2px;padding-bottom:14px">${bests}</td></tr>`;
+      html += bests;
+    } else {
+      html += `<span style="color:var(--chalk-dim);font-size:12px">No attempts yet.</span>`;
     }
+    html += `</td></tr>`;
   });
 
     html += '</tbody></table></div>';
@@ -1268,6 +1324,18 @@ async function openAdmin(){
   }
 
   content.innerHTML = html;
+
+  // ── Wire expand/collapse triangles ──
+  document.querySelectorAll('.expand-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const idx = btn.dataset.idx;
+      const row = document.querySelector(`.student-detail[data-idx="${idx}"]`);
+      if (!row) return;
+      const isOpen = row.style.display !== 'none';
+      row.style.display = isOpen ? 'none' : '';
+      btn.textContent = isOpen ? '▶' : '▼';
+    });
+  });
 
   // ── Wire leaderboard toggle ──
   document.getElementById('adminLbToggle').addEventListener('change', async (e) => {
