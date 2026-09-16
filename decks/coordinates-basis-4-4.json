@@ -1,0 +1,188 @@
+{
+  "id": "coordinates-basis-4-4",
+  "title": "Coordinates & Basis (4.4)",
+  "description": "The definition of a basis (spans + linearly independent), Theorem 4.4.1 (uniqueness of basis representation), computing coordinate vectors in R^n and in other finite-dimensional spaces like P2, and finite- vs infinite-dimensional vector spaces. 8 questions pulled per attempt from a pool of 27.",
+  "questionsPerAttempt": 8,
+  "pointsPerQuestion": 1,
+  "questions": [
+    {
+      "type": "wordbank",
+      "prompt": "A set S is a basis for a vector space V if and only if S is linearly independent and S _____ V.",
+      "wordbank": ["spans", "contains", "orders", "bounds"],
+      "answer": "spans",
+      "explanation": "A basis is a spanning set that is also linearly independent — both conditions are required."
+    },
+    {
+      "type": "wordbank",
+      "prompt": "If S = {v1, v2, ..., vn} is a basis for V, Theorem 4.4.1 guarantees that every vector in V can be written as a linear combination of the vectors in S in exactly _____ way.",
+      "wordbank": ["one", "two", "zero", "many"],
+      "answer": "one",
+      "explanation": "This is the Uniqueness of Basis Representation theorem: existence comes from spanning, uniqueness comes from linear independence."
+    },
+    {
+      "type": "wordbank",
+      "prompt": "The scalars c1, c2, ..., cn in v = c1v1 + c2v2 + ... + cnvn (relative to a basis S) are called the _____ of v relative to S.",
+      "wordbank": ["coordinates", "dimensions", "eigenvalues", "determinants"],
+      "answer": "coordinates",
+      "explanation": "The vector (c1, c2, ..., cn) built from these scalars is the coordinate vector [v]_S."
+    },
+    {
+      "type": "wordbank",
+      "prompt": "A vector space that has a basis consisting of finitely many vectors is called _____-dimensional.",
+      "wordbank": ["finite", "infinite", "zero", "one"],
+      "answer": "finite",
+      "explanation": "P2, R^n, and M22 are all finite-dimensional — each has a basis with only finitely many vectors."
+    },
+    {
+      "type": "wordbank",
+      "prompt": "A basis in which the order of the vectors is fixed (so 'first coordinate,' 'second coordinate,' etc. make sense) is called an _____ basis.",
+      "wordbank": ["ordered", "numbered", "ranked", "sequential"],
+      "answer": "ordered",
+      "explanation": "Swapping the order of the vectors in S reorders the entries of every coordinate vector, so bases are always treated as ordered."
+    },
+    {
+      "type": "wordbank",
+      "prompt": "The vector space of ALL polynomials (of every degree, with no upper bound) is an example of an _____-dimensional vector space, since no finite set of polynomials can span it.",
+      "wordbank": ["infinite", "finite", "zero", "two"],
+      "answer": "infinite",
+      "explanation": "No finite set of polynomials spans every polynomial (there's always a higher degree left out), so this space has no finite basis."
+    },
+    {
+      "type": "mc",
+      "prompt": "True or False: The order of the vectors in a basis affects the coordinate vector of a given vector.",
+      "choices": ["True", "False"],
+      "answer": 0,
+      "explanations": [null, "Swapping the order of the basis vectors swaps the order of the coordinates too, so the coordinate vector changes even though the basis (as a set) is the same. This is why bases are ordered."]
+    },
+    {
+      "type": "mc",
+      "prompt": "True or False: If S is a basis for V, then every vector in V has a unique coordinate vector relative to S.",
+      "choices": ["True", "False"],
+      "answer": 0,
+      "explanations": [null, "This is exactly Theorem 4.4.1 — uniqueness is guaranteed by the linear independence of S."]
+    },
+    {
+      "type": "mc",
+      "prompt": "True or False: The coordinate vector of a vector v is identical no matter which basis you use to compute it.",
+      "choices": ["True", "False"],
+      "answer": 1,
+      "explanations": ["Different bases give different 'addresses' for the same vector — only the underlying vector v stays fixed, not its coordinates.", null]
+    },
+    {
+      "type": "mc",
+      "prompt": "True or False: Every vector space has at least one basis.",
+      "choices": ["True", "False"],
+      "answer": 0,
+      "explanations": [null, "Every vector space — finite- or infinite-dimensional — has a basis, even {0} (whose basis is the empty set)."]
+    },
+    {
+      "type": "mc",
+      "prompt": "True or False: A finite-dimensional vector space can have a basis containing infinitely many vectors.",
+      "choices": ["True", "False"],
+      "answer": 1,
+      "explanations": ["This is the defining property of finite-dimensional: it has a basis with only finitely many vectors.", null]
+    },
+    {
+      "type": "mc",
+      "prompt": "True or False: P2 (all polynomials of degree ≤ 2) is a finite-dimensional vector space.",
+      "choices": ["True", "False"],
+      "answer": 0,
+      "explanations": [null, "P2 has the finite basis {1, x, x^2}, so it is finite-dimensional (dimension 3)."]
+    },
+    {
+      "type": "mc",
+      "prompt": "True or False: S = {(2,4), (1,2)} is a basis for R^2.",
+      "choices": ["True", "False"],
+      "answer": 1,
+      "explanations": ["(2,4) = 2(1,2), so the two vectors are linearly dependent. A dependent set can never be a basis, no matter how many vectors it has.", null]
+    },
+    {
+      "type": "mc",
+      "prompt": "True or False: S = {(1,0), (1,1)} is a basis for R^2.",
+      "choices": ["True", "False"],
+      "answer": 0,
+      "explanations": [null, "These two vectors are linearly independent (neither is a scalar multiple of the other) and there are 2 of them in R^2, so they span R^2 too — S is a basis."]
+    },
+    {
+      "type": "mc",
+      "prompt": "True or False: If S = {v1, v2, v3} is a basis for V, then [v]_S has exactly 3 entries for every v in V.",
+      "choices": ["True", "False"],
+      "answer": 0,
+      "explanations": [null, "The coordinate vector always has as many entries as there are vectors in the basis."]
+    },
+    {
+      "type": "mc",
+      "prompt": "True or False: Relative to the basis S = {1, x, x^2} for P2, the coordinate vector of p(x) = x^2 is (1, 0, 0).",
+      "choices": ["True", "False"],
+      "answer": 1,
+      "explanations": ["p(x) = x^2 means 0(1) + 0(x) + 1(x^2), so [p]_S = (0, 0, 1), not (1, 0, 0). Watch the order — it matches the order the basis vectors are listed in.", null]
+    },
+    {
+      "type": "mc",
+      "prompt": "True or False: A basis for M22 (the space of 2×2 matrices) must contain exactly 4 matrices.",
+      "choices": ["True", "False"],
+      "answer": 0,
+      "explanations": [null, "M22 has dimension 4 (basis: the four matrices with a single 1 and zeros elsewhere), so every basis for it has exactly 4 matrices."]
+    },
+    {
+      "type": "type",
+      "prompt": "Let S = {(1,0), (0,1)} be the standard basis for R^2. Find [v]_S for v = (4, -3). Give your answer as an ordered pair (a,b).",
+      "answer": ["(4,-3)", "(4, -3)"],
+      "explanation": "Relative to the standard basis, coordinates always match the vector's own components: [v]_S = (4, -3)."
+    },
+    {
+      "type": "type",
+      "prompt": "Let S = {u1, u2} with u1 = (1,1), u2 = (1,-1), be a basis for R^2. Find [v]_S for v = (6, 2). Give your answer as (c1, c2).",
+      "answer": ["(4,2)", "(4, 2)"],
+      "explanation": "Solve c1(1,1) + c2(1,-1) = (6,2): c1+c2=6 and c1-c2=2. Adding gives c1=4, so c2=2."
+    },
+    {
+      "type": "type",
+      "prompt": "Let S = {u1, u2} with u1 = (1,2), u2 = (3,1), be a basis for R^2. Find [v]_S for v = (5, 5). Give your answer as (c1, c2).",
+      "answer": ["(2,1)", "(2, 1)"],
+      "explanation": "Solve c1(1,2) + c2(3,1) = (5,5): c1+3c2=5 and 2c1+c2=5. Solving gives c1=2, c2=1."
+    },
+    {
+      "type": "type",
+      "prompt": "Let S = {u1, u2} with u1 = (2,1), u2 = (1,1), be a basis for R^2. Find [v]_S for v = (5, 4). Give your answer as (c1, c2).",
+      "answer": ["(1,3)", "(1, 3)"],
+      "explanation": "Solve 2c1+c2=5 and c1+c2=4. Subtracting gives c1=1, then c2=3."
+    },
+    {
+      "type": "type",
+      "prompt": "Let S = {(3,1), (1,1)} be a basis for R^2. Find [v]_S for v = (5, 1). Give your answer as (c1, c2).",
+      "answer": ["(2,-1)", "(2, -1)"],
+      "explanation": "Solve 3c1+c2=5 and c1+c2=1. Subtracting gives 2c1=4, so c1=2 and c2=-1."
+    },
+    {
+      "type": "type",
+      "prompt": "Let S = {v1, v2, v3} with v1=(1,0,0), v2=(1,1,0), v3=(1,1,1), be a basis for R^3. Find [v]_S for v = (4, 3, 2). Give your answer as (c1, c2, c3).",
+      "answer": ["(1,1,2)", "(1, 1, 2)"],
+      "explanation": "c1+c2+c3=4, c2+c3=3, c3=2. Back-substituting: c3=2, c2=1, c1=1."
+    },
+    {
+      "type": "type",
+      "prompt": "Let S = {1, x, x^2} be the standard basis for P2. Find [p]_S for p(x) = 7 - 2x + 5x^2. Give your answer as (a0, a1, a2).",
+      "answer": ["(7,-2,5)", "(7, -2, 5)"],
+      "explanation": "Relative to the standard basis for P2, the coordinates are just the polynomial's own coefficients, in order: constant, x, x^2."
+    },
+    {
+      "type": "type",
+      "prompt": "Let S = {p1, p2, p3} with p1 = 1, p2 = 1+x, p3 = 1+x+x^2, be a basis for P2. Find [p]_S for p(x) = 6 - 2x + 3x^2. Give your answer as (c1, c2, c3).",
+      "answer": ["(8,-5,3)", "(8, -5, 3)"],
+      "explanation": "c1+c2+c3=6, c2+c3=-2, c3=3. Back-substituting: c3=3, c2=-5, c1=8."
+    },
+    {
+      "type": "type",
+      "prompt": "If a basis S for a vector space V consists of 7 vectors, how many entries does the coordinate vector [v]_S have for any vector v in V?",
+      "answer": ["7"],
+      "explanation": "The coordinate vector always has one entry per basis vector."
+    },
+    {
+      "type": "type",
+      "prompt": "A basis for M22 (the space of 2x2 matrices) has how many matrices in it?",
+      "answer": ["4"],
+      "explanation": "A standard basis for M22 is the four matrices with a single 1 and zeros elsewhere, e.g. [[1,0],[0,0]], [[0,1],[0,0]], [[0,0],[1,0]], [[0,0],[0,1]]."
+    }
+  ]
+}

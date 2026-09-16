@@ -1,0 +1,369 @@
+{
+  "id": "row-col-null-space-4-7",
+  "title": "Row Space, Column Space, Null Space (4.7)",
+  "description": "Definitions and computation of the row space, column space, and null space of a matrix, the Rank-Nullity Theorem, and what each space means. 8 questions pulled per attempt from a pool of 30.",
+  "questionsPerAttempt": 8,
+  "pointsPerQuestion": 1,
+  "questions": [
+    {
+      "type": "wordbank",
+      "prompt": "For an $m \\times n$ matrix $A$, the column space $\\text{col}(A)$ is a subspace of _____.",
+      "wordbank": [
+        "$\\mathbb{R}^m$",
+        "$\\mathbb{R}^n$",
+        "$\\mathbb{R}^{mn}$",
+        "$\\mathbb{R}^1$"
+      ],
+      "answer": "$\\mathbb{R}^m$",
+      "explanation": "Each column of $A$ has $m$ entries, so every linear combination of the columns — every vector in $\\text{col}(A)$ — lives in $\\mathbb{R}^m$."
+    },
+    {
+      "type": "wordbank",
+      "prompt": "For an $m \\times n$ matrix $A$, the row space $\\text{row}(A)$ is a subspace of _____.",
+      "wordbank": [
+        "$\\mathbb{R}^n$",
+        "$\\mathbb{R}^m$",
+        "$\\mathbb{R}^{mn}$",
+        "$\\mathbb{R}^1$"
+      ],
+      "answer": "$\\mathbb{R}^n$",
+      "explanation": "Each row of $A$ has $n$ entries, so $\\text{row}(A)$ is a subspace of $\\mathbb{R}^n$ — the same space the solution vector $x$ lives in."
+    },
+    {
+      "type": "wordbank",
+      "prompt": "For an $m \\times n$ matrix $A$, the null space $\\text{null}(A)$ is a subspace of _____.",
+      "wordbank": [
+        "$\\mathbb{R}^n$",
+        "$\\mathbb{R}^m$",
+        "$\\mathbb{R}^{mn}$",
+        "$\\mathbb{R}^1$"
+      ],
+      "answer": "$\\mathbb{R}^n$",
+      "explanation": "$\\text{null}(A)$ is the solution set of $Ax=0$, and $x$ is an $n \\times 1$ vector, so $\\text{null}(A) \\subseteq \\mathbb{R}^n$ — the same space as $\\text{row}(A)$, but note it's a different subspace of that space."
+    },
+    {
+      "type": "mc",
+      "prompt": "$\\text{col}(A)$ is best described as...",
+      "choices": [
+        "the set of all vectors b for which Ax = b is consistent",
+        "the span of the rows of A",
+        "the set of pivot columns in the RREF of A",
+        "always equal to all of R^m"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "That description is row(A), not col(A).",
+        "The RREF's own columns are generally not even in col(A) — pivot columns must come from the original matrix A.",
+        "col(A) only fills up all of R^m when A has rank m; otherwise it's a smaller subspace."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "$\\text{null}(A)$ is best described as...",
+      "choices": [
+        "the set of all x such that Ax = 0",
+        "the set of all b such that Ax = b is consistent",
+        "the pivot columns of A",
+        "the same subspace as row(A) in general"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "That's col(A), not null(A).",
+        "Pivot columns of A form a basis for col(A), not null(A).",
+        "row(A) and null(A) are both subspaces of R^n, but they are generally different subspaces (they only share the zero vector)."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "To find a basis for null(A), you...",
+      "choices": [
+        "row reduce A, then solve Ax = 0, writing the general solution in terms of the free variables",
+        "take the nonzero rows of the RREF of A",
+        "take the pivot columns of A",
+        "take the pivot columns of the RREF of A"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "That gives a basis for row(A), not null(A).",
+        "That gives a basis for col(A), not null(A).",
+        "The RREF's columns aren't the right objects here — null(A) comes from solving Ax=0, not from picking columns."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "To find a basis for col(A), you...",
+      "choices": [
+        "row reduce A to find which columns are pivot columns, then take those SAME columns from the ORIGINAL matrix A",
+        "take the pivot columns directly from the RREF of A",
+        "take the nonzero rows of the RREF of A",
+        "solve Ax = 0 and use the free variables"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "This is the classic trap: row reduction changes which vectors the columns actually are. The RREF tells you WHICH columns to grab (by position), but you grab them from A itself.",
+        "That gives a basis for row(A), not col(A).",
+        "That's how you find null(A), not col(A)."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "To find a basis for row(A), you...",
+      "choices": [
+        "row reduce A to RREF; the nonzero rows of the RREF form a basis",
+        "take the pivot columns of A",
+        "solve Ax = 0 and use the free variables",
+        "take the nonzero columns of A"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "That gives a basis for col(A), not row(A).",
+        "That gives a basis for null(A), not row(A).",
+        "Columns of A (zero or not) relate to col(A), not row(A)."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "True or False: row(A) = row(RREF(A)) — row reduction never changes the row space.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 0,
+      "explanations": [
+        "Each row of the RREF is a linear combination of A's original rows, and since row operations are reversible, each original row is also a combination of the RREF's rows. So the two row spaces are exactly the same set.",
+        null
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "True or False: col(A) = col(RREF(A)) — row reduction never changes the column space.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 1,
+      "explanations": [
+        null,
+        "This is false, and it's exactly why the pivot-column rule matters: row operations mix rows together, which generally changes what the columns actually are as vectors. Only the DIMENSION of col(A) (the rank) is preserved — not the space itself. That's why a basis for col(A) has to be pulled from A's own columns, never from the RREF's columns."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "True or False: null(A) = null(RREF(A)).",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 0,
+      "explanations": [
+        "This is the entire point of row reduction: elementary row operations never change the solution set of Ax = 0. So A and its RREF always have exactly the same null space.",
+        null
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "True or False: dim(row(A)) always equals dim(col(A)), even though row(A) and col(A) are generally subspaces of different spaces (R^n vs R^m).",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 0,
+      "explanations": [
+        "True — this shared dimension (the number of pivots) is called the rank of A.",
+        null
+      ]
+    },
+    {
+      "type": "wordbank",
+      "prompt": "The Rank-Nullity Theorem: for an m x n matrix A, rank(A) + nullity(A) = _____.",
+      "wordbank": [
+        "n",
+        "m",
+        "m + n",
+        "mn"
+      ],
+      "answer": "n",
+      "explanation": "Every one of the n columns is either a pivot column (contributing to rank) or a free-variable column (contributing to nullity) — together they account for all n columns."
+    },
+    {
+      "type": "type",
+      "prompt": "A is a 5x8 matrix with rank 3. Find nullity(A).",
+      "answer": [
+        "5"
+      ],
+      "explanation": "rank(A) + nullity(A) = n = 8, so nullity(A) = 8 - 3 = 5."
+    },
+    {
+      "type": "type",
+      "prompt": "A is a 4x6 matrix with nullity 2. Find rank(A).",
+      "answer": [
+        "4"
+      ],
+      "explanation": "rank(A) + nullity(A) = n = 6, so rank(A) = 6 - 2 = 4."
+    },
+    {
+      "type": "type",
+      "prompt": "A is a 7x3 matrix with rank 3 (full column rank). Find nullity(A).",
+      "answer": [
+        "0"
+      ],
+      "explanation": "rank(A) + nullity(A) = n = 3, so nullity(A) = 3 - 3 = 0 — the only solution to Ax=0 is x=0."
+    },
+    {
+      "type": "mc",
+      "prompt": "If null(A) = {0} (only the zero vector), what does that tell you about Ax = b?",
+      "choices": [
+        "Whenever Ax = b is consistent, the solution is unique",
+        "Ax = b is never consistent, for any b",
+        "Ax = b always has infinitely many solutions",
+        "A must be a square matrix"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "null(A) = {0} says nothing about whether a given b is reachable — it only controls uniqueness once a solution exists.",
+        "Infinitely many solutions is exactly what CAN'T happen when null(A) = {0}: two different solutions to Ax=b would differ by a nonzero vector in null(A).",
+        "A can be any shape; null(A) = {0} just means the columns of A are linearly independent, which is possible for tall or square matrices."
+      ]
+    },
+    {
+      "type": "type",
+      "prompt": "For $A = \\begin{bmatrix} 1 & 2 & 1 & 2 \\\\ 2 & 4 & 3 & 5 \\\\ 3 & 6 & 4 & 7 \\end{bmatrix}$ (today's in-class example), find rank(A).",
+      "answer": [
+        "2"
+      ],
+      "explanation": "The RREF has 2 pivots (columns 1 and 3), so rank(A) = 2."
+    },
+    {
+      "type": "type",
+      "prompt": "For the same $A = \\begin{bmatrix} 1 & 2 & 1 & 2 \\\\ 2 & 4 & 3 & 5 \\\\ 3 & 6 & 4 & 7 \\end{bmatrix}$, find nullity(A).",
+      "answer": [
+        "2"
+      ],
+      "explanation": "n = 4 columns, rank = 2, so nullity = 4 - 2 = 2 — matches the two free variables (columns 2 and 4) and the two basis vectors we found for null(A) in class."
+    },
+    {
+      "type": "type",
+      "prompt": "For the same $A = \\begin{bmatrix} 1 & 2 & 1 & 2 \\\\ 2 & 4 & 3 & 5 \\\\ 3 & 6 & 4 & 7 \\end{bmatrix}$, find dim(col(A)).",
+      "answer": [
+        "2"
+      ],
+      "explanation": "dim(col(A)) is always equal to rank(A) = 2 — col(A) is spanned by the 2 pivot columns of A, columns 1 and 3."
+    },
+    {
+      "type": "type",
+      "prompt": "For $A = \\begin{bmatrix} 1 & 2 & 3 \\\\ 2 & 4 & 6 \\\\ 1 & 0 & -1 \\end{bmatrix}$, find rank(A).",
+      "answer": [
+        "2"
+      ],
+      "explanation": "Row-reducing gives 2 nonzero rows (row 3 becomes all zeros — it's a combination of the first two), so rank(A) = 2."
+    },
+    {
+      "type": "type",
+      "prompt": "For the same $A = \\begin{bmatrix} 1 & 2 & 3 \\\\ 2 & 4 & 6 \\\\ 1 & 0 & -1 \\end{bmatrix}$, find nullity(A).",
+      "answer": [
+        "1"
+      ],
+      "explanation": "n = 3 columns, rank = 2, so nullity = 3 - 2 = 1 — a single free variable, giving a 1-dimensional null space."
+    },
+    {
+      "type": "type",
+      "prompt": "For $A = \\begin{bmatrix} 1 & 2 & -1 \\\\ 2 & 4 & -2 \\end{bmatrix}$, find dim(row(A)).",
+      "answer": [
+        "1"
+      ],
+      "explanation": "Row 2 is just 2 times Row 1, so it disappears under row reduction — only 1 nonzero row survives, so dim(row(A)) = rank(A) = 1."
+    },
+    {
+      "type": "type",
+      "prompt": "For the same $A = \\begin{bmatrix} 1 & 2 & -1 \\\\ 2 & 4 & -2 \\end{bmatrix}$, find dim(null(A)).",
+      "answer": [
+        "2"
+      ],
+      "explanation": "n = 3 columns, rank = 1, so nullity = 3 - 1 = 2 — two free variables."
+    },
+    {
+      "type": "mc",
+      "prompt": "Let $A = \\begin{bmatrix} 1 & 2 \\\\ 2 & 4 \\\\ 3 & 5 \\end{bmatrix}$ and $b = \\begin{bmatrix} 3 \\\\ 6 \\\\ 8 \\end{bmatrix}$. Is $b$ in $\\text{col}(A)$?",
+      "choices": [
+        "Yes, b is in col(A)",
+        "No, b is not in col(A)"
+      ],
+      "answer": 0,
+      "explanations": [
+        "b is in col(A) exactly when Ax = b is consistent. Here it is (x = (1, 1) works: 1(1,2,3) + 1(2,4,5) = (3,6,8)), so b ∈ col(A).",
+        null
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "Same $A = \\begin{bmatrix} 1 & 2 \\\\ 2 & 4 \\\\ 3 & 5 \\end{bmatrix}$, now with $b = \\begin{bmatrix} 1 \\\\ 1 \\\\ 1 \\end{bmatrix}$. Is $b$ in $\\text{col}(A)$?",
+      "choices": [
+        "Yes, b is in col(A)",
+        "No, b is not in col(A)"
+      ],
+      "answer": 1,
+      "explanations": [
+        null,
+        "Row reducing [A | b] shows an inconsistent row (rank(A) = 2 but rank([A|b]) = 3), so Ax = b has no solution — b is NOT in col(A)."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "Let $A = \\begin{bmatrix} 1 & 3 & -2 \\\\ 2 & 1 & 1 \\end{bmatrix}$ and $v = \\begin{bmatrix} 1 \\\\ -1 \\\\ -1 \\end{bmatrix}$. Is $v$ in $\\text{null}(A)$?",
+      "choices": [
+        "Yes, v is in null(A)",
+        "No, v is not in null(A)"
+      ],
+      "answer": 0,
+      "explanations": [
+        "Just plug in and check: Av = (1(1)+3(-1)-2(-1), 2(1)+1(-1)+1(-1)) = (1-3+2, 2-1-1) = (0, 0). Since Av = 0, v ∈ null(A).",
+        null
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "Same $A = \\begin{bmatrix} 1 & 3 & -2 \\\\ 2 & 1 & 1 \\end{bmatrix}$, now with $v = \\begin{bmatrix} 1 \\\\ 1 \\\\ 1 \\end{bmatrix}$. Is $v$ in $\\text{null}(A)$?",
+      "choices": [
+        "Yes, v is in null(A)",
+        "No, v is not in null(A)"
+      ],
+      "answer": 1,
+      "explanations": [
+        null,
+        "Av = (1+3-2, 2+1+1) = (2, 4) ≠ (0,0), so v is NOT in null(A). Checking membership in null(A) is easy — just multiply and see if you get 0."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "True or False: the zero vector is always in null(A), no matter what A is.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 0,
+      "explanations": [
+        "A(0) = 0 for every matrix A, so the zero vector is always a solution to Ax=0 — null(A) is never empty.",
+        null
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "True or False: the zero vector is always in col(A).",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 0,
+      "explanations": [
+        "col(A) is a span of vectors, and every span (every subspace) contains the zero vector — take all coefficients to be 0.",
+        null
+      ]
+    }
+  ]
+}

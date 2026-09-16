@@ -1,0 +1,1268 @@
+{
+  "id": "unit2-review-super-deck",
+  "title": "Unit 2 Super Review (Vectors & Vector Spaces, 3.1-4.7)",
+  "description": "Cumulative review across Days 18-27 (§3.1/3.2 Vectors & Dot Product, 3.3 Orthogonality, 4.1 Real Vector Spaces, 4.2 Subspaces, 4.3 Linear Independence, 4.4 Coordinates & Basis, 4.5 Dimension, 4.6 Change of Basis, 4.7 Row/Column/Null Space), built for Test 2 review. 100 questions pulled 20 per attempt.",
+  "questionsPerAttempt": 20,
+  "pointsPerQuestion": 1,
+  "questions": [
+    {
+      "type": "type",
+      "prompt": "Let $u=(2,-1,3)$ and $v=(1,4,-2)$. Find $u \\cdot v$.",
+      "answer": [
+        "-8"
+      ],
+      "explanation": "$u\\cdot v = (2)(1)+(-1)(4)+(3)(-2) = 2-4-6=-8$."
+    },
+    {
+      "type": "type",
+      "prompt": "Find $\\|w\\|$ for $w=(3,4)$.",
+      "answer": [
+        "5"
+      ],
+      "explanation": "$\\|w\\|=\\sqrt{3^2+4^2}=\\sqrt{25}=5$."
+    },
+    {
+      "type": "type",
+      "prompt": "Find $\\|w\\|$ for $w=(1,2,2)$.",
+      "answer": [
+        "3"
+      ],
+      "explanation": "$\\|w\\|=\\sqrt{1+4+4}=\\sqrt{9}=3$."
+    },
+    {
+      "type": "mc",
+      "prompt": "For vectors $u,v$ in $\\mathbb{R}^n$, the dot product $u\\cdot v$ is a...",
+      "choices": [
+        "scalar (a number)",
+        "vector in $\\mathbb{R}^n$",
+        "matrix",
+        "subspace of $\\mathbb{R}^n$"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "The dot product always returns a single number, not a vector.",
+        "Matrices come from outer products, not the dot product.",
+        "The dot product is a number, not a set of vectors."
+      ]
+    },
+    {
+      "type": "wordbank",
+      "prompt": "If $u \\cdot v = 0$ for nonzero vectors $u$ and $v$, then $u$ and $v$ are called _____.",
+      "wordbank": [
+        "orthogonal",
+        "parallel",
+        "dependent",
+        "unit vectors"
+      ],
+      "answer": "orthogonal",
+      "explanation": "The dot product being zero is exactly the definition of orthogonal."
+    },
+    {
+      "type": "mc",
+      "prompt": "If the angle between nonzero vectors $u$ and $v$ is obtuse (between $90^\\circ$ and $180^\\circ$), then $u\\cdot v$ is...",
+      "choices": [
+        "positive",
+        "zero",
+        "negative",
+        "undefined"
+      ],
+      "answer": 2,
+      "explanations": [
+        "Positive dot products correspond to acute angles.",
+        "Zero corresponds to exactly $90^\\circ$.",
+        null,
+        "The dot product is always defined for vectors of the same dimension."
+      ]
+    },
+    {
+      "type": "type",
+      "prompt": "Let $u=(1,1,0)$ and $v=(1,0,1)$. Find the angle between $u$ and $v$ (in degrees).",
+      "answer": [
+        "60",
+        "60 degrees"
+      ],
+      "explanation": "$u\\cdot v=1$, $\\|u\\|=\\|v\\|=\\sqrt2$, so $\\cos\\theta=\\dfrac{1}{2}$, giving $\\theta=60^\\circ$."
+    },
+    {
+      "type": "mc",
+      "prompt": "Which formula gives the cosine of the angle $\\theta$ between nonzero vectors $u$ and $v$?",
+      "choices": [
+        "$\\cos\\theta = \\dfrac{u\\cdot v}{\\|u\\|\\,\\|v\\|}$",
+        "$\\cos\\theta = u\\cdot v$",
+        "$\\cos\\theta=\\|u\\|\\|v\\|$",
+        "$\\cos\\theta = \\dfrac{\\|u\\|}{\\|v\\|}$"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "This omits the normalization by the two lengths.",
+        "This has nothing to do with the angle formula.",
+        "This ratio isn't related to the angle between the vectors."
+      ]
+    },
+    {
+      "type": "type",
+      "prompt": "A vector $u=(3,4)$ is scaled to a unit vector in the same direction. What is the resulting unit vector?",
+      "answer": [
+        "(0.6,0.8)",
+        "(3/5,4/5)",
+        "(0.6, 0.8)"
+      ],
+      "explanation": "$\\|u\\|=5$, so the unit vector is $u/\\|u\\| = (3/5,4/5)=(0.6,0.8)$."
+    },
+    {
+      "type": "mc",
+      "prompt": "For any vector $v$ in $\\mathbb{R}^n$, $v\\cdot v$ equals...",
+      "choices": [
+        "$\\|v\\|$",
+        "$\\|v\\|^2$",
+        "0",
+        "1"
+      ],
+      "answer": 1,
+      "explanations": [
+        "That's the norm itself, not the dot product with itself.",
+        null,
+        "Only true if $v=0$.",
+        "Only true for unit vectors."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "Which of the following is true for all vectors $u,v,w$ in $\\mathbb{R}^n$?",
+      "choices": [
+        "$u\\cdot v = v\\cdot u$",
+        "$u\\cdot v$ is always positive",
+        "$u\\cdot(v\\cdot w)$ is defined",
+        "$u\\cdot v$ is a vector"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "The dot product can be zero or negative.",
+        "$v\\cdot w$ is a scalar, and you can't dot a vector with a scalar.",
+        "It's always a scalar."
+      ]
+    },
+    {
+      "type": "type",
+      "prompt": "Are $u=(1,2,-1)$ and $v=(3,0,3)$ orthogonal? Answer yes or no.",
+      "answer": [
+        "yes",
+        "Yes"
+      ],
+      "explanation": "$u\\cdot v = 3+0-3=0$, so yes, they are orthogonal."
+    },
+    {
+      "type": "type",
+      "prompt": "Are $u=(2,3)$ and $v=(3,-2)$ orthogonal? Answer yes or no.",
+      "answer": [
+        "yes",
+        "Yes"
+      ],
+      "explanation": "$u\\cdot v = 6-6=0$, so yes."
+    },
+    {
+      "type": "type",
+      "prompt": "Are $u=(1,1,1)$ and $v=(1,-2,3)$ orthogonal? Answer yes or no.",
+      "answer": [
+        "no",
+        "No"
+      ],
+      "explanation": "$u\\cdot v = 1-2+3=2 \\ne 0$, so no, they are not orthogonal."
+    },
+    {
+      "type": "mc",
+      "prompt": "The zero vector $\\mathbf{0}$ is orthogonal to...",
+      "choices": [
+        "nothing",
+        "only itself",
+        "every vector in the space",
+        "only nonzero vectors"
+      ],
+      "answer": 2,
+      "explanations": [
+        "The zero vector dots to 0 with everything, including itself, so it is orthogonal to something.",
+        "True, but incomplete — it is orthogonal to every vector, not just itself.",
+        null,
+        "It is orthogonal to nonzero vectors too, and also to itself — there is no exception."
+      ]
+    },
+    {
+      "type": "wordbank",
+      "prompt": "For a nonzero vector $a$, the vector $\\text{proj}_a(u)$ (the projection of $u$ onto $a$) is always a _____ of $a$.",
+      "wordbank": [
+        "scalar multiple",
+        "unit multiple",
+        "perpendicular copy",
+        "cross product"
+      ],
+      "answer": "scalar multiple",
+      "explanation": "$\\text{proj}_a(u) = \\left(\\dfrac{u\\cdot a}{a\\cdot a}\\right) a$, which is $a$ scaled by a number."
+    },
+    {
+      "type": "type",
+      "prompt": "Let $u=(4,3)$ and $a=(1,0)$. Find $\\text{proj}_a(u)$.",
+      "answer": [
+        "(4,0)"
+      ],
+      "explanation": "$\\text{proj}_a(u) = \\dfrac{u\\cdot a}{a\\cdot a}\\,a = \\dfrac{4}{1}(1,0)=(4,0)$."
+    },
+    {
+      "type": "mc",
+      "prompt": "$\\text{comp}_a(u)$, the scalar component of $u$ along $a$, is best described as...",
+      "choices": [
+        "a vector orthogonal to a",
+        "a scalar (a signed length)",
+        "always equal to $\\|u\\|$",
+        "the same thing as $\\text{proj}_a(u)$"
+      ],
+      "answer": 1,
+      "explanations": [
+        "That's not what comp means.",
+        null,
+        "Only if $u$ is parallel to $a$.",
+        "proj is a vector; comp is the scalar in front of the unit vector $a/\\|a\\|$."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "The Projection Theorem lets you decompose a vector $u$ as $u = w_1 + w_2$ where...",
+      "choices": [
+        "$w_1$ is parallel to $a$ and $w_2$ is orthogonal to $a$",
+        "$w_1$ and $w_2$ are both parallel to $a$",
+        "$w_1=u$ and $w_2=0$ always",
+        "$w_1$ and $w_2$ must have equal length"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "Then they wouldn't decompose $u$ into independent directions.",
+        "That's only true when $u$ is already parallel to $a$.",
+        "No length relationship is required."
+      ]
+    },
+    {
+      "type": "type",
+      "prompt": "Find the distance from the point $(3,4)$ to the line through the origin with direction $a=(1,0)$ (i.e., the x-axis).",
+      "answer": [
+        "4"
+      ],
+      "explanation": "The distance is $\\|u - \\text{proj}_a(u)\\|$. Here $\\text{proj}_a(u)=(3,0)$, so $u-\\text{proj}_a(u)=(0,4)$, with norm $4$."
+    },
+    {
+      "type": "mc",
+      "prompt": "Two nonzero orthogonal vectors in $\\mathbb{R}^n$ are automatically...",
+      "choices": [
+        "equal in length",
+        "linearly independent",
+        "parallel",
+        "the zero vector"
+      ],
+      "answer": 1,
+      "explanations": [
+        "Orthogonality says nothing about length.",
+        null,
+        "Orthogonal nonzero vectors point in different directions, not the same one.",
+        "They're nonzero by assumption."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "A structure fails to be a vector space if it fails even one of the vector space axioms. If a candidate set is NOT closed under scalar multiplication, then...",
+      "choices": [
+        "it is automatically a vector space anyway",
+        "it cannot be a vector space",
+        "you must check the other 7 axioms before deciding",
+        "it is automatically a subspace"
+      ],
+      "answer": 1,
+      "explanations": [
+        "Closure is required, not optional.",
+        null,
+        "One failed axiom is enough to disqualify it — no need to check the rest.",
+        "Subspace is a stronger, unrelated question."
+      ]
+    },
+    {
+      "type": "type",
+      "prompt": "True or False: Closure under addition and scalar multiplication alone is enough to guarantee a set with those operations is a vector space.",
+      "answer": [
+        "false",
+        "False"
+      ],
+      "explanation": "False — you still need the zero vector, additive inverses, associativity, the distributive laws, and the unit property $1\\cdot v = v$."
+    },
+    {
+      "type": "wordbank",
+      "prompt": "In any vector space $V$, the zero vector is _____.",
+      "wordbank": [
+        "unique",
+        "not always unique",
+        "only defined in $\\mathbb{R}^n$",
+        "the same as any additive inverse"
+      ],
+      "answer": "unique",
+      "explanation": "The vector space axioms force exactly one zero vector — if $0$ and $0'$ both worked, $0=0+0'=0'$."
+    },
+    {
+      "type": "mc",
+      "prompt": "Which of these is an example of a real vector space?",
+      "choices": [
+        "the set of all $2\\times3$ matrices, with matrix addition and scalar multiplication",
+        "the set of all invertible $2\\times2$ matrices",
+        "the set of unit vectors in $\\mathbb{R}^2$",
+        "the set of vectors in $\\mathbb{R}^2$ with nonnegative entries"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "Doesn't contain the zero matrix, and isn't closed under addition.",
+        "Not closed under addition or scalar multiplication, and has no zero vector.",
+        "Fails closure under scalar multiplication by negative numbers."
+      ]
+    },
+    {
+      "type": "type",
+      "prompt": "In a vector space, is the additive inverse of each vector $v$ unique? Answer yes or no.",
+      "answer": [
+        "yes",
+        "Yes"
+      ],
+      "explanation": "Yes — like the zero vector, the axioms force the additive inverse of $v$ to be unique."
+    },
+    {
+      "type": "mc",
+      "prompt": "Which of the following is generally an axiom used to build a vector space's identity for scalar multiplication?",
+      "choices": [
+        "$1\\cdot v = v$ for every $v$",
+        "$0\\cdot v = 1$",
+        "$v \\cdot v = 1$",
+        "$v + v = 0$"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "This is false in general and isn't an axiom.",
+        "Vector spaces don't require a 'multiply a vector by itself' operation.",
+        "This would only hold for very special $v$."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "To disprove that a candidate structure is a vector space, it's enough to...",
+      "choices": [
+        "find one axiom that fails, with a specific counterexample",
+        "show all 10 axioms fail",
+        "show the set is infinite",
+        "show the set has more than one element"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "One clean failure is sufficient — that's the whole point of the 'find the broken axiom' exercise.",
+        "Size has nothing to do with it.",
+        "Size has nothing to do with it."
+      ]
+    },
+    {
+      "type": "type",
+      "prompt": "True or False: the empty set (with no elements at all) can be a vector space.",
+      "answer": [
+        "false",
+        "False"
+      ],
+      "explanation": "False — every vector space must contain at least the zero vector, so the empty set never qualifies."
+    },
+    {
+      "type": "wordbank",
+      "prompt": "A subset $W$ of a vector space $V$ is a _____ of $V$ if $W$ is itself a vector space under the same operations.",
+      "wordbank": [
+        "subspace",
+        "span",
+        "basis",
+        "null space"
+      ],
+      "answer": "subspace",
+      "explanation": "That's the definition of a subspace."
+    },
+    {
+      "type": "mc",
+      "prompt": "The three-part subspace test checks that $W$...",
+      "choices": [
+        "contains $\\mathbf{0}$, and is closed under addition and scalar multiplication",
+        "has finite dimension",
+        "is orthogonal to every vector not in $W$",
+        "contains at least one nonzero vector"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "Subspaces can be infinite-dimensional.",
+        "Not a requirement at all.",
+        "$W=\\{\\mathbf{0}\\}$ is a valid subspace with no nonzero vectors."
+      ]
+    },
+    {
+      "type": "type",
+      "prompt": "True or False: the set of points $(x,y)$ in $\\mathbb{R}^2$ with $x\\ge0$ and $y\\ge0$ (the first quadrant) is a subspace of $\\mathbb{R}^2$.",
+      "answer": [
+        "false",
+        "False"
+      ],
+      "explanation": "False — it's not closed under scalar multiplication: $(1,1)$ is in the set, but $-1\\cdot(1,1)=(-1,-1)$ is not."
+    },
+    {
+      "type": "type",
+      "prompt": "True or False: a line through the origin in $\\mathbb{R}^3$ is a subspace of $\\mathbb{R}^3$.",
+      "answer": [
+        "true",
+        "True"
+      ],
+      "explanation": "True — it contains $\\mathbf{0}$ and is closed under addition and scalar multiplication."
+    },
+    {
+      "type": "type",
+      "prompt": "True or False: a plane in $\\mathbb{R}^3$ that does NOT pass through the origin is a subspace of $\\mathbb{R}^3$.",
+      "answer": [
+        "false",
+        "False"
+      ],
+      "explanation": "False — it doesn't contain the zero vector, which is required."
+    },
+    {
+      "type": "mc",
+      "prompt": "The solution set of a homogeneous system $Ax=0$ is...",
+      "choices": [
+        "always a subspace of $\\mathbb{R}^n$ (it's $\\text{null}(A)$)",
+        "never a subspace",
+        "a subspace only if $A$ is invertible",
+        "only a subspace if it contains just the trivial solution"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "It's literally the null space, always a subspace.",
+        "It's a subspace regardless of invertibility.",
+        "$\\{\\mathbf{0}\\}$ is itself a valid (if small) subspace."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "The solution set of a NON-homogeneous system $Ax=b$ with $b\\ne\\mathbf{0}$ is...",
+      "choices": [
+        "never a subspace of $\\mathbb{R}^n$",
+        "always a subspace",
+        "a subspace only when $A$ is square",
+        "the same set as $\\text{null}(A)$"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "It fails to contain $\\mathbf{0}$ (since $A\\mathbf{0}=\\mathbf{0}\\ne b$), so it's never a subspace.",
+        "Squareness is irrelevant here.",
+        "That's only true when $b=\\mathbf{0}$."
+      ]
+    },
+    {
+      "type": "wordbank",
+      "prompt": "The set of all linear combinations of a set of vectors $S$ is called the _____ of $S$.",
+      "wordbank": [
+        "span",
+        "subspace",
+        "basis",
+        "dimension"
+      ],
+      "answer": "span",
+      "explanation": "That's the definition of span."
+    },
+    {
+      "type": "mc",
+      "prompt": "For any set of vectors $S$ in a vector space $V$, $\\text{span}(S)$ is...",
+      "choices": [
+        "always a subspace of $V$",
+        "only a subspace if $S$ is finite",
+        "only a subspace if $S$ is linearly independent",
+        "never equal to $V$ itself"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "Span is a subspace whether $S$ is finite or infinite.",
+        "Independence isn't required for span to be a subspace.",
+        "If $S$ spans $V$, then $\\text{span}(S)=V$."
+      ]
+    },
+    {
+      "type": "type",
+      "prompt": "True or False: the set of all $2\\times2$ symmetric matrices is a subspace of the vector space of all $2\\times2$ matrices.",
+      "answer": [
+        "true",
+        "True"
+      ],
+      "explanation": "True — the sum of two symmetric matrices is symmetric, and any scalar multiple of a symmetric matrix is symmetric, and the zero matrix is symmetric."
+    },
+    {
+      "type": "type",
+      "prompt": "True or False: the set of all invertible $2\\times2$ matrices is a subspace of the vector space of all $2\\times2$ matrices.",
+      "answer": [
+        "false",
+        "False"
+      ],
+      "explanation": "False — it doesn't contain the zero matrix (which is never invertible), so it fails immediately."
+    },
+    {
+      "type": "mc",
+      "prompt": "Which of these subsets of $\\mathbb{R}^2$ is a subspace?",
+      "choices": [
+        "$\\{(x,y): y=3x\\}$ (a line through the origin)",
+        "$\\{(x,y): y=3x+1\\}$ (a line NOT through the origin)",
+        "$\\{(x,y): x^2+y^2=1\\}$ (the unit circle)",
+        "$\\{(x,y): x,y \\text{ are integers}\\}$ (the integer lattice)"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "Doesn't contain $(0,0)$.",
+        "Not closed under addition or scalar multiplication, and doesn't contain the origin.",
+        "Not closed under scalar multiplication by non-integers, e.g. $0.5\\cdot(1,0)=(0.5,0)$."
+      ]
+    },
+    {
+      "type": "wordbank",
+      "prompt": "A set of vectors $\\{v_1,\\dots,v_k\\}$ is _____ if the only solution to $c_1v_1+\\cdots+c_kv_k=\\mathbf{0}$ is $c_1=\\cdots=c_k=0$.",
+      "wordbank": [
+        "linearly independent",
+        "linearly dependent",
+        "a basis",
+        "a spanning set"
+      ],
+      "answer": "linearly independent",
+      "explanation": "That's the definition of linear independence."
+    },
+    {
+      "type": "type",
+      "prompt": "True or False: any set of vectors that includes the zero vector is linearly dependent.",
+      "answer": [
+        "true",
+        "True"
+      ],
+      "explanation": "True — you can always assign a nonzero coefficient to $\\mathbf{0}$ (and zero to the rest) and still sum to $\\mathbf{0}$."
+    },
+    {
+      "type": "type",
+      "prompt": "True or False: a set containing exactly one nonzero vector is always linearly independent.",
+      "answer": [
+        "true",
+        "True"
+      ],
+      "explanation": "True — the only way $c\\cdot v=\\mathbf{0}$ for $v\\ne\\mathbf{0}$ is $c=0$."
+    },
+    {
+      "type": "mc",
+      "prompt": "Two nonzero vectors $u,v$ in $\\mathbb{R}^n$ are linearly independent exactly when...",
+      "choices": [
+        "neither is a scalar multiple of the other",
+        "they point in opposite directions",
+        "their dot product is zero",
+        "they have the same length"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "Opposite directions are still scalar multiples (a negative one) — that's dependent.",
+        "Orthogonality is unrelated to independence.",
+        "Length has nothing to do with independence."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "If a vector space $V$ has dimension $n$, and a set $S$ has more than $n$ vectors, then $S$ is...",
+      "choices": [
+        "automatically linearly dependent",
+        "automatically linearly independent",
+        "automatically a basis",
+        "impossible to have"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "More vectors than the dimension always forces dependence.",
+        "Extra vectors can't form a basis — a basis has exactly $n$ vectors.",
+        "Such sets are common — they're just dependent."
+      ]
+    },
+    {
+      "type": "type",
+      "prompt": "Determine whether $v_1=(1,2,3)$, $v_2=(2,-1,1)$, $v_3=(4,3,7)$ are linearly independent in $\\mathbb{R}^3$. Answer yes or no.",
+      "answer": [
+        "no",
+        "No"
+      ],
+      "explanation": "$v_3 = 2v_1+v_2$ (check: $2(1,2,3)+(2,-1,1)=(4,3,7)$), so the set is dependent."
+    },
+    {
+      "type": "type",
+      "prompt": "For the previous set, write $v_3$ as a linear combination of $v_1$ and $v_2$ (in the form $v_3 = \\_\\!\\_\\, v_1 + \\_\\!\\_\\, v_2$; just give the two coefficients in order).",
+      "answer": [
+        "2,1",
+        "2, 1"
+      ],
+      "explanation": "$v_3 = 2v_1 + 1v_2$."
+    },
+    {
+      "type": "mc",
+      "prompt": "The Wronskian of a set of functions being nonzero at some point $x_0$ tells you...",
+      "choices": [
+        "the functions are linearly independent",
+        "the functions are linearly dependent",
+        "the functions form a basis for all functions",
+        "nothing useful"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "A nonzero Wronskian rules out dependence — it proves independence.",
+        "You'd need every basis vector, not just a finite independent set, and 'all functions' isn't finite-dimensional.",
+        "It's the key tool for proving independence of functions."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "If the Wronskian of a set of functions is identically zero (zero everywhere), you can conclude...",
+      "choices": [
+        "the functions are definitely dependent",
+        "the functions are definitely independent",
+        "nothing for certain — the test is inconclusive in general",
+        "the functions must all be constant"
+      ],
+      "answer": 2,
+      "explanations": [
+        "A zero Wronskian does NOT guarantee dependence in general (it's a one-directional test).",
+        "A zero Wronskian rules out using this test to prove independence.",
+        null,
+        "Not required at all."
+      ]
+    },
+    {
+      "type": "type",
+      "prompt": "Are $\\{1, x, x^2\\}$ linearly independent in the vector space of all polynomials? Answer yes or no.",
+      "answer": [
+        "yes",
+        "Yes"
+      ],
+      "explanation": "Yes — no linear combination $a+bx+cx^2$ is the zero polynomial unless $a=b=c=0$."
+    },
+    {
+      "type": "mc",
+      "prompt": "A $3\\times5$ matrix's columns, viewed as 5 vectors in $\\mathbb{R}^3$, must be...",
+      "choices": [
+        "linearly dependent, since there are more vectors (5) than the dimension of $\\mathbb{R}^3$ (3)",
+        "linearly independent",
+        "a basis for $\\mathbb{R}^3$",
+        "orthogonal to each other"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "5 vectors can't be independent in a 3-dimensional space.",
+        "5 vectors can't form a basis for a 3-dimensional space either.",
+        "Nothing about orthogonality is implied."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "Which of the following is linearly independent in $\\mathbb{R}^2$?",
+      "choices": [
+        "$\\{(1,0),(0,1)\\}$",
+        "$\\{(1,2),(2,4)\\}$",
+        "$\\{(1,1),(2,2),(3,3)\\}$",
+        "$\\{(0,0),(1,1)\\}$"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "$(2,4)=2(1,2)$ — a scalar multiple, so dependent.",
+        "All three are scalar multiples of $(1,1)$, and there are more than 2 vectors in $\\mathbb{R}^2$ anyway.",
+        "Contains the zero vector, so dependent."
+      ]
+    },
+    {
+      "type": "wordbank",
+      "prompt": "A linearly independent set that spans a vector space $V$ is called a _____ for $V$.",
+      "wordbank": [
+        "basis",
+        "subspace",
+        "span",
+        "null space"
+      ],
+      "answer": "basis",
+      "explanation": "That's the definition of a basis."
+    },
+    {
+      "type": "mc",
+      "prompt": "Theorem 4.4.1 (uniqueness of basis representation) guarantees that for an ordered basis $B$ of $V$, every $v\\in V$...",
+      "choices": [
+        "can be written in exactly one way as a linear combination of the basis vectors",
+        "can be written in infinitely many ways as a combination of the basis vectors",
+        "has a coordinate vector only if $V=\\mathbb{R}^n$",
+        "must equal one of the basis vectors"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "Uniqueness is the whole point of the theorem.",
+        "Coordinate vectors are defined for any finite-dimensional $V$, not just $\\mathbb{R}^n$.",
+        "$v$ is generally a combination of several basis vectors, not equal to just one."
+      ]
+    },
+    {
+      "type": "wordbank",
+      "prompt": "The vector of coefficients that expresses $v$ in terms of an ordered basis $B$ is called the _____ of $v$ relative to $B$, written $[v]_B$.",
+      "wordbank": [
+        "coordinate vector",
+        "span",
+        "transition matrix",
+        "null space"
+      ],
+      "answer": "coordinate vector",
+      "explanation": "$[v]_B$ is the coordinate vector."
+    },
+    {
+      "type": "type",
+      "prompt": "True or False: the coordinate vector of $x\\in\\mathbb{R}^n$ relative to the standard basis is $x$ itself.",
+      "answer": [
+        "true",
+        "True"
+      ],
+      "explanation": "True — writing $x$ as a combination of standard basis vectors $e_1,\\dots,e_n$ just reproduces $x$'s own entries as coefficients."
+    },
+    {
+      "type": "type",
+      "prompt": "True or False: order does not matter when listing the vectors of a basis — $\\{v_1,v_2\\}$ and $\\{v_2,v_1\\}$ always give the same coordinate vector for a given $v$.",
+      "answer": [
+        "false",
+        "False"
+      ],
+      "explanation": "False — an ORDERED basis matters; swapping the order swaps the entries of the coordinate vector (unless they happen to coincide)."
+    },
+    {
+      "type": "type",
+      "prompt": "Let $B=\\{(1,0),(1,1)\\}$ be an ordered basis for $\\mathbb{R}^2$, and let $v=(3,5)$. Find $[v]_B = (c_1,c_2)$.",
+      "answer": [
+        "(-2,5)",
+        "(-2, 5)"
+      ],
+      "explanation": "Solve $c_1(1,0)+c_2(1,1)=(3,5)$: $c_1+c_2=3$, $c_2=5 \\Rightarrow c_1=-2$. So $[v]_B=(-2,5)$."
+    },
+    {
+      "type": "mc",
+      "prompt": "To be an ordered basis for a vector space $V$ of dimension $n$, a set must...",
+      "choices": [
+        "have exactly $n$ vectors, be linearly independent, and span $V$",
+        "have more than $n$ vectors",
+        "only span $V$, independence not required",
+        "only be linearly independent, spanning not required"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "More than $n$ vectors in an $n$-dimensional space can't be independent.",
+        "A spanning set alone might be redundant (dependent) — a basis must also be independent.",
+        "An independent set alone might not reach every vector in $V$ — a basis must also span."
+      ]
+    },
+    {
+      "type": "type",
+      "prompt": "Let $p(x)=2+3x-x^2$ and the basis $B=\\{1,x,x^2\\}$ for $P_2$. Find $[p]_B$.",
+      "answer": [
+        "(2,3,-1)",
+        "(2, 3, -1)"
+      ],
+      "explanation": "$p(x)$'s coefficients relative to $\\{1,x,x^2\\}$ are exactly $(2,3,-1)$."
+    },
+    {
+      "type": "mc",
+      "prompt": "Which of the following is a finite-dimensional vector space that is NOT $\\mathbb{R}^n$?",
+      "choices": [
+        "$P_2$, the space of polynomials of degree $\\le 2$",
+        "the space of all polynomials (any degree)",
+        "the space of all continuous functions on $\\mathbb{R}$",
+        "none of these are finite-dimensional"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "The space of ALL polynomials is infinite-dimensional (no finite spanning set works).",
+        "This is also infinite-dimensional.",
+        "$P_2$ is finite-dimensional, with dimension 3."
+      ]
+    },
+    {
+      "type": "type",
+      "prompt": "True or False: the same polynomial can have two different coordinate vectors, depending on which basis of $P_2$ you use.",
+      "answer": [
+        "true",
+        "True"
+      ],
+      "explanation": "True — coordinate vectors are always relative to a chosen basis; changing the basis generally changes $[p]_B$."
+    },
+    {
+      "type": "mc",
+      "prompt": "If $[v]_B = (0,0,\\dots,0)$ (all zeros) for an ordered basis $B$ of $V$, then $v$ must be...",
+      "choices": [
+        "the zero vector $\\mathbf{0}$",
+        "any vector in $V$",
+        "undefined",
+        "a basis vector itself"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "Only the zero vector has the all-zero coordinate vector, by uniqueness (Theorem 4.4.1).",
+        "Coordinate vectors are always well-defined for $v\\in V$.",
+        "Basis vectors have a single 1 and the rest 0's, not all zeros."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "For $\\mathbb{R}^3$ with the standard basis $E=\\{e_1,e_2,e_3\\}$ and $v=(4,-1,7)$, $[v]_E$ equals...",
+      "choices": [
+        "$(4,-1,7)$",
+        "$(1,1,1)$",
+        "the zero vector",
+        "$(7,-1,4)$"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "That's not related to $v$'s own entries.",
+        "Only true if $v=(1,1,1)$.",
+        "That reverses the order of $v$'s entries."
+      ]
+    },
+    {
+      "type": "wordbank",
+      "prompt": "The number of vectors in a basis for a vector space $V$ (a well-defined number, the same for every basis) is called the _____ of $V$.",
+      "wordbank": [
+        "dimension",
+        "span",
+        "rank",
+        "order"
+      ],
+      "answer": "dimension",
+      "explanation": "That's the definition of dimension."
+    },
+    {
+      "type": "type",
+      "prompt": "What is $\\dim(\\mathbb{R}^7)$?",
+      "answer": [
+        "7"
+      ],
+      "explanation": "The standard basis for $\\mathbb{R}^7$ has 7 vectors."
+    },
+    {
+      "type": "type",
+      "prompt": "What is $\\dim(P_5)$, the space of polynomials of degree $\\le 5$?",
+      "answer": [
+        "6"
+      ],
+      "explanation": "A basis is $\\{1,x,x^2,x^3,x^4,x^5\\}$ — 6 vectors, since degree can be 0 through 5."
+    },
+    {
+      "type": "type",
+      "prompt": "What is $\\dim(M(3,4))$, the space of all $3\\times4$ matrices?",
+      "answer": [
+        "12"
+      ],
+      "explanation": "A basis consists of the 12 matrices with a single 1 in one entry and 0's elsewhere."
+    },
+    {
+      "type": "type",
+      "prompt": "What is the dimension of the subspace $\\{\\mathbf{0}\\}$ (just the zero vector)?",
+      "answer": [
+        "0"
+      ],
+      "explanation": "By convention, the empty set is a basis for $\\{\\mathbf{0}\\}$, giving dimension 0."
+    },
+    {
+      "type": "type",
+      "prompt": "What is the dimension of a plane through the origin in $\\mathbb{R}^3$?",
+      "answer": [
+        "2"
+      ],
+      "explanation": "A basis for the plane has 2 independent vectors spanning it."
+    },
+    {
+      "type": "mc",
+      "prompt": "The well-definedness theorem for dimension guarantees that...",
+      "choices": [
+        "every basis for the same vector space has the same number of vectors",
+        "every spanning set has the same number of vectors as every other spanning set",
+        "every vector space has dimension equal to the number of its elements",
+        "dimension is only defined for $\\mathbb{R}^n$"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "Spanning sets can have different sizes (some redundant); only BASES are guaranteed equal-sized.",
+        "Vector spaces (other than $\\{0\\}$) have infinitely many elements — dimension counts basis vectors, not elements.",
+        "Dimension is defined for any finite-dimensional vector space."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "The 'shortcut theorem' says that in an $n$-dimensional vector space $V$, any linearly independent set of exactly $n$ vectors is...",
+      "choices": [
+        "automatically a basis for $V$",
+        "automatically dependent",
+        "too small to be a basis",
+        "only a basis if it also happens to be orthogonal"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "Independent + right count = automatically a basis (no need to separately check spanning).",
+        "It's independent by assumption.",
+        "Orthogonality is never required for a basis."
+      ]
+    },
+    {
+      "type": "type",
+      "prompt": "True or False: every vector space has a finite dimension.",
+      "answer": [
+        "false",
+        "False"
+      ],
+      "explanation": "False — spaces like the set of all polynomials, or the set of all continuous functions, are infinite-dimensional (no finite basis exists)."
+    },
+    {
+      "type": "type",
+      "prompt": "A set of 6 vectors is known to span a vector space $V$ with $\\dim(V)=6$. Must this set be a basis for $V$? Answer yes or no.",
+      "answer": [
+        "yes",
+        "Yes"
+      ],
+      "explanation": "Yes — by the shortcut theorem, a spanning set with exactly $\\dim(V)$ vectors is automatically a basis (automatically independent too)."
+    },
+    {
+      "type": "wordbank",
+      "prompt": "A matrix $P$ that converts a vector's coordinates from one ordered basis to another is called a _____ matrix.",
+      "wordbank": [
+        "transition",
+        "identity",
+        "null space",
+        "row"
+      ],
+      "answer": "transition",
+      "explanation": "That's the standard name for this matrix."
+    },
+    {
+      "type": "mc",
+      "prompt": "The columns of the transition matrix $P_{B\\to C}$ (from basis $B$ to basis $C$) are...",
+      "choices": [
+        "the vectors of $B$, each written in $C$-coordinates",
+        "the vectors of $C$, each written in $B$-coordinates",
+        "the standard basis vectors",
+        "always the identity matrix's columns"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "That description is actually $P_{C\\to B}$.",
+        "The standard basis isn't necessarily involved at all.",
+        "Only true in the trivial case $B=C$."
+      ]
+    },
+    {
+      "type": "type",
+      "prompt": "True or False (Theorem 4.6.1): a transition matrix between two ordered bases of the same finite-dimensional space is always invertible.",
+      "answer": [
+        "true",
+        "True"
+      ],
+      "explanation": "True — a change-of-basis matrix is always square and invertible."
+    },
+    {
+      "type": "mc",
+      "prompt": "If $P$ is the transition matrix from basis $B$ to basis $C$, then $P^{-1}$ is...",
+      "choices": [
+        "the transition matrix from $C$ to $B$",
+        "the transition matrix from $B$ to the standard basis",
+        "not guaranteed to exist",
+        "always equal to $P$ itself"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "$P^{-1}$ reverses the direction — it goes from $C$ back to $B$.",
+        "There's no reason $C$ would be the standard basis.",
+        "$P$ is always invertible (Theorem 4.6.1)."
+      ]
+    },
+    {
+      "type": "type",
+      "prompt": "True or False: for a vector $v$ in $\\mathbb{R}^n$, $v$'s own entries and its coordinate vector $[v]_B$ are always the same, regardless of the basis $B$.",
+      "answer": [
+        "false",
+        "False"
+      ],
+      "explanation": "False — that coincidence only happens for the standard basis; for any other basis, $[v]_B$ generally differs from $v$'s own entries."
+    },
+    {
+      "type": "mc",
+      "prompt": "To convert $[v]_B$ into $[v]_C$, you compute...",
+      "choices": [
+        "$P_{B\\to C}\\,[v]_B$",
+        "$[v]_B + P_{B\\to C}$",
+        "$P_{B\\to C} + [v]_C$",
+        "$[v]_B$ divided by $P_{B\\to C}$"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "Matrix-vector multiplication, not addition, does the conversion.",
+        "This isn't a valid operation for converting coordinates.",
+        "Matrices aren't divided into vectors."
+      ]
+    },
+    {
+      "type": "type",
+      "prompt": "Let $B=\\{(1,0),(1,1)\\}$ and $C=\\{(1,1),(0,1)\\}$ be ordered bases for $\\mathbb{R}^2$. Find $[b_1]_C$ where $b_1=(1,0)$ (give as an ordered pair).",
+      "answer": [
+        "(1,-1)",
+        "(1, -1)"
+      ],
+      "explanation": "Solve $a(1,1)+b(0,1)=(1,0)$: $a=1$, $a+b=0 \\Rightarrow b=-1$. So $[b_1]_C=(1,-1)$."
+    },
+    {
+      "type": "mc",
+      "prompt": "Why does it make pedagogical sense to first learn change of basis in a space like $P_2$ (polynomials) instead of $\\mathbb{R}^n$?",
+      "choices": [
+        "because a polynomial and its coordinate vector are visibly different kinds of objects, avoiding a common confusion",
+        "because $P_2$ has no standard basis",
+        "because change of basis doesn't work in $\\mathbb{R}^n$",
+        "because $P_2$ has infinite dimension"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "$P_2$ does have a standard basis, $\\{1,x,x^2\\}$.",
+        "Change of basis works the same way in any finite-dimensional space, including $\\mathbb{R}^n$.",
+        "$P_2$ is finite-dimensional (dimension 3)."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "In $\\mathbb{R}^n$ with the standard basis, a vector's entries and its coordinate vector relative to the standard basis...",
+      "choices": [
+        "happen to coincide — this is the one case where they look identical",
+        "are always different",
+        "are unrelated to each other",
+        "only coincide for the zero vector"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "This is exactly the special (and sometimes misleading) case where they match.",
+        "They're closely related — for the standard basis specifically, they coincide.",
+        "They coincide for every vector under the standard basis, not just $\\mathbf{0}$."
+      ]
+    },
+    {
+      "type": "type",
+      "prompt": "If $P_{B\\to C}=\\begin{pmatrix}2&0\\\\1&1\\end{pmatrix}$ and $[v]_B=(3,-1)$, find $[v]_C$.",
+      "answer": [
+        "(6,2)",
+        "(6, 2)"
+      ],
+      "explanation": "$[v]_C = P[v]_B = \\begin{pmatrix}2&0\\\\1&1\\end{pmatrix}\\begin{pmatrix}3\\\\-1\\end{pmatrix}=\\begin{pmatrix}6\\\\2\\end{pmatrix}$."
+    },
+    {
+      "type": "mc",
+      "prompt": "A 'Basis Trade' activity has two groups build a transition matrix between their two invented bases for $\\mathbb{R}^2$ and verify it on a shared target vector. What confirms the transition matrix was built correctly?",
+      "choices": [
+        "multiplying it by the vector's coordinates in one basis gives the same vector's coordinates, independently computed, in the other basis",
+        "the matrix has a determinant of exactly 1",
+        "the matrix is symmetric",
+        "the matrix equals the identity matrix"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "The determinant just needs to be nonzero (invertible), not exactly 1.",
+        "There's no requirement that a transition matrix be symmetric.",
+        "Only true if the two bases happen to be identical."
+      ]
+    },
+    {
+      "type": "wordbank",
+      "prompt": "For an $m\\times n$ matrix $A$, $\\text{col}(A)$ is the span of the columns of $A$, and is a subspace of _____.",
+      "wordbank": [
+        "$\\mathbb{R}^m$",
+        "$\\mathbb{R}^n$",
+        "$\\mathbb{R}^{mn}$",
+        "$\\mathbb{R}^1$"
+      ],
+      "answer": "$\\mathbb{R}^m$",
+      "explanation": "Each column has $m$ entries, so $\\text{col}(A)\\subseteq\\mathbb{R}^m$."
+    },
+    {
+      "type": "wordbank",
+      "prompt": "For an $m\\times n$ matrix $A$, $\\text{row}(A)$ is a subspace of _____.",
+      "wordbank": [
+        "$\\mathbb{R}^n$",
+        "$\\mathbb{R}^m$",
+        "$\\mathbb{R}^{mn}$",
+        "$\\mathbb{R}^1$"
+      ],
+      "answer": "$\\mathbb{R}^n$",
+      "explanation": "Each row has $n$ entries, so $\\text{row}(A)\\subseteq\\mathbb{R}^n$."
+    },
+    {
+      "type": "wordbank",
+      "prompt": "For an $m\\times n$ matrix $A$, $\\text{null}(A)=\\{x : Ax=\\mathbf{0}\\}$ is a subspace of _____.",
+      "wordbank": [
+        "$\\mathbb{R}^n$",
+        "$\\mathbb{R}^m$",
+        "$\\mathbb{R}^{mn}$",
+        "$\\mathbb{R}^1$"
+      ],
+      "answer": "$\\mathbb{R}^n$",
+      "explanation": "$x$ has $n$ entries, so $\\text{null}(A)\\subseteq\\mathbb{R}^n$ — the same space as $\\text{row}(A)$, though a different subspace of it."
+    },
+    {
+      "type": "type",
+      "prompt": "True or False: when you row-reduce $A$ to its RREF, $\\text{row}(A)$ stays exactly the same.",
+      "answer": [
+        "true",
+        "True"
+      ],
+      "explanation": "True — row operations don't change the span of the rows."
+    },
+    {
+      "type": "type",
+      "prompt": "True or False: when you row-reduce $A$ to its RREF, $\\text{null}(A)$ stays exactly the same.",
+      "answer": [
+        "true",
+        "True"
+      ],
+      "explanation": "True — row operations don't change the solution set of $Ax=\\mathbf{0}$."
+    },
+    {
+      "type": "type",
+      "prompt": "True or False: when you row-reduce $A$ to its RREF, $\\text{col}(A)$ stays exactly the same set of vectors (not just the same dimension).",
+      "answer": [
+        "false",
+        "False"
+      ],
+      "explanation": "False — this is the classic trap. Row reduction generally changes col(A) as a set; only its DIMENSION is preserved. Pivot-column bases must be taken from the ORIGINAL matrix, not the RREF."
+    },
+    {
+      "type": "mc",
+      "prompt": "To find a basis for $\\text{col}(A)$, you should take...",
+      "choices": [
+        "the columns of the ORIGINAL matrix $A$ that correspond to pivot columns in the RREF",
+        "the columns of the RREF itself that have pivots",
+        "all the nonzero rows of the RREF",
+        "the null space basis vectors"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "The RREF's own pivot columns are just $e_1,e_2,\\dots$ — not generally in $\\text{col}(A)$.",
+        "That gives $\\text{row}(A)$, not $\\text{col}(A)$.",
+        "Unrelated space entirely."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "To find a basis for $\\text{row}(A)$, you should take...",
+      "choices": [
+        "the nonzero rows of the RREF of $A$",
+        "the pivot columns of the original $A$",
+        "the nonzero rows of the original $A$",
+        "the null space basis vectors"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "Pivot columns of the original matrix give $\\text{col}(A)$, not $\\text{row}(A)$.",
+        "The original rows might be redundant/dependent — the RREF's nonzero rows are guaranteed independent.",
+        "Unrelated space entirely."
+      ]
+    },
+    {
+      "type": "wordbank",
+      "prompt": "The Rank-Nullity Theorem states that for an $m\\times n$ matrix $A$: $\\text{rank}(A) + \\text{nullity}(A) = $ _____.",
+      "wordbank": [
+        "$n$ (the number of columns)",
+        "$m$ (the number of rows)",
+        "$mn$",
+        "$m+n$"
+      ],
+      "answer": "$n$ (the number of columns)",
+      "explanation": "rank is $\\dim(\\text{col}(A))=\\dim(\\text{row}(A))$, and nullity is $\\dim(\\text{null}(A))$; together they add up to $n$, the number of columns (= number of unknowns)."
+    },
+    {
+      "type": "type",
+      "prompt": "A $5\\times8$ matrix has rank 3. Find its nullity.",
+      "answer": [
+        "5"
+      ],
+      "explanation": "By Rank-Nullity: $\\text{nullity}=n-\\text{rank}=8-3=5$."
+    },
+    {
+      "type": "type",
+      "prompt": "A $3\\times5$ matrix has rank 3. Find its nullity.",
+      "answer": [
+        "2"
+      ],
+      "explanation": "By Rank-Nullity: $\\text{nullity}=n-\\text{rank}=5-3=2$."
+    },
+    {
+      "type": "mc",
+      "prompt": "If $b\\in\\text{col}(A)$, this means...",
+      "choices": [
+        "$Ax=b$ has at least one solution",
+        "$Ab=\\mathbf{0}$",
+        "$b$ is a row of $A$",
+        "$b$ is orthogonal to every column of $A$"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "That describes $b\\in\\text{null}$ of something else entirely, not col(A) membership.",
+        "$b$ being a row isn't the definition of column-space membership.",
+        "Not related to column-space membership."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "If $x\\in\\text{null}(A)$, this means...",
+      "choices": [
+        "$Ax=\\mathbf{0}$",
+        "$Ax=b$ for some $b\\ne\\mathbf{0}$",
+        "$x$ is a column of $A$",
+        "$x$ is a pivot column"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "That would put $x$ outside the null space (unless $b=0$).",
+        "Not the definition.",
+        "Not the definition."
+      ]
+    },
+    {
+      "type": "type",
+      "prompt": "True or False: the zero vector is always in both $\\text{null}(A)$ and $\\text{col}(A)$, for any matrix $A$.",
+      "answer": [
+        "true",
+        "True"
+      ],
+      "explanation": "True — $A\\mathbf{0}=\\mathbf{0}$ puts $\\mathbf{0}$ in null(A), and every subspace (including col(A)) must contain the zero vector."
+    }
+  ]
+}

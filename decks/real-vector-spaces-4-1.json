@@ -1,0 +1,334 @@
+{
+  "id": "real-vector-spaces-4-1",
+  "title": "Real Vector Spaces (4.1)",
+  "description": "True/false questions on the 8 vector space axioms, including several classic 'is this actually a vector space' traps. 8 questions pulled per attempt from a pool of 25.",
+  "questionsPerAttempt": 8,
+  "pointsPerQuestion": 1,
+  "questions": [
+    {
+      "type": "mc",
+      "prompt": "A vector space's zero vector must be unique.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "If 0 and 0' were both zero vectors, then 0 = 0 + 0' = 0' + 0 = 0' \u2014 so there can only be one."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "If a set is closed under both addition and scalar multiplication, it is automatically a vector space.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 1,
+      "explanations": [
+        "Closure is necessary but not sufficient. You also need commutativity, associativity, a zero vector, additive inverses, the unit property, and both distributive laws to all hold.",
+        null
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "The scalars used in a vector space must always be real numbers.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 1,
+      "explanations": [
+        "Scalars can come from other fields too \u2014 for example \u2102\u207f is a vector space over the complex numbers, using complex scalars.",
+        null
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "V = \u211d with u\u2295v := max(u,v) (and ordinary scalar multiplication) fails to be a vector space because it has no zero vector.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "You'd need a single e with max(u,e)=u for every real u, but u is unbounded below, so no fixed e works for all u."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "V = \u211d\u00b3 with ordinary scalar multiplication but u\u2295v := (u1+v1, u2+v2, 0) is a vector space, since addition here is still commutative and associative.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 1,
+      "explanations": [
+        "Commutative and associative, yes \u2014 but there's still no zero vector. You'd need e3=0 to satisfy u3+e3=u3 for EVERY u3, and u3 ranges over all of \u211d.",
+        null
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "In a vector space, 0\u00b7v = 0 for every vector v (the scalar zero times any vector gives the zero vector).",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "This is provable from the 8 axioms: 0v = (0+0)v = 0v+0v, so adding -(0v) to both sides gives 0 = 0v."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "If k\u00b7v = 0 for a scalar k and vector v, then k must be 0.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 1,
+      "explanations": [
+        "It's also possible that v = 0 itself (with k \u2260 0), since k\u00b70 = 0 for any scalar k. The correct rule is k\u00b7v = 0 implies k=0 OR v=0.",
+        null
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "Treating points on the unit circle as angles, with addition = adding angles and scalar multiplication = scaling angles (both reduced mod 2\u03c0), gives a valid vector space.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 1,
+      "explanations": [
+        "Scalar multiplication isn't associative here: (km)\u03b8 \u2260 k(m\u03b8) once you reduce mod 2\u03c0. Example: \u03b8=\u03c0, m=2, k=\u00bd gives k(m\u03b8) = \u00bd\u00b70 = 0, but (km)\u03b8 = 1\u00b7\u03c0 = \u03c0.",
+        null
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "V = \u211d with ordinary addition but scalar multiplication redefined as k\u00b7x := 0 for every k and x fails to be a vector space because the unit property (1\u00b7x = x) fails.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "1\u00b7x = 0 for every x here, but the unit property requires 1\u00b7x = x \u2014 so it fails for every x \u2260 0. (Every other axiom happens to still hold, some only trivially.)"
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "The set of all finite lists of real numbers, with addition defined as list concatenation, is commutative.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 1,
+      "explanations": [
+        "[1,2]+[3] = [1,2,3], but [3]+[1,2] = [3,1,2] \u2014 different lists, so order matters and addition is not commutative.",
+        null
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "If you fix the commutativity problem above by sorting the concatenated list, the result is a valid vector space.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 1,
+      "explanations": [
+        "Sorting does fix commutativity, but concatenation only ever makes a list longer \u2014 so no nonzero list has an additive inverse that concatenates it back down to the empty list.",
+        null
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "Every vector space must contain infinitely many vectors.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 1,
+      "explanations": [
+        "The trivial vector space {0}, containing only the zero vector, satisfies all 8 axioms with just one element.",
+        null
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "In any vector space, the additive inverse -v is always equal to (-1)\u00b7v.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "This follows from the 8 axioms: v + (-1)v = 1v + (-1)v = (1+(-1))v = 0v = 0, so (-1)v really is v's additive inverse."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "The set of 2\u00d72 matrices, with ordinary matrix addition and scalar multiplication, forms a vector space.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "Matrix addition and scalar multiplication satisfy all 8 axioms \u2014 the zero matrix is the identity, and -A is the inverse of A."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "V = \u211d with u\u2295v := (u+v)/2 (the average of u and v) and ordinary scalar multiplication is a vector space, since averaging two reals is commutative.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 1,
+      "explanations": [
+        "Commutative, yes, but there's no zero vector: (u+0)/2 = u/2 \u2260 u unless u=0, and no other fixed candidate works for every u either.",
+        null
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "In any vector space, if u + w = v + w, then u = v.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "This is the cancellation law. Add -w (which exists by axiom 4) to both sides: (u+w)+(-w) = (v+w)+(-w), which simplifies to u = v."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "A vector space must have some 'multiplication' operation between two vectors, like a dot product.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 1,
+      "explanations": [
+        "The 8 axioms only involve vector addition and scalar-times-vector multiplication. A vector-times-vector product isn't part of the definition at all.",
+        null
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "The set of real-valued functions defined on an interval, with the usual pointwise addition and scalar multiplication of functions, is a vector space.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "Pointwise addition and scaling of functions satisfy all 8 axioms \u2014 the zero function is the identity, and (-f) is the inverse of f."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "If a candidate structure satisfies 7 of the 8 axioms, it can still be called a vector space as long as most of the axioms hold.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 1,
+      "explanations": [
+        "All 8 axioms are required, with no partial credit \u2014 failing even one (like the unit property in the k\u00b7x=0 example) disqualifies the structure entirely.",
+        null
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "The empty set (with no elements at all) can be a valid vector space.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 1,
+      "explanations": [
+        "Every vector space must contain at least the zero vector, by the existence-of-zero-vector axiom \u2014 so it can never be empty.",
+        null
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "Two very different-looking structures \u2014 say, polynomials and 2x2 matrices \u2014 can both be genuine vector spaces.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "The 8 axioms only care about how addition and scalar multiplication behave, not what the objects literally are \u2014 polynomials, matrices, and functions can all be 'vectors'."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "If associativity of addition fails for a structure, then a zero vector can never exist for that structure either.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 1,
+      "explanations": [
+        "These are independent axioms. The u\u2295v=max(u,v) example is actually associative and STILL has no zero vector \u2014 failing one axiom doesn't force another one to fail too.",
+        null
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "Every vector space over the real numbers automatically satisfies (k+m)v = kv + mv for all scalars k, m and every vector v.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "This is one of the 8 axioms itself (distributivity of scalar multiplication over scalar addition) \u2014 it holds by definition, not something extra to check."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "The set of all polynomials of degree EXACTLY 2 (not less), with the usual addition, is a vector space.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 1,
+      "explanations": [
+        "It fails closure: (x\u00b2+x) + (-x\u00b2+1) = x+1, which has degree 1, not exactly 2 \u2014 the sum leaves the set. (Degree \u2264 2, by contrast, IS closed and IS a vector space.)",
+        null
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "If a structure fails only the unit property (1\u00b7v = v) but satisfies every other axiom, it is still not a vector space.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "All 8 axioms are required simultaneously, with no exception for the unit property \u2014 this is exactly what happens in the k\u00b7x=0 example."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,177 @@
+{
+  "id": "subspaces-4-2",
+  "title": "Subspaces, Span & Linear Combinations (4.2)",
+  "description": "24 True/False questions covering the three-part subspace test, common gotchas (quadrants, unions of subspaces, shifted lines, degree-exactly-n polynomials, invertible matrices), and the definitions of span and linear combination. 8 pulled per attempt.",
+  "questionsPerAttempt": 8,
+  "pointsPerQuestion": 1,
+  "questions": [
+    {
+      "type": "mc",
+      "prompt": "A subspace W of a vector space V must contain the zero vector of V.",
+      "choices": ["True", "False"],
+      "answer": 0,
+      "explanations": [null, "This is one of the three required conditions. If W doesn't contain 0, it automatically fails to be a subspace, no matter what else is true about it."]
+    },
+    {
+      "type": "mc",
+      "prompt": "A subset W of a vector space V is a subspace as long as it is closed under addition and scalar multiplication — it does not also need to contain the zero vector.",
+      "choices": ["True", "False"],
+      "answer": 1,
+      "explanations": ["All three conditions (contains 0, closed under addition, closed under scalar multiplication) are part of the definition — none of them is optional.", null]
+    },
+    {
+      "type": "mc",
+      "prompt": "If W is a subspace of V, then W is itself a vector space, using the same addition and scalar multiplication as V.",
+      "choices": ["True", "False"],
+      "answer": 0,
+      "explanations": [null, "This is exactly the point of the subspace test — it's a shortcut for checking all 8 vector space axioms by confirming W inherits them from V."]
+    },
+    {
+      "type": "mc",
+      "prompt": "The set W = {0} containing only the zero vector is a subspace of every vector space V.",
+      "choices": ["True", "False"],
+      "answer": 0,
+      "explanations": [null, "This is called the trivial subspace — it trivially contains 0, and 0+0=0 and c·0=0 for every scalar c."]
+    },
+    {
+      "type": "mc",
+      "prompt": "A vector space V is a subspace of itself.",
+      "choices": ["True", "False"],
+      "answer": 0,
+      "explanations": [null, "V trivially satisfies all three conditions with respect to itself."]
+    },
+    {
+      "type": "mc",
+      "prompt": "Every vector space has at least one subspace.",
+      "choices": ["True", "False"],
+      "answer": 0,
+      "explanations": [null, "Every vector space V has at least two subspaces built in for free: the trivial subspace {0} and V itself."]
+    },
+    {
+      "type": "mc",
+      "prompt": "The first quadrant of R² — all points (x, y) with x ≥ 0 and y ≥ 0 — is a subspace of R².",
+      "choices": ["True", "False"],
+      "answer": 1,
+      "explanations": ["It contains (0,0) and is closed under addition, but it is NOT closed under scalar multiplication: (1,1) is in the quadrant, but (-1)(1,1) = (-1,-1) is not.", null]
+    },
+    {
+      "type": "mc",
+      "prompt": "In R², the union of the x-axis and the y-axis (all points on either axis) is a subspace.",
+      "choices": ["True", "False"],
+      "answer": 1,
+      "explanations": ["It contains 0 and is closed under scalar multiplication, but NOT under addition: (1,0) and (0,1) are both in the union, but (1,0)+(0,1)=(1,1) is on neither axis.", null]
+    },
+    {
+      "type": "mc",
+      "prompt": "A line through the origin in R² is a subspace of R².",
+      "choices": ["True", "False"],
+      "answer": 0,
+      "explanations": [null, "A line through the origin is exactly the span of a single nonzero vector, and spans are always subspaces."]
+    },
+    {
+      "type": "mc",
+      "prompt": "A line in R² that does NOT pass through the origin can still be a subspace of R².",
+      "choices": ["True", "False"],
+      "answer": 1,
+      "explanations": ["A line that misses the origin can't contain the zero vector, so it fails the very first condition immediately.", null]
+    },
+    {
+      "type": "mc",
+      "prompt": "The set of all invertible 2×2 matrices is a subspace of M₂ₓ₂ (the vector space of all 2×2 matrices).",
+      "choices": ["True", "False"],
+      "answer": 1,
+      "explanations": ["The zero matrix isn't invertible, so this set doesn't even contain the zero vector. It also isn't closed under addition — e.g. I and -I are both invertible, but I+(-I)=0 is not.", null]
+    },
+    {
+      "type": "mc",
+      "prompt": "The set of all symmetric 2×2 matrices (those with Aᵀ = A) is a subspace of M₂ₓ₂.",
+      "choices": ["True", "False"],
+      "answer": 0,
+      "explanations": [null, "The zero matrix is symmetric, the sum of two symmetric matrices is symmetric, and a scalar multiple of a symmetric matrix is symmetric — all three conditions hold."]
+    },
+    {
+      "type": "mc",
+      "prompt": "In P₂, the set of polynomials p(x) with p(0) = 0 is a subspace of P₂.",
+      "choices": ["True", "False"],
+      "answer": 0,
+      "explanations": [null, "The zero polynomial satisfies p(0)=0, and this condition is preserved under addition and scalar multiplication."]
+    },
+    {
+      "type": "mc",
+      "prompt": "In P₂, the set of polynomials with degree exactly 2 (nonzero leading coefficient) is a subspace of P₂.",
+      "choices": ["True", "False"],
+      "answer": 1,
+      "explanations": ["The zero polynomial has no degree at all, so it's not in this set. Also, two degree-2 polynomials can add to something of lower degree — e.g. (x²+x) + (-x²+x) = 2x, which isn't degree 2.", null]
+    },
+    {
+      "type": "mc",
+      "prompt": "The solution set of a homogeneous linear system Ax = 0 is a subspace of Rⁿ.",
+      "choices": ["True", "False"],
+      "answer": 0,
+      "explanations": [null, "x=0 is always a solution, and if Ax=0 and Ay=0 then A(x+y)=0 and A(cx)=0 — all three conditions check out."]
+    },
+    {
+      "type": "mc",
+      "prompt": "The solution set of a consistent nonhomogeneous system Ax = b, with b ≠ 0, is a subspace of Rⁿ.",
+      "choices": ["True", "False"],
+      "answer": 1,
+      "explanations": ["The zero vector isn't a solution here, since A·0 = 0 ≠ b. Failing to contain 0 is enough by itself to rule this out as a subspace.", null]
+    },
+    {
+      "type": "mc",
+      "prompt": "A linear combination of vectors v₁, v₂, …, vₖ is any sum c₁v₁ + c₂v₂ + ⋯ + cₖvₖ for some choice of scalars c₁, …, cₖ.",
+      "choices": ["True", "False"],
+      "answer": 0,
+      "explanations": [null, "This is exactly the definition of a linear combination."]
+    },
+    {
+      "type": "mc",
+      "prompt": "The span of a set of vectors S is the set of all linear combinations of vectors in S.",
+      "choices": ["True", "False"],
+      "answer": 0,
+      "explanations": [null, "This is exactly the definition of span(S)."]
+    },
+    {
+      "type": "mc",
+      "prompt": "The span of any nonempty set of vectors in a vector space V is always a subspace of V.",
+      "choices": ["True", "False"],
+      "answer": 0,
+      "explanations": [null, "This is an important theorem: span(S) automatically contains 0 (take all coefficients 0) and is automatically closed under addition and scalar multiplication."]
+    },
+    {
+      "type": "mc",
+      "prompt": "If S = {v} is a single nonzero vector in R², then span(S) is a line through the origin.",
+      "choices": ["True", "False"],
+      "answer": 0,
+      "explanations": [null, "span{v} = {cv : c is a scalar}, which traces out exactly the line through the origin in the direction of v."]
+    },
+    {
+      "type": "mc",
+      "prompt": "The span of the zero vector alone, span{0}, is the empty set.",
+      "choices": ["True", "False"],
+      "answer": 1,
+      "explanations": ["span{0} = {0} — it's not empty, it's the trivial subspace containing just the zero vector (every scalar multiple of 0 is still 0).", null]
+    },
+    {
+      "type": "mc",
+      "prompt": "Every subspace of Rⁿ can be described as the span of some set of vectors.",
+      "choices": ["True", "False"],
+      "answer": 0,
+      "explanations": [null, "You can always take a spanning set of the subspace itself (for instance, all of its own vectors) — every subspace equals the span of some set."]
+    },
+    {
+      "type": "mc",
+      "prompt": "A set consisting of just the zero vector, S = {0}, satisfies span(S) = {0}.",
+      "choices": ["True", "False"],
+      "answer": 0,
+      "explanations": [null, "Every linear combination of just the zero vector is still the zero vector, so span{0} = {0}."]
+    },
+    {
+      "type": "mc",
+      "prompt": "If W₁ and W₂ are both subspaces of V, then their union W₁ ∪ W₂ is always a subspace of V.",
+      "choices": ["True", "False"],
+      "answer": 1,
+      "explanations": ["The union of two subspaces need not be closed under addition — the x-axis and y-axis are each subspaces of R², but their union isn't, since (1,0)+(0,1)=(1,1) is in neither.", null]
+    }
+  ]
+}

@@ -1,0 +1,730 @@
+{
+  "id": "cramers-rule-properties-day15",
+  "title": "Cramer's Rule & More Determinant Properties",
+  "description": "Practice det(AB) = det(A)det(B), det(A⁻¹) = 1/det(A), the invertibility test, the adjoint formula for A⁻¹, and conceptual Cramer's Rule (Anton §2.3).",
+  "questionsPerAttempt": 10,
+  "pointsPerQuestion": 1,
+  "questions": [
+    {
+      "type": "type",
+      "prompt": "det(A) = 4 and det(B) = 5. What is det(AB)?",
+      "answer": [
+        "20"
+      ],
+      "explanation": "det(AB) = det(A)·det(B) = 4 × 5 = 20."
+    },
+    {
+      "type": "type",
+      "prompt": "det(A) = -3 and det(B) = 7. What is det(AB)?",
+      "answer": [
+        "-21"
+      ],
+      "explanation": "det(AB) = det(A)·det(B) = -3 × 7 = -21."
+    },
+    {
+      "type": "type",
+      "prompt": "det(A) = 6 and det(B) = -2. What is det(AB)?",
+      "answer": [
+        "-12"
+      ],
+      "explanation": "det(AB) = det(A)·det(B) = 6 × -2 = -12."
+    },
+    {
+      "type": "type",
+      "prompt": "det(A) = -4 and det(B) = -5. What is det(AB)?",
+      "answer": [
+        "20"
+      ],
+      "explanation": "det(AB) = det(A)·det(B) = -4 × -5 = 20 (two negatives make a positive)."
+    },
+    {
+      "type": "type",
+      "prompt": "det(AB) = 30 and det(A) = 6. What is det(B)?",
+      "answer": [
+        "5"
+      ],
+      "explanation": "det(AB) = det(A)·det(B), so det(B) = 30 / 6 = 5."
+    },
+    {
+      "type": "type",
+      "prompt": "det(AB) = -24 and det(B) = 8. What is det(A)?",
+      "answer": [
+        "-3"
+      ],
+      "explanation": "det(AB) = det(A)·det(B), so det(A) = -24 / 8 = -3."
+    },
+    {
+      "type": "type",
+      "prompt": "det(A) = 2, det(B) = 2, det(C) = 3, all the same size. What is det(ABC)?",
+      "answer": [
+        "12"
+      ],
+      "explanation": "Apply det(AB) = det(A)det(B) twice: det(ABC) = det(A)·det(B)·det(C) = 2 × 2 × 3 = 12."
+    },
+    {
+      "type": "type",
+      "prompt": "A is a 3×3 matrix with det(A) = 5. What is det(A²)?",
+      "answer": [
+        "25"
+      ],
+      "explanation": "det(A²) = det(A·A) = det(A)·det(A) = 5 × 5 = 25."
+    },
+    {
+      "type": "type",
+      "prompt": "det(A) = 4. What is det(A⁻¹)?",
+      "answer": [
+        "1/4",
+        "0.25"
+      ],
+      "explanation": "det(A⁻¹) = 1/det(A) = 1/4."
+    },
+    {
+      "type": "type",
+      "prompt": "det(A) = -2. What is det(A⁻¹)?",
+      "answer": [
+        "-1/2",
+        "-0.5"
+      ],
+      "explanation": "det(A⁻¹) = 1/det(A) = 1/-2 = -1/2."
+    },
+    {
+      "type": "type",
+      "prompt": "det(A) = 10. What is det(A⁻¹)?",
+      "answer": [
+        "1/10",
+        "0.1"
+      ],
+      "explanation": "det(A⁻¹) = 1/det(A) = 1/10."
+    },
+    {
+      "type": "type",
+      "prompt": "det(A⁻¹) = 1/7. What is det(A)?",
+      "answer": [
+        "7"
+      ],
+      "explanation": "Since det(A⁻¹) = 1/det(A), det(A) is the reciprocal of 1/7, which is 7."
+    },
+    {
+      "type": "type",
+      "prompt": "det(A⁻¹) = -1/3. What is det(A)?",
+      "answer": [
+        "-3"
+      ],
+      "explanation": "Since det(A⁻¹) = 1/det(A), det(A) is the reciprocal of -1/3, which is -3."
+    },
+    {
+      "type": "type",
+      "prompt": "det(A) = 1. What is det(A⁻¹)?",
+      "answer": [
+        "1"
+      ],
+      "explanation": "det(A⁻¹) = 1/det(A) = 1/1 = 1."
+    },
+    {
+      "type": "mc",
+      "prompt": "True or False: if det(A) = 0, then A is invertible.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 1,
+      "explanations": [
+        "A zero determinant is exactly the invertibility test failing — A is NOT invertible.",
+        null
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "det(A) = 0 for a square matrix A. What can you conclude?",
+      "choices": [
+        "A is invertible",
+        "A is not invertible",
+        "det(A⁻¹) exists",
+        "None of the above are guaranteed"
+      ],
+      "answer": 1,
+      "explanations": [
+        "It's the opposite — a zero determinant rules out invertibility.",
+        null,
+        "If A isn't invertible, A⁻¹ doesn't exist, so det(A⁻¹) can't either.",
+        "The invertibility test gives a definite answer here: not invertible."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "True or False: a matrix with two proportional (parallel) rows must have determinant 0.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "Two proportional rows make the matrix singular — its determinant is always 0."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "Which of the following guarantees A is NOT invertible?",
+      "choices": [
+        "det(A) = 1",
+        "det(A) = -1",
+        "det(A) = 0",
+        "det(A) = 100"
+      ],
+      "answer": 2,
+      "explanations": [
+        "A nonzero determinant means A IS invertible.",
+        "A nonzero determinant (even negative) means A IS invertible.",
+        null,
+        "A nonzero determinant means A IS invertible."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "True or False: if A is invertible, then A⁻¹ is also invertible.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "det(A⁻¹) = 1/det(A), which is nonzero whenever det(A) is — so A⁻¹ passes the invertibility test too."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "A is a 4×4 matrix with det(A) = 0. Which is true?",
+      "choices": [
+        "A⁻¹ = 0",
+        "A⁻¹ does not exist",
+        "det(A⁻¹) = 0",
+        "A must be the zero matrix"
+      ],
+      "answer": 1,
+      "explanations": [
+        "There's no such thing as an inverse equal to the zero matrix — A⁻¹ simply doesn't exist here.",
+        null,
+        "If A⁻¹ doesn't exist, det(A⁻¹) isn't defined at all — it's not 0.",
+        "Plenty of nonzero matrices have determinant 0 — a repeated or dependent row is enough."
+      ]
+    },
+    {
+      "type": "wordbank",
+      "prompt": "The adjoint (adjugate) of A is the _____ of the matrix of cofactors.",
+      "wordbank": [
+        "transpose",
+        "inverse",
+        "determinant",
+        "product"
+      ],
+      "answer": "transpose",
+      "explanation": "adj(A)ᵢⱼ = Cⱼᵢ — the cofactor matrix gets transposed to form the adjoint."
+    },
+    {
+      "type": "mc",
+      "prompt": "The formula A⁻¹ = (1/det A)·adj(A) is valid exactly when...",
+      "choices": [
+        "A is square",
+        "det(A) ≠ 0",
+        "A is symmetric",
+        "A is triangular"
+      ],
+      "answer": 1,
+      "explanations": [
+        "Being square is necessary just to have a determinant at all, but it's not the condition that makes the formula work.",
+        null,
+        "The formula works for any invertible matrix, symmetric or not.",
+        "The formula works for any invertible matrix, triangular or not."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "For A = [a,b; c,d], adj(A) equals",
+      "choices": [
+        "[d,-b; -c,a]",
+        "[d,b; c,a]",
+        "[a,-b; -c,d]",
+        "[-d,b; c,-a]"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "The off-diagonal entries need their signs flipped, not just left alone.",
+        "It's the diagonal entries that swap places, not the off-diagonal signs.",
+        "Close in spirit, but the diagonal entries swap positions rather than just the sign pattern shown here."
+      ]
+    },
+    {
+      "type": "type",
+      "prompt": "A = [5,2; 3,1]. What is det(A)?",
+      "answer": [
+        "-1"
+      ],
+      "explanation": "det(A) = 5(1) - 2(3) = 5 - 6 = -1."
+    },
+    {
+      "type": "type",
+      "prompt": "A = [5,2; 3,1]. Using the adjoint formula, what is the (1,1) entry of A⁻¹?",
+      "answer": [
+        "-1"
+      ],
+      "explanation": "adj(A) = [1,-2; -3,5], det(A) = -1, so A⁻¹ = (1/-1)[1,-2; -3,5] = [-1,2; 3,-5]. The (1,1) entry is -1."
+    },
+    {
+      "type": "type",
+      "prompt": "A = [5,2; 3,1]. Using the adjoint formula, what is the (2,2) entry of A⁻¹?",
+      "answer": [
+        "-5"
+      ],
+      "explanation": "adj(A) = [1,-2; -3,5], det(A) = -1, so A⁻¹ = (1/-1)[1,-2; -3,5] = [-1,2; 3,-5]. The (2,2) entry is -5."
+    },
+    {
+      "type": "mc",
+      "prompt": "True or False: the adjoint formula for A⁻¹ is usually the fastest method for large matrices.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 1,
+      "explanations": [
+        "Computing every cofactor gets expensive fast — row reduction is the practical method for anything bigger than 2×2 or 3×3.",
+        null
+      ]
+    },
+    {
+      "type": "wordbank",
+      "prompt": "The cofactor Cᵢⱼ of entry aᵢⱼ is (−1)ⁱ⁺ʲ times the determinant of the _____ formed by deleting row i and column j.",
+      "wordbank": [
+        "submatrix",
+        "adjoint",
+        "identity matrix",
+        "transpose"
+      ],
+      "answer": "submatrix",
+      "explanation": "Deleting row i and column j leaves a smaller submatrix (minor); the cofactor is its determinant, with a sign attached."
+    },
+    {
+      "type": "mc",
+      "prompt": "Cramer's Rule requires which condition on A to apply?",
+      "choices": [
+        "A is symmetric",
+        "det(A) ≠ 0",
+        "A is triangular",
+        "A has all positive entries"
+      ],
+      "answer": 1,
+      "explanations": [
+        "Cramer's Rule doesn't care about symmetry.",
+        null,
+        "Cramer's Rule works for any square A with a nonzero determinant, not just triangular ones.",
+        "The sign or size of A's entries doesn't matter — only whether det(A) ≠ 0."
+      ]
+    },
+    {
+      "type": "wordbank",
+      "prompt": "In Cramer's Rule, Aᵢ is the matrix A with column i replaced by _____.",
+      "wordbank": [
+        "the vector b",
+        "the identity column",
+        "zero",
+        "row i"
+      ],
+      "answer": "the vector b",
+      "explanation": "Aᵢ swaps out column i of A for the right-hand-side vector b; then xᵢ = det(Aᵢ)/det(A)."
+    },
+    {
+      "type": "mc",
+      "prompt": "True or False: Cramer's Rule can be used even when det(A) = 0 — you just get xᵢ = 0/0.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 1,
+      "explanations": [
+        "Division by det(A) = 0 is undefined — Cramer's Rule simply doesn't apply, it doesn't produce 0/0 as a usable answer.",
+        null
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "For Ax = b with det(A) = 6, det(A₁) = 18, det(A₂) = -12. What is x₁?",
+      "choices": [
+        "3",
+        "1/3",
+        "24",
+        "108"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "That's det(A)/det(A₁), upside down — Cramer's Rule is xᵢ = det(Aᵢ)/det(A).",
+        "That's det(A₁) + det(A), not the ratio Cramer's Rule asks for.",
+        "That's det(A₁)×det(A), not the ratio Cramer's Rule asks for."
+      ]
+    },
+    {
+      "type": "type",
+      "prompt": "For Ax = b with det(A) = 6, det(A₁) = 18, det(A₂) = -12. What is x₂?",
+      "answer": [
+        "-2"
+      ],
+      "explanation": "x₂ = det(A₂)/det(A) = -12/6 = -2."
+    },
+    {
+      "type": "mc",
+      "prompt": "Cramer's Rule is most practical for...",
+      "choices": [
+        "very large systems (100×100)",
+        "small systems, especially by hand (2×2 or 3×3)",
+        "systems with no solution",
+        "systems where A is not square"
+      ],
+      "answer": 1,
+      "explanations": [
+        "Computing that many determinants by cofactor expansion is far too slow — row reduction wins for large systems.",
+        null,
+        "Cramer's Rule assumes a unique solution exists (det(A) ≠ 0) — it isn't a tool for systems with no solution.",
+        "Cramer's Rule requires a square coefficient matrix A."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "True or False: Cramer's Rule and row reduction always give the same solution when both apply.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "They're two different methods for the same system — when a unique solution exists, both must find it."
+      ]
+    },
+    {
+      "type": "type",
+      "prompt": "For a 2×2 system with det(A) = 5 and det(Aₓ) = -15, what is x?",
+      "answer": [
+        "-3"
+      ],
+      "explanation": "x = det(Aₓ)/det(A) = -15/5 = -3."
+    },
+    {
+      "type": "mc",
+      "prompt": "If det(A) = 0 for the coefficient matrix of Ax = b, the system has...",
+      "choices": [
+        "exactly one solution, found by Cramer's Rule",
+        "no solution or infinitely many solutions",
+        "a solution only if b = 0",
+        "always infinitely many solutions, never zero"
+      ],
+      "answer": 1,
+      "explanations": [
+        "det(A) = 0 is exactly the case where Cramer's Rule does NOT apply — there's no unique solution to find this way.",
+        null,
+        "Whether a solution exists at all depends on b, but it isn't as simple as requiring b = 0.",
+        "It could be no solution OR infinitely many, depending on b — not always the latter."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "True or False: Cramer's Rule directly generalizes to any size square system, not just 2×2 and 3×3.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "The formula xᵢ = det(Aᵢ)/det(A) works for any n×n system with det(A) ≠ 0 — it's just increasingly impractical to compute by hand as n grows."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "True or False: det(AB) = det(BA) for square matrices A, B of the same size, even though AB ≠ BA in general.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "det(AB) = det(A)det(B) = det(B)det(A) = det(BA) — ordinary number multiplication commutes even when matrix multiplication doesn't."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "True or False: det(A + B) = det(A) + det(B) in general.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 1,
+      "explanations": [
+        "Determinants don't distribute over addition. Example: A = B = I (2×2): det(A)+det(B) = 1+1 = 2, but det(A+B) = det(2I) = 4.",
+        null
+      ]
+    },
+    {
+      "type": "wordbank",
+      "prompt": "det(kA) = kⁿ·det(A) for an n×n matrix A — the exponent n appears because scaling A by k scales _____ row(s).",
+      "wordbank": [
+        "every",
+        "only one",
+        "no",
+        "n−1"
+      ],
+      "answer": "every",
+      "explanation": "Multiplying A by the scalar k multiplies every one of its n rows by k, contributing one factor of k each — so the total factor is kⁿ."
+    },
+    {
+      "type": "mc",
+      "prompt": "True or False: det(Aᵀ) = det(A) for every square matrix A.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "Transposing swaps rows and columns, but every determinant property that holds for rows also holds for columns — the determinant is unchanged."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "A is 3×3 with det(A) = 2. What is det(A³)?",
+      "choices": [
+        "6",
+        "8",
+        "2",
+        "1/8"
+      ],
+      "answer": 1,
+      "explanations": [
+        "Determinants of repeated products multiply, they don't add.",
+        null,
+        "det(A³) ≠ det(A) — cubing the matrix does change the determinant.",
+        "That would be det(A⁻³), not det(A³)."
+      ]
+    },
+    {
+      "type": "type",
+      "prompt": "A is 5×5 with det(A) = -1. What is det(-A)?",
+      "answer": [
+        "1"
+      ],
+      "explanation": "det(-A) = det((-1)·A) = (-1)⁵·det(A) = -1 × -1 = 1."
+    },
+    {
+      "type": "mc",
+      "prompt": "True or False: if A and B are both invertible n×n matrices, then AB is also invertible.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "det(AB) = det(A)det(B), and a product of two nonzero numbers is nonzero — so det(AB) ≠ 0."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "det(A) = 3 and det(B) = 0. What is det(AB)?",
+      "choices": [
+        "3",
+        "0",
+        "undefined",
+        "-3"
+      ],
+      "answer": 1,
+      "explanations": [
+        "det(AB) = det(A)det(B), and multiplying by 0 doesn't leave det(A) unchanged.",
+        null,
+        "det(AB) is perfectly well-defined — it's just 0.",
+        "There's no sign flip here, just multiplication by 0."
+      ]
+    },
+    {
+      "type": "wordbank",
+      "prompt": "Since det(A)·det(A⁻¹) = 1, if det(A) is very close to 0, det(A⁻¹) will be very _____.",
+      "wordbank": [
+        "large",
+        "small",
+        "negative",
+        "equal to 1"
+      ],
+      "answer": "large",
+      "explanation": "det(A⁻¹) = 1/det(A) — dividing 1 by a number close to 0 produces a very large result."
+    },
+    {
+      "type": "mc",
+      "prompt": "True or False: every invertible matrix has a unique inverse.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "If A had two different inverses B and C, then B = BI = B(AC) = (BA)C = IC = C — contradiction. The inverse is always unique."
+      ]
+    },
+    {
+      "type": "type",
+      "prompt": "A is 4×4 with det(A) = 2. What is det(2A)?",
+      "answer": [
+        "32"
+      ],
+      "explanation": "det(2A) = 2⁴·det(A) = 16 × 2 = 32."
+    },
+    {
+      "type": "mc",
+      "prompt": "Which single fact explains ALL of: the invertibility test, the adjoint formula, and det(A⁻¹) = 1/det(A)?",
+      "choices": [
+        "A is square",
+        "det(A) ≠ 0",
+        "A has positive entries",
+        "A is triangular"
+      ],
+      "answer": 1,
+      "explanations": [
+        "Being square is required just to define det(A) — it's not what ties these three facts together.",
+        null,
+        "None of the three facts depend on the sign of A's entries.",
+        "None of the three facts require A to be triangular."
+      ]
+    },
+    {
+      "type": "type",
+      "prompt": "det(A) = 7 and det(B) = 1/7. What is det(AB)?",
+      "answer": [
+        "1"
+      ],
+      "explanation": "det(AB) = det(A)·det(B) = 7 × 1/7 = 1."
+    },
+    {
+      "type": "mc",
+      "prompt": "A is invertible. Which of the following is FALSE?",
+      "choices": [
+        "det(A) ≠ 0",
+        "A⁻¹ exists",
+        "det(A⁻¹) = 1/det(A)",
+        "det(A) = 0"
+      ],
+      "answer": 3,
+      "explanations": [
+        "This is true — it's the definition of invertible via the determinant test.",
+        "This is true — that's what invertible means.",
+        "This is true — it's the reciprocal relationship proved in class.",
+        null
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "True or False: adj(A) is defined even when A is not invertible (det(A) = 0).",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "The adjugate is just the transposed cofactor matrix — it always exists. It's the FORMULA A⁻¹ = adj(A)/det(A) that breaks down when det(A) = 0, not adj(A) itself."
+      ]
+    },
+    {
+      "type": "wordbank",
+      "prompt": "For an n×n matrix, adj(A) is built from the _____ matrix, then transposed.",
+      "wordbank": [
+        "cofactor",
+        "inverse",
+        "identity",
+        "row-reduced"
+      ],
+      "answer": "cofactor",
+      "explanation": "adj(A) is the transpose of the cofactor matrix: adj(A)ᵢⱼ = Cⱼᵢ."
+    },
+    {
+      "type": "type",
+      "prompt": "A = [2,0; 0,3]. Using the adjoint formula, what is the (2,2) entry of A⁻¹?",
+      "answer": [
+        "1/3",
+        "0.333",
+        "0.3333"
+      ],
+      "explanation": "det(A) = 6, adj(A) = [3,0; 0,2], so A⁻¹ = (1/6)[3,0; 0,2] = [1/2,0; 0,1/3]. The (2,2) entry is 1/3 — matching the direct inverse of a diagonal matrix."
+    },
+    {
+      "type": "mc",
+      "prompt": "Cramer's Rule computes xᵢ as a ratio of two...",
+      "choices": [
+        "traces",
+        "determinants",
+        "ranks",
+        "eigenvalues"
+      ],
+      "answer": 1,
+      "explanations": [
+        "Cramer's Rule doesn't involve the trace at all.",
+        null,
+        "Rank doesn't enter the Cramer's Rule formula.",
+        "Eigenvalues aren't part of the Cramer's Rule formula."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "True or False: in Cramer's Rule, det(A) (the denominator) is the same for every xᵢ in the system.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "Only the numerator det(Aᵢ) changes from one variable to the next — the denominator det(A) is fixed for the whole system."
+      ]
+    },
+    {
+      "type": "type",
+      "prompt": "A is 2×2 with det(A) = -6. What is det(A⁻¹)?",
+      "answer": [
+        "-1/6",
+        "-0.1667",
+        "-0.167"
+      ],
+      "explanation": "det(A⁻¹) = 1/det(A) = 1/-6 = -1/6."
+    },
+    {
+      "type": "mc",
+      "prompt": "You're told det(A) = 0 for a system's coefficient matrix. Besides Cramer's Rule failing, what else do you know from the invertibility test?",
+      "choices": [
+        "A is invertible",
+        "A⁻¹ does not exist",
+        "adj(A) does not exist",
+        "The system has exactly one solution"
+      ],
+      "answer": 1,
+      "explanations": [
+        "The opposite is true — det(A) = 0 means A is NOT invertible.",
+        null,
+        "adj(A) still exists (it's just cofactors and a transpose) — it's A⁻¹ = adj(A)/det(A) that fails.",
+        "det(A) = 0 rules out a unique solution — the system has either no solution or infinitely many."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "True or False: det(AB) = det(A)·det(B) requires A and B to both be square matrices of the same size.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "The rule is stated for square matrices of matching size — that's exactly when both AB and BA are defined and square, and determinants make sense for all of them."
+      ]
+    }
+  ]
+}
