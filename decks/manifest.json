@@ -1,18 +1,127 @@
 [
-  { "id": "fun-trivia", "file": "decks/fun-trivia.json", "section": "Fun" },
-  { "id": "fun-trivia-2", "file": "decks/fun-trivia-2.json", "section": "Fun"  },
-  { "id": "is-it-linear", "file": "decks/is-it-linear.json", "section": "Test 1"  },
-  { "id": "linear-systems-intro", "file": "decks/linear-systems-intro.json", "section": "Test 1"  },
-  { "id": "ref-rref", "file": "decks/ref-rref.json", "section": "Test 1"  },
-  { "id": "next-step-ref", "file": "decks/next-step-ref.json", "section": "Test 1"  },
-  { "id": "matrix-definitions", "file": "decks/matrix-definitions.json", "section": "Test 1"  },
-  { "id": "is-operation-defined", "file": "decks/is-operation-defined.json", "section": "Test 1"  },
-  { "id": "inverse-matrices-properties", "file": "decks/inverse-matrices-properties.json", "section": "Test 1"  },
-  { "id": "lu-decomposition", "file": "decks/lu-decomposition.json", "section": "Test 1"  },
-  { "id": "elementary-matrices", "file": "decks/elementary-matrices.json", "section": "Test 1"  },
-  { "id": "determinants-properties-day14", "file": "decks/determinants-properties-day14.json", "section": "Test 1"  },
-  { "id": "unit1-review-super-deck", "file": "decks/unit1-review-super-deck.json", "section": "Test 1"  },
-    { "id": "vectors-3-1", "file": "decks/vectors-3-1.json", "section": "Test 2" },
-    { "id": "dot-product-calc-3-2", "file": "decks/dot-product-calc-3-2.json", "section": "Test 2" },
-    { "id": "dot-product-concept-3-2", "file": "decks/dot-product-concept-3-2.json", "section": "Test 2" }
+  {
+    "id": "fun-trivia",
+    "file": "decks/fun-trivia.json",
+    "section": "Fun"
+  },
+  {
+    "id": "fun-trivia-2",
+    "file": "decks/fun-trivia-2.json",
+    "section": "Fun"
+  },
+  {
+    "id": "is-it-linear",
+    "file": "decks/is-it-linear.json",
+    "section": "Test 1"
+  },
+  {
+    "id": "linear-systems-intro",
+    "file": "decks/linear-systems-intro.json",
+    "section": "Test 1"
+  },
+  {
+    "id": "ref-rref",
+    "file": "decks/ref-rref.json",
+    "section": "Test 1"
+  },
+  {
+    "id": "next-step-ref",
+    "file": "decks/next-step-ref.json",
+    "section": "Test 1"
+  },
+  {
+    "id": "matrix-definitions",
+    "file": "decks/matrix-definitions.json",
+    "section": "Test 1"
+  },
+  {
+    "id": "is-operation-defined",
+    "file": "decks/is-operation-defined.json",
+    "section": "Test 1"
+  },
+  {
+    "id": "inverse-matrices-properties",
+    "file": "decks/inverse-matrices-properties.json",
+    "section": "Test 1"
+  },
+  {
+    "id": "lu-decomposition",
+    "file": "decks/lu-decomposition.json",
+    "section": "Test 1"
+  },
+  {
+    "id": "elementary-matrices",
+    "file": "decks/elementary-matrices.json",
+    "section": "Test 1"
+  },
+  {
+    "id": "determinants-properties-day14",
+    "file": "decks/determinants-properties-day14.json",
+    "section": "Test 1"
+  },
+  {
+    "id": "unit1-review-super-deck",
+    "file": "decks/unit1-review-super-deck.json",
+    "section": "Test 1"
+  },
+  {
+    "id": "vectors-3-1",
+    "file": "decks/vectors-3-1.json",
+    "section": "Test 2"
+  },
+  {
+    "id": "dot-product-calc-3-2",
+    "file": "decks/dot-product-calc-3-2.json",
+    "section": "Test 2"
+  },
+  {
+    "id": "dot-product-concept-3-2",
+    "file": "decks/dot-product-concept-3-2.json",
+    "section": "Test 2"
+  },
+  {
+    "id": "orthogonality-3-3",
+    "file": "decks/orthogonality-3-3.json",
+    "section": "Test 2"
+  },
+  {
+    "id": "real-vector-spaces-4-1",
+    "file": "decks/real-vector-spaces-4-1.json",
+    "section": "Test 2"
+  },
+  {
+    "id": "subspaces-4-2",
+    "file": "decks/subspaces-4-2.json",
+    "section": "Test 2"
+  },
+  {
+    "id": "linear-independence-4-3",
+    "file": "decks/linear-independence-4-3.json",
+    "section": "Test 2"
+  },
+  {
+    "id": "coordinates-basis-4-4",
+    "file": "decks/coordinates-basis-4-4.json",
+    "section": "Test 2"
+  },
+  {
+    "id": "dimension-4-5",
+    "file": "decks/dimension-4-5.json",
+    "section": "Test 2"
+  },
+  {
+    "id": "change-of-basis-4-6",
+    "file": "decks/change-of-basis-4-6.json",
+    "section": "Test 2"
+  },
+  {
+    "id": "row-col-null-space-4-7",
+    "file": "decks/row-col-null-space-4-7.json",
+    "section": "Test 2"
+  },
+  {
+    "id": "unit2-review-super-deck",
+    "file": "decks/unit2-review-super-deck.json",
+    "section": "Test 2"
+  }
 ]
