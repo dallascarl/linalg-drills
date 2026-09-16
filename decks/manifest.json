@@ -55,8 +55,23 @@
     "section": "Test 1"
   },
   {
+    "id": "determinants-2x2",
+    "file": "decks/determinants-2x2.json",
+    "section": "Test 1"
+  },
+  {
+    "id": "determinants-3x3-cofactor",
+    "file": "decks/determinants-3x3-cofactor.json",
+    "section": "Test 1"
+  },
+  {
     "id": "determinants-properties-day14",
     "file": "decks/determinants-properties-day14.json",
+    "section": "Test 1"
+  },
+  {
+    "id": "cramers-rule-properties-day15",
+    "file": "decks/cramers-rule-properties-day15.json",
     "section": "Test 1"
   },
   {
