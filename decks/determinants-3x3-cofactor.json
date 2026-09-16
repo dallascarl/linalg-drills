@@ -1,0 +1,489 @@
+{
+  "id": "determinants-3x3-cofactor",
+  "title": "3×3 Cofactor Expansion",
+  "description": "Fill-in-the-blank practice with the cofactor expansion pattern for 3×3 determinants (Anton §2.1): the signed coefficient at each position, and the submatrix the cross-out method leaves behind.",
+  "questionsPerAttempt": 10,
+  "pointsPerQuestion": 1,
+  "questions": [
+    {
+      "type": "wordbank",
+      "prompt": "Det({{-1,-4,0},{4,-6,-5},{2,-5,-1}}) = -1(Det{{-6,-5},{-5,-1}}) + _____(Det{{4,-5},{2,-1}}) + 0(Det{{4,-6},{2,-5}})",
+      "wordbank": [
+        "5",
+        "3",
+        "-4",
+        "4"
+      ],
+      "answer": "4",
+      "explanation": "The middle term's coefficient isn't just the matrix entry (-4) — the checkerboard cofactor sign at that position is negative, so the coefficient is -(-4) = 4. Full check: -1(-19) + (4)(6) + 0(-8) = 43."
+    },
+    {
+      "type": "wordbank",
+      "prompt": "Det({{-1,-4,0},{4,-6,-5},{2,-5,-1}}) = -1(Det{{-6,-5},{-5,-1}}) + (4)(_____) + 0(Det{{4,-6},{2,-5}})",
+      "wordbank": [
+        "{{4,-5},{2,-1}}",
+        "{{4,-6},{2,-5}}",
+        "{{-5,4},{-1,2}}",
+        "{{-6,-5},{-5,-1}}"
+      ],
+      "answer": "{{4,-5},{2,-1}}",
+      "explanation": "The blank pairs with the middle entry, -4 (row 1, column 2) — the cross-out method says: cover row 1 and column 2, and what's left is the submatrix Det{{4,-5},{2,-1}}. Full check: -1(-19) + (4)(6) + 0(-8) = 43."
+    },
+    {
+      "type": "wordbank",
+      "prompt": "Det({{3,-6,2},{-3,-6,-5},{0,0,-5}}) = 3(Det{{-6,-5},{0,-5}}) + _____(Det{{-3,-5},{0,-5}}) + 2(Det{{-3,-6},{0,0}})",
+      "wordbank": [
+        "5",
+        "-6",
+        "6",
+        "7"
+      ],
+      "answer": "6",
+      "explanation": "The middle term's coefficient isn't just the matrix entry (-6) — the checkerboard cofactor sign at that position is negative, so the coefficient is -(-6) = 6. Full check: 3(30) + (6)(15) + 2(0) = 180."
+    },
+    {
+      "type": "wordbank",
+      "prompt": "Det({{3,-6,2},{-3,-6,-5},{0,0,-5}}) = 3(Det{{-6,-5},{0,-5}}) + (6)(_____) + 2(Det{{-3,-6},{0,0}})",
+      "wordbank": [
+        "{{-3,-6},{0,0}}",
+        "{{-5,-3},{-5,0}}",
+        "{{-3,-5},{0,-5}}",
+        "{{-6,-5},{0,-5}}"
+      ],
+      "answer": "{{-3,-5},{0,-5}}",
+      "explanation": "The blank pairs with the middle entry, -6 (row 1, column 2) — the cross-out method says: cover row 1 and column 2, and what's left is the submatrix Det{{-3,-5},{0,-5}}. Full check: 3(30) + (6)(15) + 2(0) = 180."
+    },
+    {
+      "type": "wordbank",
+      "prompt": "Det({{-3,-5,2},{0,-6,3},{-5,-3,4}}) = -3(Det{{-6,3},{-3,4}}) + _____(Det{{0,3},{-5,4}}) + 2(Det{{0,-6},{-5,-3}})",
+      "wordbank": [
+        "5",
+        "-5",
+        "6",
+        "4"
+      ],
+      "answer": "5",
+      "explanation": "The middle term's coefficient isn't just the matrix entry (-5) — the checkerboard cofactor sign at that position is negative, so the coefficient is -(-5) = 5. Full check: -3(-15) + (5)(15) + 2(-30) = 60."
+    },
+    {
+      "type": "wordbank",
+      "prompt": "Det({{-3,-5,2},{0,-6,3},{-5,-3,4}}) = -3(Det{{-6,3},{-3,4}}) + (5)(_____) + 2(Det{{0,-6},{-5,-3}})",
+      "wordbank": [
+        "{{0,3},{-5,4}}",
+        "{{0,-6},{-5,-3}}",
+        "{{3,0},{4,-5}}",
+        "{{-6,3},{-3,4}}"
+      ],
+      "answer": "{{0,3},{-5,4}}",
+      "explanation": "The blank pairs with the middle entry, -5 (row 1, column 2) — the cross-out method says: cover row 1 and column 2, and what's left is the submatrix Det{{0,3},{-5,4}}. Full check: -3(-15) + (5)(15) + 2(-30) = 60."
+    },
+    {
+      "type": "wordbank",
+      "prompt": "Det({{4,3,-6},{3,3,0},{-6,-3,-6}}) = 4(Det{{3,0},{-3,-6}}) + _____(Det{{3,0},{-6,-6}}) + -6(Det{{3,3},{-6,-3}})",
+      "wordbank": [
+        "3",
+        "-4",
+        "-2",
+        "-3"
+      ],
+      "answer": "-3",
+      "explanation": "The middle term's coefficient isn't just the matrix entry (3) — the checkerboard cofactor sign at that position is negative, so the coefficient is -(3) = -3. Full check: 4(-18) + (-3)(-18) + -6(9) = -72."
+    },
+    {
+      "type": "wordbank",
+      "prompt": "Det({{4,3,-6},{3,3,0},{-6,-3,-6}}) = 4(Det{{3,0},{-3,-6}}) + (-3)(_____) + -6(Det{{3,3},{-6,-3}})",
+      "wordbank": [
+        "{{3,0},{-3,-6}}",
+        "{{3,0},{-6,-6}}",
+        "{{0,3},{-6,-6}}",
+        "{{3,3},{-6,-3}}"
+      ],
+      "answer": "{{3,0},{-6,-6}}",
+      "explanation": "The blank pairs with the middle entry, 3 (row 1, column 2) — the cross-out method says: cover row 1 and column 2, and what's left is the submatrix Det{{3,0},{-6,-6}}. Full check: 4(-18) + (-3)(-18) + -6(9) = -72."
+    },
+    {
+      "type": "wordbank",
+      "prompt": "Det({{2,-4,-2},{0,-4,2},{-5,3,-2}}) = 2(Det{{-4,2},{3,-2}}) + _____(Det{{0,2},{-5,-2}}) + -2(Det{{0,-4},{-5,3}})",
+      "wordbank": [
+        "5",
+        "3",
+        "-4",
+        "4"
+      ],
+      "answer": "4",
+      "explanation": "The middle term's coefficient isn't just the matrix entry (-4) — the checkerboard cofactor sign at that position is negative, so the coefficient is -(-4) = 4. Full check: 2(2) + (4)(10) + -2(-20) = 84."
+    },
+    {
+      "type": "wordbank",
+      "prompt": "Det({{2,-4,-2},{0,-4,2},{-5,3,-2}}) = 2(Det{{-4,2},{3,-2}}) + (4)(_____) + -2(Det{{0,-4},{-5,3}})",
+      "wordbank": [
+        "{{0,-4},{-5,3}}",
+        "{{2,0},{-2,-5}}",
+        "{{0,2},{-5,-2}}",
+        "{{-4,2},{3,-2}}"
+      ],
+      "answer": "{{0,2},{-5,-2}}",
+      "explanation": "The blank pairs with the middle entry, -4 (row 1, column 2) — the cross-out method says: cover row 1 and column 2, and what's left is the submatrix Det{{0,2},{-5,-2}}. Full check: 2(2) + (4)(10) + -2(-20) = 84."
+    },
+    {
+      "type": "wordbank",
+      "prompt": "Det({{2,4,-4},{-5,3,3},{4,-3,-1}}) = 2(Det{{3,3},{-3,-1}}) + _____(Det{{-5,3},{4,-1}}) + -4(Det{{-5,3},{4,-3}})",
+      "wordbank": [
+        "-4",
+        "-5",
+        "4",
+        "-3"
+      ],
+      "answer": "-4",
+      "explanation": "The middle term's coefficient isn't just the matrix entry (4) — the checkerboard cofactor sign at that position is negative, so the coefficient is -(4) = -4. Full check: 2(6) + (-4)(-7) + -4(3) = 28."
+    },
+    {
+      "type": "wordbank",
+      "prompt": "Det({{2,4,-4},{-5,3,3},{4,-3,-1}}) = 2(Det{{3,3},{-3,-1}}) + (-4)(_____) + -4(Det{{-5,3},{4,-3}})",
+      "wordbank": [
+        "{{-5,3},{4,-3}}",
+        "{{-5,3},{4,-1}}",
+        "{{3,3},{-3,-1}}",
+        "{{3,-5},{-1,4}}"
+      ],
+      "answer": "{{-5,3},{4,-1}}",
+      "explanation": "The blank pairs with the middle entry, 4 (row 1, column 2) — the cross-out method says: cover row 1 and column 2, and what's left is the submatrix Det{{-5,3},{4,-1}}. Full check: 2(6) + (-4)(-7) + -4(3) = 28."
+    },
+    {
+      "type": "wordbank",
+      "prompt": "Det({{-5,2,5},{-5,3,-6},{3,-3,1}}) = -5(Det{{3,-6},{-3,1}}) + _____(Det{{-5,-6},{3,1}}) + 5(Det{{-5,3},{3,-3}})",
+      "wordbank": [
+        "-1",
+        "2",
+        "-2",
+        "-3"
+      ],
+      "answer": "-2",
+      "explanation": "The middle term's coefficient isn't just the matrix entry (2) — the checkerboard cofactor sign at that position is negative, so the coefficient is -(2) = -2. Full check: -5(-15) + (-2)(13) + 5(6) = 79."
+    },
+    {
+      "type": "wordbank",
+      "prompt": "Det({{-5,2,5},{-5,3,-6},{3,-3,1}}) = -5(Det{{3,-6},{-3,1}}) + (-2)(_____) + 5(Det{{-5,3},{3,-3}})",
+      "wordbank": [
+        "{{3,-6},{-3,1}}",
+        "{{-5,3},{3,-3}}",
+        "{{-5,-6},{3,1}}",
+        "{{-6,-5},{1,3}}"
+      ],
+      "answer": "{{-5,-6},{3,1}}",
+      "explanation": "The blank pairs with the middle entry, 2 (row 1, column 2) — the cross-out method says: cover row 1 and column 2, and what's left is the submatrix Det{{-5,-6},{3,1}}. Full check: -5(-15) + (-2)(13) + 5(6) = 79."
+    },
+    {
+      "type": "wordbank",
+      "prompt": "Det({{4,2,0},{6,-1,1},{3,1,-1}}) = 4(Det{{-1,1},{1,-1}}) + _____(Det{{6,1},{3,-1}}) + 0(Det{{6,-1},{3,1}})",
+      "wordbank": [
+        "-1",
+        "2",
+        "-2",
+        "-3"
+      ],
+      "answer": "-2",
+      "explanation": "The middle term's coefficient isn't just the matrix entry (2) — the checkerboard cofactor sign at that position is negative, so the coefficient is -(2) = -2. Full check: 4(0) + (-2)(-9) + 0(9) = 18."
+    },
+    {
+      "type": "wordbank",
+      "prompt": "Det({{4,2,0},{6,-1,1},{3,1,-1}}) = 4(Det{{-1,1},{1,-1}}) + (-2)(_____) + 0(Det{{6,-1},{3,1}})",
+      "wordbank": [
+        "{{1,6},{-1,3}}",
+        "{{-1,1},{1,-1}}",
+        "{{6,1},{3,-1}}",
+        "{{6,-1},{3,1}}"
+      ],
+      "answer": "{{6,1},{3,-1}}",
+      "explanation": "The blank pairs with the middle entry, 2 (row 1, column 2) — the cross-out method says: cover row 1 and column 2, and what's left is the submatrix Det{{6,1},{3,-1}}. Full check: 4(0) + (-2)(-9) + 0(9) = 18."
+    },
+    {
+      "type": "wordbank",
+      "prompt": "Det({{-2,-3,6},{-4,5,6},{-3,-5,3}}) = -2(Det{{5,6},{-5,3}}) + _____(Det{{-4,6},{-3,3}}) + 6(Det{{-4,5},{-3,-5}})",
+      "wordbank": [
+        "3",
+        "4",
+        "2",
+        "-3"
+      ],
+      "answer": "3",
+      "explanation": "The middle term's coefficient isn't just the matrix entry (-3) — the checkerboard cofactor sign at that position is negative, so the coefficient is -(-3) = 3. Full check: -2(45) + (3)(6) + 6(35) = 138."
+    },
+    {
+      "type": "wordbank",
+      "prompt": "Det({{-2,-3,6},{-4,5,6},{-3,-5,3}}) = -2(Det{{5,6},{-5,3}}) + (3)(_____) + 6(Det{{-4,5},{-3,-5}})",
+      "wordbank": [
+        "{{-4,6},{-3,3}}",
+        "{{-4,5},{-3,-5}}",
+        "{{5,6},{-5,3}}",
+        "{{6,-4},{3,-3}}"
+      ],
+      "answer": "{{-4,6},{-3,3}}",
+      "explanation": "The blank pairs with the middle entry, -3 (row 1, column 2) — the cross-out method says: cover row 1 and column 2, and what's left is the submatrix Det{{-4,6},{-3,3}}. Full check: -2(45) + (3)(6) + 6(35) = 138."
+    },
+    {
+      "type": "wordbank",
+      "prompt": "Det({{-2,2,1},{-1,5,1},{-2,3,-5}}) = -2(Det{{5,1},{3,-5}}) + _____(Det{{-1,1},{-2,-5}}) + 1(Det{{-1,5},{-2,3}})",
+      "wordbank": [
+        "-1",
+        "2",
+        "-2",
+        "-3"
+      ],
+      "answer": "-2",
+      "explanation": "The middle term's coefficient isn't just the matrix entry (2) — the checkerboard cofactor sign at that position is negative, so the coefficient is -(2) = -2. Full check: -2(-28) + (-2)(7) + 1(7) = 49."
+    },
+    {
+      "type": "wordbank",
+      "prompt": "Det({{-2,2,1},{-1,5,1},{-2,3,-5}}) = -2(Det{{5,1},{3,-5}}) + (-2)(_____) + 1(Det{{-1,5},{-2,3}})",
+      "wordbank": [
+        "{{1,-1},{-5,-2}}",
+        "{{5,1},{3,-5}}",
+        "{{-1,1},{-2,-5}}",
+        "{{-1,5},{-2,3}}"
+      ],
+      "answer": "{{-1,1},{-2,-5}}",
+      "explanation": "The blank pairs with the middle entry, 2 (row 1, column 2) — the cross-out method says: cover row 1 and column 2, and what's left is the submatrix Det{{-1,1},{-2,-5}}. Full check: -2(-28) + (-2)(7) + 1(7) = 49."
+    },
+    {
+      "type": "wordbank",
+      "prompt": "Det({{-5,2,0},{-4,6,-1},{-4,1,0}}) = -5(Det{{6,-1},{1,0}}) + _____(Det{{-4,-1},{-4,0}}) + 0(Det{{-4,6},{-4,1}})",
+      "wordbank": [
+        "-1",
+        "2",
+        "-2",
+        "-3"
+      ],
+      "answer": "-2",
+      "explanation": "The middle term's coefficient isn't just the matrix entry (2) — the checkerboard cofactor sign at that position is negative, so the coefficient is -(2) = -2. Full check: -5(1) + (-2)(-4) + 0(20) = 3."
+    },
+    {
+      "type": "wordbank",
+      "prompt": "Det({{-5,2,0},{-4,6,-1},{-4,1,0}}) = -5(Det{{6,-1},{1,0}}) + (-2)(_____) + 0(Det{{-4,6},{-4,1}})",
+      "wordbank": [
+        "{{-4,-1},{-4,0}}",
+        "{{6,-1},{1,0}}",
+        "{{-1,-4},{0,-4}}",
+        "{{-4,6},{-4,1}}"
+      ],
+      "answer": "{{-4,-1},{-4,0}}",
+      "explanation": "The blank pairs with the middle entry, 2 (row 1, column 2) — the cross-out method says: cover row 1 and column 2, and what's left is the submatrix Det{{-4,-1},{-4,0}}. Full check: -5(1) + (-2)(-4) + 0(20) = 3."
+    },
+    {
+      "type": "wordbank",
+      "prompt": "Det({{-6,4,-5},{6,2,3},{6,-1,-1}}) = -6(Det{{2,3},{-1,-1}}) + _____(Det{{6,3},{6,-1}}) + -5(Det{{6,2},{6,-1}})",
+      "wordbank": [
+        "-4",
+        "-5",
+        "4",
+        "-3"
+      ],
+      "answer": "-4",
+      "explanation": "The middle term's coefficient isn't just the matrix entry (4) — the checkerboard cofactor sign at that position is negative, so the coefficient is -(4) = -4. Full check: -6(1) + (-4)(-24) + -5(-18) = 180."
+    },
+    {
+      "type": "wordbank",
+      "prompt": "Det({{-6,4,-5},{6,2,3},{6,-1,-1}}) = -6(Det{{2,3},{-1,-1}}) + (-4)(_____) + -5(Det{{6,2},{6,-1}})",
+      "wordbank": [
+        "{{6,3},{6,-1}}",
+        "{{2,3},{-1,-1}}",
+        "{{3,6},{-1,6}}",
+        "{{6,2},{6,-1}}"
+      ],
+      "answer": "{{6,3},{6,-1}}",
+      "explanation": "The blank pairs with the middle entry, 4 (row 1, column 2) — the cross-out method says: cover row 1 and column 2, and what's left is the submatrix Det{{6,3},{6,-1}}. Full check: -6(1) + (-4)(-24) + -5(-18) = 180."
+    },
+    {
+      "type": "wordbank",
+      "prompt": "Det({{5,-1,3},{1,3,6},{1,-5,-5}}) = 5(Det{{3,6},{-5,-5}}) + _____(Det{{1,6},{1,-5}}) + 3(Det{{1,3},{1,-5}})",
+      "wordbank": [
+        "1",
+        "2",
+        "0",
+        "-1"
+      ],
+      "answer": "1",
+      "explanation": "The middle term's coefficient isn't just the matrix entry (-1) — the checkerboard cofactor sign at that position is negative, so the coefficient is -(-1) = 1. Full check: 5(15) + (1)(-11) + 3(-8) = 40."
+    },
+    {
+      "type": "wordbank",
+      "prompt": "Det({{5,-1,3},{1,3,6},{1,-5,-5}}) = 5(Det{{3,6},{-5,-5}}) + (1)(_____) + 3(Det{{1,3},{1,-5}})",
+      "wordbank": [
+        "{{6,1},{-5,1}}",
+        "{{3,6},{-5,-5}}",
+        "{{1,6},{1,-5}}",
+        "{{1,3},{1,-5}}"
+      ],
+      "answer": "{{1,6},{1,-5}}",
+      "explanation": "The blank pairs with the middle entry, -1 (row 1, column 2) — the cross-out method says: cover row 1 and column 2, and what's left is the submatrix Det{{1,6},{1,-5}}. Full check: 5(15) + (1)(-11) + 3(-8) = 40."
+    },
+    {
+      "type": "wordbank",
+      "prompt": "Det({{-2,1,5},{4,-5,-6},{5,5,-2}}) = -2(Det{{-5,-6},{5,-2}}) + _____(Det{{4,-6},{5,-2}}) + 5(Det{{4,-5},{5,5}})",
+      "wordbank": [
+        "-1",
+        "-2",
+        "0",
+        "1"
+      ],
+      "answer": "-1",
+      "explanation": "The middle term's coefficient isn't just the matrix entry (1) — the checkerboard cofactor sign at that position is negative, so the coefficient is -(1) = -1. Full check: -2(40) + (-1)(22) + 5(45) = 123."
+    },
+    {
+      "type": "wordbank",
+      "prompt": "Det({{-2,1,5},{4,-5,-6},{5,5,-2}}) = -2(Det{{-5,-6},{5,-2}}) + (-1)(_____) + 5(Det{{4,-5},{5,5}})",
+      "wordbank": [
+        "{{4,-5},{5,5}}",
+        "{{-5,-6},{5,-2}}",
+        "{{-6,4},{-2,5}}",
+        "{{4,-6},{5,-2}}"
+      ],
+      "answer": "{{4,-6},{5,-2}}",
+      "explanation": "The blank pairs with the middle entry, 1 (row 1, column 2) — the cross-out method says: cover row 1 and column 2, and what's left is the submatrix Det{{4,-6},{5,-2}}. Full check: -2(40) + (-1)(22) + 5(45) = 123."
+    },
+    {
+      "type": "wordbank",
+      "prompt": "Det({{4,3,4},{1,-2,5},{0,4,-1}}) = 4(Det{{-2,5},{4,-1}}) + _____(Det{{1,5},{0,-1}}) + 4(Det{{1,-2},{0,4}})",
+      "wordbank": [
+        "3",
+        "-4",
+        "-2",
+        "-3"
+      ],
+      "answer": "-3",
+      "explanation": "The middle term's coefficient isn't just the matrix entry (3) — the checkerboard cofactor sign at that position is negative, so the coefficient is -(3) = -3. Full check: 4(-18) + (-3)(-1) + 4(4) = -53."
+    },
+    {
+      "type": "wordbank",
+      "prompt": "Det({{4,3,4},{1,-2,5},{0,4,-1}}) = 4(Det{{-2,5},{4,-1}}) + (-3)(_____) + 4(Det{{1,-2},{0,4}})",
+      "wordbank": [
+        "{{-2,5},{4,-1}}",
+        "{{1,5},{0,-1}}",
+        "{{1,-2},{0,4}}",
+        "{{5,1},{-1,0}}"
+      ],
+      "answer": "{{1,5},{0,-1}}",
+      "explanation": "The blank pairs with the middle entry, 3 (row 1, column 2) — the cross-out method says: cover row 1 and column 2, and what's left is the submatrix Det{{1,5},{0,-1}}. Full check: 4(-18) + (-3)(-1) + 4(4) = -53."
+    },
+    {
+      "type": "wordbank",
+      "prompt": "Det({{-6,1,-1},{-4,3,-5},{1,-6,-3}}) = -6(Det{{3,-5},{-6,-3}}) + _____(Det{{-4,-5},{1,-3}}) + -1(Det{{-4,3},{1,-6}})",
+      "wordbank": [
+        "-1",
+        "-2",
+        "0",
+        "1"
+      ],
+      "answer": "-1",
+      "explanation": "The middle term's coefficient isn't just the matrix entry (1) — the checkerboard cofactor sign at that position is negative, so the coefficient is -(1) = -1. Full check: -6(-39) + (-1)(17) + -1(21) = 196."
+    },
+    {
+      "type": "wordbank",
+      "prompt": "Det({{-6,1,-1},{-4,3,-5},{1,-6,-3}}) = -6(Det{{3,-5},{-6,-3}}) + (-1)(_____) + -1(Det{{-4,3},{1,-6}})",
+      "wordbank": [
+        "{{-5,-4},{-3,1}}",
+        "{{-4,3},{1,-6}}",
+        "{{3,-5},{-6,-3}}",
+        "{{-4,-5},{1,-3}}"
+      ],
+      "answer": "{{-4,-5},{1,-3}}",
+      "explanation": "The blank pairs with the middle entry, 1 (row 1, column 2) — the cross-out method says: cover row 1 and column 2, and what's left is the submatrix Det{{-4,-5},{1,-3}}. Full check: -6(-39) + (-1)(17) + -1(21) = 196."
+    },
+    {
+      "type": "wordbank",
+      "prompt": "Det({{6,-2,-4},{5,-3,0},{0,1,-5}}) = 6(Det{{-3,0},{1,-5}}) + _____(Det{{5,0},{0,-5}}) + -4(Det{{5,-3},{0,1}})",
+      "wordbank": [
+        "1",
+        "3",
+        "2",
+        "-2"
+      ],
+      "answer": "2",
+      "explanation": "The middle term's coefficient isn't just the matrix entry (-2) — the checkerboard cofactor sign at that position is negative, so the coefficient is -(-2) = 2. Full check: 6(15) + (2)(-25) + -4(5) = 20."
+    },
+    {
+      "type": "wordbank",
+      "prompt": "Det({{6,-2,-4},{5,-3,0},{0,1,-5}}) = 6(Det{{-3,0},{1,-5}}) + (2)(_____) + -4(Det{{5,-3},{0,1}})",
+      "wordbank": [
+        "{{5,-3},{0,1}}",
+        "{{-3,0},{1,-5}}",
+        "{{5,0},{0,-5}}",
+        "{{0,5},{-5,0}}"
+      ],
+      "answer": "{{5,0},{0,-5}}",
+      "explanation": "The blank pairs with the middle entry, -2 (row 1, column 2) — the cross-out method says: cover row 1 and column 2, and what's left is the submatrix Det{{5,0},{0,-5}}. Full check: 6(15) + (2)(-25) + -4(5) = 20."
+    },
+    {
+      "type": "wordbank",
+      "prompt": "Det({{-4,1,0},{2,-2,-4},{0,2,-2}}) = -4(Det{{-2,-4},{2,-2}}) + _____(Det{{2,-4},{0,-2}}) + 0(Det{{2,-2},{0,2}})",
+      "wordbank": [
+        "-1",
+        "-2",
+        "0",
+        "1"
+      ],
+      "answer": "-1",
+      "explanation": "The middle term's coefficient isn't just the matrix entry (1) — the checkerboard cofactor sign at that position is negative, so the coefficient is -(1) = -1. Full check: -4(12) + (-1)(-4) + 0(4) = -44."
+    },
+    {
+      "type": "wordbank",
+      "prompt": "Det({{-4,1,0},{2,-2,-4},{0,2,-2}}) = -4(Det{{-2,-4},{2,-2}}) + (-1)(_____) + 0(Det{{2,-2},{0,2}})",
+      "wordbank": [
+        "{{-4,2},{-2,0}}",
+        "{{2,-2},{0,2}}",
+        "{{-2,-4},{2,-2}}",
+        "{{2,-4},{0,-2}}"
+      ],
+      "answer": "{{2,-4},{0,-2}}",
+      "explanation": "The blank pairs with the middle entry, 1 (row 1, column 2) — the cross-out method says: cover row 1 and column 2, and what's left is the submatrix Det{{2,-4},{0,-2}}. Full check: -4(12) + (-1)(-4) + 0(4) = -44."
+    },
+    {
+      "type": "wordbank",
+      "prompt": "Det({{-4,-3,4},{-3,-6,1},{3,-4,-2}}) = -4(Det{{-6,1},{-4,-2}}) + _____(Det{{-3,1},{3,-2}}) + 4(Det{{-3,-6},{3,-4}})",
+      "wordbank": [
+        "3",
+        "4",
+        "2",
+        "-3"
+      ],
+      "answer": "3",
+      "explanation": "The middle term's coefficient isn't just the matrix entry (-3) — the checkerboard cofactor sign at that position is negative, so the coefficient is -(-3) = 3. Full check: -4(16) + (3)(3) + 4(30) = 65."
+    },
+    {
+      "type": "wordbank",
+      "prompt": "Det({{-4,-3,4},{-3,-6,1},{3,-4,-2}}) = -4(Det{{-6,1},{-4,-2}}) + (3)(_____) + 4(Det{{-3,-6},{3,-4}})",
+      "wordbank": [
+        "{{1,-3},{-2,3}}",
+        "{{-3,-6},{3,-4}}",
+        "{{-3,1},{3,-2}}",
+        "{{-6,1},{-4,-2}}"
+      ],
+      "answer": "{{-3,1},{3,-2}}",
+      "explanation": "The blank pairs with the middle entry, -3 (row 1, column 2) — the cross-out method says: cover row 1 and column 2, and what's left is the submatrix Det{{-3,1},{3,-2}}. Full check: -4(16) + (3)(3) + 4(30) = 65."
+    },
+    {
+      "type": "wordbank",
+      "prompt": "Det({{-2,-6,-4},{0,2,-1},{3,3,-1}}) = -2(Det{{2,-1},{3,-1}}) + _____(Det{{0,-1},{3,-1}}) + -4(Det{{0,2},{3,3}})",
+      "wordbank": [
+        "5",
+        "-6",
+        "6",
+        "7"
+      ],
+      "answer": "6",
+      "explanation": "The middle term's coefficient isn't just the matrix entry (-6) — the checkerboard cofactor sign at that position is negative, so the coefficient is -(-6) = 6. Full check: -2(1) + (6)(3) + -4(-6) = 40."
+    },
+    {
+      "type": "wordbank",
+      "prompt": "Det({{-2,-6,-4},{0,2,-1},{3,3,-1}}) = -2(Det{{2,-1},{3,-1}}) + (6)(_____) + -4(Det{{0,2},{3,3}})",
+      "wordbank": [
+        "{{0,-1},{3,-1}}",
+        "{{0,2},{3,3}}",
+        "{{2,-1},{3,-1}}",
+        "{{-1,0},{-1,3}}"
+      ],
+      "answer": "{{0,-1},{3,-1}}",
+      "explanation": "The blank pairs with the middle entry, -6 (row 1, column 2) — the cross-out method says: cover row 1 and column 2, and what's left is the submatrix Det{{0,-1},{3,-1}}. Full check: -2(1) + (6)(3) + -4(-6) = 40."
+    }
+  ]
+}

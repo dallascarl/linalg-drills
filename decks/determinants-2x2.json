@@ -1,0 +1,169 @@
+{
+  "id": "determinants-2x2",
+  "title": "2×2 Determinants",
+  "description": "Quick-fire practice computing 2×2 determinants directly from the definition (Anton §2.1). Type in the number.",
+  "questionsPerAttempt": 5,
+  "pointsPerQuestion": 1,
+  "questions": [
+    {
+      "type": "type",
+      "prompt": "Find the determinant: $\\det\\begin{bmatrix} -6 & -9 \\\\ -1 & -2 \\end{bmatrix}$",
+      "answer": [
+        "3"
+      ],
+      "explanation": "$\\det = (-6)(-2) - (-9)(-1) = 12 - 9 = 3$"
+    },
+    {
+      "type": "type",
+      "prompt": "Find the determinant: $\\det\\begin{bmatrix} -2 & -5 \\\\ -6 & 8 \\end{bmatrix}$",
+      "answer": [
+        "-46"
+      ],
+      "explanation": "$\\det = (-2)(8) - (-5)(-6) = -16 - 30 = -46$"
+    },
+    {
+      "type": "type",
+      "prompt": "Find the determinant: $\\det\\begin{bmatrix} -7 & 9 \\\\ 4 & -8 \\end{bmatrix}$",
+      "answer": [
+        "20"
+      ],
+      "explanation": "$\\det = (-7)(-8) - (9)(4) = 56 - 36 = 20$"
+    },
+    {
+      "type": "type",
+      "prompt": "Find the determinant: $\\det\\begin{bmatrix} -9 & -7 \\\\ -3 & -2 \\end{bmatrix}$",
+      "answer": [
+        "-3"
+      ],
+      "explanation": "$\\det = (-9)(-2) - (-7)(-3) = 18 - 21 = -3$"
+    },
+    {
+      "type": "type",
+      "prompt": "Find the determinant: $\\det\\begin{bmatrix} 7 & -9 \\\\ 8 & -3 \\end{bmatrix}$",
+      "answer": [
+        "51"
+      ],
+      "explanation": "$\\det = (7)(-3) - (-9)(8) = -21 - -72 = 51$"
+    },
+    {
+      "type": "type",
+      "prompt": "Find the determinant: $\\det\\begin{bmatrix} 8 & 4 \\\\ -2 & 5 \\end{bmatrix}$",
+      "answer": [
+        "48"
+      ],
+      "explanation": "$\\det = (8)(5) - (4)(-2) = 40 - -8 = 48$"
+    },
+    {
+      "type": "type",
+      "prompt": "Find the determinant: $\\det\\begin{bmatrix} 9 & -1 \\\\ -9 & -4 \\end{bmatrix}$",
+      "answer": [
+        "-45"
+      ],
+      "explanation": "$\\det = (9)(-4) - (-1)(-9) = -36 - 9 = -45$"
+    },
+    {
+      "type": "type",
+      "prompt": "Find the determinant: $\\det\\begin{bmatrix} 4 & 1 \\\\ -1 & -5 \\end{bmatrix}$",
+      "answer": [
+        "-19"
+      ],
+      "explanation": "$\\det = (4)(-5) - (1)(-1) = -20 - -1 = -19$"
+    },
+    {
+      "type": "type",
+      "prompt": "Find the determinant: $\\det\\begin{bmatrix} -3 & 1 \\\\ -6 & -7 \\end{bmatrix}$",
+      "answer": [
+        "27"
+      ],
+      "explanation": "$\\det = (-3)(-7) - (1)(-6) = 21 - -6 = 27$"
+    },
+    {
+      "type": "type",
+      "prompt": "Find the determinant: $\\det\\begin{bmatrix} 3 & -6 \\\\ 2 & 2 \\end{bmatrix}$",
+      "answer": [
+        "18"
+      ],
+      "explanation": "$\\det = (3)(2) - (-6)(2) = 6 - -12 = 18$"
+    },
+    {
+      "type": "type",
+      "prompt": "Find the determinant: $\\det\\begin{bmatrix} -1 & -8 \\\\ 5 & 8 \\end{bmatrix}$",
+      "answer": [
+        "32"
+      ],
+      "explanation": "$\\det = (-1)(8) - (-8)(5) = -8 - -40 = 32$"
+    },
+    {
+      "type": "type",
+      "prompt": "Find the determinant: $\\det\\begin{bmatrix} -6 & 3 \\\\ -7 & 8 \\end{bmatrix}$",
+      "answer": [
+        "-27"
+      ],
+      "explanation": "$\\det = (-6)(8) - (3)(-7) = -48 - -21 = -27$"
+    },
+    {
+      "type": "type",
+      "prompt": "Find the determinant: $\\det\\begin{bmatrix} 0 & 2 \\\\ 9 & -3 \\end{bmatrix}$",
+      "answer": [
+        "-18"
+      ],
+      "explanation": "$\\det = (0)(-3) - (2)(9) = 0 - 18 = -18$"
+    },
+    {
+      "type": "type",
+      "prompt": "Find the determinant: $\\det\\begin{bmatrix} -7 & -8 \\\\ -2 & 0 \\end{bmatrix}$",
+      "answer": [
+        "-16"
+      ],
+      "explanation": "$\\det = (-7)(0) - (-8)(-2) = 0 - 16 = -16$"
+    },
+    {
+      "type": "type",
+      "prompt": "Find the determinant: $\\det\\begin{bmatrix} -7 & -2 \\\\ -6 & 3 \\end{bmatrix}$",
+      "answer": [
+        "-33"
+      ],
+      "explanation": "$\\det = (-7)(3) - (-2)(-6) = -21 - 12 = -33$"
+    },
+    {
+      "type": "type",
+      "prompt": "Find the determinant: $\\det\\begin{bmatrix} -1 & 5 \\\\ 2 & -4 \\end{bmatrix}$",
+      "answer": [
+        "-6"
+      ],
+      "explanation": "$\\det = (-1)(-4) - (5)(2) = 4 - 10 = -6$"
+    },
+    {
+      "type": "type",
+      "prompt": "Find the determinant: $\\det\\begin{bmatrix} 2 & 2 \\\\ -3 & -1 \\end{bmatrix}$",
+      "answer": [
+        "4"
+      ],
+      "explanation": "$\\det = (2)(-1) - (2)(-3) = -2 - -6 = 4$"
+    },
+    {
+      "type": "type",
+      "prompt": "Find the determinant: $\\det\\begin{bmatrix} -7 & -4 \\\\ 8 & -2 \\end{bmatrix}$",
+      "answer": [
+        "46"
+      ],
+      "explanation": "$\\det = (-7)(-2) - (-4)(8) = 14 - -32 = 46$"
+    },
+    {
+      "type": "type",
+      "prompt": "Find the determinant: $\\det\\begin{bmatrix} -4 & 5 \\\\ 3 & -1 \\end{bmatrix}$",
+      "answer": [
+        "-11"
+      ],
+      "explanation": "$\\det = (-4)(-1) - (5)(3) = 4 - 15 = -11$"
+    },
+    {
+      "type": "type",
+      "prompt": "Find the determinant: $\\det\\begin{bmatrix} 8 & -2 \\\\ 1 & -8 \\end{bmatrix}$",
+      "answer": [
+        "-62"
+      ],
+      "explanation": "$\\det = (8)(-8) - (-2)(1) = -64 - -2 = -62$"
+    }
+  ]
+}
