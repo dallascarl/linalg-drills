@@ -241,12 +241,12 @@
     },
     {
       "type": "mc",
-      "prompt": "For A = [a,b; c,d], adj(A) equals",
+      "prompt": "For A = $\\begin{bmatrix}a&b\\\\c&d\\end{bmatrix}$, adj(A) equals",
       "choices": [
-        "[d,-b; -c,a]",
-        "[d,b; c,a]",
-        "[a,-b; -c,d]",
-        "[-d,b; c,-a]"
+        "$\\begin{bmatrix}d&-b\\\\-c&a\\end{bmatrix}$",
+        "$\\begin{bmatrix}d&b\\\\c&a\\end{bmatrix}$",
+        "$\\begin{bmatrix}a&-b\\\\-c&d\\end{bmatrix}$",
+        "$\\begin{bmatrix}-d&b\\\\c&-a\\end{bmatrix}$"
       ],
       "answer": 0,
       "explanations": [
@@ -258,7 +258,7 @@
     },
     {
       "type": "type",
-      "prompt": "A = [5,2; 3,1]. What is det(A)?",
+      "prompt": "A = $\\begin{bmatrix}5&2\\\\3&1\\end{bmatrix}$. What is det(A)?",
       "answer": [
         "-1"
       ],
@@ -266,19 +266,19 @@
     },
     {
       "type": "type",
-      "prompt": "A = [5,2; 3,1]. Using the adjoint formula, what is the (1,1) entry of A⁻¹?",
+      "prompt": "A = $\\begin{bmatrix}5&2\\\\3&1\\end{bmatrix}$. Using the adjoint formula, what is the (1,1) entry of A⁻¹?",
       "answer": [
         "-1"
       ],
-      "explanation": "adj(A) = [1,-2; -3,5], det(A) = -1, so A⁻¹ = (1/-1)[1,-2; -3,5] = [-1,2; 3,-5]. The (1,1) entry is -1."
+      "explanation": "adj(A) = $\\begin{bmatrix}1&-2\\\\-3&5\\end{bmatrix}$, det(A) = -1, so A⁻¹ = (1/-1)$\\begin{bmatrix}1&-2\\\\-3&5\\end{bmatrix}$ = $\\begin{bmatrix}-1&2\\\\3&-5\\end{bmatrix}$. The (1,1) entry is -1."
     },
     {
       "type": "type",
-      "prompt": "A = [5,2; 3,1]. Using the adjoint formula, what is the (2,2) entry of A⁻¹?",
+      "prompt": "A = $\\begin{bmatrix}5&2\\\\3&1\\end{bmatrix}$. Using the adjoint formula, what is the (2,2) entry of A⁻¹?",
       "answer": [
         "-5"
       ],
-      "explanation": "adj(A) = [1,-2; -3,5], det(A) = -1, so A⁻¹ = (1/-1)[1,-2; -3,5] = [-1,2; 3,-5]. The (2,2) entry is -5."
+      "explanation": "adj(A) = $\\begin{bmatrix}1&-2\\\\-3&5\\end{bmatrix}$, det(A) = -1, so A⁻¹ = (1/-1)$\\begin{bmatrix}1&-2\\\\-3&5\\end{bmatrix}$ = $\\begin{bmatrix}-1&2\\\\3&-5\\end{bmatrix}$. The (2,2) entry is -5."
     },
     {
       "type": "mc",
@@ -648,13 +648,13 @@
     },
     {
       "type": "type",
-      "prompt": "A = [2,0; 0,3]. Using the adjoint formula, what is the (2,2) entry of A⁻¹?",
+      "prompt": "A = $\\begin{bmatrix}2&0\\\\0&3\\end{bmatrix}$. Using the adjoint formula, what is the (2,2) entry of A⁻¹?",
       "answer": [
         "1/3",
         "0.333",
         "0.3333"
       ],
-      "explanation": "det(A) = 6, adj(A) = [3,0; 0,2], so A⁻¹ = (1/6)[3,0; 0,2] = [1/2,0; 0,1/3]. The (2,2) entry is 1/3 — matching the direct inverse of a diagonal matrix."
+      "explanation": "det(A) = 6, adj(A) = $\\begin{bmatrix}3&0\\\\0&2\\end{bmatrix}$, so A⁻¹ = (1/6)$\\begin{bmatrix}3&0\\\\0&2\\end{bmatrix}$ = $\\begin{bmatrix}1/2&0\\\\0&1/3\\end{bmatrix}$. The (2,2) entry is 1/3 — matching the direct inverse of a diagonal matrix."
     },
     {
       "type": "mc",
