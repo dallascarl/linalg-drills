@@ -1,5 +1,5 @@
 {
-  "id": "determinants-properties-day13",
+  "id": "determinants-properties-day14",
   "title": "Determinants II: Row Reduction & Properties",
   "description": "Evaluate determinants by row reduction, then apply the key properties (transpose, row operations, scaling, products, invertibility) to predict a determinant without recomputing it (Anton §2.2–2.3).",
   "questionsPerAttempt": 8,
