@@ -732,11 +732,16 @@ async function fetchDeck(id){
 // yy = total graded questions across decks currently visible to students.
 // xx = sum of a profile's best raw grade on those same decks.
 async function getVisibleGradedDeckTotals(){
-  const visible = manifest.filter(e => !appSettings.hiddenDecks.includes(e.id) && !e.ungraded);
+  const visible = manifest.filter(e => !appSettings.hiddenDecks.includes(e.id));
   const totals = {};
   for (const entry of visible){
     try {
       const deck = decksById[entry.id] || await fetchDeck(entry.id);
+      // Check the deck's own "ungraded" flag AFTER loading it — entry.ungraded on
+      // the manifest object is only accurate once a deck has been fetched at least
+      // once this session, so filtering on it before fetching wrongly counted
+      // ungraded decks (like fun-trivia) toward the max on a fresh sign-in.
+      if (deck.ungraded) continue;
       totals[entry.id] = deck.questionsPerAttempt || deck.questions.length;
     } catch (e) {
       // Skip a deck that fails to load rather than breaking the whole summary
