@@ -1,0 +1,213 @@
+{
+  "id": "dimension-4-5",
+  "title": "Dimension (4.5)",
+  "description": "The Basis Size Theorem, the definition of dim(V), computing dimensions of R^n, P_n, M_mn and subspaces, the Plus/Minus shortcut theorems, and the Subspace Dimension Theorem. 8 questions pulled per attempt from a pool of 28.",
+  "questionsPerAttempt": 8,
+  "pointsPerQuestion": 1,
+  "questions": [
+    {
+      "type": "wordbank",
+      "prompt": "The number of vectors in a basis for a finite-dimensional vector space V is called the _____ of V.",
+      "wordbank": ["dimension", "rank", "span", "order"],
+      "answer": "dimension",
+      "explanation": "dim(V) is defined as the number of vectors in any one basis for V — the Basis Size Theorem guarantees this number doesn't depend on which basis you pick."
+    },
+    {
+      "type": "wordbank",
+      "prompt": "By convention, dim({0}), the dimension of the zero vector space, is _____.",
+      "wordbank": ["zero", "one", "undefined", "infinite"],
+      "answer": "zero",
+      "explanation": "The empty set is considered a basis for {0}, so by convention dim({0}) = 0."
+    },
+    {
+      "type": "wordbank",
+      "prompt": "A vector space with no finite basis (like the space of all polynomials of every degree) is called _____-dimensional.",
+      "wordbank": ["infinite", "finite", "zero", "undefined"],
+      "answer": "infinite",
+      "explanation": "No finite set of polynomials can span every polynomial, so that space has no finite basis and is infinite-dimensional."
+    },
+    {
+      "type": "wordbank",
+      "prompt": "The standard basis for P_n (polynomials of degree ≤ n) is {1, x, x^2, ..., x^n}, which has _____ vectors.",
+      "wordbank": ["n+1", "n", "n-1", "2n"],
+      "answer": "n+1",
+      "explanation": "Counting 1, x, x^2, ..., x^n gives n+1 terms, so dim P_n = n+1 — the classic off-by-one to watch for."
+    },
+    {
+      "type": "wordbank",
+      "prompt": "If dim V = n and S is a set of exactly n linearly independent vectors in V, then S is automatically a _____ for V.",
+      "wordbank": ["basis", "spanning set only", "subspace", "dependent set"],
+      "answer": "basis",
+      "explanation": "This is Shortcut Theorem #1: with the right number of vectors, independence alone is enough — spanning comes for free."
+    },
+    {
+      "type": "wordbank",
+      "prompt": "If W is a subspace of a finite-dimensional vector space V, then dim W _____ dim V.",
+      "wordbank": ["≤", "<", "=", "≥"],
+      "answer": "≤",
+      "explanation": "The Subspace Dimension Theorem allows equality — dim W = dim V happens exactly when W = V."
+    },
+    {
+      "type": "mc",
+      "prompt": "True or False: Every basis for a given finite-dimensional vector space has the same number of vectors.",
+      "choices": ["True", "False"],
+      "answer": 0,
+      "explanations": [
+        "This is exactly the Basis Size Theorem — it's what makes dim(V) a well-defined number.",
+        null
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "True or False: A set of 4 vectors can be linearly independent in R^3.",
+      "choices": ["True", "False"],
+      "answer": 1,
+      "explanations": [
+        null,
+        "R^3 is 3-dimensional, and any set of more than 3 vectors in a 3-dimensional space is automatically linearly dependent."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "True or False: A set of 2 vectors can span R^3.",
+      "choices": ["True", "False"],
+      "answer": 1,
+      "explanations": [
+        null,
+        "Fewer than dim(V) vectors can never span an n-dimensional space — there simply aren't enough of them."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "What is dim(P_5)?",
+      "choices": ["5", "6", "4", "10"],
+      "answer": 1,
+      "explanations": [null, "The standard basis {1, x, x^2, x^3, x^4, x^5} has 6 vectors.", null, null]
+    },
+    {
+      "type": "mc",
+      "prompt": "What is dim(M_{3,4}), the space of all 3×4 matrices?",
+      "choices": ["7", "12", "3", "4"],
+      "answer": 1,
+      "explanations": [null, "dim(M_mn) = mn, so dim(M_{3,4}) = 3×4 = 12.", null, null]
+    },
+    {
+      "type": "mc",
+      "prompt": "If S has exactly dim(V) vectors and spans V, then S is automatically ___.",
+      "choices": ["linearly independent (a basis)", "linearly dependent", "a proper subspace", "the zero vector"],
+      "answer": 0,
+      "explanations": ["This is Shortcut Theorem #2: with the right number of vectors, spanning alone is enough.", null, null, null]
+    },
+    {
+      "type": "mc",
+      "prompt": "A plane through the origin in R^3 has dimension ___.",
+      "choices": ["1", "2", "3", "0"],
+      "answer": 1,
+      "explanations": [null, "A plane through the origin is spanned by 2 independent vectors, matching the geometric picture.", null, null]
+    },
+    {
+      "type": "mc",
+      "prompt": "A line through the origin in R^4 has dimension ___.",
+      "choices": ["1", "2", "3", "4"],
+      "answer": 0,
+      "explanations": ["A single nonzero vector is automatically independent, so it forms a basis for the line all by itself.", null, null, null]
+    },
+    {
+      "type": "mc",
+      "prompt": "True or False: If W is a subspace of finite-dimensional V and dim W = dim V, then W = V.",
+      "choices": ["True", "False"],
+      "answer": 0,
+      "explanations": [
+        "This is the equality case of the Subspace Dimension Theorem.",
+        null
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "True or False: It's possible for a PROPER subspace W of V (that is, W ≠ V) to satisfy dim W = dim V.",
+      "choices": ["True", "False"],
+      "answer": 1,
+      "explanations": [
+        null,
+        "The Subspace Dimension Theorem rules this out: equal dimension forces W to be all of V, not a proper subspace."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "True or False: If dim V = n, you can confirm a set of n vectors is a basis for V by checking ONLY independence OR ONLY spanning, never both.",
+      "choices": ["True", "False"],
+      "answer": 0,
+      "explanations": [
+        "This is the whole point of the Plus/Minus shortcut theorems — with exactly n vectors, either property implies the other.",
+        null
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "A set of 5 vectors is proposed as a basis for a 4-dimensional space V. Without doing any further computation, you can already conclude the set is ___.",
+      "choices": ["not a basis (too many vectors, automatically dependent)", "definitely a basis", "a basis only if it also spans", "impossible to determine"],
+      "answer": 0,
+      "explanations": ["More vectors than dim(V) are always linearly dependent, so a basis is impossible regardless of what else is checked.", null, null, null]
+    },
+    {
+      "type": "type",
+      "prompt": "Find dim(R^7).",
+      "answer": ["7"],
+      "explanation": "The standard basis e1, ..., e7 has 7 vectors."
+    },
+    {
+      "type": "type",
+      "prompt": "Find dim(P_6).",
+      "answer": ["7"],
+      "explanation": "The standard basis {1, x, x^2, ..., x^6} has 7 vectors — remember the +1."
+    },
+    {
+      "type": "type",
+      "prompt": "Find dim(M_{2,5}), the space of all 2×5 matrices.",
+      "answer": ["10"],
+      "explanation": "dim(M_mn) = mn = 2×5 = 10."
+    },
+    {
+      "type": "type",
+      "prompt": "How many vectors are in the standard basis for M_{4,4} (all 4×4 matrices)?",
+      "answer": ["16"],
+      "explanation": "dim(M_mn) = mn = 4×4 = 16, one basis matrix for each entry position."
+    },
+    {
+      "type": "type",
+      "prompt": "Let W = {(x,y,z) in R^3 : 2x + y - z = 0}. Find dim W.",
+      "answer": ["2"],
+      "explanation": "W is a plane through the origin (defined by one linear equation in R^3), so it has a basis of 2 independent vectors, e.g. {(1,-2,0), (0,1,1)}."
+    },
+    {
+      "type": "type",
+      "prompt": "Let L = span{(3, 0, -1, 2)} inside R^4. Find dim L.",
+      "answer": ["1"],
+      "explanation": "A single nonzero vector is automatically linearly independent, so it's a basis for L all by itself."
+    },
+    {
+      "type": "type",
+      "prompt": "Find the dimension of the space of all symmetric 3×3 matrices (matrices with A = A^T).",
+      "answer": ["6"],
+      "explanation": "A symmetric 3x3 matrix has 6 free entries (3 diagonal, 3 above the diagonal — the entries below are forced to match), giving a basis of 6 matrices."
+    },
+    {
+      "type": "type",
+      "prompt": "In R^3, let v1=(2,1,0), v2=(0,1,3), v3=(1,0,-1). Since dim R^3 = 3 and there are exactly 3 vectors here, checking independence alone tells you whether this is a basis. The determinant of the matrix with these as columns is 1. Is {v1, v2, v3} a basis for R^3? Enter YES or NO.",
+      "answer": ["YES", "yes"],
+      "explanation": "The determinant is nonzero, so the 3 vectors are independent, and by Shortcut Theorem #1, exactly 3 independent vectors in a 3-dimensional space form a basis."
+    },
+    {
+      "type": "type",
+      "prompt": "dim V = 4, and a candidate set of 5 vectors is offered as a basis for V. Without any further computation, is this set a basis? Enter YES or NO.",
+      "answer": ["NO", "no"],
+      "explanation": "Any set with more vectors than dim(V) is automatically linearly dependent, so it can never be a basis."
+    },
+    {
+      "type": "type",
+      "prompt": "dim V = 4, and a candidate set of only 3 vectors is offered as a basis for V. Without any further computation, could this set possibly be a basis? Enter YES or NO.",
+      "answer": ["NO", "no"],
+      "explanation": "Fewer vectors than dim(V) can never span V, so the set can't be a basis no matter what those 3 vectors are."
+    }
+  ]
+}
