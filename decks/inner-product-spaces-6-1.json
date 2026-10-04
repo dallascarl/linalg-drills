@@ -1,0 +1,776 @@
+{
+  "id": "inner-product-spaces-6-1",
+  "title": "Inner Product Spaces (6.1)",
+  "description": "Day 35: inner product axioms, bilinearity, norm, distance, unit vectors, Theorem 6.1.1, weighted Euclidean, matrix-generated, M22 trace, P2, and C[a,b] inner products, impostors, and real vs. complex inner products. 10 questions pulled per attempt from a pool of 60.",
+  "questionsPerAttempt": 10,
+  "pointsPerQuestion": 1,
+  "questions": [
+    {
+      "type": "wordbank",
+      "prompt": "The axiom $\\langle u,v\\rangle = \\langle v,u\\rangle$ for a real inner product is called _____.",
+      "wordbank": [
+        "symmetry",
+        "additivity",
+        "homogeneity",
+        "positivity"
+      ],
+      "answer": "symmetry",
+      "explanation": "Swapping the two inputs doesn't change a real inner product."
+    },
+    {
+      "type": "wordbank",
+      "prompt": "The axiom $\\langle u+v,w\\rangle=\\langle u,w\\rangle+\\langle v,w\\rangle$ is called _____.",
+      "wordbank": [
+        "additivity",
+        "symmetry",
+        "positivity",
+        "homogeneity"
+      ],
+      "answer": "additivity",
+      "explanation": "The inner product distributes over vector addition in each slot."
+    },
+    {
+      "type": "wordbank",
+      "prompt": "The axiom $\\langle ku,v\\rangle = k\\langle u,v\\rangle$ is called _____.",
+      "wordbank": [
+        "homogeneity",
+        "additivity",
+        "symmetry",
+        "positivity"
+      ],
+      "answer": "homogeneity",
+      "explanation": "Scalars pull out of the slot."
+    },
+    {
+      "type": "wordbank",
+      "prompt": "The axiom “$\\langle v,v\\rangle\\ge 0$, with equality only when $v=0$” is called _____.",
+      "wordbank": [
+        "positivity",
+        "symmetry",
+        "homogeneity",
+        "additivity"
+      ],
+      "answer": "positivity",
+      "explanation": "It is also called positive definiteness. It is what makes lengths meaningful."
+    },
+    {
+      "type": "wordbank",
+      "prompt": "In any inner product space, the norm of $v$ is defined as $\\|v\\| =$ _____.",
+      "wordbank": [
+        "$\\sqrt{\\langle v,v\\rangle}$",
+        "$\\langle v,v\\rangle$",
+        "$\\langle v,v\\rangle^2$",
+        "$|\\langle v,1\\rangle|$"
+      ],
+      "answer": "$\\sqrt{\\langle v,v\\rangle}$",
+      "explanation": "The norm is the square root of the vector's inner product with itself."
+    },
+    {
+      "type": "wordbank",
+      "prompt": "In an inner product space, the distance between $u$ and $v$ is $d(u,v)=$ _____.",
+      "wordbank": [
+        "$\\|u-v\\|$",
+        "$\\langle u,v\\rangle$",
+        "$\\|u\\|-\\|v\\|$",
+        "$\\|u\\|+\\|v\\|$"
+      ],
+      "answer": "$\\|u-v\\|$",
+      "explanation": "Distance is the norm of the difference."
+    },
+    {
+      "type": "wordbank",
+      "prompt": "Because an inner product is linear in each slot separately, we say it is _____.",
+      "wordbank": [
+        "bilinear",
+        "symmetric",
+        "invertible",
+        "orthogonal"
+      ],
+      "answer": "bilinear",
+      "explanation": "Linear in the first slot plus symmetry gives linearity in the second slot too."
+    },
+    {
+      "type": "wordbank",
+      "prompt": "For a complex inner product, symmetry is replaced by _____ symmetry: $\\langle u,v\\rangle=\\overline{\\langle v,u\\rangle}$.",
+      "wordbank": [
+        "conjugate",
+        "skew",
+        "anti",
+        "reflexive"
+      ],
+      "answer": "conjugate",
+      "explanation": "Swapping the inputs conjugates the value."
+    },
+    {
+      "type": "wordbank",
+      "prompt": "The standard inner product on $C[a,b]$ is $\\langle f,g\\rangle=$ _____.",
+      "wordbank": [
+        "$\\int_a^b f(x)g(x)\\,dx$",
+        "$f(a)g(b)$",
+        "$\\int_a^b (f+g)\\,dx$",
+        "$f'(x)g'(x)$"
+      ],
+      "answer": "$\\int_a^b f(x)g(x)\\,dx$",
+      "explanation": "Multiply the functions and integrate. It is a continuous version of the dot product."
+    },
+    {
+      "type": "mc",
+      "prompt": "In a real inner product space, $\\langle u,v\\rangle=\\langle v,u\\rangle$ for all $u,v$.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "That is the symmetry axiom."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "In a real inner product space, $\\langle u,kv\\rangle = k\\langle u,v\\rangle$.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "Use symmetry, pull the scalar out of the first slot, then use symmetry again."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "In any inner product space, $\\langle 0,v\\rangle = 0$ for every $v$.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "$\\langle 0,v\\rangle=\\langle 0\\cdot 0,v\\rangle = 0\\langle 0,v\\rangle=0$."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "In a real inner product space, $\\langle u,v\\rangle$ is always nonnegative.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 1,
+      "explanations": [
+        "Only $\\langle v,v\\rangle$ must be nonnegative. $\\langle u,v\\rangle$ itself can be negative. For example, $(1,0)\\cdot(-1,0)=-1$.",
+        null
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "If $\\langle v,v\\rangle = 0$, then $v$ must be the zero vector.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "That is part of the positivity axiom."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "$\\|kv\\| = k\\|v\\|$ for every scalar $k$.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 1,
+      "explanations": [
+        "It is $|k|\\,\\|v\\|$. A norm can never be negative, so $k=-2$ gives $2\\|v\\|$, not $-2\\|v\\|$.",
+        null
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "$d(u,v)=d(v,u)$ in every inner product space.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "$\\|u-v\\|=\\|-(v-u)\\|=|-1|\\,\\|v-u\\|$."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "Each vector space has exactly one inner product.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 1,
+      "explanations": [
+        "A space can have many: $\\mathbb{R}^2$ has the dot product, every positive weighted product, every matrix-generated product, and more.",
+        null
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "The length of a vector depends on which inner product you use.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "$(1,0)$ has length 1 under the dot product but length 2 under $\\langle u,v\\rangle=4u_1v_1+u_2v_2$."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "$\\langle u+v,u+v\\rangle = \\langle u,u\\rangle + \\langle v,v\\rangle$ in every inner product space.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 1,
+      "explanations": [
+        "Bilinearity gives $\\langle u,u\\rangle+2\\langle u,v\\rangle+\\langle v,v\\rangle$. The middle term vanishes only when $\\langle u,v\\rangle=0$.",
+        null
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "In a complex inner product space, $\\langle u,v\\rangle$ always equals $\\langle v,u\\rangle$.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 1,
+      "explanations": [
+        "They are complex conjugates: $\\langle u,v\\rangle=\\overline{\\langle v,u\\rangle}$. They are equal only when the value is real.",
+        null
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "In a complex inner product space, $\\langle v,v\\rangle$ is always a real number.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "By conjugate symmetry, $\\langle v,v\\rangle$ equals its own conjugate, so it is real. Positivity then makes it $\\ge 0$."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "The unit “circle” $\\{v:\\|v\\|=1\\}$ in $\\mathbb{R}^2$ is always a circle, whatever inner product you use.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 1,
+      "explanations": [
+        "For $3u_1v_1+2u_2v_2$ it is the ellipse $3x^2+2y^2=1$. Matrix-generated inner products give tilted ellipses.",
+        null
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "If $v\\ne 0$, then $v/\\|v\\|$ is a unit vector.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "By Theorem 6.1.1(b), $\\|v/\\|v\\|\\,\\|=\\frac{1}{\\|v\\|}\\|v\\|=1$, in any inner product."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "Is $\\langle u,v\\rangle = 3u_1v_1+2u_2v_2$ an inner product on $\\mathbb{R}^2$?",
+      "choices": [
+        "No — additivity fails",
+        "No — positivity fails",
+        "Yes",
+        "No — symmetry fails"
+      ],
+      "answer": 2,
+      "explanations": [
+        "It is a weighted Euclidean inner product with positive weights, so all four axioms hold.",
+        "It is a weighted Euclidean inner product with positive weights, so all four axioms hold.",
+        null,
+        "It is a weighted Euclidean inner product with positive weights, so all four axioms hold."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "Is $\\langle u,v\\rangle = u_1v_1-u_2v_2$ an inner product on $\\mathbb{R}^2$?",
+      "choices": [
+        "No — positivity fails",
+        "No — symmetry fails",
+        "No — homogeneity fails",
+        "Yes"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "$\\langle(0,1),(0,1)\\rangle=-1<0$.",
+        "$\\langle(0,1),(0,1)\\rangle=-1<0$.",
+        "$\\langle(0,1),(0,1)\\rangle=-1<0$."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "Is $\\langle u,v\\rangle = u_1v_1$ an inner product on $\\mathbb{R}^2$?",
+      "choices": [
+        "Yes",
+        "No — positivity fails",
+        "No — additivity fails",
+        "No — symmetry fails"
+      ],
+      "answer": 1,
+      "explanations": [
+        "$(0,1)\\ne 0$ but $\\langle (0,1),(0,1)\\rangle = 0$.",
+        null,
+        "$(0,1)\\ne 0$ but $\\langle (0,1),(0,1)\\rangle = 0$.",
+        "$(0,1)\\ne 0$ but $\\langle (0,1),(0,1)\\rangle = 0$."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "Is $\\langle u,v\\rangle = u_1v_2+u_2v_1$ an inner product on $\\mathbb{R}^2$?",
+      "choices": [
+        "No — positivity fails",
+        "Yes",
+        "No — additivity fails",
+        "No — symmetry fails"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "It is symmetric and bilinear, but $\\langle(1,-1),(1,-1)\\rangle=-2$.",
+        "It is symmetric and bilinear, but $\\langle(1,-1),(1,-1)\\rangle=-2$.",
+        "It is symmetric and bilinear, but $\\langle(1,-1),(1,-1)\\rangle=-2$."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "Is $\\langle u,v\\rangle = |u_1v_1|+|u_2v_2|$ an inner product on $\\mathbb{R}^2$?",
+      "choices": [
+        "No — positivity fails",
+        "No — symmetry fails",
+        "Yes",
+        "No — homogeneity fails"
+      ],
+      "answer": 3,
+      "explanations": [
+        "With $k=-1$: $\\langle -u,v\\rangle=\\langle u,v\\rangle$, but homogeneity requires $-\\langle u,v\\rangle$.",
+        "With $k=-1$: $\\langle -u,v\\rangle=\\langle u,v\\rangle$, but homogeneity requires $-\\langle u,v\\rangle$.",
+        "With $k=-1$: $\\langle -u,v\\rangle=\\langle u,v\\rangle$, but homogeneity requires $-\\langle u,v\\rangle$.",
+        null
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "Is $\\langle p,q\\rangle = p(0)q(0)+p(1)q(1)$ an inner product on $P_2$?",
+      "choices": [
+        "No — symmetry fails",
+        "Yes",
+        "No — additivity fails",
+        "No — positivity fails"
+      ],
+      "answer": 3,
+      "explanations": [
+        "$p=x^2-x$ is nonzero but vanishes at 0 and 1, so $\\langle p,p\\rangle=0$.",
+        "$p=x^2-x$ is nonzero but vanishes at 0 and 1, so $\\langle p,p\\rangle=0$.",
+        "$p=x^2-x$ is nonzero but vanishes at 0 and 1, so $\\langle p,p\\rangle=0$.",
+        null
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "Is $\\langle p,q\\rangle = p(-1)q(-1)+p(0)q(0)+p(1)q(1)$ an inner product on $P_2$?",
+      "choices": [
+        "No — positivity fails",
+        "Yes",
+        "No — homogeneity fails",
+        "No — symmetry fails"
+      ],
+      "answer": 1,
+      "explanations": [
+        "A nonzero polynomial of degree at most 2 can't have three roots, so $\\langle p,p\\rangle>0$ whenever $p\\ne 0$.",
+        null,
+        "A nonzero polynomial of degree at most 2 can't have three roots, so $\\langle p,p\\rangle>0$ whenever $p\\ne 0$.",
+        "A nonzero polynomial of degree at most 2 can't have three roots, so $\\langle p,p\\rangle>0$ whenever $p\\ne 0$."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "Is $\\langle p,q\\rangle = p(-1)q(-1)+p(0)q(0)+p(1)q(1)$ an inner product on $P_3$?",
+      "choices": [
+        "No — positivity fails",
+        "Yes",
+        "No — additivity fails",
+        "No — symmetry fails"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "$p=x^3-x$ vanishes at $-1,0,1$, so $\\langle p,p\\rangle=0$ even though $p\\ne0$.",
+        "$p=x^3-x$ vanishes at $-1,0,1$, so $\\langle p,p\\rangle=0$ even though $p\\ne0$.",
+        "$p=x^3-x$ vanishes at $-1,0,1$, so $\\langle p,p\\rangle=0$ even though $p\\ne0$."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "For which $A$ is $\\langle u,v\\rangle = Au\\cdot Av$ an inner product on $\\mathbb{R}^n$?",
+      "choices": [
+        "For every A",
+        "Only when A is diagonal",
+        "Only when A is symmetric",
+        "Exactly when A is invertible"
+      ],
+      "answer": 3,
+      "explanations": [
+        "$\\langle v,v\\rangle=\\|Av\\|^2$ is 0 only for $v=0$ exactly when $Av=0$ has only the trivial solution.",
+        "$\\langle v,v\\rangle=\\|Av\\|^2$ is 0 only for $v=0$ exactly when $Av=0$ has only the trivial solution.",
+        "$\\langle v,v\\rangle=\\|Av\\|^2$ is 0 only for $v=0$ exactly when $Av=0$ has only the trivial solution.",
+        null
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "Is $\\langle U,V\\rangle = \\operatorname{tr}(U^TV)$ an inner product on $M_{22}$?",
+      "choices": [
+        "No — positivity fails",
+        "No — it's only defined for symmetric matrices",
+        "Yes",
+        "No — symmetry fails"
+      ],
+      "answer": 2,
+      "explanations": [
+        "It equals the sum of the products of corresponding entries, which is the dot product of the entries.",
+        "It equals the sum of the products of corresponding entries, which is the dot product of the entries.",
+        null,
+        "It equals the sum of the products of corresponding entries, which is the dot product of the entries."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "The weighted product $\\langle u,v\\rangle = w_1u_1v_1+w_2u_2v_2$ is an inner product exactly when:",
+      "choices": [
+        "$w_1+w_2=1$",
+        "$w_1w_2\\ne0$",
+        "$w_1>0$ and $w_2>0$",
+        "$w_1\\ge0$ and $w_2\\ge0$"
+      ],
+      "answer": 2,
+      "explanations": [
+        "Each weight must be strictly positive. A zero weight lets a nonzero vector have norm 0, and a negative weight gives a negative $\\langle v,v\\rangle$.",
+        "Each weight must be strictly positive. A zero weight lets a nonzero vector have norm 0, and a negative weight gives a negative $\\langle v,v\\rangle$.",
+        null,
+        "Each weight must be strictly positive. A zero weight lets a nonzero vector have norm 0, and a negative weight gives a negative $\\langle v,v\\rangle$."
+      ]
+    },
+    {
+      "type": "type",
+      "prompt": "With the weighted inner product $\\langle u,v\\rangle=3u_1v_1+2u_2v_2$, compute $\\langle (1,-2),(4,1)\\rangle$.",
+      "answer": [
+        "8"
+      ],
+      "explanation": "$3(1)(4)+2(-2)(1)=12-4=8$."
+    },
+    {
+      "type": "type",
+      "prompt": "With $\\langle u,v\\rangle=3u_1v_1+2u_2v_2$, what is $\\|(1,-2)\\|^2$?",
+      "answer": [
+        "11"
+      ],
+      "explanation": "$3(1)^2+2(-2)^2=3+8=11$, so $\\|(1,-2)\\|=\\sqrt{11}$."
+    },
+    {
+      "type": "type",
+      "prompt": "With $\\langle u,v\\rangle=4u_1v_1+u_2v_2$, what is $\\|(1,0)\\|$?",
+      "answer": [
+        "2"
+      ],
+      "explanation": "$\\sqrt{4\\cdot1^2}=2$. The first axis is “stretched” by this inner product."
+    },
+    {
+      "type": "type",
+      "prompt": "With $\\langle u,v\\rangle=4u_1v_1+u_2v_2$, what is $\\|(1,1)\\|^2$?",
+      "answer": [
+        "5"
+      ],
+      "explanation": "$4+1=5$."
+    },
+    {
+      "type": "type",
+      "prompt": "In $M_{22}$ with $\\langle U,V\\rangle=\\operatorname{tr}(U^TV)$, what is $\\|I_2\\|^2$?",
+      "answer": [
+        "2"
+      ],
+      "explanation": "The entries are 1, 0, 0, 1, so $\\|I_2\\|^2=2$ and $\\|I_2\\|=\\sqrt2$. The identity is not a unit vector."
+    },
+    {
+      "type": "type",
+      "prompt": "In $M_{22}$ with $\\langle U,V\\rangle=\\operatorname{tr}(U^TV)$, compute $\\left\\langle \\begin{bmatrix}1&2\\\\3&4\\end{bmatrix},\\begin{bmatrix}-1&0\\\\3&2\\end{bmatrix}\\right\\rangle$.",
+      "answer": [
+        "16"
+      ],
+      "explanation": "Multiply matching entries: $-1+0+9+8=16$."
+    },
+    {
+      "type": "type",
+      "prompt": "In $C[0,1]$ with $\\langle f,g\\rangle=\\int_0^1 f g\\,dx$, compute $\\langle x, x^2\\rangle$. (Enter a fraction like 1/4.)",
+      "answer": [
+        "1/4",
+        "0.25"
+      ],
+      "explanation": "$\\int_0^1 x^3\\,dx = 1/4$."
+    },
+    {
+      "type": "type",
+      "prompt": "In $C[0,1]$ with $\\langle f,g\\rangle=\\int_0^1 f g\\,dx$, compute $\\|x\\|^2$.",
+      "answer": [
+        "1/3"
+      ],
+      "explanation": "$\\int_0^1 x^2\\,dx=1/3$, so $\\|x\\|=1/\\sqrt3$."
+    },
+    {
+      "type": "type",
+      "prompt": "In $C[0,1]$ with $\\langle f,g\\rangle=\\int_0^1 f g\\,dx$, what is $\\|1\\|$ (the constant function 1)?",
+      "answer": [
+        "1"
+      ],
+      "explanation": "$\\int_0^1 1\\,dx = 1$."
+    },
+    {
+      "type": "type",
+      "prompt": "In $C[-\\pi,\\pi]$ with $\\langle f,g\\rangle=\\int_{-\\pi}^{\\pi} f g\\,dx$, compute $\\langle \\sin x,\\cos x\\rangle$.",
+      "answer": [
+        "0"
+      ],
+      "explanation": "$\\sin x\\cos x$ is an odd function, so its integral over a symmetric interval is 0."
+    },
+    {
+      "type": "type",
+      "prompt": "In $P_2$ with $\\langle p,q\\rangle=p(-1)q(-1)+p(0)q(0)+p(1)q(1)$, compute $\\langle 1-x+x^2,\\;2x+x^2\\rangle$.",
+      "answer": [
+        "0"
+      ],
+      "explanation": "$p(-1)q(-1)+p(0)q(0)+p(1)q(1)=3(-1)+1(0)+1(3)=0$."
+    },
+    {
+      "type": "type",
+      "prompt": "In $P_2$ with the coefficient inner product $\\langle a_0+a_1x+a_2x^2,\\,b_0+b_1x+b_2x^2\\rangle=a_0b_0+a_1b_1+a_2b_2$, compute $\\langle 1-x+x^2,\\;2x+x^2\\rangle$.",
+      "answer": [
+        "-1"
+      ],
+      "explanation": "$1\\cdot0+(-1)(2)+1\\cdot1=-1$. It is a different inner product from the evaluation one, so the answer differs."
+    },
+    {
+      "type": "type",
+      "prompt": "Given $\\langle u,v\\rangle=3$, $\\|u\\|=2$, $\\|v\\|=5$, compute $\\|u+v\\|^2$.",
+      "answer": [
+        "35"
+      ],
+      "explanation": "$\\|u\\|^2+2\\langle u,v\\rangle+\\|v\\|^2=4+6+25=35$."
+    },
+    {
+      "type": "type",
+      "prompt": "Given $\\langle u,v\\rangle=3$, $\\|u\\|=2$, $\\|v\\|=5$, compute $\\langle 2u-v,\\,u+3v\\rangle$.",
+      "answer": [
+        "-52"
+      ],
+      "explanation": "$2\\langle u,u\\rangle+6\\langle u,v\\rangle-\\langle v,u\\rangle-3\\langle v,v\\rangle = 8+18-3-75=-52$."
+    },
+    {
+      "type": "type",
+      "prompt": "If $\\|v\\|=4$, what is $\\|-3v\\|$?",
+      "answer": [
+        "12"
+      ],
+      "explanation": "$\\|kv\\|=|k|\\,\\|v\\|=3\\cdot4=12$."
+    },
+    {
+      "type": "type",
+      "prompt": "For the complex Euclidean inner product on $\\mathbb{C}^2$, $u\\cdot v=u_1\\bar v_1+u_2\\bar v_2$, compute $\\|(i,1)\\|^2$.",
+      "answer": [
+        "2"
+      ],
+      "explanation": "$i\\cdot\\bar i + 1\\cdot 1 = i(-i)+1 = 1+1=2$. Without the conjugate you would get $i^2+1=0$."
+    },
+    {
+      "type": "type",
+      "prompt": "Let $A=\\begin{bmatrix}1&2\\\\0&1\\end{bmatrix}$ and $\\langle u,v\\rangle = Au\\cdot Av$. Compute $\\langle e_1,e_2\\rangle$.",
+      "answer": [
+        "2"
+      ],
+      "explanation": "$Ae_1=(1,0)$ and $Ae_2=(2,1)$, so the dot product is 2. The standard basis vectors are no longer “perpendicular.”"
+    },
+    {
+      "type": "mc",
+      "prompt": "Which is a correct expansion of $\\langle au+bv,\\,w\\rangle$ in a real inner product space?",
+      "choices": [
+        "$\\langle u,w\\rangle+\\langle v,w\\rangle$",
+        "$a\\langle u,w\\rangle+b\\langle v,w\\rangle$",
+        "$ab\\langle u+v,w\\rangle$",
+        "$(a+b)\\langle u+v,w\\rangle$"
+      ],
+      "answer": 1,
+      "explanations": [
+        "Additivity and homogeneity in the first slot.",
+        null,
+        "Additivity and homogeneity in the first slot.",
+        "Additivity and homogeneity in the first slot."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "In a complex inner product space, $\\langle u,kv\\rangle$ equals:",
+      "choices": [
+        "$k\\langle u,v\\rangle$",
+        "$k^2\\langle u,v\\rangle$",
+        "$\\bar k\\langle u,v\\rangle$",
+        "$|k|\\langle u,v\\rangle$"
+      ],
+      "answer": 2,
+      "explanations": [
+        "The scalar comes out of the second slot conjugated: $\\langle u,kv\\rangle=\\overline{\\langle kv,u\\rangle}=\\overline{k\\langle v,u\\rangle}=\\bar k\\langle u,v\\rangle$.",
+        "The scalar comes out of the second slot conjugated: $\\langle u,kv\\rangle=\\overline{\\langle kv,u\\rangle}=\\overline{k\\langle v,u\\rangle}=\\bar k\\langle u,v\\rangle$.",
+        null,
+        "The scalar comes out of the second slot conjugated: $\\langle u,kv\\rangle=\\overline{\\langle kv,u\\rangle}=\\overline{k\\langle v,u\\rangle}=\\bar k\\langle u,v\\rangle$."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "Why does the complex Euclidean inner product use conjugates, $u\\cdot v=\\sum u_i\\bar v_i$?",
+      "choices": [
+        "So that ⟨v,v⟩ is real and nonnegative",
+        "It doesn't need them; it's just a convention",
+        "So that it is linear in both slots",
+        "So that it is symmetric"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "Without conjugates, $(i,1)\\cdot(i,1)=i^2+1=0$, so a nonzero vector would have length 0.",
+        "Without conjugates, $(i,1)\\cdot(i,1)=i^2+1=0$, so a nonzero vector would have length 0.",
+        "Without conjugates, $(i,1)\\cdot(i,1)=i^2+1=0$, so a nonzero vector would have length 0."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "The weighted Euclidean inner product $3u_1v_1+2u_2v_2$ is the matrix-generated inner product $Au\\cdot Av$ for which $A$?",
+      "choices": [
+        "$\\begin{bmatrix}\\sqrt3&0\\\\0&\\sqrt2\\end{bmatrix}$",
+        "$\\begin{bmatrix}9&0\\\\0&4\\end{bmatrix}$",
+        "$\\begin{bmatrix}3&0\\\\0&2\\end{bmatrix}$",
+        "$\\begin{bmatrix}1/3&0\\\\0&1/2\\end{bmatrix}$"
+      ],
+      "answer": 0,
+      "explanations": [
+        null,
+        "$Au\\cdot Av=u^T(A^TA)v$ and $A^TA=\\operatorname{diag}(3,2)$, so $A=\\operatorname{diag}(\\sqrt3,\\sqrt2)$.",
+        "$Au\\cdot Av=u^T(A^TA)v$ and $A^TA=\\operatorname{diag}(3,2)$, so $A=\\operatorname{diag}(\\sqrt3,\\sqrt2)$.",
+        "$Au\\cdot Av=u^T(A^TA)v$ and $A^TA=\\operatorname{diag}(3,2)$, so $A=\\operatorname{diag}(\\sqrt3,\\sqrt2)$."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "Which constant function $c$ is closest to $x^2$ in $C[0,1]$ (integral inner product)?",
+      "choices": [
+        "$c=0$",
+        "$c=1/2$",
+        "$c=1/3$",
+        "$c=1$"
+      ],
+      "answer": 2,
+      "explanations": [
+        "Minimize $\\int_0^1(x^2-c)^2dx = 1/5-2c/3+c^2$, which gives $c=1/3$, the average value of $x^2$ on $[0,1]$.",
+        "Minimize $\\int_0^1(x^2-c)^2dx = 1/5-2c/3+c^2$, which gives $c=1/3$, the average value of $x^2$ on $[0,1]$.",
+        null,
+        "Minimize $\\int_0^1(x^2-c)^2dx = 1/5-2c/3+c^2$, which gives $c=1/3$, the average value of $x^2$ on $[0,1]$."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "In $C[-\\pi,\\pi]$ with the integral inner product, how does $\\|\\sin(nx)\\|$ depend on $n$?",
+      "choices": [
+        "It grows like n",
+        "It is $\\sqrt{\\pi}$ for every $n\\ge1$",
+        "It shrinks like $1/n$",
+        "It is 1 for every n"
+      ],
+      "answer": 1,
+      "explanations": [
+        "$\\int_{-\\pi}^{\\pi}\\sin^2(nx)\\,dx=\\pi$ for every positive integer $n$.",
+        null,
+        "$\\int_{-\\pi}^{\\pi}\\sin^2(nx)\\,dx=\\pi$ for every positive integer $n$.",
+        "$\\int_{-\\pi}^{\\pi}\\sin^2(nx)\\,dx=\\pi$ for every positive integer $n$."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "Which statement about $\\|u+v\\|$ is always true?",
+      "choices": [
+        "$\\|u+v\\|=\\langle u,v\\rangle$",
+        "$\\|u+v\\|=\\|u\\|+\\|v\\|$",
+        "$\\|u+v\\|^2=\\|u\\|^2+\\|v\\|^2$",
+        "$\\|u+v\\|^2=\\|u\\|^2+2\\langle u,v\\rangle+\\|v\\|^2$"
+      ],
+      "answer": 3,
+      "explanations": [
+        "Expand $\\langle u+v,u+v\\rangle$ using bilinearity and symmetry.",
+        "Expand $\\langle u+v,u+v\\rangle$ using bilinearity and symmetry.",
+        "Expand $\\langle u+v,u+v\\rangle$ using bilinearity and symmetry.",
+        null
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "Theorem 6.1.1 says that for any vector $v$ and scalar $k$ in a real inner product space:",
+      "choices": [
+        "$\\|v\\|\\le1$",
+        "$\\|kv\\|=k^2\\|v\\|$",
+        "$\\|v\\|\\ge0$ with equality iff $v=0$, and $\\|kv\\|=|k|\\,\\|v\\|$",
+        "$\\|v\\|=\\langle v,v\\rangle$"
+      ],
+      "answer": 2,
+      "explanations": [
+        "These norm (and distance) properties follow directly from the axioms, whatever the inner product.",
+        "These norm (and distance) properties follow directly from the axioms, whatever the inner product.",
+        null,
+        "These norm (and distance) properties follow directly from the axioms, whatever the inner product."
+      ]
+    },
+    {
+      "type": "mc",
+      "prompt": "The inner product $\\langle f,g\\rangle=\\int_a^b fg\\,dx$ on $C[a,b]$ can be thought of as:",
+      "choices": [
+        "The area between f and g",
+        "A limit of dot products of more and more sampled function values",
+        "The derivative of fg",
+        "The product of the averages of f and g"
+      ],
+      "answer": 1,
+      "explanations": [
+        "Sample $f$ and $g$ at $n$ points, dot the samples, scale by $\\Delta x$, and let $n\\to\\infty$. That limit is the integral.",
+        null,
+        "Sample $f$ and $g$ at $n$ points, dot the samples, scale by $\\Delta x$, and let $n\\to\\infty$. That limit is the integral.",
+        "Sample $f$ and $g$ at $n$ points, dot the samples, scale by $\\Delta x$, and let $n\\to\\infty$. That limit is the integral."
+      ]
+    }
+  ]
+}

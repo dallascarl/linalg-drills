@@ -1,0 +1,806 @@
+{
+ "id": "gram-schmidt-6-3",
+ "title": "Gram-Schmidt Process (6.3)",
+ "description": "Day 37: the Gram-Schmidt process in R^n, weighted inner products, and function spaces; normalizing; dependent vectors; and QR basics. 10 questions pulled per attempt from a pool of 60.",
+ "questionsPerAttempt": 10,
+ "pointsPerQuestion": 1,
+ "questions": [
+  {
+   "type": "wordbank",
+   "prompt": "In Gram-Schmidt, $u_2=v_2-\\dfrac{\\langle v_2,u_1\\rangle}{\\langle u_1,u_1\\rangle}\\,$ _____.",
+   "wordbank": [
+    "$v_1$",
+    "$u_2$",
+    "$v_2$",
+    "$u_1$"
+   ],
+   "answer": "$u_1$",
+   "explanation": "You subtract the shadow of $v_2$ on $u_1$, which is that coefficient times $u_1$."
+  },
+  {
+   "type": "wordbank",
+   "prompt": "Gram-Schmidt turns a linearly independent set into a(n) _____ set that spans the same subspace.",
+   "wordbank": [
+    "unit-free",
+    "orthogonal",
+    "dependent",
+    "larger"
+   ],
+   "answer": "orthogonal",
+   "explanation": "The output vectors are pairwise orthogonal, and span$\\{u_1,\\dots,u_j\\}=$ span$\\{v_1,\\dots,v_j\\}$ at every stage."
+  },
+  {
+   "type": "wordbank",
+   "prompt": "If a Gram-Schmidt step produces $u_k=0$, the original vectors were linearly _____.",
+   "wordbank": [
+    "dependent",
+    "independent",
+    "orthogonal",
+    "normalized"
+   ],
+   "answer": "dependent",
+   "explanation": "$u_k=0$ means $v_k$ is already in the span of the earlier vectors."
+  },
+  {
+   "type": "wordbank",
+   "prompt": "To turn an orthogonal vector $u_i$ into a unit vector, divide it by its _____.",
+   "wordbank": [
+    "norm",
+    "determinant",
+    "trace",
+    "inverse"
+   ],
+   "answer": "norm",
+   "explanation": "$q_i=u_i/\\|u_i\\|$, where the norm is computed with the same inner product."
+  },
+  {
+   "type": "wordbank",
+   "prompt": "In $A=QR$, the matrix $R$ is _____ triangular.",
+   "wordbank": [
+    "lower",
+    "diagonal",
+    "upper",
+    "symmetric"
+   ],
+   "answer": "upper",
+   "explanation": "Each $v_j$ is a combination of $q_1,\\dots,q_j$ only, so $R$ has zeros below the diagonal."
+  },
+  {
+   "type": "wordbank",
+   "prompt": "In $A=QR$ from Gram-Schmidt, the columns of $Q$ are _____.",
+   "wordbank": [
+    "equal to A's columns",
+    "all zero",
+    "dependent",
+    "orthonormal"
+   ],
+   "answer": "orthonormal",
+   "explanation": "$Q$'s columns are the normalized vectors $q_1,\\dots,q_n$."
+  },
+  {
+   "type": "wordbank",
+   "prompt": "$\\dfrac{\\langle v,u\\rangle}{\\langle u,u\\rangle}\\,u$ is called the _____ of $v$ onto $u$.",
+   "wordbank": [
+    "projection",
+    "reflection",
+    "complement",
+    "determinant"
+   ],
+   "answer": "projection",
+   "explanation": "It is the orthogonal projection of $v$ onto the line through $u$ (the 'shadow')."
+  },
+  {
+   "type": "wordbank",
+   "prompt": "In Gram-Schmidt, span$\\{u_1,u_2\\}$ and span$\\{v_1,v_2\\}$ are _____.",
+   "wordbank": [
+    "orthogonal",
+    "equal",
+    "perpendicular complements",
+    "disjoint"
+   ],
+   "answer": "equal",
+   "explanation": "Each $u$ is a combination of the $v$'s and vice versa, so the spans match at every stage."
+  },
+  {
+   "type": "wordbank",
+   "prompt": "In $A=QR$ with independent columns, the diagonal entries of $R$ are the lengths $\\|u_i\\|$, so they are _____.",
+   "wordbank": [
+    "positive",
+    "complex",
+    "zero",
+    "negative"
+   ],
+   "answer": "positive",
+   "explanation": "$u_i\\neq 0$ for independent columns, so each length is positive."
+  },
+  {
+   "type": "type",
+   "prompt": "Dot product. $v_1=(1,1)$, $v_2=(1,0)$. Find $\\dfrac{\\langle v_2,u_1\\rangle}{\\langle u_1,u_1\\rangle}$ where $u_1=v_1$.",
+   "answer": [
+    "1/2",
+    "0.5"
+   ],
+   "explanation": "$\\langle v_2,u_1\\rangle=1$ and $\\langle u_1,u_1\\rangle=2$, so the coefficient is $1/2$."
+  },
+  {
+   "type": "type",
+   "prompt": "Dot product. $v_1=(1,1)$, $v_2=(1,0)$. Find the **second coordinate** of $u_2$.",
+   "answer": [
+    "-1/2",
+    "-0.5"
+   ],
+   "explanation": "$u_2=(1,0)-\\tfrac12(1,1)=(\\tfrac12,-\\tfrac12)$."
+  },
+  {
+   "type": "type",
+   "prompt": "Dot product. $v_1=(1,1,0)$, $v_2=(1,0,1)$. With $u_1=v_1$ and $u_2=(\\tfrac12,-\\tfrac12,1)$, find $\\langle u_2,u_2\\rangle$.",
+   "answer": [
+    "3/2",
+    "1.5"
+   ],
+   "explanation": "$\\tfrac14+\\tfrac14+1=\\tfrac32$."
+  },
+  {
+   "type": "type",
+   "prompt": "Weighted: $\\langle u,v\\rangle=u_1v_1+2u_2v_2+3u_3v_3$. For $v_1=(1,1,1)$ and $v_2=(1,1,3)$, find $\\langle v_2,v_1\\rangle$.",
+   "answer": [
+    "12"
+   ],
+   "explanation": "$1\\cdot1+2\\cdot1\\cdot1+3\\cdot3\\cdot1=1+2+9=12$."
+  },
+  {
+   "type": "type",
+   "prompt": "Weighted: $\\langle u,v\\rangle=u_1v_1+2u_2v_2+3u_3v_3$. Find $\\langle u_1,u_1\\rangle$ for $u_1=(1,1,1)$.",
+   "answer": [
+    "6"
+   ],
+   "explanation": "$1+2+3=6$."
+  },
+  {
+   "type": "type",
+   "prompt": "Weighted $\\langle u,v\\rangle=u_1v_1+2u_2v_2+3u_3v_3$, $u_1=(1,1,1)$, $v_2=(1,1,3)$. Find the Gram-Schmidt coefficient $\\langle v_2,u_1\\rangle/\\langle u_1,u_1\\rangle$.",
+   "answer": [
+    "2"
+   ],
+   "explanation": "$12/6=2$."
+  },
+  {
+   "type": "type",
+   "prompt": "Same weighted inner product with $v_1=(1,1,1)$, $v_2=(1,1,3)$, $v_3=(0,3,1)$ gives $u_3=(-2,1,0)$. What is the **first coordinate** of $u_3$?",
+   "answer": [
+    "-2"
+   ],
+   "explanation": "$u_3=v_3-\\tfrac32u_1+\\tfrac12u_2=(-2,1,0)$ with $u_2=(-1,-1,1)$."
+  },
+  {
+   "type": "type",
+   "prompt": "Weighted $\\langle u,v\\rangle=u_1v_1+2u_2v_2+3u_3v_3$. Find $\\|(1,1,1)\\|$. (Type sqrt(6) or $\\sqrt6$ as 'sqrt(6)'.)",
+   "answer": [
+    "sqrt(6)",
+    "\\sqrt{6}",
+    "√6",
+    "sqrt6"
+   ],
+   "explanation": "$\\langle u,u\\rangle=1+2+3=6$, so $\\|u\\|=\\sqrt6$."
+  },
+  {
+   "type": "type",
+   "prompt": "Dot product. $v_1=(1,2)$, $v_2=(3,1)$. Find the **first coordinate** of $u_2$.",
+   "answer": [
+    "2"
+   ],
+   "explanation": "Coefficient $=5/5=1$, so $u_2=(3,1)-(1,2)=(2,-1)$."
+  },
+  {
+   "type": "type",
+   "prompt": "Dot product. $v_1=(1,0,1)$, $v_2=(2,1,0)$. Find $\\langle u_2,u_2\\rangle$.",
+   "answer": [
+    "3"
+   ],
+   "explanation": "Coefficient $=2/2=1$; $u_2=(2,1,0)-(1,0,1)=(1,1,-1)$, and $\\langle u_2,u_2\\rangle=3$."
+  },
+  {
+   "type": "type",
+   "prompt": "On $C[-1,1]$ with $\\langle f,g\\rangle=\\int_{-1}^1 fg\\,dx$, Gram-Schmidt on $1,x,x^2$ gives $u_3=x^2-c$. Find $c$.",
+   "answer": [
+    "1/3"
+   ],
+   "explanation": "$c=\\langle x^2,1\\rangle/\\langle1,1\\rangle=(2/3)/2=1/3$ (the $x$-shadow is $0$ since $\\int x^3dx=0$)."
+  },
+  {
+   "type": "type",
+   "prompt": "On $C[0,1]$ with $\\langle f,g\\rangle=\\int_0^1 fg\\,dx$, Gram-Schmidt on $1,x$ gives $u_2=x-c$. Find $c$.",
+   "answer": [
+    "1/2",
+    "0.5"
+   ],
+   "explanation": "$c=\\langle x,1\\rangle/\\langle1,1\\rangle=\\tfrac12/1=\\tfrac12$."
+  },
+  {
+   "type": "type",
+   "prompt": "In $A=QR$ (Gram-Schmidt, dot product), the first column of $A$ is $(3,4)$. Find $R_{11}$.",
+   "answer": [
+    "5"
+   ],
+   "explanation": "$R_{11}=\\|u_1\\|=\\|(3,4)\\|=5$."
+  },
+  {
+   "type": "type",
+   "prompt": "Dot product. $v_1=(1,2,3)$, $v_2=(2,4,6)$. Find the **first coordinate** of $u_2$.",
+   "answer": [
+    "0"
+   ],
+   "explanation": "$v_2=2v_1$, so $u_2=v_2-2u_1=(0,0,0)$. The vectors are dependent."
+  },
+  {
+   "type": "type",
+   "prompt": "Weighted $\\langle u,v\\rangle=2u_1v_1+u_2v_2$, $v_1=(1,2)$, $v_2=(3,1)$. Find $\\langle v_2,u_1\\rangle/\\langle u_1,u_1\\rangle$ with $u_1=v_1$.",
+   "answer": [
+    "4/3"
+   ],
+   "explanation": "$\\langle v_2,v_1\\rangle=2\\cdot3+1\\cdot2=8$ and $\\langle v_1,v_1\\rangle=2+4=6$; $8/6=4/3$."
+  },
+  {
+   "type": "type",
+   "prompt": "You apply Gram-Schmidt to 3 independent vectors in $\\mathbb R^5$. How many nonzero orthogonal vectors $u_i$ do you get?",
+   "answer": [
+    "3"
+   ],
+   "explanation": "One per input vector, so 3."
+  },
+  {
+   "type": "type",
+   "prompt": "The plain dot product $(1,1,1)\\cdot(-1,-1,1)$ equals what?",
+   "answer": [
+    "-1"
+   ],
+   "explanation": "$-1-1+1=-1$. It is not $0$, even though these vectors are orthogonal under $\\langle u,v\\rangle=u_1v_1+2u_2v_2+3u_3v_3$."
+  },
+  {
+   "type": "mc",
+   "prompt": "Gram-Schmidt produces vectors that span the same subspace as the original vectors.",
+   "choices": [
+    "True",
+    "False"
+   ],
+   "answer": 0,
+   "explanations": [
+    null,
+    "At every stage span$\\{u_1,\\dots,u_j\\}=$ span$\\{v_1,\\dots,v_j\\}$. Gram-Schmidt only changes the basis, not the subspace."
+   ]
+  },
+  {
+   "type": "mc",
+   "prompt": "In Gram-Schmidt, what is the first vector $u_1$?",
+   "choices": [
+    "$u_1=0$",
+    "$u_1=v_1/\\|v_1\\|$ (required)",
+    "$u_1=v_2-v_1$",
+    "$u_1=v_1$"
+   ],
+   "answer": 3,
+   "explanations": [
+    "Nothing has been built yet, so there is nothing to subtract. Keep $u_1=v_1$ (you may normalize later).",
+    "Nothing has been built yet, so there is nothing to subtract. Keep $u_1=v_1$ (you may normalize later).",
+    "Nothing has been built yet, so there is nothing to subtract. Keep $u_1=v_1$ (you may normalize later).",
+    null
+   ]
+  },
+  {
+   "type": "mc",
+   "prompt": "Which formula gives $u_3$?",
+   "choices": [
+    "$u_3=v_3-\\frac{\\langle v_3,v_1\\rangle}{\\langle v_1,v_1\\rangle}v_1-\\frac{\\langle v_3,v_2\\rangle}{\\langle v_2,v_2\\rangle}v_2$",
+    "$u_3=v_3-\\frac{\\langle v_3,u_2\\rangle}{\\langle u_2,u_2\\rangle}u_2$ only",
+    "$u_3=v_3-\\frac{\\langle v_3,u_1\\rangle}{\\langle u_1,u_1\\rangle}u_1-\\frac{\\langle v_3,u_2\\rangle}{\\langle u_2,u_2\\rangle}u_2$",
+    "$u_3=v_3-u_1-u_2$"
+   ],
+   "answer": 2,
+   "explanations": [
+    "Project onto the new orthogonal vectors $u_1,u_2$, not the original $v$'s. The $v$'s are not orthogonal to each other, so their shadows overlap.",
+    "You must remove the shadow on **every** earlier $u$, including $u_1$.",
+    null,
+    "The coefficients $\\langle v_3,u_i\\rangle/\\langle u_i,u_i\\rangle$ are needed. Otherwise you are not removing the right amount."
+   ]
+  },
+  {
+   "type": "mc",
+   "prompt": "A student computes $u_3$ by subtracting the projections of $v_3$ onto $v_1$ and $v_2$. What goes wrong?",
+   "choices": [
+    "The result is always a unit vector",
+    "The result is always $0$",
+    "Nothing, this gives the same $u_3$",
+    "The result is generally not orthogonal to $u_1$ and $u_2$"
+   ],
+   "answer": 3,
+   "explanations": [
+    "Nothing in the formula forces unit length.",
+    "It is generally nonzero.",
+    "Since $v_1,v_2$ are not orthogonal, their shadows overlap and subtracting both over-removes or under-removes. Use $u_1,u_2$.",
+    null
+   ]
+  },
+  {
+   "type": "mc",
+   "prompt": "In $u_2=v_2-\\frac{\\langle v_2,u_1\\rangle}{\\langle u_1,u_1\\rangle}u_1$, the denominator is the same as",
+   "choices": [
+    "$\\langle v_2,v_2\\rangle$",
+    "$\\|v_2\\|^2$",
+    "$\\|u_1\\|^2$",
+    "$\\|u_1\\|$"
+   ],
+   "answer": 2,
+   "explanations": [
+    "$\\langle u,u\\rangle=\\|u\\|^2$, the *squared* length. Dividing by $\\|u_1\\|$ alone is a common slip.",
+    "$\\langle u,u\\rangle=\\|u\\|^2$, the *squared* length. Dividing by $\\|u_1\\|$ alone is a common slip.",
+    null,
+    "$\\langle u,u\\rangle=\\|u\\|^2$, the *squared* length. Dividing by $\\|u_1\\|$ alone is a common slip."
+   ]
+  },
+  {
+   "type": "mc",
+   "prompt": "Why is $u_2=v_2-\\text{proj}_{u_1}v_2$ orthogonal to $u_1$?",
+   "choices": [
+    "Taking the inner product with $u_1$ gives $\\langle v_2,u_1\\rangle-\\frac{\\langle v_2,u_1\\rangle}{\\langle u_1,u_1\\rangle}\\langle u_1,u_1\\rangle=0$",
+    "Because $u_2$ is chosen to be a unit vector",
+    "Because we divide by the length",
+    "Because $u_1$ and $v_2$ were already orthogonal"
+   ],
+   "answer": 0,
+   "explanations": [
+    null,
+    "Unit length plays no role in orthogonality.",
+    "Dividing by a length does not affect orthogonality.",
+    "If they were already orthogonal there would be nothing to remove. The point is that subtracting the shadow *makes* the remainder orthogonal."
+   ]
+  },
+  {
+   "type": "mc",
+   "prompt": "You may replace $u_2$ by $5u_2$ before computing $u_3$ and still get the same $u_3$.",
+   "choices": [
+    "True",
+    "False"
+   ],
+   "answer": 0,
+   "explanations": [
+    null,
+    "The shadow $\\frac{\\langle v,u\\rangle}{\\langle u,u\\rangle}u$ is unchanged if $u$ is scaled, so $u_3$ is exactly the same. Clearing fractions is allowed."
+   ]
+  },
+  {
+   "type": "mc",
+   "prompt": "Gram-Schmidt gives the same $u$'s no matter what order you list the $v$'s in.",
+   "choices": [
+    "True",
+    "False"
+   ],
+   "answer": 1,
+   "explanations": [
+    "The process depends on the order. Different orders produce different orthogonal bases (of the same span).",
+    null
+   ]
+  },
+  {
+   "type": "mc",
+   "prompt": "A set of nonzero, pairwise orthogonal vectors is always linearly independent.",
+   "choices": [
+    "True",
+    "False"
+   ],
+   "answer": 0,
+   "explanations": [
+    null,
+    "Dotting a dependence relation with $u_i$ kills every term but one, forcing each coefficient to be $0$."
+   ]
+  },
+  {
+   "type": "mc",
+   "prompt": "You run Gram-Schmidt on $v_1,v_2,v_3$ and get $u_3=0$. What does this tell you?",
+   "choices": [
+    "$v_3$ is in span$\\{v_1,v_2\\}$, so the $v$'s were dependent",
+    "$v_3$ is a unit vector",
+    "$v_3$ is orthogonal to $v_1$ and $v_2$",
+    "You made an arithmetic mistake, always"
+   ],
+   "answer": 0,
+   "explanations": [
+    null,
+    "Unit length is unrelated.",
+    "If $v_3$ were orthogonal to the others, the shadows would be $0$ and $u_3=v_3\\neq0$.",
+    "It can be a real signal, not an error: the remainder is $0$ exactly when $v_3$ lies in the span of the earlier vectors."
+   ]
+  },
+  {
+   "type": "mc",
+   "prompt": "The weighted inner product $\\langle u,v\\rangle=u_1v_1+2u_2v_2+3u_3v_3$ and the dot product give the same Gram-Schmidt output for the same $v_1,v_2,v_3$.",
+   "choices": [
+    "True",
+    "False"
+   ],
+   "answer": 1,
+   "explanations": [
+    "Orthogonality depends on the inner product. For $v_1=(1,1,1),v_2=(1,1,3),v_3=(0,3,1)$ the weighted output has $u_2=(-1,-1,1)$, while the dot product gives $u_2=(-2/3,-2/3,4/3)$.",
+    null
+   ]
+  },
+  {
+   "type": "mc",
+   "prompt": "You built orthogonal vectors with a weighted inner product. To check they are orthogonal you should compute",
+   "choices": [
+    "norms only",
+    "determinants",
+    "the plain dot product",
+    "inner products with the **same** weights"
+   ],
+   "answer": 3,
+   "explanations": [
+    "Norms alone do not test orthogonality.",
+    "Determinants do not test orthogonality.",
+    "Orthogonality means $\\langle u,v\\rangle=0$ for the inner product in use. The dot product can be nonzero for vectors that are orthogonal in the weighted sense.",
+    null
+   ]
+  },
+  {
+   "type": "mc",
+   "prompt": "After Gram-Schmidt you have orthogonal $u_1,u_2,u_3$. To get an orthonormal basis you",
+   "choices": [
+    "multiply each by $\\|u_i\\|$",
+    "divide each $u_i$ by $\\|u_i\\|$",
+    "take the transpose",
+    "subtract the projections again"
+   ],
+   "answer": 1,
+   "explanations": [
+    "Normalizing means dividing by the length, giving $q_i=u_i/\\|u_i\\|$.",
+    null,
+    "Normalizing means dividing by the length, giving $q_i=u_i/\\|u_i\\|$.",
+    "Normalizing means dividing by the length, giving $q_i=u_i/\\|u_i\\|$."
+   ]
+  },
+  {
+   "type": "mc",
+   "prompt": "Why is $R$ upper triangular in $A=QR$?",
+   "choices": [
+    "$A$ is symmetric",
+    "Each $v_j$ is a combination of $q_1,\\dots,q_j$ only (no later $q$'s)",
+    "The $q$'s are all equal",
+    "$Q$ is upper triangular"
+   ],
+   "answer": 1,
+   "explanations": [
+    "$A$ need not be symmetric.",
+    null,
+    "The $q$'s are orthonormal, so distinct.",
+    "$Q$ has orthonormal columns and is generally not triangular."
+   ]
+  },
+  {
+   "type": "mc",
+   "prompt": "$A=QR$ with $Q$ having orthonormal columns requires the columns of $A$ to be linearly independent.",
+   "choices": [
+    "True",
+    "False"
+   ],
+   "answer": 0,
+   "explanations": [
+    null,
+    "Gram-Schmidt breaks down (gives $u=0$) if the columns are dependent, so the standard $QR$ needs independent columns."
+   ]
+  },
+  {
+   "type": "mc",
+   "prompt": "In $A=QR$, which expression gives the entry $R_{ij}$ (for $i\\le j$)?",
+   "choices": [
+    "$\\langle v_i,v_j\\rangle$",
+    "$\\langle v_j,q_i\\rangle$",
+    "$\\langle q_i,q_j\\rangle$",
+    "$\\|v_i\\|$"
+   ],
+   "answer": 1,
+   "explanations": [
+    "That is a Gram matrix entry of $A$, not $R$.",
+    null,
+    "That is $0$ for $i\\ne j$ (orthonormal), so it cannot be the entries of $R$.",
+    "Only the diagonal is a length, and it is $\\|u_i\\|$, not $\\|v_i\\|$."
+   ]
+  },
+  {
+   "type": "mc",
+   "prompt": "If $v_2$ is already orthogonal to $u_1$, then in Gram-Schmidt $u_2$ equals",
+   "choices": [
+    "$-v_2$",
+    "$u_1$",
+    "$0$",
+    "$v_2$"
+   ],
+   "answer": 3,
+   "explanations": [
+    "The shadow of $v_2$ on $u_1$ is $0$, so nothing is subtracted.",
+    "The shadow of $v_2$ on $u_1$ is $0$, so nothing is subtracted.",
+    "The shadow of $v_2$ on $u_1$ is $0$, so nothing is subtracted.",
+    null
+   ]
+  },
+  {
+   "type": "mc",
+   "prompt": "If $v_2$ is a multiple of $u_1$, then $u_2$ equals",
+   "choices": [
+    "$u_1$",
+    "a unit vector",
+    "$v_2$",
+    "$0$"
+   ],
+   "answer": 3,
+   "explanations": [
+    "The shadow of $v_2$ on $u_1$ is $v_2$ itself, so $v_2-v_2=0$.",
+    "The shadow of $v_2$ on $u_1$ is $v_2$ itself, so $v_2-v_2=0$.",
+    "The shadow of $v_2$ on $u_1$ is $v_2$ itself, so $v_2-v_2=0$.",
+    null
+   ]
+  },
+  {
+   "type": "mc",
+   "prompt": "On $C[-1,1]$ with $\\langle f,g\\rangle=\\int_{-1}^1fg\\,dx$, Gram-Schmidt applied to $1,x,x^2$ gives $1,\\ x,\\ x^2-\\tfrac13$.",
+   "choices": [
+    "True",
+    "False"
+   ],
+   "answer": 0,
+   "explanations": [
+    null,
+    "$\\langle x,1\\rangle=0$ and $\\langle x^2,1\\rangle/\\langle1,1\\rangle=1/3$, with $\\langle x^2,x\\rangle=0$."
+   ]
+  },
+  {
+   "type": "mc",
+   "prompt": "Dot product, $v_1=(1,1)$, $v_2=(1,0)$. Gram-Schmidt gives $u_2=$",
+   "choices": [
+    "$(1,1/2)$",
+    "$(1/2,-1/2)$",
+    "$(0,-1)$",
+    "$(1/2,1/2)$"
+   ],
+   "answer": 1,
+   "explanations": [
+    "Check $\\langle u_1,u_2\\rangle=1+\\tfrac12=\\tfrac32\\neq0$, so it is not orthogonal to $v_1$.",
+    null,
+    "That is $v_2-v_1$. You must subtract the *projection* $\\tfrac12v_1$, not all of $v_1$.",
+    "That is the shadow itself $\\tfrac12(1,1)$, not what is left."
+   ]
+  },
+  {
+   "type": "mc",
+   "prompt": "Dot product, $v_1=(1,1,0)$, $v_2=(1,0,1)$, $v_3=(0,1,1)$ gives $u_2=(\\tfrac12,-\\tfrac12,1)$. Then $u_3=$",
+   "choices": [
+    "$(-1/2,1/2,1)$",
+    "$(2/3,2/3,-2/3)$",
+    "$(-2/3,2/3,-2/3)$",
+    "$(-2/3,2/3,2/3)$"
+   ],
+   "answer": 3,
+   "explanations": [
+    "That is $v_3$ minus only the shadow on $u_1$. You also need the shadow on $u_2$ (coefficient $1/3$).",
+    "Check $\\langle u_3,u_1\\rangle=\\tfrac43\\neq0$: this is not orthogonal to $u_1$.",
+    "Sign slip in the last coordinate: it is $1-\\tfrac13=\\tfrac23$, not $-\\tfrac23$.",
+    null
+   ]
+  },
+  {
+   "type": "mc",
+   "prompt": "Dot product, $v_1=(2,0,0)$, $v_2=(1,1,0)$. Gram-Schmidt gives $u_2=$",
+   "choices": [
+    "$(-1,1,0)$",
+    "$(0,1,0)$",
+    "$(1/2,1,0)$",
+    "$(1,1,0)$"
+   ],
+   "answer": 1,
+   "explanations": [
+    "Subtracting $v_1=(2,0,0)$ over-removes. The shadow is $(1,0,0)$.",
+    null,
+    "Coefficient is $\\langle v_2,u_1\\rangle/\\langle u_1,u_1\\rangle=2/4=1/2$, so the shadow is $\\tfrac12(2,0,0)=(1,0,0)$, leaving $(0,1,0)$.",
+    "That is $v_2$ itself. The shadow on $u_1$ is $(1,0,0)$ and must be removed."
+   ]
+  },
+  {
+   "type": "mc",
+   "prompt": "The vector $(1,-1,2)$ is orthogonal to $(1,1,0)$ under the dot product. Its unit vector (dot product) is",
+   "choices": [
+    "$(1,-1,2)$",
+    "$\\dfrac{1}{\\sqrt6}(1,-1,2)$",
+    "$\\dfrac{1}{6}(1,-1,2)$",
+    "$\\dfrac{1}{\\sqrt2}(1,-1,2)$"
+   ],
+   "answer": 1,
+   "explanations": [
+    "Its length is $\\sqrt6\\neq1$, so it is not a unit vector.",
+    null,
+    "You divide by the length $\\sqrt6$, not by $6$ (the squared length).",
+    "$\\|(1,-1,2)\\|=\\sqrt{1+1+4}=\\sqrt6$."
+   ]
+  },
+  {
+   "type": "mc",
+   "prompt": "Weighted $\\langle u,v\\rangle=3u_1v_1+2u_2v_2$, $v_1=(1,1)$, $v_2=(1,0)$. Gram-Schmidt gives $u_2=$",
+   "choices": [
+    "$(2/5,-3/5)$",
+    "$(2/5,3/5)$",
+    "$(3/5,-3/5)$",
+    "$(1/2,-1/2)$"
+   ],
+   "answer": 0,
+   "explanations": [
+    null,
+    "Sign slip: the second coordinate is $0-\\tfrac35=-\\tfrac35$.",
+    "That is the shadow $\\tfrac35(1,1)$, not what is left over.",
+    "That is the *dot product* answer. With weights the coefficient is $\\tfrac{3}{5}$, not $\\tfrac12$."
+   ]
+  },
+  {
+   "type": "mc",
+   "prompt": "For the weighted problem $\\langle u,v\\rangle=u_1v_1+2u_2v_2+3u_3v_3$, $u_1=(1,1,1)$, $u_2=(-1,-1,1)$, $v_3=(0,3,1)$, the coefficient of $u_2$ in $u_3$ is $\\langle v_3,u_2\\rangle/\\langle u_2,u_2\\rangle=$",
+   "choices": [
+    "$\\tfrac32$",
+    "$-3$",
+    "$-\\tfrac12$",
+    "$\\tfrac12$"
+   ],
+   "answer": 2,
+   "explanations": [
+    "$3/2$ is the coefficient on $u_1$, not on $u_2$.",
+    "You forgot to divide by $\\langle u_2,u_2\\rangle=6$.",
+    null,
+    "$\\langle v_3,u_2\\rangle=0-6+3=-3$ is negative."
+   ]
+  },
+  {
+   "type": "mc",
+   "prompt": "With weights $(1,2,3)$ and the earlier values, Gram-Schmidt on $(1,1,1),(1,1,3),(0,3,1)$ ends with $u_3=$",
+   "choices": [
+    "$(-3/2,3/2,-1/2)$",
+    "$(-2,1,0)$",
+    "$(0,3,1)$",
+    "$(-1,2,1)$"
+   ],
+   "answer": 1,
+   "explanations": [
+    "That is $v_3$ minus only the shadow on $u_1$. You still need to remove the shadow on $u_2$.",
+    null,
+    "That is just $v_3$: no shadows were removed.",
+    "That is not orthogonal to $u_1$ under the weights ($-1+4+3=6\\neq0$)."
+   ]
+  },
+  {
+   "type": "mc",
+   "prompt": "Under $\\langle u,v\\rangle=u_1v_1+2u_2v_2+3u_3v_3$, which pair is orthogonal?",
+   "choices": [
+    "$(-1,-1,1)$ and $(0,3,1)$",
+    "$(1,1,1)$ and $(-1,-1,1)$",
+    "$(1,1,1)$ and $(1,1,3)$",
+    "$(1,1,1)$ and $(0,3,1)$"
+   ],
+   "answer": 1,
+   "explanations": [
+    "$\\langle\\cdot,\\cdot\\rangle=0-6+3=-3\\neq0$.",
+    null,
+    "$\\langle\\cdot,\\cdot\\rangle=1+2+9=12\\neq0$.",
+    "$\\langle\\cdot,\\cdot\\rangle=0+6+3=9\\neq0$."
+   ]
+  },
+  {
+   "type": "mc",
+   "prompt": "The vectors $(1,1,1)$ and $(-1,-1,1)$ are orthogonal under the **dot product**.",
+   "choices": [
+    "True",
+    "False"
+   ],
+   "answer": 1,
+   "explanations": [
+    "Their dot product is $-1\\neq0$. They are orthogonal only under the weighted inner product $u_1v_1+2u_2v_2+3u_3v_3$.",
+    null
+   ]
+  },
+  {
+   "type": "mc",
+   "prompt": "Each $u_i$ in the weighted example has $\\langle u_i,u_i\\rangle=6$. The orthonormal vector $q_3$ is",
+   "choices": [
+    "$\\dfrac{1}{6}(-2,1,0)$",
+    "$\\dfrac{1}{\\sqrt5}(-2,1,0)$",
+    "$(-2,1,0)$",
+    "$\\dfrac{1}{\\sqrt6}(-2,1,0)$"
+   ],
+   "answer": 3,
+   "explanations": [
+    "$\\|u_3\\|=\\sqrt{\\langle u_3,u_3\\rangle}=\\sqrt6$, not $6$.",
+    "$\\sqrt5$ is the *dot product* length $\\sqrt{4+1}$. With the weights, $\\langle u_3,u_3\\rangle=4+2=6$.",
+    "Its weighted length is $\\sqrt6\\neq1$.",
+    null
+   ]
+  },
+  {
+   "type": "mc",
+   "prompt": "On $C[0,1]$ with $\\langle f,g\\rangle=\\int_0^1fg\\,dx$, Gram-Schmidt on $1,x$ gives $u_2=$",
+   "choices": [
+    "$x-\\tfrac12$",
+    "$x$",
+    "$x-1$",
+    "$x-\\tfrac13$"
+   ],
+   "answer": 0,
+   "explanations": [
+    null,
+    "On $[0,1]$, $x$ is not orthogonal to $1$ ($\\int_0^1x\\,dx=\\tfrac12$). It only is on $[-1,1]$.",
+    "The shadow of $x$ on $1$ is $\\langle x,1\\rangle/\\langle1,1\\rangle=\\tfrac12$, not $1$.",
+    "$\\tfrac13$ is $\\int_0^1x^2$, not the needed shadow."
+   ]
+  },
+  {
+   "type": "mc",
+   "prompt": "$A=\\begin{bmatrix}3&1\\\\4&0\\end{bmatrix}$ has $A=QR$ with $R=$",
+   "choices": [
+    "$\\begin{bmatrix}5&1\\\\0&1\\end{bmatrix}$",
+    "$\\begin{bmatrix}3&1\\\\0&4\\end{bmatrix}$",
+    "$\\begin{bmatrix}5&0\\\\3/5&4/5\\end{bmatrix}$",
+    "$\\begin{bmatrix}5&3/5\\\\0&4/5\\end{bmatrix}$"
+   ],
+   "answer": 3,
+   "explanations": [
+    "$R_{12}=\\langle v_2,q_1\\rangle=\\langle(1,0),(3/5,4/5)\\rangle=3/5$, and $R_{22}=\\|u_2\\|=4/5$.",
+    "$R_{11}=\\|(3,4)\\|=5$, not $3$. $R$ is built from lengths and projections.",
+    "$R$ must be **upper** triangular: the nonzero off-diagonal entry goes in row 1, column 2.",
+    null
+   ]
+  },
+  {
+   "type": "mc",
+   "prompt": "If $A$ is $3\\times3$ with independent columns and $A=QR$ comes from Gram-Schmidt, then $Q$ is",
+   "choices": [
+    "upper triangular",
+    "singular",
+    "an orthogonal matrix: $Q^{-1}=Q^T$",
+    "equal to $A$"
+   ],
+   "answer": 2,
+   "explanations": [
+    "$R$ is triangular, not $Q$.",
+    "Orthonormal columns make $Q$ invertible.",
+    null,
+    "$Q$ has orthonormal columns; $A$'s do not have to."
+   ]
+  },
+  {
+   "type": "mc",
+   "prompt": "Apply Gram-Schmidt to 3 independent vectors in $\\mathbb R^3$ (dot product). The result $\\{u_1,u_2,u_3\\}$ is",
+   "choices": [
+    "an orthogonal basis of $\\mathbb R^3$",
+    "always the standard basis",
+    "linearly dependent",
+    "a basis of a plane only"
+   ],
+   "answer": 0,
+   "explanations": [
+    null,
+    "It depends on the $v$'s; the standard basis only if you start from it.",
+    "Nonzero orthogonal vectors are always independent.",
+    "Three independent vectors span all of $\\mathbb R^3$, and so do the $u$'s."
+   ]
+  },
+  {
+   "type": "mc",
+   "prompt": "Which statement about the Gram-Schmidt vectors is true?",
+   "choices": [
+    "span$\\{u_1,u_2\\}=$ span$\\{v_1,v_2\\}$",
+    "span$\\{u_1,u_2\\}$ is always a line",
+    "span$\\{u_1,u_2\\}=$ span$\\{v_1,v_3\\}$",
+    "$u_2\\in$ span$\\{v_3\\}$"
+   ],
+   "answer": 0,
+   "explanations": [
+    null,
+    "Two independent vectors span a plane.",
+    "The $u$'s are built from the *first* $j$ $v$'s, so they span the same space as $v_1,\\dots,v_j$.",
+    "$u_2$ is built from $v_1,v_2$, not $v_3$."
+   ]
+  }
+ ]
+}

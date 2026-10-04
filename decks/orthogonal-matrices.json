@@ -1,0 +1,983 @@
+{
+ "id": "orthogonal-matrices",
+ "title": "Orthogonal Matrices",
+ "description": "Day 40: orthogonal matrices, Q^T = Q^{-1}, orthonormal columns and rows, determinant plus or minus 1, preserved lengths and angles, rotations and reflections, tall matrices with orthonormal columns, QR, and a preview of the SVD. 12 questions pulled per attempt.",
+ "questionsPerAttempt": 12,
+ "pointsPerQuestion": 1,
+ "questions": [
+  {
+   "type": "mc",
+   "prompt": "A square matrix $Q$ is **orthogonal** if",
+   "choices": [
+    "$Q^T=Q$",
+    "$Q^TQ=I$, so $Q^{-1}=Q^T$",
+    "$Q^2=I$",
+    "$Q^{-1}=-Q$"
+   ],
+   "answer": 1,
+   "explanations": [
+    "That is a *symmetric* matrix. Orthogonal matrices need not be symmetric (e.g. rotations).",
+    null,
+    "That is an involution. It holds for some orthogonal matrices but is not the definition.",
+    "The inverse of an orthogonal matrix is its transpose, not its negative."
+   ]
+  },
+  {
+   "type": "mc",
+   "prompt": "If $Q$ is orthogonal, then $Q^{-1}=$",
+   "choices": [
+    "$-Q$",
+    "$Q^T$",
+    "$Q^TQ$",
+    "$Q$"
+   ],
+   "answer": 1,
+   "explanations": [
+    "$-Q$ times $Q$ is $-Q^2$, not $I$.",
+    null,
+    "$Q^TQ=I$ is the identity matrix, not an inverse.",
+    "That would need $Q^2=I$."
+   ]
+  },
+  {
+   "type": "mc",
+   "prompt": "A square matrix is orthogonal exactly when its columns are",
+   "choices": [
+    "orthonormal",
+    "linearly independent",
+    "equal to its rows",
+    "orthogonal but of any length"
+   ],
+   "answer": 0,
+   "explanations": [
+    null,
+    "Independence is far weaker; any invertible matrix has independent columns.",
+    "Rows equal to columns means symmetric, which is not required.",
+    "The columns must also be *unit* vectors. $\\mathrm{diag}(1,2)$ has orthogonal columns but is not orthogonal."
+   ]
+  },
+  {
+   "type": "mc",
+   "prompt": "The $(i,j)$ entry of $Q^TQ$ is",
+   "choices": [
+    "(row $i$ of $Q$) $\\cdot$ (row $j$ of $Q$)",
+    "$q_{ij}^2$",
+    "(column $i$ of $Q$) $\\cdot$ (column $j$ of $Q$)",
+    "$q_{ij}q_{ji}$"
+   ],
+   "answer": 2,
+   "explanations": [
+    "That is the $(i,j)$ entry of $QQ^T$.",
+    "The entries of a product are dot products, not squares of entries.",
+    null,
+    "That is not how matrix products work."
+   ]
+  },
+  {
+   "type": "mc",
+   "prompt": "For a **square** matrix $Q$, which statement is equivalent to $Q$ being orthogonal?",
+   "choices": [
+    "the rows of $Q$ are orthogonal but any length",
+    "$Q$ is invertible",
+    "$\\det Q=1$",
+    "the rows of $Q$ are orthonormal"
+   ],
+   "answer": 3,
+   "explanations": [
+    "The rows must also have unit length.",
+    "Invertible is much weaker.",
+    "$\\det Q=\\pm1$ is necessary but not sufficient (e.g. a shear has $\\det=1$).",
+    null
+   ]
+  },
+  {
+   "type": "mc",
+   "prompt": "Every orthogonal matrix has determinant $1$.",
+   "choices": [
+    "True",
+    "False"
+   ],
+   "answer": 1,
+   "explanations": [
+    "The determinant is $\\pm1$. Reflections have determinant $-1$.",
+    null
+   ]
+  },
+  {
+   "type": "mc",
+   "prompt": "If $Q$ is orthogonal, then $\\det Q=\\pm1$.",
+   "choices": [
+    "True",
+    "False"
+   ],
+   "answer": 0,
+   "explanations": [
+    null,
+    "$1=\\det(Q^TQ)=(\\det Q)^2$."
+   ]
+  },
+  {
+   "type": "mc",
+   "prompt": "A matrix with orthogonal (but not unit-length) columns is an orthogonal matrix.",
+   "choices": [
+    "True",
+    "False"
+   ],
+   "answer": 1,
+   "explanations": [
+    "The columns must be orthonormal. For example, $\\mathrm{diag}(1,2)$ is not orthogonal.",
+    null
+   ]
+  },
+  {
+   "type": "mc",
+   "prompt": "If $\\det Q=1$ then $Q$ is orthogonal.",
+   "choices": [
+    "True",
+    "False"
+   ],
+   "answer": 1,
+   "explanations": [
+    "$\\det=1$ is not enough: the shear $\\begin{bmatrix}1&1\\\\0&1\\end{bmatrix}$ has determinant $1$ and is not orthogonal.",
+    null
+   ]
+  },
+  {
+   "type": "mc",
+   "prompt": "The product of two orthogonal matrices is orthogonal.",
+   "choices": [
+    "True",
+    "False"
+   ],
+   "answer": 0,
+   "explanations": [
+    null,
+    "$(PQ)^T(PQ)=Q^TP^TPQ=Q^TQ=I$."
+   ]
+  },
+  {
+   "type": "mc",
+   "prompt": "The inverse of an orthogonal matrix is orthogonal.",
+   "choices": [
+    "True",
+    "False"
+   ],
+   "answer": 0,
+   "explanations": [
+    null,
+    "$Q^{-1}=Q^T$ and $(Q^T)^TQ^T=QQ^T=I$."
+   ]
+  },
+  {
+   "type": "mc",
+   "prompt": "The sum of two orthogonal matrices is always orthogonal.",
+   "choices": [
+    "True",
+    "False"
+   ],
+   "answer": 1,
+   "explanations": [
+    "For example $I+I=2I$ is not orthogonal.",
+    null
+   ]
+  },
+  {
+   "type": "mc",
+   "prompt": "Every orthogonal matrix is symmetric.",
+   "choices": [
+    "True",
+    "False"
+   ],
+   "answer": 1,
+   "explanations": [
+    "A rotation by $90^\\circ$ is orthogonal but not symmetric.",
+    null
+   ]
+  },
+  {
+   "type": "mc",
+   "prompt": "A permutation matrix is orthogonal.",
+   "choices": [
+    "True",
+    "False"
+   ],
+   "answer": 0,
+   "explanations": [
+    null,
+    "Its columns are the standard basis vectors in some order, which are orthonormal."
+   ]
+  },
+  {
+   "type": "mc",
+   "prompt": "The identity matrix is orthogonal.",
+   "choices": [
+    "True",
+    "False"
+   ],
+   "answer": 0,
+   "explanations": [
+    null,
+    "$I^TI=I$."
+   ]
+  },
+  {
+   "type": "mc",
+   "prompt": "If $Q$ is orthogonal, then for every vector $\\mathbf x$, $\\|Q\\mathbf x\\|=$",
+   "choices": [
+    "$2\\|\\mathbf x\\|$",
+    "$\\|\\mathbf x\\|^2$",
+    "$\\|\\mathbf x\\|$",
+    "$\\det(Q)\\|\\mathbf x\\|$"
+   ],
+   "answer": 2,
+   "explanations": [
+    "Orthogonal matrices do not stretch.",
+    "Length is not squared.",
+    null,
+    "$\\det Q$ can be $-1$, and lengths are never negative; $\\|Q\\mathbf x\\|=\\|\\mathbf x\\|$."
+   ]
+  },
+  {
+   "type": "mc",
+   "prompt": "Which identity proves $\\|Q\\mathbf x\\|=\\|\\mathbf x\\|$?",
+   "choices": [
+    "$\\|Q\\mathbf x\\|^2=\\det(Q)\\mathbf x^T\\mathbf x$",
+    "$\\|Q\\mathbf x\\|^2=\\mathbf x^TQQ\\mathbf x$",
+    "$\\|Q\\mathbf x\\|^2=\\mathbf x^TQ^TQ\\mathbf x=\\mathbf x^T\\mathbf x$",
+    "$\\|Q\\mathbf x\\|^2=\\mathbf x^TQ\\mathbf x$"
+   ],
+   "answer": 2,
+   "explanations": [
+    "The determinant does not appear.",
+    "$(Q\\mathbf x)^T=\\mathbf x^TQ^T$, so the middle factor is $Q^TQ$.",
+    null,
+    "The transpose of $Q\\mathbf x$ is $\\mathbf x^TQ^T$, not $\\mathbf x^TQ$."
+   ]
+  },
+  {
+   "type": "mc",
+   "prompt": "If $Q$ is orthogonal, then $(Q\\mathbf x)\\cdot(Q\\mathbf y)=$",
+   "choices": [
+    "$\\mathbf 0$",
+    "$-\\mathbf x\\cdot\\mathbf y$",
+    "$\\mathbf x\\cdot\\mathbf y$",
+    "$Q(\\mathbf x\\cdot\\mathbf y)$"
+   ],
+   "answer": 2,
+   "explanations": [
+    "Only perpendicular vectors have zero dot product.",
+    "The sign is preserved; orthogonal matrices keep dot products.",
+    null,
+    "The dot product is a number, not a vector you can multiply by $Q$."
+   ]
+  },
+  {
+   "type": "mc",
+   "prompt": "Because orthogonal matrices preserve lengths and dot products, they also preserve",
+   "choices": [
+    "the entries of every vector",
+    "eigenvalues",
+    "angles between vectors",
+    "row spaces only"
+   ],
+   "answer": 2,
+   "explanations": [
+    "Entries change (rotations move vectors).",
+    "Eigenvalues change unless the matrix is special.",
+    null,
+    "Angles are computed from dot products and lengths, both preserved."
+   ]
+  },
+  {
+   "type": "mc",
+   "prompt": "The linear maps $\\mathbf x\\mapsto Q\\mathbf x$ with $Q$ orthogonal are exactly the maps that",
+   "choices": [
+    "fix every vector",
+    "are projections",
+    "preserve lengths",
+    "have determinant $0$"
+   ],
+   "answer": 2,
+   "explanations": [
+    "Only the identity does that.",
+    "Projections shrink lengths and are not invertible.",
+    null,
+    "They are invertible, so $\\det\\neq0$."
+   ]
+  },
+  {
+   "type": "mc",
+   "prompt": "A $2\\times2$ orthogonal matrix with $\\det=1$ is",
+   "choices": [
+    "a projection",
+    "a reflection",
+    "a rotation",
+    "a shear"
+   ],
+   "answer": 2,
+   "explanations": [
+    "Projections are not invertible.",
+    "Reflections have $\\det=-1$.",
+    null,
+    "Shears are not orthogonal."
+   ]
+  },
+  {
+   "type": "mc",
+   "prompt": "A $2\\times2$ orthogonal matrix with $\\det=-1$ is",
+   "choices": [
+    "a stretch",
+    "a reflection",
+    "a rotation",
+    "the identity"
+   ],
+   "answer": 1,
+   "explanations": [
+    "Stretches are not orthogonal.",
+    null,
+    "Rotations have $\\det=1$.",
+    "The identity has $\\det=1$."
+   ]
+  },
+  {
+   "type": "mc",
+   "prompt": "The rotation by $\\theta$ is $\\begin{bmatrix}\\cos\\theta&-\\sin\\theta\\\\\\sin\\theta&\\cos\\theta\\end{bmatrix}$. Its inverse is",
+   "choices": [
+    "the rotation by $-\\theta$ (its transpose)",
+    "the reflection across the $x$-axis",
+    "$-$ the matrix",
+    "the rotation by $\\theta$ again"
+   ],
+   "answer": 0,
+   "explanations": [
+    null,
+    "A reflection is not a rotation.",
+    "$-R$ times $R$ is $-R^2$.",
+    "That would be rotating further."
+   ]
+  },
+  {
+   "type": "mc",
+   "prompt": "The set of vectors $\\{\\mathbf u_1,\\dots,\\mathbf u_n\\}$ is an orthonormal basis of $\\mathbb R^n$. The matrix $U=[\\mathbf u_1\\ \\cdots\\ \\mathbf u_n]$ is",
+   "choices": [
+    "a diagonal matrix",
+    "singular",
+    "a projection matrix",
+    "an orthogonal matrix"
+   ],
+   "answer": 3,
+   "explanations": [
+    "Nothing forces the entries off the diagonal to vanish.",
+    "Orthonormal vectors are independent, so $U$ is invertible.",
+    "$U$ is invertible; a projection (other than $I$) is not.",
+    null
+   ]
+  },
+  {
+   "type": "mc",
+   "prompt": "If $\\{\\mathbf u_1,\\dots,\\mathbf u_n\\}$ is an orthonormal basis, the coordinate of $\\mathbf x$ along $\\mathbf u_i$ is",
+   "choices": [
+    "$\\mathbf u_i\\cdot\\mathbf u_i$",
+    "$\\mathbf x\\cdot\\mathbf x$",
+    "$\\|\\mathbf x\\|$",
+    "$\\mathbf x\\cdot\\mathbf u_i$"
+   ],
+   "answer": 3,
+   "explanations": [
+    "That is $1$.",
+    "That is the squared length of $\\mathbf x$.",
+    "That is one number, not a coordinate along $\\mathbf u_i$.",
+    null
+   ]
+  },
+  {
+   "type": "mc",
+   "prompt": "If $Q$ is orthogonal, then $\\mathbf x=Q\\mathbf c$ has coordinates $\\mathbf c=$",
+   "choices": [
+    "$Q\\mathbf x$",
+    "$\\mathbf x/\\det Q$",
+    "$Q^T\\mathbf x$",
+    "$Q^{-1}\\mathbf x^T$"
+   ],
+   "answer": 2,
+   "explanations": [
+    "That multiplies the wrong way.",
+    "Determinant does not enter.",
+    null,
+    "Dimensions are off; $Q^{-1}=Q^T$ applies to $\\mathbf x$ directly."
+   ]
+  },
+  {
+   "type": "mc",
+   "prompt": "Which of these is an orthogonal matrix?",
+   "choices": [
+    "$\\left[\\begin{matrix}\\frac{3}{5} & - \\frac{4}{5}\\\\\\frac{4}{5} & \\frac{3}{5}\\end{matrix}\\right]$",
+    "$\\left[\\begin{matrix}3 & -4\\\\4 & 3\\end{matrix}\\right]$",
+    "$\\left[\\begin{matrix}1 & 0\\\\0 & 2\\end{matrix}\\right]$",
+    "$\\left[\\begin{matrix}1 & 1\\\\1 & -1\\end{matrix}\\right]$"
+   ],
+   "answer": 0,
+   "explanations": [
+    null,
+    "The columns are orthogonal but have length $5$. Divide by $5$ and it is orthogonal.",
+    "The second column has length $2$.",
+    "The columns are orthogonal but have length $\\sqrt2$; $B^TB=2I$."
+   ]
+  },
+  {
+   "type": "mc",
+   "prompt": "Which of these is an orthogonal matrix?",
+   "choices": [
+    "$\\left[\\begin{matrix}1 & 2\\\\0 & 1\\end{matrix}\\right]$",
+    "$\\left[\\begin{matrix}1 & 2\\\\2 & 1\\end{matrix}\\right]$",
+    "$\\left[\\begin{matrix}1 & 2\\\\2 & -1\\end{matrix}\\right]$",
+    "$\\left[\\begin{matrix}\\frac{\\sqrt{5}}{5} & \\frac{2 \\sqrt{5}}{5}\\\\\\frac{2 \\sqrt{5}}{5} & - \\frac{\\sqrt{5}}{5}\\end{matrix}\\right]$"
+   ],
+   "answer": 3,
+   "explanations": [
+    "The columns are not perpendicular and not unit length.",
+    "The columns are not perpendicular: dot product $4\\neq0$.",
+    "The columns are orthogonal but have length $\\sqrt5$. It needs the factor $1/\\sqrt5$.",
+    null
+   ]
+  },
+  {
+   "type": "mc",
+   "prompt": "$Q=\\dfrac13\\begin{bmatrix}1&2&2\\\\2&1&-2\\\\2&-2&1\\end{bmatrix}$. The length of column 1 is",
+   "choices": [
+    "$\\sqrt3$",
+    "$1$",
+    "$3$",
+    "$\\tfrac13$"
+   ],
+   "answer": 1,
+   "explanations": [
+    "$\\sqrt{9}/3=1$, not $\\sqrt3$.",
+    null,
+    "Column 1 is $(1,2,2)/3$ with length $\\sqrt{1+4+4}/3=1$.",
+    "$\\tfrac13$ is the scaling factor, not the length."
+   ]
+  },
+  {
+   "type": "mc",
+   "prompt": "Rotation matrix $Q=\\begin{bmatrix}3/5&-4/5\\\\4/5&3/5\\end{bmatrix}$. Then $Q^{-1}=$",
+   "choices": [
+    "$\\left[\\begin{matrix}\\frac{3}{5} & - \\frac{4}{5}\\\\\\frac{4}{5} & \\frac{3}{5}\\end{matrix}\\right]$",
+    "$\\left[\\begin{matrix}- \\frac{3}{5} & \\frac{4}{5}\\\\- \\frac{4}{5} & - \\frac{3}{5}\\end{matrix}\\right]$",
+    "$\\left[\\begin{matrix}\\frac{5}{3} & - \\frac{5}{4}\\\\\\frac{5}{4} & \\frac{5}{3}\\end{matrix}\\right]$",
+    "$\\left[\\begin{matrix}\\frac{3}{5} & \\frac{4}{5}\\\\- \\frac{4}{5} & \\frac{3}{5}\\end{matrix}\\right]$"
+   ],
+   "answer": 3,
+   "explanations": [
+    "That is $Q$ itself.",
+    "That is $-Q^T$, so it would give $-I$.",
+    "Taking reciprocals of entries is not how you invert a matrix; use $Q^T$.",
+    null
+   ]
+  },
+  {
+   "type": "mc",
+   "prompt": "For $Q=\\begin{bmatrix}3/5&-4/5\\\\4/5&3/5\\end{bmatrix}$ and $\\mathbf x=(5,0)$, $\\|Q\\mathbf x\\|=$",
+   "choices": [
+    "$4$",
+    "$3$",
+    "$5$",
+    "$7$"
+   ],
+   "answer": 2,
+   "explanations": [
+    "$4$ is just one coordinate.",
+    "$Q\\mathbf x=(3,4)$; $3$ is just one coordinate.",
+    null,
+    "Lengths are preserved: $\\sqrt{9+16}=5$."
+   ]
+  },
+  {
+   "type": "mc",
+   "prompt": "$B=\\begin{bmatrix}1&1\\\\1&-1\\end{bmatrix}$. Then $B^TB=$",
+   "choices": [
+    "$\\left[\\begin{matrix}0 & 0\\\\0 & 0\\end{matrix}\\right]$",
+    "$\\left[\\begin{matrix}1 & 0\\\\0 & 1\\end{matrix}\\right]$",
+    "$\\left[\\begin{matrix}2 & 2\\\\2 & 2\\end{matrix}\\right]$",
+    "$\\left[\\begin{matrix}2 & 0\\\\0 & 2\\end{matrix}\\right]$"
+   ],
+   "answer": 3,
+   "explanations": [
+    "The diagonal entries are the squared lengths $2$.",
+    "That is $I$. Column lengths are $\\sqrt2$, not $1$.",
+    "The off-diagonal entries are column dot products: $1-1=0$.",
+    null
+   ]
+  },
+  {
+   "type": "mc",
+   "prompt": "What scalar $c$ makes $cB$ orthogonal, where $B=\\begin{bmatrix}1&1\\\\1&-1\\end{bmatrix}$?",
+   "choices": [
+    "$\\sqrt2$",
+    "$\\tfrac1{\\sqrt2}$",
+    "$2$",
+    "$\\tfrac12$"
+   ],
+   "answer": 1,
+   "explanations": [
+    "$2c^2=4\\neq1$.",
+    null,
+    "That makes columns longer.",
+    "$(cB)^T(cB)=2c^2I$, so $c^2=\\tfrac12$."
+   ]
+  },
+  {
+   "type": "mc",
+   "prompt": "For $Q=\\begin{bmatrix}1/\\sqrt2&0\\\\1/\\sqrt2&0\\\\0&1\\end{bmatrix}$ (3×2), $Q^TQ=$",
+   "choices": [
+    "$\\mathbf 0$",
+    "$I_2$",
+    "$I_3$",
+    "$\\begin{bmatrix}1/2&1/2\\\\1/2&1/2\\end{bmatrix}$"
+   ],
+   "answer": 1,
+   "explanations": [
+    "The columns are unit vectors, so the diagonal is $1$.",
+    null,
+    "$Q^TQ$ is $2\\times2$ here.",
+    "That is the upper block of $QQ^T$, not $Q^TQ$."
+   ]
+  },
+  {
+   "type": "mc",
+   "prompt": "For the same $Q$ (3×2 with orthonormal columns), $QQ^T$ is",
+   "choices": [
+    "$\\mathbf 0$",
+    "a projection matrix, not $I_3$",
+    "a $2\\times2$ matrix",
+    "$I_3$"
+   ],
+   "answer": 1,
+   "explanations": [
+    "It projects onto col$(Q)$; it is nonzero.",
+    null,
+    "$Q$ is $3\\times2$, so $QQ^T$ is $3\\times3$.",
+    "It has rank $2$, so it cannot be $I_3$."
+   ]
+  },
+  {
+   "type": "mc",
+   "prompt": "For the same $Q$ and $\\mathbf b=(1,3,5)$, the projection of $\\mathbf b$ onto col$(Q)$ is",
+   "choices": [
+    "$(\\sqrt2,0,5)$",
+    "$(2\\sqrt2,5)$",
+    "$(2,2,5)$",
+    "$(1,3,5)$"
+   ],
+   "answer": 2,
+   "explanations": [
+    "$Q^T\\mathbf b$ has two entries; the projection $QQ^T\\mathbf b$ has three.",
+    "That is $Q^T\\mathbf b$, a vector in $\\mathbb R^2$.",
+    null,
+    "That is $\\mathbf b$ itself, which is not in col$(Q)$."
+   ]
+  },
+  {
+   "type": "mc",
+   "prompt": "If $Q$ has orthonormal columns, the least-squares solution of $Q\\mathbf x=\\mathbf b$ is",
+   "choices": [
+    "$\\hat{\\mathbf x}=Q\\mathbf b$",
+    "$\\hat{\\mathbf x}=Q^T\\mathbf b$",
+    "$\\hat{\\mathbf x}=\\mathbf b$",
+    "$\\hat{\\mathbf x}=(QQ^T)^{-1}\\mathbf b$"
+   ],
+   "answer": 1,
+   "explanations": [
+    "Sizes do not match ($Q$ is $m\\times n$).",
+    null,
+    "$\\hat{\\mathbf x}$ lives in $\\mathbb R^n$, $\\mathbf b$ in $\\mathbb R^m$.",
+    "$QQ^T$ is generally singular."
+   ]
+  },
+  {
+   "type": "mc",
+   "prompt": "In $A=QR$ (Gram-Schmidt), the normal equations become",
+   "choices": [
+    "$R^T\\hat{\\mathbf x}=\\mathbf b$",
+    "$R\\hat{\\mathbf x}=Q^T\\mathbf b$",
+    "$QR\\hat{\\mathbf x}=\\mathbf b$",
+    "$Q\\hat{\\mathbf x}=R^T\\mathbf b$"
+   ],
+   "answer": 1,
+   "explanations": [
+    "The right side must be $Q^T\\mathbf b$.",
+    null,
+    "That says $A\\hat{\\mathbf x}=\\mathbf b$, which need not be solvable.",
+    "Orders swapped."
+   ]
+  },
+  {
+   "type": "mc",
+   "prompt": "Every matrix can be written as $A=U\\Sigma V^T$ (SVD). Here $U$ and $V$ are",
+   "choices": [
+    "symmetric matrices",
+    "identity matrices",
+    "orthogonal matrices",
+    "diagonal matrices"
+   ],
+   "answer": 2,
+   "explanations": [
+    "Orthogonal matrices need not be symmetric.",
+    "Then $A=\\Sigma$.",
+    null,
+    "$\\Sigma$ is the diagonal one."
+   ]
+  },
+  {
+   "type": "mc",
+   "prompt": "Geometrically, $A=U\\Sigma V^T$ acts as",
+   "choices": [
+    "translate, rotate, translate",
+    "project, project, project",
+    "rotate/reflect, stretch along the axes, rotate/reflect",
+    "shear, shear, shear"
+   ],
+   "answer": 2,
+   "explanations": [
+    "Linear maps fix the origin.",
+    "Projections lose information.",
+    null,
+    "Shears are not orthogonal."
+   ]
+  },
+  {
+   "type": "mc",
+   "prompt": "An orthogonal $2\\times2$ matrix has eigenvalues that are",
+   "choices": [
+    "real $\\pm1$, or complex with $|\\lambda|=1$",
+    "always $0$",
+    "any complex number",
+    "always real"
+   ],
+   "answer": 0,
+   "explanations": [
+    null,
+    "Orthogonal matrices are invertible.",
+    "$\\|Q\\mathbf v\\|=\\|\\mathbf v\\|$ forces $|\\lambda|=1$.",
+    "A rotation by $\\theta\\neq0,\\pi$ has no real eigenvalues."
+   ]
+  },
+  {
+   "type": "mc",
+   "prompt": "The rotation $\\begin{bmatrix}3/5&-4/5\\\\4/5&3/5\\end{bmatrix}$ has eigenvalues",
+   "choices": [
+    "$\\tfrac35\\pm\\tfrac45i$",
+    "$1$ and $-1$",
+    "$\\tfrac35$ and $\\tfrac45$",
+    "$\\pm\\tfrac{5}{3}$"
+   ],
+   "answer": 0,
+   "explanations": [
+    null,
+    "That is for a reflection. Here $\\det=+1$ and there are no real eigenvectors.",
+    "The trace is $6/5$ and the determinant is $1$, so $\\lambda^2-\\tfrac65\\lambda+1=0$ has complex roots.",
+    "Eigenvalues of an orthogonal matrix have modulus $1$."
+   ]
+  },
+  {
+   "type": "type",
+   "prompt": "$Q=\\begin{bmatrix}3/5&-4/5\\\\4/5&3/5\\end{bmatrix}$. Find $\\det Q$.",
+   "answer": [
+    "1"
+   ],
+   "explanation": "$\\tfrac9{25}+\\tfrac{16}{25}=1$."
+  },
+  {
+   "type": "type",
+   "prompt": "$Q=\\tfrac1{\\sqrt5}\\begin{bmatrix}1&2\\\\2&-1\\end{bmatrix}$. Find $\\det Q$.",
+   "answer": [
+    "-1"
+   ],
+   "explanation": "$\\det Q=\\left(\\tfrac1{\\sqrt5}\\right)^2\\left(1\\cdot(-1)-2\\cdot2\\right)=\\tfrac15(-5)=-1$."
+  },
+  {
+   "type": "type",
+   "prompt": "For orthogonal $Q$ with $\\det Q=-1$, what is $\\det(Q^{-1})$?",
+   "answer": [
+    "-1"
+   ],
+   "explanation": "$\\det(Q^{-1})=1/\\det Q=-1$."
+  },
+  {
+   "type": "type",
+   "prompt": "For orthogonal $P$, $Q$ with $\\det P=-1$ and $\\det Q=-1$, find $\\det(PQ)$.",
+   "answer": [
+    "1"
+   ],
+   "explanation": "$(-1)(-1)=1$."
+  },
+  {
+   "type": "type",
+   "prompt": "Find $a>0$ so that $\\begin{bmatrix}a&-4/5\\\\4/5&a\\end{bmatrix}$ is orthogonal (fraction like 3/5 is fine).",
+   "answer": [
+    "3/5",
+    "0.6"
+   ],
+   "explanation": "Column length: $a^2+16/25=1$, so $a=3/5$."
+  },
+  {
+   "type": "type",
+   "prompt": "The first column of a $2\\times2$ orthogonal matrix is $(3/5,4/5)$ and the second column is $(a,-3/5)$ with $a>0$. Find $a$ (a fraction like 4/5 is fine).",
+   "answer": [
+    "4/5",
+    "0.8"
+   ],
+   "explanation": "The second column must have unit length: $a^2+9/25=1$, so $a=4/5$. Check: $(3/5,4/5)\\cdot(4/5,-3/5)=0$."
+  },
+  {
+   "type": "type",
+   "prompt": "$Q=\\dfrac13\\begin{bmatrix}1&2&2\\\\2&1&-2\\\\2&-2&1\\end{bmatrix}$. Find $\\det Q$.",
+   "answer": [
+    "-1"
+   ],
+   "explanation": "Computed: $\\det Q=-1$ (it is a reflection-type orthogonal matrix)."
+  },
+  {
+   "type": "type",
+   "prompt": "$Q=\\dfrac13\\begin{bmatrix}1&2&2\\\\2&1&-2\\\\2&-2&1\\end{bmatrix}$. What is the $(1,1)$ entry of $Q^{-1}$ (fraction)?",
+   "answer": [
+    "1/3",
+    "0.3333"
+   ],
+   "explanation": "$Q$ is symmetric and orthogonal, so $Q^{-1}=Q^T=Q$, with $(1,1)$ entry $1/3$."
+  },
+  {
+   "type": "type",
+   "prompt": "$Q$ is $4\\times4$ orthogonal and $\\mathbf x$ has length $7$. Find $\\|Q\\mathbf x\\|$.",
+   "answer": [
+    "7"
+   ],
+   "explanation": "Orthogonal matrices preserve length."
+  },
+  {
+   "type": "type",
+   "prompt": "$Q$ is orthogonal, $\\mathbf x\\cdot\\mathbf y=-3$. Find $(Q\\mathbf x)\\cdot(Q\\mathbf y)$.",
+   "answer": [
+    "-3"
+   ],
+   "explanation": "Dot products are preserved."
+  },
+  {
+   "type": "type",
+   "prompt": "$Q$ is orthogonal and $\\mathbf x$, $\\mathbf y$ are perpendicular. What is $(Q\\mathbf x)\\cdot(Q\\mathbf y)$?",
+   "answer": [
+    "0"
+   ],
+   "explanation": "Angles (and perpendicularity) are preserved."
+  },
+  {
+   "type": "type",
+   "prompt": "The columns of a $5\\times5$ orthogonal matrix form an orthonormal set. How many vectors are in that set?",
+   "answer": [
+    "5"
+   ],
+   "explanation": "One per column."
+  },
+  {
+   "type": "type",
+   "prompt": "$Q=\\begin{bmatrix}1/\\sqrt2&0\\\\1/\\sqrt2&0\\\\0&1\\end{bmatrix}$, $\\mathbf b=(1,3,5)$. The **second entry** of $Q^T\\mathbf b$.",
+   "answer": [
+    "5"
+   ],
+   "explanation": "$(0,0,1)\\cdot(1,3,5)=5$."
+  },
+  {
+   "type": "type",
+   "prompt": "Same $Q$ and $\\mathbf b$: the **first entry** of the projection $QQ^T\\mathbf b$.",
+   "answer": [
+    "2"
+   ],
+   "explanation": "$QQ^T\\mathbf b=(2,2,5)$."
+  },
+  {
+   "type": "type",
+   "prompt": "Same $Q$: the $(1,2)$ entry of $QQ^T$ (fraction).",
+   "answer": [
+    "1/2",
+    "0.5"
+   ],
+   "explanation": "$QQ^T=\\begin{bmatrix}1/2&1/2&0\\\\1/2&1/2&0\\\\0&0&1\\end{bmatrix}$."
+  },
+  {
+   "type": "type",
+   "prompt": "The rank of $QQ^T$ for the $3\\times2$ matrix $Q$ with orthonormal columns is",
+   "answer": [
+    "2"
+   ],
+   "explanation": "It has the same rank as $Q$."
+  },
+  {
+   "type": "type",
+   "prompt": "$A=QR$ with $Q^T\\mathbf b=(2,6)$ and $R=\\begin{bmatrix}2&1\\\\0&3\\end{bmatrix}$. Solve $R\\hat{\\mathbf x}=Q^T\\mathbf b$ for the **second** entry of $\\hat{\\mathbf x}$.",
+   "answer": [
+    "2"
+   ],
+   "explanation": "$3x_2=6$, so $x_2=2$."
+  },
+  {
+   "type": "type",
+   "prompt": "Same problem: the **first** entry of $\\hat{\\mathbf x}$.",
+   "answer": [
+    "0"
+   ],
+   "explanation": "$2x_1+x_2=2$ with $x_2=2$ gives $x_1=0$."
+  },
+  {
+   "type": "type",
+   "prompt": "$A=C\\cdot\\mathrm{diag}(2,1)$ where $C$ is a rotation. The largest stretch factor of $A$ (a singular value) is",
+   "answer": [
+    "2"
+   ],
+   "explanation": "$A^TA=\\mathrm{diag}(4,1)$, so the singular values are $2$ and $1$."
+  },
+  {
+   "type": "type",
+   "prompt": "If $Q$ is orthogonal and $\\lambda$ is a complex eigenvalue, $|\\lambda|=$",
+   "answer": [
+    "1"
+   ],
+   "explanation": "$\\|Q\\mathbf v\\|=\\|\\mathbf v\\|$ forces $|\\lambda|=1$."
+  },
+  {
+   "type": "type",
+   "prompt": "A $2\\times2$ reflection matrix has eigenvalues $1$ and what other value?",
+   "answer": [
+    "-1"
+   ],
+   "explanation": "The determinant is $-1$."
+  },
+  {
+   "type": "type",
+   "prompt": "$Q$ is orthogonal with columns $\\mathbf q_1,\\mathbf q_2,\\mathbf q_3$. Find $\\mathbf q_1\\cdot\\mathbf q_2$.",
+   "answer": [
+    "0"
+   ],
+   "explanation": "Distinct columns are perpendicular."
+  },
+  {
+   "type": "wordbank",
+   "prompt": "A square matrix is orthogonal when $Q^TQ=$ _____.",
+   "wordbank": [
+    "$0$",
+    "$-I$",
+    "$I$",
+    "$Q$"
+   ],
+   "answer": "$I$",
+   "explanation": "That is the definition."
+  },
+  {
+   "type": "wordbank",
+   "prompt": "For an orthogonal matrix, $Q^{-1}=$ _____.",
+   "wordbank": [
+    "$Q^2$",
+    "$-Q$",
+    "$\\det Q$",
+    "$Q^T$"
+   ],
+   "answer": "$Q^T$",
+   "explanation": "The transpose is the inverse."
+  },
+  {
+   "type": "wordbank",
+   "prompt": "The columns of an orthogonal matrix are _____.",
+   "wordbank": [
+    "zero",
+    "dependent",
+    "orthonormal",
+    "parallel"
+   ],
+   "answer": "orthonormal",
+   "explanation": "Unit length and mutually perpendicular."
+  },
+  {
+   "type": "wordbank",
+   "prompt": "Orthogonal matrices preserve lengths and _____.",
+   "wordbank": [
+    "angles",
+    "ranks of every matrix",
+    "eigenvalues",
+    "entries"
+   ],
+   "answer": "angles",
+   "explanation": "Dot products, hence angles, are preserved."
+  },
+  {
+   "type": "wordbank",
+   "prompt": "The determinant of an orthogonal matrix is $1$ or _____.",
+   "wordbank": [
+    "$0$",
+    "$-1$",
+    "$\\tfrac12$",
+    "$2$"
+   ],
+   "answer": "$-1$",
+   "explanation": "$(\\det Q)^2=1$."
+  },
+  {
+   "type": "wordbank",
+   "prompt": "A $2\\times2$ orthogonal matrix with determinant $-1$ is a _____.",
+   "wordbank": [
+    "reflection",
+    "rotation",
+    "projection",
+    "shear"
+   ],
+   "answer": "reflection",
+   "explanation": "Reflections reverse orientation."
+  },
+  {
+   "type": "wordbank",
+   "prompt": "A tall matrix $Q$ with orthonormal columns has $Q^TQ=I$, but $QQ^T$ is a _____ matrix.",
+   "wordbank": [
+    "rotation",
+    "projection",
+    "diagonal",
+    "zero"
+   ],
+   "answer": "projection",
+   "explanation": "It projects onto col$(Q)$."
+  },
+  {
+   "type": "wordbank",
+   "prompt": "The least-squares solution for a matrix with orthonormal columns is $\\hat{\\mathbf x}=$ _____.",
+   "wordbank": [
+    "$Q^{-1}$",
+    "$Q^T\\mathbf b$",
+    "$\\mathbf b$",
+    "$Q\\mathbf b$"
+   ],
+   "answer": "$Q^T\\mathbf b$",
+   "explanation": "The normal equations reduce because $Q^TQ=I$."
+  },
+  {
+   "type": "wordbank",
+   "prompt": "The SVD writes $A=U\\Sigma V^T$ where $U$ and $V$ are _____ matrices.",
+   "wordbank": [
+    "zero",
+    "orthogonal",
+    "diagonal",
+    "singular"
+   ],
+   "answer": "orthogonal",
+   "explanation": "Rotate/reflect, stretch, rotate/reflect."
+  },
+  {
+   "type": "wordbank",
+   "prompt": "The Gram-Schmidt process turns the columns of $A$ into the _____ columns of $Q$ in $A=QR$.",
+   "wordbank": [
+    "dependent",
+    "zero",
+    "identical",
+    "orthonormal"
+   ],
+   "answer": "orthonormal",
+   "explanation": "That is the purpose of Gram-Schmidt."
+  }
+ ]
+}

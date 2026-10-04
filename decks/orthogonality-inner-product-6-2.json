@@ -1,0 +1,743 @@
+{
+ "id": "orthogonality-inner-product-6-2",
+ "title": "Orthogonality in Inner Product Spaces (6.2)",
+ "description": "Day 36: orthogonality depends on the inner product, Cauchy–Schwarz, angles, triangle inequality, Generalized Pythagoras, and orthogonal complements in weighted, matrix, polynomial, and function spaces. 10 questions pulled per attempt from a pool of 60.",
+ "questionsPerAttempt": 10,
+ "pointsPerQuestion": 1,
+ "questions": [
+  {
+   "type": "wordbank",
+   "prompt": "Vectors $u$ and $v$ in an inner product space are called orthogonal when $\\langle u,v\\rangle=$ _____.",
+   "wordbank": [
+    "1",
+    "$-1$",
+    "0",
+    "$\\|u\\|\\|v\\|$"
+   ],
+   "answer": "0",
+   "explanation": "Orthogonal means the inner product is zero."
+  },
+  {
+   "type": "mc",
+   "prompt": "Whether two vectors are orthogonal depends on which inner product is being used.",
+   "choices": [
+    "True",
+    "False"
+   ],
+   "answer": 0,
+   "explanations": [
+    null,
+    "For example $(1,1)$ and $(1,-1)$ are orthogonal for the dot product but not for $\\langle u,v\\rangle=3u_1v_1+2u_2v_2$."
+   ]
+  },
+  {
+   "type": "mc",
+   "prompt": "If $u\\perp v$ for the dot product on $\\mathbb R^2$, then $u\\perp v$ for every inner product on $\\mathbb R^2$.",
+   "choices": [
+    "True",
+    "False"
+   ],
+   "answer": 1,
+   "explanations": [
+    "Counterexample: $(1,1)$ and $(1,-1)$ under the weighted product $3u_1v_1+2u_2v_2$ give $3-2=1\\ne0$.",
+    null
+   ]
+  },
+  {
+   "type": "mc",
+   "prompt": "The zero vector is orthogonal to every vector in an inner product space.",
+   "choices": [
+    "True",
+    "False"
+   ],
+   "answer": 0,
+   "explanations": [
+    null,
+    "$\\langle 0,v\\rangle=0$ for every $v$."
+   ]
+  },
+  {
+   "type": "mc",
+   "prompt": "A nonzero vector can be orthogonal to itself.",
+   "choices": [
+    "True",
+    "False"
+   ],
+   "answer": 1,
+   "explanations": [
+    "$\\langle v,v\\rangle=\\|v\\|^2>0$ when $v\\ne0$, by positivity.",
+    null
+   ]
+  },
+  {
+   "type": "wordbank",
+   "prompt": "The Cauchy–Schwarz inequality says $|\\langle u,v\\rangle|\\le$ _____.",
+   "wordbank": [
+    "$\\|u\\|+\\|v\\|$",
+    "1",
+    "$\\|u\\|\\|v\\|$",
+    "$\\|u\\|^2+\\|v\\|^2$"
+   ],
+   "answer": "$\\|u\\|\\|v\\|$",
+   "explanation": "The inner product is at most the product of the lengths in absolute value."
+  },
+  {
+   "type": "mc",
+   "prompt": "Cauchy–Schwarz holds in every real inner product space, not just $\\mathbb R^n$ with the dot product.",
+   "choices": [
+    "True",
+    "False"
+   ],
+   "answer": 0,
+   "explanations": [
+    null,
+    "It is proved from the four axioms alone, so it holds for functions, matrices, polynomials, and every other inner product."
+   ]
+  },
+  {
+   "type": "mc",
+   "prompt": "Equality $|\\langle u,v\\rangle|=\\|u\\|\\|v\\|$ holds exactly when:",
+   "choices": [
+    "$u=v$",
+    "$\\|u\\|=\\|v\\|=1$",
+    "$u$ and $v$ are linearly dependent",
+    "$u$ and $v$ are orthogonal"
+   ],
+   "answer": 2,
+   "explanations": [
+    "$u=v$ gives equality, but so does $u=-3v$. Dependence is the full condition.",
+    "Unit length does not force equality. Two orthogonal unit vectors give $0<1$.",
+    null,
+    "Orthogonal vectors give $|\\langle u,v\\rangle|=0$, which is the far-from-equality case."
+   ]
+  },
+  {
+   "type": "wordbank",
+   "prompt": "In an inner product space, the angle $\\theta$ between nonzero $u$ and $v$ is defined by $\\cos\\theta=$ _____.",
+   "wordbank": [
+    "$\\dfrac{\\langle u,v\\rangle}{\\|u\\|\\|v\\|}$",
+    "$\\dfrac{\\|u\\|\\|v\\|}{\\langle u,v\\rangle}$",
+    "$\\langle u,v\\rangle\\|u\\|\\|v\\|$",
+    "$\\dfrac{\\langle u,v\\rangle}{\\|u\\|+\\|v\\|}$"
+   ],
+   "answer": "$\\dfrac{\\langle u,v\\rangle}{\\|u\\|\\|v\\|}$",
+   "explanation": "Same formula as in $\\mathbb R^n$, with the general inner product."
+  },
+  {
+   "type": "mc",
+   "prompt": "Why is the angle formula legitimate in a general inner product space?",
+   "choices": [
+    "Because the triangle inequality says so",
+    "Because every inner product space is secretly $\\mathbb R^n$",
+    "Because $\\|u\\|\\|v\\|$ is always at least 1",
+    "Cauchy–Schwarz guarantees the fraction lies in $[-1,1]$, so $\\arccos$ is defined"
+   ],
+   "answer": 3,
+   "explanations": [
+    "The triangle inequality is a consequence of Cauchy–Schwarz, not the reason the angle exists.",
+    "Function and matrix spaces are not $\\mathbb R^n$ with the dot product.",
+    "Norms can be any nonnegative number.",
+    null
+   ]
+  },
+  {
+   "type": "mc",
+   "prompt": "If $\\langle u,v\\rangle<0$ for nonzero $u,v$, the angle between them is greater than $90^\\circ$.",
+   "choices": [
+    "True",
+    "False"
+   ],
+   "answer": 0,
+   "explanations": [
+    null,
+    "$\\cos\\theta<0$ means $\\theta>90^\\circ$."
+   ]
+  },
+  {
+   "type": "mc",
+   "prompt": "If the angle between nonzero $u$ and $v$ is $0^\\circ$, then $u$ is a positive scalar multiple of $v$.",
+   "choices": [
+    "True",
+    "False"
+   ],
+   "answer": 0,
+   "explanations": [
+    null,
+    "$\\cos\\theta=1$ is equality in Cauchy–Schwarz with $\\langle u,v\\rangle>0$."
+   ]
+  },
+  {
+   "type": "wordbank",
+   "prompt": "The triangle inequality says $\\|u+v\\|\\le$ _____.",
+   "wordbank": [
+    "$\\|u\\|+\\|v\\|$",
+    "$\\|u\\|\\|v\\|$",
+    "$\\|u\\|-\\|v\\|$",
+    "$\\sqrt{\\|u\\|^2+\\|v\\|^2}$"
+   ],
+   "answer": "$\\|u\\|+\\|v\\|$",
+   "explanation": "The direct path is never longer than the detour."
+  },
+  {
+   "type": "mc",
+   "prompt": "Generalized Pythagorean Theorem: if $u\\perp v$, then $\\|u+v\\|^2=\\|u\\|^2+\\|v\\|^2$.",
+   "choices": [
+    "True",
+    "False"
+   ],
+   "answer": 0,
+   "explanations": [
+    null,
+    "$\\|u+v\\|^2=\\|u\\|^2+2\\langle u,v\\rangle+\\|v\\|^2$ and the middle term is $0$."
+   ]
+  },
+  {
+   "type": "mc",
+   "prompt": "In a real inner product space, if $\\|u+v\\|^2=\\|u\\|^2+\\|v\\|^2$, then $u\\perp v$.",
+   "choices": [
+    "True",
+    "False"
+   ],
+   "answer": 0,
+   "explanations": [
+    null,
+    "Expanding gives $2\\langle u,v\\rangle=0$."
+   ]
+  },
+  {
+   "type": "mc",
+   "prompt": "For orthogonal $u,v$ we have $\\|u+v\\|=\\|u\\|+\\|v\\|$.",
+   "choices": [
+    "True",
+    "False"
+   ],
+   "answer": 1,
+   "explanations": [
+    "Orthogonal vectors give $\\|u+v\\|=\\sqrt{\\|u\\|^2+\\|v\\|^2}$, which is smaller. Equality in the triangle inequality needs the same direction.",
+    null
+   ]
+  },
+  {
+   "type": "type",
+   "prompt": "If $u\\perp v$, $\\|u\\|=3$ and $\\|v\\|=4$, find $\\|u+v\\|$.",
+   "answer": [
+    "5"
+   ],
+   "explanation": "$\\sqrt{9+16}=5$."
+  },
+  {
+   "type": "type",
+   "prompt": "If $\\|u\\|=2$, $\\|v\\|=3$ and $\\langle u,v\\rangle=1$, find $\\|u+v\\|^2$.",
+   "answer": [
+    "15"
+   ],
+   "explanation": "$4+2(1)+9=15$."
+  },
+  {
+   "type": "type",
+   "prompt": "If $\\|u\\|=2$, $\\|v\\|=3$ and $\\langle u,v\\rangle=1$, find $\\|u-v\\|^2$.",
+   "answer": [
+    "11"
+   ],
+   "explanation": "$4-2(1)+9=11$."
+  },
+  {
+   "type": "mc",
+   "prompt": "Given $\\|u\\|=5$ and $\\|v\\|=2$, which value of $\\langle u,v\\rangle$ is impossible?",
+   "choices": [
+    "$-10$",
+    "$10$",
+    "$11$",
+    "$0$"
+   ],
+   "answer": 2,
+   "explanations": [
+    "Allowed: it is the minimum $-\\|u\\|\\|v\\|$.",
+    "Allowed: it is the maximum $\\|u\\|\\|v\\|=10$.",
+    null,
+    "Allowed: orthogonal vectors."
+   ]
+  },
+  {
+   "type": "mc",
+   "prompt": "Given $\\|u\\|=3$ and $\\|v\\|=4$, which value is NOT possible for $\\|u+v\\|$?",
+   "choices": [
+    "$5$",
+    "$7$",
+    "$8$",
+    "$1$"
+   ],
+   "answer": 2,
+   "explanations": [
+    "Possible when $u\\perp v$.",
+    "Possible when $u$ and $v$ point in the same direction.",
+    null,
+    "Possible when $u$ and $v$ point in opposite directions."
+   ]
+  },
+  {
+   "type": "wordbank",
+   "prompt": "$W^\\perp=\\{v:\\langle v,w\\rangle=$ _____ for every $w$ in $W\\}$.",
+   "wordbank": [
+    "0",
+    "$\\|v\\|$",
+    "$\\|w\\|$",
+    "1"
+   ],
+   "answer": "0",
+   "explanation": "The orthogonal complement is everything orthogonal to all of $W$."
+  },
+  {
+   "type": "mc",
+   "prompt": "For any subspace $W$ of an inner product space $V$, $W^\\perp$ is a subspace of $V$.",
+   "choices": [
+    "True",
+    "False"
+   ],
+   "answer": 0,
+   "explanations": [
+    null,
+    "Bilinearity: sums and scalar multiples of vectors orthogonal to $W$ are still orthogonal to $W$."
+   ]
+  },
+  {
+   "type": "mc",
+   "prompt": "$W\\cap W^\\perp=\\{0\\}$.",
+   "choices": [
+    "True",
+    "False"
+   ],
+   "answer": 0,
+   "explanations": [
+    null,
+    "If $w$ is in both, $\\langle w,w\\rangle=0$, so $w=0$ by positivity."
+   ]
+  },
+  {
+   "type": "mc",
+   "prompt": "If $V$ is finite-dimensional and $W$ is a subspace, then $\\dim W+\\dim W^\\perp=\\dim V$.",
+   "choices": [
+    "True",
+    "False"
+   ],
+   "answer": 0,
+   "explanations": [
+    null,
+    "The two pieces fill out the whole space."
+   ]
+  },
+  {
+   "type": "type",
+   "prompt": "If $\\dim V=7$ and $\\dim W=3$, find $\\dim W^\\perp$.",
+   "answer": [
+    "4"
+   ],
+   "explanation": "$7-3=4$."
+  },
+  {
+   "type": "mc",
+   "prompt": "Let $W=\\text{span}\\{w_1,w_2,w_3\\}$. To show $v\\in W^\\perp$ it is enough to check that:",
+   "choices": [
+    "$\\langle v,w_i\\rangle=0$ for $i=1,2,3$",
+    "$\\langle w_i,w_j\\rangle=0$ for all $i\\ne j$",
+    "$\\|v\\|=1$",
+    "$\\langle v,w\\rangle=0$ for every $w$ in $V$"
+   ],
+   "answer": 0,
+   "explanations": [
+    null,
+    "That is a condition on the $w$'s, not on $v$.",
+    "Length has nothing to do with it.",
+    "That would make $v=0$."
+   ]
+  },
+  {
+   "type": "mc",
+   "prompt": "If $V$ is finite-dimensional then $(W^\\perp)^\\perp=W$.",
+   "choices": [
+    "True",
+    "False"
+   ],
+   "answer": 0,
+   "explanations": [
+    null,
+    "The complement of the complement returns to the original subspace."
+   ]
+  },
+  {
+   "type": "mc",
+   "prompt": "The orthogonal complement of a subspace $W$ depends on which inner product is used on $V$.",
+   "choices": [
+    "True",
+    "False"
+   ],
+   "answer": 0,
+   "explanations": [
+    null,
+    "For $W=\\text{span}\\{(1,2,3)\\}$ the dot product and $\\langle u,v\\rangle=u_1v_1+2u_2v_2+3u_3v_3$ give different planes."
+   ]
+  },
+  {
+   "type": "mc",
+   "prompt": "In $\\mathbb R^2$ with the dot product, which vector spans $W^\\perp$ for $W=\\text{span}\\{(3,4)\\}$?",
+   "choices": [
+    "$(-3,4)$",
+    "$(4,3)$",
+    "$(4,-3)$",
+    "$(3,4)$"
+   ],
+   "answer": 2,
+   "explanations": [
+    "Its dot product with $(3,4)$ is $7$, not $0$.",
+    "Its dot product with $(3,4)$ is $24$.",
+    null,
+    "That spans $W$ itself."
+   ]
+  },
+  {
+   "type": "type",
+   "prompt": "In $\\mathbb R^3$ with the dot product, find $\\dim W^\\perp$ for $W=\\text{span}\\{(1,2,3)\\}$.",
+   "answer": [
+    "2"
+   ],
+   "explanation": "$3-1=2$. It is the plane $x+2y+3z=0$."
+  },
+  {
+   "type": "mc",
+   "prompt": "Under $\\langle u,v\\rangle=3u_1v_1+2u_2v_2$, which vector spans $\\text{span}\\{(2,1)\\}^\\perp$?",
+   "choices": [
+    "$(-1,2)$",
+    "$(2,-1)$",
+    "$(1,-3)$",
+    "$(1,-2)$"
+   ],
+   "answer": 2,
+   "explanations": [
+    "That is the dot-product answer. Here $\\langle(2,1),(-1,2)\\rangle=-6+4=-2$.",
+    "$\\langle(2,1),(2,-1)\\rangle=12-2=10$.",
+    null,
+    "$\\langle(2,1),(1,-2)\\rangle=6-4=2$."
+   ]
+  },
+  {
+   "type": "type",
+   "prompt": "Under $\\langle u,v\\rangle=3u_1v_1+2u_2v_2$, find $k$ so that $(1,k)\\perp(2,3)$.",
+   "answer": [
+    "-1"
+   ],
+   "explanation": "$3(1)(2)+2(k)(3)=6+6k=0$, so $k=-1$."
+  },
+  {
+   "type": "mc",
+   "prompt": "In $P_2$ with $\\langle p,q\\rangle=\\int_{-1}^{1}pq\\,dx$, which polynomial is in $\\text{span}\\{1\\}^\\perp$?",
+   "choices": [
+    "$1$",
+    "$x$",
+    "$x^2$",
+    "$1+x$"
+   ],
+   "answer": 1,
+   "explanations": [
+    "$\\langle1,1\\rangle=2\\ne0$.",
+    null,
+    "$\\int_{-1}^1x^2\\,dx=2/3\\ne0$.",
+    "$\\int_{-1}^1(1+x)\\,dx=2\\ne0$."
+   ]
+  },
+  {
+   "type": "mc",
+   "prompt": "On $M_{22}$ with $\\langle U,V\\rangle=\\text{tr}(U^TV)$, which matrix is orthogonal to $I_2$?",
+   "choices": [
+    "$\\begin{bmatrix}1&0\\\\0&-1\\end{bmatrix}$",
+    "$\\begin{bmatrix}1&1\\\\1&1\\end{bmatrix}$",
+    "$\\begin{bmatrix}2&0\\\\0&1\\end{bmatrix}$",
+    "$\\begin{bmatrix}0&0\\\\0&5\\end{bmatrix}$"
+   ],
+   "answer": 0,
+   "explanations": [
+    null,
+    "$\\langle I,V\\rangle=\\text{tr}V=2\\ne0$.",
+    "$\\text{tr}V=3\\ne0$.",
+    "$\\text{tr}V=5\\ne0$."
+   ]
+  },
+  {
+   "type": "mc",
+   "prompt": "With $\\langle U,V\\rangle=\\text{tr}(U^TV)$ on $M_{22}$, every symmetric matrix is orthogonal to every skew-symmetric matrix.",
+   "choices": [
+    "True",
+    "False"
+   ],
+   "answer": 0,
+   "explanations": [
+    null,
+    "Entries $(a,b,b,c)\\cdot(0,d,-d,0)=bd-bd=0$."
+   ]
+  },
+  {
+   "type": "type",
+   "prompt": "On $M_{22}$ with $\\langle U,V\\rangle=\\text{tr}(U^TV)$, find $\\dim W^\\perp$ where $W$ is the space of symmetric matrices.",
+   "answer": [
+    "1"
+   ],
+   "explanation": "$W^\\perp$ is the skew-symmetric matrices, and $4-3=1$."
+  },
+  {
+   "type": "type",
+   "prompt": "On $M_{22}$ with $\\langle U,V\\rangle=\\text{tr}(U^TV)$, find the dimension of $\\text{span}\\{I_2\\}^\\perp$ (the traceless matrices).",
+   "answer": [
+    "3"
+   ],
+   "explanation": "$4-1=3$."
+  },
+  {
+   "type": "type",
+   "prompt": "Under $\\langle u,v\\rangle=3u_1v_1+2u_2v_2$, compute $\\langle(1,2),(2,-1)\\rangle$.",
+   "answer": [
+    "2"
+   ],
+   "explanation": "$3(1)(2)+2(2)(-1)=6-4=2$."
+  },
+  {
+   "type": "type",
+   "prompt": "Under $\\langle u,v\\rangle=3u_1v_1+2u_2v_2$, compute $\\|(2,-3)\\|^2$.",
+   "answer": [
+    "30"
+   ],
+   "explanation": "$3(4)+2(9)=30$."
+  },
+  {
+   "type": "type",
+   "prompt": "Let $\\langle u,v\\rangle=u^TMv$ with $M=\\begin{bmatrix}1&2\\\\2&5\\end{bmatrix}$. Compute $\\langle e_1,e_2\\rangle$.",
+   "answer": [
+    "2"
+   ],
+   "explanation": "It is the $(1,2)$ entry of $M$."
+  },
+  {
+   "type": "type",
+   "prompt": "With the same $M$, compute $\\|e_2\\|^2$.",
+   "answer": [
+    "5"
+   ],
+   "explanation": "$\\langle e_2,e_2\\rangle=M_{22}=5$."
+  },
+  {
+   "type": "mc",
+   "prompt": "With the same $M$, what is $\\cos\\theta$ for the angle between $e_1$ and $e_2$?",
+   "choices": [
+    "$\\dfrac1{\\sqrt5}$",
+    "$0$",
+    "$\\dfrac25$",
+    "$\\dfrac{2}{\\sqrt5}$"
+   ],
+   "answer": 3,
+   "explanations": [
+    "The numerator is $M_{12}=2$, not $1$.",
+    "$\\langle e_1,e_2\\rangle=2\\ne0$, so they are not orthogonal here.",
+    "The denominator is $\\|e_1\\|\\|e_2\\|=1\\cdot\\sqrt5$, not $5$.",
+    null
+   ]
+  },
+  {
+   "type": "mc",
+   "prompt": "In $C[0,1]$ with $\\langle f,g\\rangle=\\int_0^1fg\\,dx$, the angle between $1$ and $x$ is:",
+   "choices": [
+    "$60^\\circ$",
+    "$30^\\circ$",
+    "$0^\\circ$",
+    "$45^\\circ$"
+   ],
+   "answer": 1,
+   "explanations": [
+    "That would need $\\cos\\theta=1/2$.",
+    null,
+    "They are not multiples of each other.",
+    "That would need $\\cos\\theta=\\sqrt2/2$."
+   ]
+  },
+  {
+   "type": "type",
+   "prompt": "In $C[0,1]$ with $\\langle f,g\\rangle=\\int_0^1fg\\,dx$, compute $\\langle1,x^2\\rangle$. (Enter a fraction like 1/4.)",
+   "answer": [
+    "1/3"
+   ],
+   "explanation": "$\\int_0^1x^2\\,dx=1/3$."
+  },
+  {
+   "type": "type",
+   "prompt": "In $C[0,1]$ with $\\langle f,g\\rangle=\\int_0^1fg\\,dx$, compute $\\langle x,x^3\\rangle$. (Enter a fraction.)",
+   "answer": [
+    "1/5"
+   ],
+   "explanation": "$\\int_0^1x^4\\,dx=1/5$."
+  },
+  {
+   "type": "mc",
+   "prompt": "In $C[0,1]$ with $\\int_0^1fg\\,dx$, what is $\\cos\\theta$ for $f=x$ and $g=x^3$?",
+   "choices": [
+    "$\\dfrac{21}{25}$",
+    "$\\dfrac{\\sqrt{21}}5$",
+    "$\\dfrac1{\\sqrt{21}}$",
+    "$\\dfrac15$"
+   ],
+   "answer": 1,
+   "explanations": [
+    "That is $\\cos^2\\theta$.",
+    null,
+    "Divide by $\\|x\\|\\|x^3\\|=1/\\sqrt{21}$, don't multiply.",
+    "That is only the numerator $\\langle x,x^3\\rangle$."
+   ]
+  },
+  {
+   "type": "mc",
+   "prompt": "In $C[-1,1]$ with $\\langle f,g\\rangle=\\int_{-1}^1fg\\,dx$, the functions $x$ and $x^2$ are orthogonal.",
+   "choices": [
+    "True",
+    "False"
+   ],
+   "answer": 0,
+   "explanations": [
+    null,
+    "$\\int_{-1}^1x^3\\,dx=0$, since $x^3$ is odd."
+   ]
+  },
+  {
+   "type": "mc",
+   "prompt": "In $C[0,1]$ with $\\langle f,g\\rangle=\\int_0^1fg\\,dx$, the functions $x$ and $x^2$ are orthogonal.",
+   "choices": [
+    "True",
+    "False"
+   ],
+   "answer": 1,
+   "explanations": [
+    "$\\int_0^1x^3\\,dx=1/4\\ne0$. The interval is part of the inner product.",
+    null
+   ]
+  },
+  {
+   "type": "mc",
+   "prompt": "In $C[-\\pi,\\pi]$ with $\\int_{-\\pi}^{\\pi}fg\\,dx$, which pair is NOT orthogonal?",
+   "choices": [
+    "$\\cos x$ and $\\cos2x$",
+    "$\\sin x$ and $\\sin2x$",
+    "$1$ and $\\cos^2x$",
+    "$\\sin x$ and $\\cos x$"
+   ],
+   "answer": 2,
+   "explanations": [
+    "Orthogonal: the integral is $0$.",
+    "Orthogonal: the integral is $0$.",
+    null,
+    "Orthogonal: the integral is $0$."
+   ]
+  },
+  {
+   "type": "type",
+   "prompt": "In $C[-\\pi,\\pi]$ with $\\int_{-\\pi}^{\\pi}fg\\,dx$, compute $\\|\\sin x\\|^2$. (Enter a multiple of pi, like 3pi.)",
+   "answer": [
+    "pi",
+    "π"
+   ],
+   "explanation": "$\\int_{-\\pi}^{\\pi}\\sin^2x\\,dx=\\pi$."
+  },
+  {
+   "type": "type",
+   "prompt": "In $C[-\\pi,\\pi]$ with $\\int_{-\\pi}^{\\pi}fg\\,dx$, compute $\\|\\sin x+\\cos x\\|^2$. (Use Pythagoras. Enter a multiple of pi.)",
+   "answer": [
+    "2pi",
+    "2π",
+    "2*pi"
+   ],
+   "explanation": "$\\sin x\\perp\\cos x$, so it is $\\pi+\\pi=2\\pi$."
+  },
+  {
+   "type": "type",
+   "prompt": "On $P_2$ with $\\langle p,q\\rangle=p(-1)q(-1)+p(0)q(0)+p(1)q(1)$, compute $\\langle x^2,\\,1+x\\rangle$.",
+   "answer": [
+    "2"
+   ],
+   "explanation": "$x^2$ takes values $1,0,1$ and $1+x$ takes values $0,1,2$, so the sum is $0+0+2=2$."
+  },
+  {
+   "type": "type",
+   "prompt": "In $C[0,1]$ with $\\int_0^1fg\\,dx$, find $c$ so that $x^2+c\\perp1$. (Enter a fraction.)",
+   "answer": [
+    "-1/3"
+   ],
+   "explanation": "$\\int_0^1(x^2+c)\\,dx=1/3+c=0$."
+  },
+  {
+   "type": "type",
+   "prompt": "In $C[0,2]$ with $\\int_0^2fg\\,dx$, find $c$ so that $x^2+c\\perp1$. (Enter a fraction.)",
+   "answer": [
+    "-4/3"
+   ],
+   "explanation": "$\\int_0^2(x^2+c)\\,dx=8/3+2c=0$."
+  },
+  {
+   "type": "mc",
+   "prompt": "In $C[0,1]$, $\\left(\\int_0^1x\\,dx\\right)^2\\le\\int_0^1x^2\\,dx$.",
+   "choices": [
+    "True",
+    "False"
+   ],
+   "answer": 0,
+   "explanations": [
+    null,
+    "Cauchy–Schwarz with $f=x$ and $g=1$: $(1/2)^2=1/4\\le1/3$."
+   ]
+  },
+  {
+   "type": "mc",
+   "prompt": "Under $\\langle u,v\\rangle=3u_1v_1+2u_2v_2$, which is a unit vector orthogonal to $(2,1)$?",
+   "choices": [
+    "$\\dfrac{(1,-3)}{\\sqrt{21}}$",
+    "$\\dfrac{(-1,2)}{\\sqrt5}$",
+    "$\\dfrac{(1,-3)}{\\sqrt5}$",
+    "$\\dfrac{(1,-3)}{\\sqrt{10}}$"
+   ],
+   "answer": 0,
+   "explanations": [
+    null,
+    "That is the dot-product answer, not orthogonal here.",
+    "The weighted norm of $(1,-3)$ is $\\sqrt{21}$.",
+    "That normalizes with the Euclidean length. Here $\\|(1,-3)\\|^2=3+18=21$."
+   ]
+  },
+  {
+   "type": "mc",
+   "prompt": "Using Cauchy–Schwarz with $\\langle u,v\\rangle=3u_1v_1+2u_2v_2$ and $v=(\\tfrac13,\\tfrac12)$, the smallest $k$ with $(x+y)^2\\le k(3x^2+2y^2)$ for all $x,y$ is:",
+   "choices": [
+    "$\\dfrac15$",
+    "$1$",
+    "$\\dfrac65$",
+    "$\\dfrac56$"
+   ],
+   "answer": 3,
+   "explanations": [
+    "Too small: $(2,3)$ gives $25\\le(1/5)(30)=6$, false.",
+    "Equality would need $\\|v\\|^2=1$, but $\\|v\\|^2=5/6$.",
+    "That is $1/\\|v\\|^2$, upside down.",
+    null
+   ]
+  },
+  {
+   "type": "type",
+   "prompt": "Under $\\langle u,v\\rangle=3u_1v_1+2u_2v_2$, let $u=(2,1)$ and $v=(1,-3)$. Compute $\\|u+v\\|^2$.",
+   "answer": [
+    "35"
+   ],
+   "explanation": "$u+v=(3,-2)$, so $3(9)+2(4)=35=14+21$."
+  },
+  {
+   "type": "type",
+   "prompt": "On $M_{22}$ with $\\langle U,V\\rangle=\\text{tr}(U^TV)$, find $\\|K\\|^2$ for the skew part $K=\\begin{bmatrix}0&-1/2\\\\1/2&0\\end{bmatrix}$ of $A=\\begin{bmatrix}1&2\\\\3&4\\end{bmatrix}$. (Enter a fraction.)",
+   "answer": [
+    "1/2",
+    "0.5"
+   ],
+   "explanation": "$0+1/4+1/4+0=1/2$. Together with $\\|S\\|^2=59/2$ this gives $\\|A\\|^2=30$."
+  }
+ ]
+}

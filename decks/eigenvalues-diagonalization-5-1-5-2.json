@@ -1,0 +1,970 @@
+{
+ "id": "eigenvalues-diagonalization-5-1-5-2",
+ "title": "Eigenvalues, Eigenvectors & Diagonalization (5.1-5.2)",
+ "description": "Covers Days 30-32: the geometric meaning of eigenvectors, the characteristic-polynomial method, the eigenvalue/invertibility connection, complex eigenvalues, similar matrices, the diagonalization theorem, algebraic/geometric multiplicity, defective matrices, and a spectral-decomposition preview for symmetric matrices. 15 questions pulled per attempt from a pool of 80.",
+ "questionsPerAttempt": 15,
+ "pointsPerQuestion": 1,
+ "questions": [
+  {
+   "type": "wordbank",
+   "prompt": "A nonzero vector $v$ is called an eigenvector of $A$ if $Av$ equals _____ for some scalar $\\lambda$.",
+   "wordbank": [
+    "a scalar multiple of v",
+    "the zero vector",
+    "v rotated 90°",
+    "v projected onto a line"
+   ],
+   "answer": "a scalar multiple of v",
+   "explanation": "That's the definition: $Av = \\lambda v$ — A can only stretch, shrink, or flip an eigenvector, never rotate it off its own line."
+  },
+  {
+   "type": "mc",
+   "prompt": "An eigenvalue of a matrix can be zero.",
+   "choices": [
+    "True",
+    "False"
+   ],
+   "answer": 0,
+   "explanations": [
+    null,
+    "An eigenvalue of 0 means $Av=0$ has a nonzero solution — i.e. A is singular. That's completely allowed."
+   ]
+  },
+  {
+   "type": "mc",
+   "prompt": "An eigenvector of $A$ can be the zero vector.",
+   "choices": [
+    "True",
+    "False"
+   ],
+   "answer": 1,
+   "explanations": [
+    "By definition, eigenvectors must be nonzero — otherwise $A\\mathbf{0}=\\lambda\\mathbf{0}$ would be true for every $\\lambda$, which is meaningless.",
+    null
+   ]
+  },
+  {
+   "type": "mc",
+   "prompt": "Geometrically, if $v$ is an eigenvector of $A$ with eigenvalue $\\lambda = -1$, what happens to $v$ under the transformation?",
+   "choices": [
+    "v flips to point the opposite direction, same length",
+    "v rotates 90°",
+    "v is projected onto a line",
+    "v is completely unaffected"
+   ],
+   "answer": 0,
+   "explanations": [
+    null,
+    "Rotation isn't possible for an eigenvector — it must stay on its own line.",
+    "Projection isn't what λ=-1 means.",
+    "λ=-1 means it flips direction, not that nothing happens (that would be λ=1)."
+   ]
+  },
+  {
+   "type": "type",
+   "prompt": "If $v$ is an eigenvector of $A$ with $Av = 5v$, and $v$ has length 2, what is the length of $Av$?",
+   "answer": [
+    "10"
+   ],
+   "explanation": "Scaling by 5 multiplies the length by 5: 5 × 2 = 10."
+  },
+  {
+   "type": "mc",
+   "prompt": "Which best describes what an eigenvalue $\\lambda = 0$ tells you about $A$?",
+   "choices": [
+    "A maps some nonzero vector to the zero vector (A is singular)",
+    "A has no real eigenvectors",
+    "A is the identity matrix",
+    "A is invertible"
+   ],
+   "answer": 0,
+   "explanations": [
+    null,
+    "λ=0 is a perfectly real eigenvalue.",
+    "The identity matrix has eigenvalue 1, not 0.",
+    "λ=0 means A is NOT invertible."
+   ]
+  },
+  {
+   "type": "mc",
+   "prompt": "For $A = \\begin{bmatrix} 2 & 0 \\\\ 0 & 1 \\end{bmatrix}$, is $(1,0)$ an eigenvector?",
+   "choices": [
+    "Yes",
+    "No"
+   ],
+   "answer": 0,
+   "explanations": [
+    null,
+    "$A(1,0) = (2,0) = 2\\cdot(1,0)$ — it IS an eigenvector, with $\\lambda=2$."
+   ]
+  },
+  {
+   "type": "mc",
+   "prompt": "For the same $A = \\begin{bmatrix} 2 & 0 \\\\ 0 & 1 \\end{bmatrix}$, is $(1,1)$ an eigenvector?",
+   "choices": [
+    "Yes",
+    "No"
+   ],
+   "answer": 1,
+   "explanations": [
+    "$A(1,1) = (2,1)$, which is NOT a scalar multiple of $(1,1)$ — not an eigenvector.",
+    null
+   ]
+  },
+  {
+   "type": "mc",
+   "prompt": "For the reflection $A = \\begin{bmatrix} 0 & 1 \\\\ 1 & 0 \\end{bmatrix}$, is $(1,-1)$ an eigenvector?",
+   "choices": [
+    "Yes",
+    "No"
+   ],
+   "answer": 0,
+   "explanations": [
+    null,
+    "$A(1,-1) = (-1,1) = -1\\cdot(1,-1)$ — it IS an eigenvector, with $\\lambda=-1$."
+   ]
+  },
+  {
+   "type": "mc",
+   "prompt": "For the shear $A = \\begin{bmatrix} 1 & 1 \\\\ 0 & 1 \\end{bmatrix}$, is $(0,1)$ an eigenvector?",
+   "choices": [
+    "Yes",
+    "No"
+   ],
+   "answer": 1,
+   "explanations": [
+    "$A(0,1) = (1,1)$, which is NOT a scalar multiple of $(0,1)$ — not an eigenvector.",
+    null
+   ]
+  },
+  {
+   "type": "mc",
+   "prompt": "For the rotation $A = \\begin{bmatrix} 0 & -1 \\\\ 1 & 0 \\end{bmatrix}$, is there ANY nonzero real eigenvector?",
+   "choices": [
+    "Yes",
+    "No"
+   ],
+   "answer": 1,
+   "explanations": [
+    "A 90° rotation sends every nonzero vector to a new direction — there's no real eigenvector at all (its eigenvalues are complex).",
+    null
+   ]
+  },
+  {
+   "type": "type",
+   "prompt": "For the triangular matrix $A = \\begin{bmatrix} 5 & 3 \\\\ 0 & -1 \\end{bmatrix}$, state both eigenvalues WITHOUT computing a determinant.",
+   "answer": [
+    "5, -1",
+    "-1, 5",
+    "5 and -1"
+   ],
+   "explanation": "Triangular matrices have their eigenvalues sitting right on the diagonal: 5 and -1."
+  },
+  {
+   "type": "wordbank",
+   "prompt": "To find the eigenvalues of $A$, we solve $\\det(A - \\lambda I) = $ _____.",
+   "wordbank": [
+    "0",
+    "1",
+    "det(A)",
+    "the identity matrix"
+   ],
+   "answer": "0",
+   "explanation": "Eigenvalues are exactly the values of λ that make $A-\\lambda I$ singular, i.e. $\\det(A-\\lambda I)=0$."
+  },
+  {
+   "type": "mc",
+   "prompt": "Once you know an eigenvalue $\\lambda$, how do you find its eigenvector(s)?",
+   "choices": [
+    "Solve $(A-\\lambda I)v = 0$",
+    "Solve $Av = 0$",
+    "Compute $A^{-1}$",
+    "Find $\\det(A)$"
+   ],
+   "answer": 0,
+   "explanations": [
+    null,
+    "That would only find eigenvectors for λ=0.",
+    "The inverse doesn't directly give eigenvectors.",
+    "The determinant of A alone doesn't find eigenvectors for a specific λ."
+   ]
+  },
+  {
+   "type": "mc",
+   "prompt": "The eigenvalues of a triangular matrix are exactly its diagonal entries.",
+   "choices": [
+    "True",
+    "False"
+   ],
+   "answer": 0,
+   "explanations": [
+    null,
+    "det(A−λI) for a triangular matrix is just the product of (diagonal entry − λ) terms, so the roots are the diagonal entries."
+   ]
+  },
+  {
+   "type": "type",
+   "prompt": "A $2\\times 2$ matrix has trace 9. If one eigenvalue is 7, what is the other?",
+   "answer": [
+    "2"
+   ],
+   "explanation": "The trace of a matrix equals the sum of its eigenvalues: 9 − 7 = 2."
+  },
+  {
+   "type": "type",
+   "prompt": "A $2\\times 2$ matrix has $\\det(A) = 14$. If one eigenvalue is 7, what is the other?",
+   "answer": [
+    "2"
+   ],
+   "explanation": "The determinant equals the product of the eigenvalues: 14 ÷ 7 = 2."
+  },
+  {
+   "type": "type",
+   "prompt": "Find both eigenvalues of $A = \\begin{bmatrix} 6 & 2 \\\\ 2 & 3 \\end{bmatrix}$.",
+   "answer": [
+    "7, 2",
+    "2, 7",
+    "7 and 2"
+   ],
+   "explanation": "det(A−λI) = (6−λ)(3−λ)−4 = λ²−9λ+14 = (λ−7)(λ−2) = 0, so λ = 7 or 2."
+  },
+  {
+   "type": "type",
+   "prompt": "For the same $A = \\begin{bmatrix} 6 & 2 \\\\ 2 & 3 \\end{bmatrix}$, find an eigenvector for $\\lambda=7$.",
+   "answer": [
+    "(2,1)",
+    "(2, 1)",
+    "2,1"
+   ],
+   "explanation": "(A−7I)v=0 ⟹ [[-1,2],[2,-4]]v=0 ⟹ v=(2,1)."
+  },
+  {
+   "type": "type",
+   "prompt": "For the same $A$, find an eigenvector for $\\lambda=2$.",
+   "answer": [
+    "(1,-2)",
+    "(1, -2)",
+    "1,-2"
+   ],
+   "explanation": "(A−2I)v=0 ⟹ [[4,2],[2,1]]v=0 ⟹ v=(1,-2)."
+  },
+  {
+   "type": "type",
+   "prompt": "Find both eigenvalues of $A = \\begin{bmatrix} 0 & 2 \\\\ 2 & 0 \\end{bmatrix}$.",
+   "answer": [
+    "2, -2",
+    "-2, 2"
+   ],
+   "explanation": "det(A−λI) = λ²−4 = 0, so λ = 2 or -2."
+  },
+  {
+   "type": "type",
+   "prompt": "Find both eigenvalues of $A = \\begin{bmatrix} 7 & -2 \\\\ 4 & 1 \\end{bmatrix}$.",
+   "answer": [
+    "5, 3",
+    "3, 5"
+   ],
+   "explanation": "det(A−λI) = (7−λ)(1−λ)+8 = λ²−8λ+15 = (λ−5)(λ−3) = 0, so λ = 5 or 3."
+  },
+  {
+   "type": "mc",
+   "prompt": "For $A = \\begin{bmatrix} 7 & -2 \\\\ 4 & 1 \\end{bmatrix}$ and eigenvalue $\\lambda=3$, which is a valid eigenvector?",
+   "choices": [
+    "(1,2)",
+    "(2,1)",
+    "(1,-2)",
+    "(3,1)"
+   ],
+   "answer": 0,
+   "explanations": [
+    null,
+    "Check: A(2,1) = (12,9), not a multiple of (2,1).",
+    "Check: A(1,-2)=(11,2), not a multiple of (1,-2).",
+    "Check: A(3,1)=(19,13), not a multiple of (3,1)."
+   ]
+  },
+  {
+   "type": "type",
+   "prompt": "Find both eigenvalues of $A = \\begin{bmatrix} 4 & 1 \\\\ 2 & 3 \\end{bmatrix}$ (today's non-symmetric worked example).",
+   "answer": [
+    "5, 2",
+    "2, 5"
+   ],
+   "explanation": "det(A−λI) = (4−λ)(3−λ)−2 = λ²−7λ+10 = (λ−5)(λ−2) = 0, so λ = 5 or 2."
+  },
+  {
+   "type": "mc",
+   "prompt": "Every real $2\\times 2$ matrix has at least one real eigenvalue.",
+   "choices": [
+    "True",
+    "False"
+   ],
+   "answer": 1,
+   "explanations": [
+    "The rotation matrix $\\begin{bmatrix}0&-1\\\\1&0\\end{bmatrix}$ has NO real eigenvalues — only the complex pair $\\pm i$.",
+    null
+   ]
+  },
+  {
+   "type": "mc",
+   "prompt": "For symmetric $A=\\begin{bmatrix}2&1\\\\1&2\\end{bmatrix}$, its eigenvectors $(1,1)$ and $(1,-1)$ are orthogonal.",
+   "choices": [
+    "True",
+    "False"
+   ],
+   "answer": 0,
+   "explanations": [
+    null,
+    "Their dot product is $1(1)+1(-1)=0$, so yes — orthogonal."
+   ]
+  },
+  {
+   "type": "mc",
+   "prompt": "Which property of a matrix guarantees eigenvectors for distinct eigenvalues come out orthogonal?",
+   "choices": [
+    "Symmetric ($A=A^T$)",
+    "Triangular",
+    "Invertible",
+    "All diagonal entries positive"
+   ],
+   "answer": 0,
+   "explanations": [
+    null,
+    "Triangular matrices don't guarantee orthogonal eigenvectors.",
+    "Invertibility is unrelated to orthogonality of eigenvectors.",
+    "Positive diagonal entries don't guarantee this either."
+   ]
+  },
+  {
+   "type": "mc",
+   "prompt": "A non-symmetric matrix's eigenvectors are never orthogonal.",
+   "choices": [
+    "True",
+    "False"
+   ],
+   "answer": 1,
+   "explanations": [
+    "They CAN happen to be orthogonal, but it's not guaranteed the way it is for symmetric matrices.",
+    null
+   ]
+  },
+  {
+   "type": "wordbank",
+   "prompt": "By the extended Invertibility Theorem, $A$ is invertible if and only if _____ is not an eigenvalue of $A$.",
+   "wordbank": [
+    "0",
+    "1",
+    "-1",
+    "the trace of A"
+   ],
+   "answer": "0",
+   "explanation": "A is singular exactly when det(A)=det(A−0·I)=0, i.e. when 0 is a root of the characteristic polynomial — an eigenvalue."
+  },
+  {
+   "type": "mc",
+   "prompt": "If $\\det(A) = 0$, then 0 must be an eigenvalue of $A$.",
+   "choices": [
+    "True",
+    "False"
+   ],
+   "answer": 0,
+   "explanations": [
+    null,
+    "det(A) = det(A − 0·I), so det(A)=0 means 0 solves the characteristic equation."
+   ]
+  },
+  {
+   "type": "mc",
+   "prompt": "A matrix with eigenvalues 3, -2, and 5 is invertible.",
+   "choices": [
+    "True",
+    "False"
+   ],
+   "answer": 0,
+   "explanations": [
+    null,
+    "None of its eigenvalues are 0, so by the theorem it's invertible."
+   ]
+  },
+  {
+   "type": "mc",
+   "prompt": "A matrix with eigenvalues 4, 0, and 6 is invertible.",
+   "choices": [
+    "True",
+    "False"
+   ],
+   "answer": 1,
+   "explanations": [
+    "0 is one of its eigenvalues, so the matrix is singular (not invertible).",
+    null
+   ]
+  },
+  {
+   "type": "type",
+   "prompt": "A $3\\times 3$ matrix has eigenvalues 3, 5, and 7. What is $\\det(A)$?",
+   "answer": [
+    "105"
+   ],
+   "explanation": "The determinant equals the product of all eigenvalues: 3 × 5 × 7 = 105."
+  },
+  {
+   "type": "mc",
+   "prompt": "Which of these is equivalent to '$A$ is singular (not invertible)'?",
+   "choices": [
+    "0 is an eigenvalue of A",
+    "every eigenvalue of A is positive",
+    "A has complex eigenvalues",
+    "A is symmetric"
+   ],
+   "answer": 0,
+   "explanations": [
+    null,
+    "Positive eigenvalues would actually guarantee invertibility.",
+    "Complex eigenvalues don't imply singularity — a rotation matrix is still invertible.",
+    "Symmetric matrices can be invertible or not; symmetry alone doesn't decide it."
+   ]
+  },
+  {
+   "type": "mc",
+   "prompt": "For $A = \\begin{bmatrix} 4 & 1 \\\\ 2 & 3 \\end{bmatrix}$ with eigenvalues 5 and 2, is $A$ invertible?",
+   "choices": [
+    "Yes",
+    "No"
+   ],
+   "answer": 0,
+   "explanations": [
+    null,
+    "Neither eigenvalue is 0, so A IS invertible."
+   ]
+  },
+  {
+   "type": "type",
+   "prompt": "Find all eigenvalues of $A = \\begin{bmatrix} 2 & 1 & 0 \\\\ 0 & 3 & 4 \\\\ 0 & 0 & -1 \\end{bmatrix}$.",
+   "answer": [
+    "2, 3, -1",
+    "-1, 2, 3",
+    "2,3,-1"
+   ],
+   "explanation": "A is triangular, so its eigenvalues are just its diagonal entries: 2, 3, and -1."
+  },
+  {
+   "type": "mc",
+   "prompt": "A $3\\times 3$ matrix can have a repeated eigenvalue and still be diagonalizable.",
+   "choices": [
+    "True",
+    "False"
+   ],
+   "answer": 0,
+   "explanations": [
+    null,
+    "As long as the repeated eigenvalue still has enough independent eigenvectors (geometric multiplicity = algebraic multiplicity), it's fine — more on this Day 32."
+   ]
+  },
+  {
+   "type": "mc",
+   "prompt": "For $A = \\begin{bmatrix} 4 & 0 & 0 \\\\ 0 & 4 & 0 \\\\ 0 & 0 & -2 \\end{bmatrix}$, how many linearly independent eigenvectors correspond to $\\lambda=4$?",
+   "choices": [
+    "1",
+    "2",
+    "3",
+    "0"
+   ],
+   "answer": 1,
+   "explanations": [
+    "There are actually 2 independent directions — $e_1$ and $e_2$ both work.",
+    null,
+    "Only $e_1$ and $e_2$ correspond to λ=4; $e_3$ belongs to λ=-2.",
+    "λ=4 definitely has eigenvectors — it's a genuine eigenvalue here."
+   ]
+  },
+  {
+   "type": "type",
+   "prompt": "For the same diagonal matrix above, what is the algebraic multiplicity of $\\lambda=4$ (how many times it's a root of the characteristic polynomial)?",
+   "answer": [
+    "2"
+   ],
+   "explanation": "The characteristic polynomial is $(\\lambda-4)^2(\\lambda+2)$, so λ=4 is a double root."
+  },
+  {
+   "type": "mc",
+   "prompt": "For a matrix with a repeated eigenvalue, the number of independent eigenvectors for that eigenvalue can be LESS than its multiplicity.",
+   "choices": [
+    "True",
+    "False"
+   ],
+   "answer": 0,
+   "explanations": [
+    null,
+    "This is exactly the 'defective' situation — Day 32 gives it a name and works through an example (the Day 30 shear matrix)."
+   ]
+  },
+  {
+   "type": "type",
+   "prompt": "A $3\\times 3$ matrix's characteristic polynomial is $(\\lambda-2)(\\lambda-3)(\\lambda+1)$. List its eigenvalues.",
+   "answer": [
+    "2, 3, -1",
+    "-1, 2, 3",
+    "2,3,-1"
+   ],
+   "explanation": "The eigenvalues are the roots of the characteristic polynomial: 2, 3, and -1."
+  },
+  {
+   "type": "mc",
+   "prompt": "A $3\\times 3$ matrix's characteristic polynomial always has degree...",
+   "choices": [
+    "3",
+    "2",
+    "9",
+    "1"
+   ],
+   "answer": 0,
+   "explanations": [
+    null,
+    "Degree matches the matrix size, not 2.",
+    "It's not the square of the size.",
+    "A degree-1 polynomial would only give one eigenvalue at most, and only for a 1×1 matrix."
+   ]
+  },
+  {
+   "type": "mc",
+   "prompt": "If a real matrix has a complex eigenvalue, its complex conjugate is also an eigenvalue.",
+   "choices": [
+    "True",
+    "False"
+   ],
+   "answer": 0,
+   "explanations": [
+    null,
+    "Complex eigenvalues of a REAL matrix always come in conjugate pairs $a\\pm bi$."
+   ]
+  },
+  {
+   "type": "wordbank",
+   "prompt": "If $\\lambda = a+bi$ is an eigenvalue of a real matrix, its 'partner' eigenvalue must be _____.",
+   "wordbank": [
+    "a-bi",
+    "a+bi",
+    "-a-bi",
+    "bi"
+   ],
+   "answer": "a-bi",
+   "explanation": "Complex eigenvalues of a real matrix always occur as conjugate pairs."
+  },
+  {
+   "type": "type",
+   "prompt": "Find the eigenvalues of $A = \\begin{bmatrix} 1 & -1 \\\\ 1 & 1 \\end{bmatrix}$.",
+   "answer": [
+    "1+i, 1-i",
+    "1 ± i",
+    "1+i and 1-i"
+   ],
+   "explanation": "det(A−λI) = (1−λ)²+1 = λ²−2λ+2 = 0 ⟹ λ = 1±i."
+  },
+  {
+   "type": "type",
+   "prompt": "Find the eigenvalues of $A = \\begin{bmatrix} 3 & -4 \\\\ 4 & 3 \\end{bmatrix}$.",
+   "answer": [
+    "3+4i, 3-4i",
+    "3 ± 4i",
+    "3+4i and 3-4i"
+   ],
+   "explanation": "det(A−λI) = (3−λ)²+16 = λ²−6λ+25 = 0 ⟹ λ = 3±4i."
+  },
+  {
+   "type": "mc",
+   "prompt": "Geometrically, a real $2\\times 2$ matrix with complex eigenvalues represents a transformation that...",
+   "choices": [
+    "rotates (possibly combined with scaling), with no real invariant direction",
+    "reflects across a line",
+    "projects onto a subspace",
+    "is a shear"
+   ],
+   "answer": 0,
+   "explanations": [
+    null,
+    "A reflection has real eigenvalues (±1).",
+    "A projection has real eigenvalues (0 and 1).",
+    "A shear has real (repeated) eigenvalues."
+   ]
+  },
+  {
+   "type": "mc",
+   "prompt": "Complex eigenvalues can occur for real matrices, but the corresponding eigenvectors will also involve complex numbers.",
+   "choices": [
+    "True",
+    "False"
+   ],
+   "answer": 0,
+   "explanations": [
+    null,
+    "You can't find a real vector satisfying $Av=\\lambda v$ for a non-real λ, so the eigenvector must have complex entries too."
+   ]
+  },
+  {
+   "type": "mc",
+   "prompt": "The rotation matrix $\\begin{bmatrix}0&-1\\\\1&0\\end{bmatrix}$ has eigenvalues...",
+   "choices": [
+    "i and -i",
+    "1 and -1",
+    "0 and 0",
+    "no eigenvalues at all"
+   ],
+   "answer": 0,
+   "explanations": [
+    null,
+    "Those would be real eigenvalues, which this rotation doesn't have.",
+    "The eigenvalues aren't 0 — det(A)=1≠0.",
+    "Every matrix has eigenvalues; they're just complex here."
+   ]
+  },
+  {
+   "type": "wordbank",
+   "prompt": "$B$ is similar to $A$ if there exists an invertible matrix $P$ such that $B = $ _____.",
+   "wordbank": [
+    "P⁻¹AP",
+    "PA",
+    "AP⁻¹",
+    "P+A"
+   ],
+   "answer": "P⁻¹AP",
+   "explanation": "That's the definition of matrix similarity."
+  },
+  {
+   "type": "mc",
+   "prompt": "Similar matrices always have the same eigenvalues.",
+   "choices": [
+    "True",
+    "False"
+   ],
+   "answer": 0,
+   "explanations": [
+    null,
+    "Similarity preserves the characteristic polynomial, so the eigenvalues (with multiplicities) match exactly."
+   ]
+  },
+  {
+   "type": "mc",
+   "prompt": "Similar matrices always have the same eigenVECTORS.",
+   "choices": [
+    "True",
+    "False"
+   ],
+   "answer": 1,
+   "explanations": [
+    "The eigenVALUES match, but the eigenVECTORS transform by P — they're generally different unless P is special.",
+    null
+   ]
+  },
+  {
+   "type": "mc",
+   "prompt": "Which of these is NOT guaranteed to be the same for two similar matrices?",
+   "choices": [
+    "The specific eigenvectors",
+    "The eigenvalues",
+    "The determinant",
+    "The trace"
+   ],
+   "answer": 0,
+   "explanations": [
+    null,
+    "Eigenvalues ARE preserved by similarity.",
+    "Determinant IS preserved (det(P⁻¹AP)=det(A)).",
+    "Trace IS preserved by similarity too."
+   ]
+  },
+  {
+   "type": "mc",
+   "prompt": "Similar matrices always have the same determinant.",
+   "choices": [
+    "True",
+    "False"
+   ],
+   "answer": 0,
+   "explanations": [
+    null,
+    "det(P⁻¹AP) = det(P⁻¹)det(A)det(P) = det(A), since det(P⁻¹)det(P)=1."
+   ]
+  },
+  {
+   "type": "mc",
+   "prompt": "If $A = PDP^{-1}$ with $D$ diagonal, then $A^k$ equals...",
+   "choices": [
+    "PD^kP⁻¹",
+    "P^kD^kP^{-k}",
+    "D^k",
+    "P⁻¹D^kP"
+   ],
+   "answer": 0,
+   "explanations": [
+    null,
+    "The P's don't get raised to the power — only D does; the middle P's cancel each step.",
+    "You can't drop the P's — A itself isn't diagonal.",
+    "That reverses the roles of P and P⁻¹."
+   ]
+  },
+  {
+   "type": "type",
+   "prompt": "If $D = \\text{diag}(2,3)$, what is $D^4$?",
+   "answer": [
+    "diag(16,81)",
+    "16, 81",
+    "16 and 81"
+   ],
+   "explanation": "Powers of a diagonal matrix just power each diagonal entry: 2⁴=16, 3⁴=81."
+  },
+  {
+   "type": "mc",
+   "prompt": "The main computational advantage of diagonalizing $A=PDP^{-1}$ is...",
+   "choices": [
+    "computing high powers of A becomes easy (just power the diagonal entries)",
+    "it makes A symmetric",
+    "it forces det(A)=1",
+    "it removes complex eigenvalues"
+   ],
+   "answer": 0,
+   "explanations": [
+    null,
+    "Diagonalization doesn't change whether A is symmetric.",
+    "The determinant is whatever it already was — diagonalizing doesn't change it.",
+    "A matrix can be diagonalizable and still have complex eigenvalues."
+   ]
+  },
+  {
+   "type": "mc",
+   "prompt": "Only symmetric matrices can be diagonalized.",
+   "choices": [
+    "True",
+    "False"
+   ],
+   "answer": 1,
+   "explanations": [
+    "Plenty of non-symmetric matrices are diagonalizable too (e.g. any matrix with distinct eigenvalues) — symmetric ones are just GUARANTEED to be, with orthogonal P.",
+    null
+   ]
+  },
+  {
+   "type": "mc",
+   "prompt": "Every diagonalizable $n\\times n$ matrix has $n$ linearly independent eigenvectors.",
+   "choices": [
+    "True",
+    "False"
+   ],
+   "answer": 0,
+   "explanations": [
+    null,
+    "That's exactly what diagonalizability means — enough independent eigenvectors to form a basis (the columns of P)."
+   ]
+  },
+  {
+   "type": "wordbank",
+   "prompt": "$A$ is diagonalizable if and only if, for every eigenvalue, its geometric multiplicity equals its _____ multiplicity.",
+   "wordbank": [
+    "algebraic",
+    "complex",
+    "matrix",
+    "triangular"
+   ],
+   "answer": "algebraic",
+   "explanation": "That's the Diagonalization Theorem."
+  },
+  {
+   "type": "mc",
+   "prompt": "Algebraic multiplicity of an eigenvalue $\\lambda$ is...",
+   "choices": [
+    "how many times λ is a root of the characteristic polynomial",
+    "the dimension of the eigenspace for λ",
+    "the value of λ itself",
+    "the size of the matrix"
+   ],
+   "answer": 0,
+   "explanations": [
+    null,
+    "That's the definition of GEOMETRIC multiplicity, not algebraic.",
+    "Multiplicity is a count, not the eigenvalue's value.",
+    "Multiplicity is about one specific eigenvalue, not the whole matrix's size."
+   ]
+  },
+  {
+   "type": "mc",
+   "prompt": "Geometric multiplicity of an eigenvalue $\\lambda$ is...",
+   "choices": [
+    "the dimension of the eigenspace null(A−λI)",
+    "how many times λ is a root of the characteristic polynomial",
+    "the trace of A",
+    "always equal to 1"
+   ],
+   "answer": 0,
+   "explanations": [
+    null,
+    "That's ALGEBRAIC multiplicity.",
+    "The trace is unrelated to a single eigenvalue's multiplicity.",
+    "It varies — sometimes 1, sometimes matches the algebraic multiplicity, sometimes in between."
+   ]
+  },
+  {
+   "type": "mc",
+   "prompt": "Geometric multiplicity can never exceed algebraic multiplicity.",
+   "choices": [
+    "True",
+    "False"
+   ],
+   "answer": 0,
+   "explanations": [
+    null,
+    "You can never have MORE independent eigenvectors for λ than λ's multiplicity as a root — geometric ≤ algebraic always."
+   ]
+  },
+  {
+   "type": "mc",
+   "prompt": "A matrix with $n$ distinct eigenvalues ($n\\times n$) is automatically diagonalizable.",
+   "choices": [
+    "True",
+    "False"
+   ],
+   "answer": 0,
+   "explanations": [
+    null,
+    "Distinct eigenvalues always come with independent eigenvectors, so geometric = algebraic = 1 for each — the theorem's condition is automatically satisfied."
+   ]
+  },
+  {
+   "type": "mc",
+   "prompt": "A matrix with a repeated eigenvalue can never be diagonalized.",
+   "choices": [
+    "True",
+    "False"
+   ],
+   "answer": 1,
+   "explanations": [
+    "It CAN still be diagonalized, as long as that eigenvalue's geometric multiplicity matches its algebraic multiplicity (e.g. any diagonal matrix with a repeated entry).",
+    null
+   ]
+  },
+  {
+   "type": "wordbank",
+   "prompt": "A square matrix that is NOT diagonalizable is called _____.",
+   "wordbank": [
+    "defective",
+    "singular",
+    "symmetric",
+    "triangular"
+   ],
+   "answer": "defective",
+   "explanation": "That's the standard term for a non-diagonalizable matrix."
+  },
+  {
+   "type": "type",
+   "prompt": "For the shear $A = \\begin{bmatrix} 1 & 1 \\\\ 0 & 1 \\end{bmatrix}$, $\\lambda=1$ has algebraic multiplicity 2. What is its geometric multiplicity?",
+   "answer": [
+    "1"
+   ],
+   "explanation": "null(A−I) = null([[0,1],[0,0]]) is only 1-dimensional (spanned by (1,0)) — geometric multiplicity 1 < algebraic multiplicity 2, so A is defective."
+  },
+  {
+   "type": "mc",
+   "prompt": "The shear matrix from Day 30 is defective.",
+   "choices": [
+    "True",
+    "False"
+   ],
+   "answer": 0,
+   "explanations": [
+    null,
+    "Its repeated eigenvalue λ=1 has only 1 independent eigenvector instead of the 2 its algebraic multiplicity would need — that's the definition of defective."
+   ]
+  },
+  {
+   "type": "mc",
+   "prompt": "Which of these matrices is defective?",
+   "choices": [
+    "$\\begin{bmatrix}1&1\\\\0&1\\end{bmatrix}$",
+    "$\\begin{bmatrix}4&0\\\\0&4\\end{bmatrix}$",
+    "$\\begin{bmatrix}2&0\\\\0&3\\end{bmatrix}$"
+   ],
+   "answer": 0,
+   "explanations": [
+    null,
+    "This is already diagonal — its repeated eigenvalue 4 has 2 independent eigenvectors, so it's fine.",
+    "Distinct eigenvalues (2 and 3) are automatically fine — not defective."
+   ]
+  },
+  {
+   "type": "mc",
+   "prompt": "$\\begin{bmatrix}4&0\\\\0&4\\end{bmatrix}$ (λ=4 with algebraic multiplicity 2) is diagonalizable even though its eigenvalue is repeated.",
+   "choices": [
+    "True",
+    "False"
+   ],
+   "answer": 0,
+   "explanations": [
+    null,
+    "It's already diagonal, so its geometric multiplicity is 2, matching its algebraic multiplicity — perfectly diagonalizable (it IS D already)."
+   ]
+  },
+  {
+   "type": "type",
+   "prompt": "For $A = \\begin{bmatrix} 4 & 1 \\\\ 2 & 3 \\end{bmatrix}$ with eigenvalues 5 (eigenvector (1,1)) and 2 (eigenvector (1,-2)), what is $D$ in $A=PDP^{-1}$ (matching column order $P=[(1,1),(1,-2)]$)?",
+   "answer": [
+    "diag(5,2)",
+    "[[5,0],[0,2]]",
+    "5,0,0,2"
+   ],
+   "explanation": "D's diagonal entries are the eigenvalues, in the same order as their eigenvectors appear as columns of P."
+  },
+  {
+   "type": "mc",
+   "prompt": "Using the same $A$, with $P$'s columns being the eigenvectors $(1,1)$ and $(1,-2)$ in that order, what is $P$?",
+   "choices": [
+    "$\\begin{bmatrix}1&1\\\\1&-2\\end{bmatrix}$",
+    "$\\begin{bmatrix}1&1\\\\-2&1\\end{bmatrix}$",
+    "$\\begin{bmatrix}5&0\\\\0&2\\end{bmatrix}$",
+    "$\\begin{bmatrix}4&1\\\\2&3\\end{bmatrix}$"
+   ],
+   "answer": 0,
+   "explanations": [
+    null,
+    "The rows are swapped from the correct eigenvector columns.",
+    "That's D, not P.",
+    "That's the original matrix A, not P."
+   ]
+  },
+  {
+   "type": "mc",
+   "prompt": "Once $A=PDP^{-1}$ is proposed, you can check your work by verifying $AP=PD$ (without ever computing $P^{-1}$).",
+   "choices": [
+    "True",
+    "False"
+   ],
+   "answer": 0,
+   "explanations": [
+    null,
+    "Multiplying both sides of A=PDP⁻¹ by P on the right gives AP=PD — an easier check since it avoids computing an inverse."
+   ]
+  },
+  {
+   "type": "type",
+   "prompt": "For $A=\\begin{bmatrix}4&1\\\\2&3\\end{bmatrix}$ diagonalized as above, $A^3$ applied to the eigenvector $(1,1)$ gives what scalar times $(1,1)$?",
+   "answer": [
+    "125"
+   ],
+   "explanation": "Eigenvectors stay eigenvectors under powers of A, with eigenvalue raised to that power: 5³ = 125."
+  },
+  {
+   "type": "mc",
+   "prompt": "Compared to a general diagonalization $A=PDP^{-1}$, what's special about a symmetric matrix's decomposition?",
+   "choices": [
+    "P can be chosen orthogonal, so inverting P is free (just transpose)",
+    "D is not diagonal",
+    "A must be triangular",
+    "Eigenvalues must be complex"
+   ],
+   "answer": 0,
+   "explanations": [
+    null,
+    "D is still diagonal — that part doesn't change.",
+    "Symmetric doesn't mean triangular.",
+    "Symmetric matrices actually always have REAL eigenvalues, never complex."
+   ]
+  }
+ ]
+}

@@ -1,0 +1,1313 @@
+{
+ "id": "unit3-review-super-deck",
+ "title": "Unit 3 Review: Eigenvalues, Inner Products & Orthogonality (Test 3)",
+ "description": "A big review deck for Test 3 covering eigenvalues, diagonalization, Markov chains, inner products, Gram-Schmidt, least squares, and orthogonal matrices. Every attempt draws 20 random questions from the full bank.",
+ "questionsPerAttempt": 20,
+ "pointsPerQuestion": 1,
+ "questions": [
+  {
+   "type": "wordbank",
+   "prompt": "A $2\\times2$ orthogonal matrix with determinant $-1$ is a _____.",
+   "wordbank": [
+    "reflection",
+    "rotation",
+    "projection",
+    "shear"
+   ],
+   "answer": "reflection",
+   "explanation": "Reflections reverse orientation."
+  },
+  {
+   "type": "mc",
+   "prompt": "Is $\\langle u,v\\rangle = u_1v_1-u_2v_2$ an inner product on $\\mathbb{R}^2$?",
+   "choices": [
+    "No — positivity fails",
+    "No — symmetry fails",
+    "No — homogeneity fails",
+    "Yes"
+   ],
+   "answer": 0,
+   "explanations": [
+    null,
+    "$\\langle(0,1),(0,1)\\rangle=-1<0$.",
+    "$\\langle(0,1),(0,1)\\rangle=-1<0$.",
+    "$\\langle(0,1),(0,1)\\rangle=-1<0$."
+   ]
+  },
+  {
+   "type": "mc",
+   "prompt": "For any subspace $W$ of an inner product space $V$, $W^\\perp$ is a subspace of $V$.",
+   "choices": [
+    "True",
+    "False"
+   ],
+   "answer": 0,
+   "explanations": [
+    null,
+    "Bilinearity: sums and scalar multiples of vectors orthogonal to $W$ are still orthogonal to $W$."
+   ]
+  },
+  {
+   "type": "mc",
+   "prompt": "If $A = PDP^{-1}$ with $D$ diagonal, then $A^k$ equals...",
+   "choices": [
+    "PD^kP⁻¹",
+    "P^kD^kP^{-k}",
+    "D^k",
+    "P⁻¹D^kP"
+   ],
+   "answer": 0,
+   "explanations": [
+    null,
+    "The P's don't get raised to the power — only D does; the middle P's cancel each step.",
+    "You can't drop the P's — A itself isn't diagonal.",
+    "That reverses the roles of P and P⁻¹."
+   ]
+  },
+  {
+   "type": "mc",
+   "prompt": "Geometrically, if $v$ is an eigenvector of $A$ with eigenvalue $\\lambda = -1$, what happens to $v$ under the transformation?",
+   "choices": [
+    "v flips to point the opposite direction, same length",
+    "v rotates 90°",
+    "v is projected onto a line",
+    "v is completely unaffected"
+   ],
+   "answer": 0,
+   "explanations": [
+    null,
+    "Rotation isn't possible for an eigenvector — it must stay on its own line.",
+    "Projection isn't what λ=-1 means.",
+    "λ=-1 means it flips direction, not that nothing happens (that would be λ=1)."
+   ]
+  },
+  {
+   "type": "mc",
+   "prompt": "Using the same $A$, with $P$'s columns being the eigenvectors $(1,1)$ and $(1,-2)$ in that order, what is $P$?",
+   "choices": [
+    "$\\begin{bmatrix}1&1\\\\1&-2\\end{bmatrix}$",
+    "$\\begin{bmatrix}1&1\\\\-2&1\\end{bmatrix}$",
+    "$\\begin{bmatrix}5&0\\\\0&2\\end{bmatrix}$",
+    "$\\begin{bmatrix}4&1\\\\2&3\\end{bmatrix}$"
+   ],
+   "answer": 0,
+   "explanations": [
+    null,
+    "The rows are swapped from the correct eigenvector columns.",
+    "That's D, not P.",
+    "That's the original matrix A, not P."
+   ]
+  },
+  {
+   "type": "type",
+   "prompt": "Same $A$ and $\\mathbf b$: the **first entry** of $\\hat{\\mathbf x}$ (a fraction like 1/3 is fine).",
+   "answer": [
+    "1/3",
+    "0.3333"
+   ],
+   "explanation": "Solve $2x_1+x_2=1$, $x_1+2x_2=1$."
+  },
+  {
+   "type": "type",
+   "prompt": "If $\\dim V=7$ and $\\dim W=3$, find $\\dim W^\\perp$.",
+   "answer": [
+    "4"
+   ],
+   "explanation": "$7-3=4$."
+  },
+  {
+   "type": "type",
+   "prompt": "In $M_{22}$ with $\\langle U,V\\rangle=\\operatorname{tr}(U^TV)$, what is $\\|I_2\\|^2$?",
+   "answer": [
+    "2"
+   ],
+   "explanation": "The entries are 1, 0, 0, 1, so $\\|I_2\\|^2=2$ and $\\|I_2\\|=\\sqrt2$. The identity is not a unit vector."
+  },
+  {
+   "type": "mc",
+   "prompt": "The rotation by $\\theta$ is $\\begin{bmatrix}\\cos\\theta&-\\sin\\theta\\\\\\sin\\theta&\\cos\\theta\\end{bmatrix}$. Its inverse is",
+   "choices": [
+    "the rotation by $-\\theta$ (its transpose)",
+    "the reflection across the $x$-axis",
+    "$-$ the matrix",
+    "the rotation by $\\theta$ again"
+   ],
+   "answer": 0,
+   "explanations": [
+    null,
+    "A reflection is not a rotation.",
+    "$-R$ times $R$ is $-R^2$.",
+    "That would be rotating further."
+   ]
+  },
+  {
+   "type": "type",
+   "prompt": "$Q$ is $4\\times4$ orthogonal and $\\mathbf x$ has length $7$. Find $\\|Q\\mathbf x\\|$.",
+   "answer": [
+    "7"
+   ],
+   "explanation": "Orthogonal matrices preserve length."
+  },
+  {
+   "type": "mc",
+   "prompt": "In Gram-Schmidt, what is the first vector $u_1$?",
+   "choices": [
+    "$u_1=0$",
+    "$u_1=v_1/\\|v_1\\|$ (required)",
+    "$u_1=v_2-v_1$",
+    "$u_1=v_1$"
+   ],
+   "answer": 3,
+   "explanations": [
+    "Nothing has been built yet, so there is nothing to subtract. Keep $u_1=v_1$ (you may normalize later).",
+    "Nothing has been built yet, so there is nothing to subtract. Keep $u_1=v_1$ (you may normalize later).",
+    "Nothing has been built yet, so there is nothing to subtract. Keep $u_1=v_1$ (you may normalize later).",
+    null
+   ]
+  },
+  {
+   "type": "wordbank",
+   "prompt": "$\\hat{\\mathbf x}$ is unique when the columns of $A$ are linearly _____.",
+   "wordbank": [
+    "orthogonal",
+    "equal",
+    "independent",
+    "dependent"
+   ],
+   "answer": "independent",
+   "explanation": "Then $A^TA$ is invertible."
+  },
+  {
+   "type": "mc",
+   "prompt": "Which constant function $c$ is closest to $x^2$ in $C[0,1]$ (integral inner product)?",
+   "choices": [
+    "$c=0$",
+    "$c=1/2$",
+    "$c=1/3$",
+    "$c=1$"
+   ],
+   "answer": 2,
+   "explanations": [
+    "Minimize $\\int_0^1(x^2-c)^2dx = 1/5-2c/3+c^2$, which gives $c=1/3$, the average value of $x^2$ on $[0,1]$.",
+    "Minimize $\\int_0^1(x^2-c)^2dx = 1/5-2c/3+c^2$, which gives $c=1/3$, the average value of $x^2$ on $[0,1]$.",
+    null,
+    "Minimize $\\int_0^1(x^2-c)^2dx = 1/5-2c/3+c^2$, which gives $c=1/3$, the average value of $x^2$ on $[0,1]$."
+   ]
+  },
+  {
+   "type": "mc",
+   "prompt": "If $u\\perp v$ for the dot product on $\\mathbb R^2$, then $u\\perp v$ for every inner product on $\\mathbb R^2$.",
+   "choices": [
+    "True",
+    "False"
+   ],
+   "answer": 1,
+   "explanations": [
+    "Counterexample: $(1,1)$ and $(1,-1)$ under the weighted product $3u_1v_1+2u_2v_2$ give $3-2=1\\ne0$.",
+    null
+   ]
+  },
+  {
+   "type": "mc",
+   "prompt": "In a Markov chain, the entries of a state vector $\\mathbf{x}_k$ are:",
+   "choices": [
+    "nonnegative and sum to 1",
+    "any real numbers",
+    "integers",
+    "nonpositive"
+   ],
+   "answer": 0,
+   "explanations": [
+    null,
+    "State vectors are probability vectors.",
+    "They are probabilities, so usually fractions.",
+    "Probabilities are never negative."
+   ]
+  },
+  {
+   "type": "mc",
+   "prompt": "Geometric multiplicity can never exceed algebraic multiplicity.",
+   "choices": [
+    "True",
+    "False"
+   ],
+   "answer": 0,
+   "explanations": [
+    null,
+    "You can never have MORE independent eigenvectors for λ than λ's multiplicity as a root — geometric ≤ algebraic always."
+   ]
+  },
+  {
+   "type": "mc",
+   "prompt": "Which statement about $\\|u+v\\|$ is always true?",
+   "choices": [
+    "$\\|u+v\\|=\\langle u,v\\rangle$",
+    "$\\|u+v\\|=\\|u\\|+\\|v\\|$",
+    "$\\|u+v\\|^2=\\|u\\|^2+\\|v\\|^2$",
+    "$\\|u+v\\|^2=\\|u\\|^2+2\\langle u,v\\rangle+\\|v\\|^2$"
+   ],
+   "answer": 3,
+   "explanations": [
+    "Expand $\\langle u+v,u+v\\rangle$ using bilinearity and symmetry.",
+    "Expand $\\langle u+v,u+v\\rangle$ using bilinearity and symmetry.",
+    "Expand $\\langle u+v,u+v\\rangle$ using bilinearity and symmetry.",
+    null
+   ]
+  },
+  {
+   "type": "mc",
+   "prompt": "The $(i,j)$ entry of $Q^TQ$ is",
+   "choices": [
+    "(row $i$ of $Q$) $\\cdot$ (row $j$ of $Q$)",
+    "$q_{ij}^2$",
+    "(column $i$ of $Q$) $\\cdot$ (column $j$ of $Q$)",
+    "$q_{ij}q_{ji}$"
+   ],
+   "answer": 2,
+   "explanations": [
+    "That is the $(i,j)$ entry of $QQ^T$.",
+    "The entries of a product are dot products, not squares of entries.",
+    null,
+    "That is not how matrix products work."
+   ]
+  },
+  {
+   "type": "type",
+   "prompt": "For the same diagonal matrix above, what is the algebraic multiplicity of $\\lambda=4$ (how many times it's a root of the characteristic polynomial)?",
+   "answer": [
+    "2"
+   ],
+   "explanation": "The characteristic polynomial is $(\\lambda-4)^2(\\lambda+2)$, so λ=4 is a double root."
+  },
+  {
+   "type": "mc",
+   "prompt": "Which of these matrices is defective?",
+   "choices": [
+    "$\\begin{bmatrix}1&1\\\\0&1\\end{bmatrix}$",
+    "$\\begin{bmatrix}4&0\\\\0&4\\end{bmatrix}$",
+    "$\\begin{bmatrix}2&0\\\\0&3\\end{bmatrix}$"
+   ],
+   "answer": 0,
+   "explanations": [
+    null,
+    "This is already diagonal — its repeated eigenvalue 4 has 2 independent eigenvectors, so it's fine.",
+    "Distinct eigenvalues (2 and 3) are automatically fine — not defective."
+   ]
+  },
+  {
+   "type": "mc",
+   "prompt": "A $2\\times2$ orthogonal matrix with $\\det=1$ is",
+   "choices": [
+    "a projection",
+    "a reflection",
+    "a rotation",
+    "a shear"
+   ],
+   "answer": 2,
+   "explanations": [
+    "Projections are not invertible.",
+    "Reflections have $\\det=-1$.",
+    null,
+    "Shears are not orthogonal."
+   ]
+  },
+  {
+   "type": "wordbank",
+   "prompt": "In an inner product space, the distance between $u$ and $v$ is $d(u,v)=$ _____.",
+   "wordbank": [
+    "$\\|u-v\\|$",
+    "$\\langle u,v\\rangle$",
+    "$\\|u\\|-\\|v\\|$",
+    "$\\|u\\|+\\|v\\|$"
+   ],
+   "answer": "$\\|u-v\\|$",
+   "explanation": "Distance is the norm of the difference."
+  },
+  {
+   "type": "mc",
+   "prompt": "Least squares for $A=\\begin{bmatrix}1&0\\\\0&1\\\\1&1\\end{bmatrix}$, $\\mathbf b=(1,1,0)$: $\\hat{\\mathbf x}=$",
+   "choices": [
+    "$(1/3,1/3)$",
+    "$(2/3,2/3)$",
+    "$(1,1)$",
+    "$(1/2,1/2)$"
+   ],
+   "answer": 0,
+   "explanations": [
+    null,
+    "That is the first two entries of the residual, not $\\hat{\\mathbf x}$.",
+    "That would be $A^T\\mathbf b$, not the solution of $A^TA\\hat{\\mathbf x}=A^T\\mathbf b$.",
+    "$2x_1+x_2=1$ and $x_1+2x_2=1$ give $x_1=x_2=\\tfrac13$."
+   ]
+  },
+  {
+   "type": "mc",
+   "prompt": "A matrix with eigenvalues 3, -2, and 5 is invertible.",
+   "choices": [
+    "True",
+    "False"
+   ],
+   "answer": 0,
+   "explanations": [
+    null,
+    "None of its eigenvalues are 0, so by the theorem it's invertible."
+   ]
+  },
+  {
+   "type": "type",
+   "prompt": "Same data: the residual at $x=3$ (observed minus predicted).",
+   "answer": [
+    "1.1",
+    "11/10"
+   ],
+   "explanation": "$5-3.9=1.1$."
+  },
+  {
+   "type": "type",
+   "prompt": "Find the eigenvalues of $A = \\begin{bmatrix} 1 & -1 \\\\ 1 & 1 \\end{bmatrix}$.",
+   "answer": [
+    "1+i, 1-i",
+    "1 ± i",
+    "1+i and 1-i"
+   ],
+   "explanation": "det(A−λI) = (1−λ)²+1 = λ²−2λ+2 = 0 ⟹ λ = 1±i."
+  },
+  {
+   "type": "mc",
+   "prompt": "Is $\\langle p,q\\rangle = p(0)q(0)+p(1)q(1)$ an inner product on $P_2$?",
+   "choices": [
+    "No — symmetry fails",
+    "Yes",
+    "No — additivity fails",
+    "No — positivity fails"
+   ],
+   "answer": 3,
+   "explanations": [
+    "$p=x^2-x$ is nonzero but vanishes at 0 and 1, so $\\langle p,p\\rangle=0$.",
+    "$p=x^2-x$ is nonzero but vanishes at 0 and 1, so $\\langle p,p\\rangle=0$.",
+    "$p=x^2-x$ is nonzero but vanishes at 0 and 1, so $\\langle p,p\\rangle=0$.",
+    null
+   ]
+  },
+  {
+   "type": "mc",
+   "prompt": "Least squares solves $A\\mathbf x=\\mathbf b$ exactly even when $\\mathbf b$ is not in col$(A)$.",
+   "choices": [
+    "True",
+    "False"
+   ],
+   "answer": 1,
+   "explanations": [
+    "It can't: $A\\hat{\\mathbf x}$ is the projection of $\\mathbf b$, which differs from $\\mathbf b$ unless $\\mathbf b$ is in col$(A)$.",
+    null
+   ]
+  },
+  {
+   "type": "mc",
+   "prompt": "Fitting $y=a+bx$ to $(0,6),(1,0),(2,0)$ gives",
+   "choices": [
+    "$y=3-3x$",
+    "$y=5+3x$",
+    "$y=5-3x$",
+    "$y=6-3x$"
+   ],
+   "answer": 2,
+   "explanations": [
+    "With intercept $3$ the line misses $(0,6)$ by $3$ and the total squared error is larger than $6$; the normal equations give $(5,-3)$.",
+    "The data decrease, so the slope is negative.",
+    null,
+    "That passes through $(0,6)$ but does not minimize the total squared error."
+   ]
+  },
+  {
+   "type": "type",
+   "prompt": "In $\\mathbb R^3$ with the dot product, find $\\dim W^\\perp$ for $W=\\text{span}\\{(1,2,3)\\}$.",
+   "answer": [
+    "2"
+   ],
+   "explanation": "$3-1=2$. It is the plane $x+2y+3z=0$."
+  },
+  {
+   "type": "type",
+   "prompt": "$Q$ is orthogonal, $\\mathbf x\\cdot\\mathbf y=-3$. Find $(Q\\mathbf x)\\cdot(Q\\mathbf y)$.",
+   "answer": [
+    "-3"
+   ],
+   "explanation": "Dot products are preserved."
+  },
+  {
+   "type": "mc",
+   "prompt": "In $A=QR$ (Gram-Schmidt), the normal equations become",
+   "choices": [
+    "$R^T\\hat{\\mathbf x}=\\mathbf b$",
+    "$R\\hat{\\mathbf x}=Q^T\\mathbf b$",
+    "$QR\\hat{\\mathbf x}=\\mathbf b$",
+    "$Q\\hat{\\mathbf x}=R^T\\mathbf b$"
+   ],
+   "answer": 1,
+   "explanations": [
+    "The right side must be $Q^T\\mathbf b$.",
+    null,
+    "That says $A\\hat{\\mathbf x}=\\mathbf b$, which need not be solvable.",
+    "Orders swapped."
+   ]
+  },
+  {
+   "type": "mc",
+   "prompt": "Once $A=PDP^{-1}$ is proposed, you can check your work by verifying $AP=PD$ (without ever computing $P^{-1}$).",
+   "choices": [
+    "True",
+    "False"
+   ],
+   "answer": 0,
+   "explanations": [
+    null,
+    "Multiplying both sides of A=PDP⁻¹ by P on the right gives AP=PD — an easier check since it avoids computing an inverse."
+   ]
+  },
+  {
+   "type": "mc",
+   "prompt": "Cauchy–Schwarz holds in every real inner product space, not just $\\mathbb R^n$ with the dot product.",
+   "choices": [
+    "True",
+    "False"
+   ],
+   "answer": 0,
+   "explanations": [
+    null,
+    "It is proved from the four axioms alone, so it holds for functions, matrices, polynomials, and every other inner product."
+   ]
+  },
+  {
+   "type": "mc",
+   "prompt": "For $A = \\begin{bmatrix} 4 & 1 \\\\ 2 & 3 \\end{bmatrix}$ with eigenvalues 5 and 2, is $A$ invertible?",
+   "choices": [
+    "Yes",
+    "No"
+   ],
+   "answer": 0,
+   "explanations": [
+    null,
+    "Neither eigenvalue is 0, so A IS invertible."
+   ]
+  },
+  {
+   "type": "wordbank",
+   "prompt": "The determinant of an orthogonal matrix is $1$ or _____.",
+   "wordbank": [
+    "$0$",
+    "$-1$",
+    "$\\tfrac12$",
+    "$2$"
+   ],
+   "answer": "$-1$",
+   "explanation": "$(\\det Q)^2=1$."
+  },
+  {
+   "type": "mc",
+   "prompt": "The identity matrix is orthogonal.",
+   "choices": [
+    "True",
+    "False"
+   ],
+   "answer": 0,
+   "explanations": [
+    null,
+    "$I^TI=I$."
+   ]
+  },
+  {
+   "type": "mc",
+   "prompt": "If the columns of $A$ are linearly dependent, then the normal equations have",
+   "choices": [
+    "exactly one solution",
+    "no solution",
+    "infinitely many solutions, all with the same projection $A\\hat{\\mathbf x}$",
+    "infinitely many different projections"
+   ],
+   "answer": 2,
+   "explanations": [
+    "$A^TA$ is singular, so the solution is not unique.",
+    "They are always consistent.",
+    null,
+    "The projection of $\\mathbf b$ is unique even when $\\hat{\\mathbf x}$ is not."
+   ]
+  },
+  {
+   "type": "type",
+   "prompt": "Same problem: the **first** entry of $\\hat{\\mathbf x}$.",
+   "answer": [
+    "0"
+   ],
+   "explanation": "$2x_1+x_2=2$ with $x_2=2$ gives $x_1=0$."
+  },
+  {
+   "type": "mc",
+   "prompt": "For the shear $A = \\begin{bmatrix} 1 & 1 \\\\ 0 & 1 \\end{bmatrix}$, is $(0,1)$ an eigenvector?",
+   "choices": [
+    "Yes",
+    "No"
+   ],
+   "answer": 1,
+   "explanations": [
+    "$A(0,1) = (1,1)$, which is NOT a scalar multiple of $(0,1)$ — not an eigenvector.",
+    null
+   ]
+  },
+  {
+   "type": "mc",
+   "prompt": "Every stochastic matrix has which eigenvalue?",
+   "choices": [
+    "$\\lambda=1$",
+    "$\\lambda=0$",
+    "$\\lambda=-1$",
+    "$\\lambda=2$"
+   ],
+   "answer": 0,
+   "explanations": [
+    null,
+    "A stochastic matrix can be invertible, so $0$ is not forced.",
+    "Not guaranteed.",
+    "All eigenvalues have $|\\lambda|\\le1$."
+   ]
+  },
+  {
+   "type": "type",
+   "prompt": "Same data: the **slope** of the best-fit line.",
+   "answer": [
+    "0.8",
+    "4/5"
+   ],
+   "explanation": "Solve $4a+10b=14$, $10a+30b=39$."
+  },
+  {
+   "type": "mc",
+   "prompt": "The best-fit line for $(1,2),(2,3),(3,5),(4,4)$ is",
+   "choices": [
+    "$y=1.4+0.8x$",
+    "$y=1.5+0.8x$",
+    "$y=2+x$",
+    "$y=0.8+1.5x$"
+   ],
+   "answer": 1,
+   "explanations": [
+    "Check: $\\sum r$ would not be $0$.",
+    null,
+    "That line is not the minimizer; check $A^T\\mathbf r=\\mathbf 0$.",
+    "Intercept and slope are swapped."
+   ]
+  },
+  {
+   "type": "mc",
+   "prompt": "For a regular Markov chain, what happens to $P^k\\mathbf{x}_0$ as $k\\to\\infty$?",
+   "choices": [
+    "It approaches the steady-state vector, whatever $\\mathbf{x}_0$ is",
+    "It approaches $\\mathbf{0}$",
+    "It depends on $\\mathbf{x}_0$ and need not converge",
+    "It blows up"
+   ],
+   "answer": 0,
+   "explanations": [
+    null,
+    "Probability vectors always sum to 1, so they cannot shrink to $\\mathbf 0$.",
+    "For a regular chain the limit does not depend on the start.",
+    "Entries stay between 0 and 1."
+   ]
+  },
+  {
+   "type": "mc",
+   "prompt": "A steady-state vector $\\mathbf{q}$ of a transition matrix $P$ satisfies:",
+   "choices": [
+    "$P\\mathbf{q}=\\mathbf{q}$ and the entries of $\\mathbf{q}$ sum to 1",
+    "$P\\mathbf{q}=\\mathbf{0}$",
+    "$P\\mathbf{q}=-\\mathbf{q}$",
+    "$P^T\\mathbf{q}=\\mathbf{0}$"
+   ],
+   "answer": 0,
+   "explanations": [
+    null,
+    "That would make $\\mathbf q$ an eigenvector for $\\lambda=0$.",
+    "That would make $\\mathbf q$ an eigenvector for $\\lambda=-1$, not $1$.",
+    "The steady state is an eigenvector for $\\lambda=1$."
+   ]
+  },
+  {
+   "type": "wordbank",
+   "prompt": "A nonzero vector $v$ is called an eigenvector of $A$ if $Av$ equals _____ for some scalar $\\lambda$.",
+   "wordbank": [
+    "a scalar multiple of v",
+    "the zero vector",
+    "v rotated 90°",
+    "v projected onto a line"
+   ],
+   "answer": "a scalar multiple of v",
+   "explanation": "That's the definition: $Av = \\lambda v$ — A can only stretch, shrink, or flip an eigenvector, never rotate it off its own line."
+  },
+  {
+   "type": "type",
+   "prompt": "For $A = \\begin{bmatrix} 4 & 1 \\\\ 2 & 3 \\end{bmatrix}$ with eigenvalues 5 (eigenvector (1,1)) and 2 (eigenvector (1,-2)), what is $D$ in $A=PDP^{-1}$ (matching column order $P=[(1,1),(1,-2)]$)?",
+   "answer": [
+    "diag(5,2)",
+    "[[5,0],[0,2]]",
+    "5,0,0,2"
+   ],
+   "explanation": "D's diagonal entries are the eigenvalues, in the same order as their eigenvectors appear as columns of P."
+  },
+  {
+   "type": "mc",
+   "prompt": "Rotation matrix $Q=\\begin{bmatrix}3/5&-4/5\\\\4/5&3/5\\end{bmatrix}$. Then $Q^{-1}=$",
+   "choices": [
+    "$\\left[\\begin{matrix}\\frac{3}{5} & - \\frac{4}{5}\\\\\\frac{4}{5} & \\frac{3}{5}\\end{matrix}\\right]$",
+    "$\\left[\\begin{matrix}- \\frac{3}{5} & \\frac{4}{5}\\\\- \\frac{4}{5} & - \\frac{3}{5}\\end{matrix}\\right]$",
+    "$\\left[\\begin{matrix}\\frac{5}{3} & - \\frac{5}{4}\\\\\\frac{5}{4} & \\frac{5}{3}\\end{matrix}\\right]$",
+    "$\\left[\\begin{matrix}\\frac{3}{5} & \\frac{4}{5}\\\\- \\frac{4}{5} & \\frac{3}{5}\\end{matrix}\\right]$"
+   ],
+   "answer": 3,
+   "explanations": [
+    "That is $Q$ itself.",
+    "That is $-Q^T$, so it would give $-I$.",
+    "Taking reciprocals of entries is not how you invert a matrix; use $Q^T$.",
+    null
+   ]
+  },
+  {
+   "type": "wordbank",
+   "prompt": "In Gram-Schmidt, span$\\{u_1,u_2\\}$ and span$\\{v_1,v_2\\}$ are _____.",
+   "wordbank": [
+    "orthogonal",
+    "equal",
+    "perpendicular complements",
+    "disjoint"
+   ],
+   "answer": "equal",
+   "explanation": "Each $u$ is a combination of the $v$'s and vice versa, so the spans match at every stage."
+  },
+  {
+   "type": "mc",
+   "prompt": "Equality $|\\langle u,v\\rangle|=\\|u\\|\\|v\\|$ holds exactly when:",
+   "choices": [
+    "$u=v$",
+    "$\\|u\\|=\\|v\\|=1$",
+    "$u$ and $v$ are linearly dependent",
+    "$u$ and $v$ are orthogonal"
+   ],
+   "answer": 2,
+   "explanations": [
+    "$u=v$ gives equality, but so does $u=-3v$. Dependence is the full condition.",
+    "Unit length does not force equality. Two orthogonal unit vectors give $0<1$.",
+    null,
+    "Orthogonal vectors give $|\\langle u,v\\rangle|=0$, which is the far-from-equality case."
+   ]
+  },
+  {
+   "type": "type",
+   "prompt": "A Markov chain has $P=\\begin{bmatrix}0.9&0.2\\\\0.1&0.8\\end{bmatrix}$ and $\\mathbf{x}_0=(1,0)$. What is the first entry of $\\mathbf{x}_1=P\\mathbf{x}_0$?",
+   "answer": [
+    "0.9"
+   ],
+   "explanation": "$P\\mathbf{x}_0$ is the first column of $P$, $(0.9,0.1)$."
+  },
+  {
+   "type": "type",
+   "prompt": "Find both eigenvalues of $A = \\begin{bmatrix} 7 & -2 \\\\ 4 & 1 \\end{bmatrix}$.",
+   "answer": [
+    "5, 3",
+    "3, 5"
+   ],
+   "explanation": "det(A−λI) = (7−λ)(1−λ)+8 = λ²−8λ+15 = (λ−5)(λ−3) = 0, so λ = 5 or 3."
+  },
+  {
+   "type": "mc",
+   "prompt": "Whether two vectors are orthogonal depends on which inner product is being used.",
+   "choices": [
+    "True",
+    "False"
+   ],
+   "answer": 0,
+   "explanations": [
+    null,
+    "For example $(1,1)$ and $(1,-1)$ are orthogonal for the dot product but not for $\\langle u,v\\rangle=3u_1v_1+2u_2v_2$."
+   ]
+  },
+  {
+   "type": "mc",
+   "prompt": "Which of these is NOT guaranteed to be the same for two similar matrices?",
+   "choices": [
+    "The specific eigenvectors",
+    "The eigenvalues",
+    "The determinant",
+    "The trace"
+   ],
+   "answer": 0,
+   "explanations": [
+    null,
+    "Eigenvalues ARE preserved by similarity.",
+    "Determinant IS preserved (det(P⁻¹AP)=det(A)).",
+    "Trace IS preserved by similarity too."
+   ]
+  },
+  {
+   "type": "mc",
+   "prompt": "Under $\\langle u,v\\rangle=3u_1v_1+2u_2v_2$, which vector spans $\\text{span}\\{(2,1)\\}^\\perp$?",
+   "choices": [
+    "$(-1,2)$",
+    "$(2,-1)$",
+    "$(1,-3)$",
+    "$(1,-2)$"
+   ],
+   "answer": 2,
+   "explanations": [
+    "That is the dot-product answer. Here $\\langle(2,1),(-1,2)\\rangle=-6+4=-2$.",
+    "$\\langle(2,1),(2,-1)\\rangle=12-2=10$.",
+    null,
+    "$\\langle(2,1),(1,-2)\\rangle=6-4=2$."
+   ]
+  },
+  {
+   "type": "mc",
+   "prompt": "Every real $2\\times 2$ matrix has at least one real eigenvalue.",
+   "choices": [
+    "True",
+    "False"
+   ],
+   "answer": 1,
+   "explanations": [
+    "The rotation matrix $\\begin{bmatrix}0&-1\\\\1&0\\end{bmatrix}$ has NO real eigenvalues — only the complex pair $\\pm i$.",
+    null
+   ]
+  },
+  {
+   "type": "type",
+   "prompt": "Dot product. $v_1=(1,0,1)$, $v_2=(2,1,0)$. Find $\\langle u_2,u_2\\rangle$.",
+   "answer": [
+    "3"
+   ],
+   "explanation": "Coefficient $=2/2=1$; $u_2=(2,1,0)-(1,0,1)=(1,1,-1)$, and $\\langle u_2,u_2\\rangle=3$."
+  },
+  {
+   "type": "type",
+   "prompt": "For $A=\\begin{bmatrix}4&1\\\\2&3\\end{bmatrix}$ diagonalized as above, $A^3$ applied to the eigenvector $(1,1)$ gives what scalar times $(1,1)$?",
+   "answer": [
+    "125"
+   ],
+   "explanation": "Eigenvectors stay eigenvectors under powers of A, with eigenvalue raised to that power: 5³ = 125."
+  },
+  {
+   "type": "type",
+   "prompt": "Given $\\langle u,v\\rangle=3$, $\\|u\\|=2$, $\\|v\\|=5$, compute $\\langle 2u-v,\\,u+3v\\rangle$.",
+   "answer": [
+    "-52"
+   ],
+   "explanation": "$2\\langle u,u\\rangle+6\\langle u,v\\rangle-\\langle v,u\\rangle-3\\langle v,v\\rangle = 8+18-3-75=-52$."
+  },
+  {
+   "type": "mc",
+   "prompt": "If $\\langle v,v\\rangle = 0$, then $v$ must be the zero vector.",
+   "choices": [
+    "True",
+    "False"
+   ],
+   "answer": 0,
+   "explanations": [
+    null,
+    "That is part of the positivity axiom."
+   ]
+  },
+  {
+   "type": "mc",
+   "prompt": "In a real inner product space, if $\\|u+v\\|^2=\\|u\\|^2+\\|v\\|^2$, then $u\\perp v$.",
+   "choices": [
+    "True",
+    "False"
+   ],
+   "answer": 0,
+   "explanations": [
+    null,
+    "Expanding gives $2\\langle u,v\\rangle=0$."
+   ]
+  },
+  {
+   "type": "type",
+   "prompt": "A $2\\times 2$ matrix has $\\det(A) = 14$. If one eigenvalue is 7, what is the other?",
+   "answer": [
+    "2"
+   ],
+   "explanation": "The determinant equals the product of the eigenvalues: 14 ÷ 7 = 2."
+  },
+  {
+   "type": "wordbank",
+   "prompt": "The least-squares problem is also described as finding the _____ solution to an inconsistent system.",
+   "wordbank": [
+    "smallest",
+    "largest",
+    "closest",
+    "exact"
+   ],
+   "answer": "closest",
+   "explanation": "The projection is the closest point."
+  },
+  {
+   "type": "mc",
+   "prompt": "Once you know an eigenvalue $\\lambda$, how do you find its eigenvector(s)?",
+   "choices": [
+    "Solve $(A-\\lambda I)v = 0$",
+    "Solve $Av = 0$",
+    "Compute $A^{-1}$",
+    "Find $\\det(A)$"
+   ],
+   "answer": 0,
+   "explanations": [
+    null,
+    "That would only find eigenvectors for λ=0.",
+    "The inverse doesn't directly give eigenvectors.",
+    "The determinant of A alone doesn't find eigenvectors for a specific λ."
+   ]
+  },
+  {
+   "type": "wordbank",
+   "prompt": "Vectors $u$ and $v$ in an inner product space are called orthogonal when $\\langle u,v\\rangle=$ _____.",
+   "wordbank": [
+    "1",
+    "$-1$",
+    "0",
+    "$\\|u\\|\\|v\\|$"
+   ],
+   "answer": "0",
+   "explanation": "Orthogonal means the inner product is zero."
+  },
+  {
+   "type": "mc",
+   "prompt": "Which of these is a stochastic (Markov) matrix?",
+   "choices": [
+    "$\\begin{bmatrix}0.5&0.4\\\\0.5&0.7\\end{bmatrix}$",
+    "$\\begin{bmatrix}0.5&0.3\\\\0.5&0.7\\end{bmatrix}$",
+    "$\\begin{bmatrix}0.5&0.5\\\\0.3&0.7\\end{bmatrix}$",
+    "$\\begin{bmatrix}0.5&0.3\\\\0.6&0.7\\end{bmatrix}$"
+   ],
+   "answer": 1,
+   "explanations": [
+    "The second column sums to $1.1$, not $1$.",
+    null,
+    "The ROWS sum to 1, but a stochastic matrix needs COLUMNS summing to 1 (here the columns sum to $0.8$ and $1.2$).",
+    "The first column sums to $1.1$, not $1$."
+   ]
+  },
+  {
+   "type": "mc",
+   "prompt": "For the data $(1,2),(2,3),(3,5),(4,4)$, the right-hand side vector $\\mathbf b$ for a line fit is",
+   "choices": [
+    "$(1,2,3,4)$",
+    "$(2,3,5,4)$",
+    "$(14,39)$",
+    "$(1,1,1,1)$"
+   ],
+   "answer": 1,
+   "explanations": [
+    "That is the $x$-column.",
+    null,
+    "That is $A^T\\mathbf b$.",
+    "That is the column of ones."
+   ]
+  },
+  {
+   "type": "type",
+   "prompt": "A $3\\times 3$ matrix has eigenvalues 3, 5, and 7. What is $\\det(A)$?",
+   "answer": [
+    "105"
+   ],
+   "explanation": "The determinant equals the product of all eigenvalues: 3 × 5 × 7 = 105."
+  },
+  {
+   "type": "mc",
+   "prompt": "For $Q=\\begin{bmatrix}1/\\sqrt2&0\\\\1/\\sqrt2&0\\\\0&1\\end{bmatrix}$ (3×2), $Q^TQ=$",
+   "choices": [
+    "$\\mathbf 0$",
+    "$I_2$",
+    "$I_3$",
+    "$\\begin{bmatrix}1/2&1/2\\\\1/2&1/2\\end{bmatrix}$"
+   ],
+   "answer": 1,
+   "explanations": [
+    "The columns are unit vectors, so the diagonal is $1$.",
+    null,
+    "$Q^TQ$ is $2\\times2$ here.",
+    "That is the upper block of $QQ^T$, not $Q^TQ$."
+   ]
+  },
+  {
+   "type": "mc",
+   "prompt": "Adding one data point far from the others in $x$ and far from the line usually",
+   "choices": [
+    "has no effect on the line",
+    "moves the least-squares line a lot",
+    "makes the SSE smaller",
+    "changes only the intercept"
+   ],
+   "answer": 1,
+   "explanations": [
+    "Squared residuals punish big misses, so the line tilts toward the outlier.",
+    null,
+    "It makes the SSE larger.",
+    "It generally changes both slope and intercept."
+   ]
+  },
+  {
+   "type": "mc",
+   "prompt": "If $A$ is $3\\times3$ with independent columns and $A=QR$ comes from Gram-Schmidt, then $Q$ is",
+   "choices": [
+    "upper triangular",
+    "singular",
+    "an orthogonal matrix: $Q^{-1}=Q^T$",
+    "equal to $A$"
+   ],
+   "answer": 2,
+   "explanations": [
+    "$R$ is triangular, not $Q$.",
+    "Orthonormal columns make $Q$ invertible.",
+    null,
+    "$Q$ has orthonormal columns; $A$'s do not have to."
+   ]
+  },
+  {
+   "type": "type",
+   "prompt": "If $D = \\text{diag}(2,3)$, what is $D^4$?",
+   "answer": [
+    "diag(16,81)",
+    "16, 81",
+    "16 and 81"
+   ],
+   "explanation": "Powers of a diagonal matrix just power each diagonal entry: 2⁴=16, 3⁴=81."
+  },
+  {
+   "type": "type",
+   "prompt": "In $C[0,1]$ with $\\langle f,g\\rangle=\\int_0^1fg\\,dx$, compute $\\langle1,x^2\\rangle$. (Enter a fraction like 1/4.)",
+   "answer": [
+    "1/3"
+   ],
+   "explanation": "$\\int_0^1x^2\\,dx=1/3$."
+  },
+  {
+   "type": "mc",
+   "prompt": "Apply Gram-Schmidt to 3 independent vectors in $\\mathbb R^3$ (dot product). The result $\\{u_1,u_2,u_3\\}$ is",
+   "choices": [
+    "an orthogonal basis of $\\mathbb R^3$",
+    "always the standard basis",
+    "linearly dependent",
+    "a basis of a plane only"
+   ],
+   "answer": 0,
+   "explanations": [
+    null,
+    "It depends on the $v$'s; the standard basis only if you start from it.",
+    "Nonzero orthogonal vectors are always independent.",
+    "Three independent vectors span all of $\\mathbb R^3$, and so do the $u$'s."
+   ]
+  },
+  {
+   "type": "type",
+   "prompt": "Same problem: the **third entry** of the projection $A\\hat{\\mathbf x}$.",
+   "answer": [
+    "2/3",
+    "0.6667"
+   ],
+   "explanation": "$p_3=\\hat x_1+\\hat x_2=\\tfrac23$."
+  },
+  {
+   "type": "type",
+   "prompt": "Weighted $\\langle u,v\\rangle=u_1v_1+2u_2v_2+3u_3v_3$, $u_1=(1,1,1)$, $v_2=(1,1,3)$. Find the Gram-Schmidt coefficient $\\langle v_2,u_1\\rangle/\\langle u_1,u_1\\rangle$.",
+   "answer": [
+    "2"
+   ],
+   "explanation": "$12/6=2$."
+  },
+  {
+   "type": "mc",
+   "prompt": "A matrix with a repeated eigenvalue can never be diagonalized.",
+   "choices": [
+    "True",
+    "False"
+   ],
+   "answer": 1,
+   "explanations": [
+    "It CAN still be diagonalized, as long as that eigenvalue's geometric multiplicity matches its algebraic multiplicity (e.g. any diagonal matrix with a repeated entry).",
+    null
+   ]
+  },
+  {
+   "type": "wordbank",
+   "prompt": "A square matrix that is NOT diagonalizable is called _____.",
+   "wordbank": [
+    "defective",
+    "singular",
+    "symmetric",
+    "triangular"
+   ],
+   "answer": "defective",
+   "explanation": "That's the standard term for a non-diagonalizable matrix."
+  },
+  {
+   "type": "mc",
+   "prompt": "Why is the angle formula legitimate in a general inner product space?",
+   "choices": [
+    "Because the triangle inequality says so",
+    "Because every inner product space is secretly $\\mathbb R^n$",
+    "Because $\\|u\\|\\|v\\|$ is always at least 1",
+    "Cauchy–Schwarz guarantees the fraction lies in $[-1,1]$, so $\\arccos$ is defined"
+   ],
+   "answer": 3,
+   "explanations": [
+    "The triangle inequality is a consequence of Cauchy–Schwarz, not the reason the angle exists.",
+    "Function and matrix spaces are not $\\mathbb R^n$ with the dot product.",
+    "Norms can be any nonnegative number.",
+    null
+   ]
+  },
+  {
+   "type": "mc",
+   "prompt": "In a real inner product space, $\\langle u,kv\\rangle = k\\langle u,v\\rangle$.",
+   "choices": [
+    "True",
+    "False"
+   ],
+   "answer": 0,
+   "explanations": [
+    null,
+    "Use symmetry, pull the scalar out of the first slot, then use symmetry again."
+   ]
+  },
+  {
+   "type": "mc",
+   "prompt": "$\\|kv\\| = k\\|v\\|$ for every scalar $k$.",
+   "choices": [
+    "True",
+    "False"
+   ],
+   "answer": 1,
+   "explanations": [
+    "It is $|k|\\,\\|v\\|$. A norm can never be negative, so $k=-2$ gives $2\\|v\\|$, not $-2\\|v\\|$.",
+    null
+   ]
+  },
+  {
+   "type": "mc",
+   "prompt": "In a complex inner product space, $\\langle v,v\\rangle$ is always a real number.",
+   "choices": [
+    "True",
+    "False"
+   ],
+   "answer": 0,
+   "explanations": [
+    null,
+    "By conjugate symmetry, $\\langle v,v\\rangle$ equals its own conjugate, so it is real. Positivity then makes it $\\ge 0$."
+   ]
+  },
+  {
+   "type": "mc",
+   "prompt": "To find the steady-state vector you solve $(P-I)\\mathbf{q}=\\mathbf{0}$ and then:",
+   "choices": [
+    "scale the solution so its entries sum to 1",
+    "normalize it to have length 1",
+    "make its first entry equal to 1",
+    "take its transpose"
+   ],
+   "answer": 0,
+   "explanations": [
+    null,
+    "Steady states are probability vectors (sum 1), not unit-length vectors.",
+    "Sum to 1 is the requirement, not first entry 1.",
+    "Transposing does nothing here."
+   ]
+  },
+  {
+   "type": "mc",
+   "prompt": "When software solves least squares, it often uses $A=QR$ and then solves",
+   "choices": [
+    "$Q\\hat{\\mathbf x}=R^T\\mathbf b$",
+    "$R\\hat{\\mathbf x}=\\mathbf b$",
+    "$R\\hat{\\mathbf x}=Q^T\\mathbf b$",
+    "$QR\\hat{\\mathbf x}=Q^T\\mathbf b$"
+   ],
+   "answer": 2,
+   "explanations": [
+    "Orders swapped.",
+    "$R$ is $n\\times n$ and $\\mathbf b$ is in $\\mathbb R^m$; project with $Q^T$ first.",
+    null,
+    "$Q^T$ must multiply both sides."
+   ]
+  },
+  {
+   "type": "mc",
+   "prompt": "Similar matrices always have the same determinant.",
+   "choices": [
+    "True",
+    "False"
+   ],
+   "answer": 0,
+   "explanations": [
+    null,
+    "det(P⁻¹AP) = det(P⁻¹)det(A)det(P) = det(A), since det(P⁻¹)det(P)=1."
+   ]
+  },
+  {
+   "type": "mc",
+   "prompt": "For $A = \\begin{bmatrix} 7 & -2 \\\\ 4 & 1 \\end{bmatrix}$ and eigenvalue $\\lambda=3$, which is a valid eigenvector?",
+   "choices": [
+    "(1,2)",
+    "(2,1)",
+    "(1,-2)",
+    "(3,1)"
+   ],
+   "answer": 0,
+   "explanations": [
+    null,
+    "Check: A(2,1) = (12,9), not a multiple of (2,1).",
+    "Check: A(1,-2)=(11,2), not a multiple of (1,-2).",
+    "Check: A(3,1)=(19,13), not a multiple of (3,1)."
+   ]
+  },
+  {
+   "type": "type",
+   "prompt": "On $P_2$ with $\\langle p,q\\rangle=p(-1)q(-1)+p(0)q(0)+p(1)q(1)$, compute $\\langle x^2,\\,1+x\\rangle$.",
+   "answer": [
+    "2"
+   ],
+   "explanation": "$x^2$ takes values $1,0,1$ and $1+x$ takes values $0,1,2$, so the sum is $0+0+2=2$."
+  },
+  {
+   "type": "wordbank",
+   "prompt": "$A$ is diagonalizable if and only if, for every eigenvalue, its geometric multiplicity equals its _____ multiplicity.",
+   "wordbank": [
+    "algebraic",
+    "complex",
+    "matrix",
+    "triangular"
+   ],
+   "answer": "algebraic",
+   "explanation": "That's the Diagonalization Theorem."
+  },
+  {
+   "type": "wordbank",
+   "prompt": "The axiom $\\langle u,v\\rangle = \\langle v,u\\rangle$ for a real inner product is called _____.",
+   "wordbank": [
+    "symmetry",
+    "additivity",
+    "homogeneity",
+    "positivity"
+   ],
+   "answer": "symmetry",
+   "explanation": "Swapping the two inputs doesn't change a real inner product."
+  },
+  {
+   "type": "type",
+   "prompt": "If $\\|v\\|=4$, what is $\\|-3v\\|$?",
+   "answer": [
+    "12"
+   ],
+   "explanation": "$\\|kv\\|=|k|\\,\\|v\\|=3\\cdot4=12$."
+  },
+  {
+   "type": "type",
+   "prompt": "You apply Gram-Schmidt to 3 independent vectors in $\\mathbb R^5$. How many nonzero orthogonal vectors $u_i$ do you get?",
+   "answer": [
+    "3"
+   ],
+   "explanation": "One per input vector, so 3."
+  },
+  {
+   "type": "type",
+   "prompt": "Find the steady-state vector for $P=\\begin{bmatrix}0.9&0.2\\\\0.1&0.8\\end{bmatrix}$. Enter its FIRST entry as a fraction.",
+   "answer": [
+    "2/3"
+   ],
+   "explanation": "$(P-I)\\mathbf q=0$ gives $-0.1q_1+0.2q_2=0$, so $q_1=2q_2$. With $q_1+q_2=1$: $\\mathbf q=(2/3,1/3)$."
+  },
+  {
+   "type": "wordbank",
+   "prompt": "If a Gram-Schmidt step produces $u_k=0$, the original vectors were linearly _____.",
+   "wordbank": [
+    "dependent",
+    "independent",
+    "orthogonal",
+    "normalized"
+   ],
+   "answer": "dependent",
+   "explanation": "$u_k=0$ means $v_k$ is already in the span of the earlier vectors."
+  },
+  {
+   "type": "mc",
+   "prompt": "Dot product, $v_1=(1,1,0)$, $v_2=(1,0,1)$, $v_3=(0,1,1)$ gives $u_2=(\\tfrac12,-\\tfrac12,1)$. Then $u_3=$",
+   "choices": [
+    "$(-1/2,1/2,1)$",
+    "$(2/3,2/3,-2/3)$",
+    "$(-2/3,2/3,-2/3)$",
+    "$(-2/3,2/3,2/3)$"
+   ],
+   "answer": 3,
+   "explanations": [
+    "That is $v_3$ minus only the shadow on $u_1$. You also need the shadow on $u_2$ (coefficient $1/3$).",
+    "Check $\\langle u_3,u_1\\rangle=\\tfrac43\\neq0$: this is not orthogonal to $u_1$.",
+    "Sign slip in the last coordinate: it is $1-\\tfrac13=\\tfrac23$, not $-\\tfrac23$.",
+    null
+   ]
+  },
+  {
+   "type": "type",
+   "prompt": "With the same $M$, compute $\\|e_2\\|^2$.",
+   "answer": [
+    "5"
+   ],
+   "explanation": "$\\langle e_2,e_2\\rangle=M_{22}=5$."
+  },
+  {
+   "type": "type",
+   "prompt": "With the weighted inner product $\\langle u,v\\rangle=3u_1v_1+2u_2v_2$, compute $\\langle (1,-2),(4,1)\\rangle$.",
+   "answer": [
+    "8"
+   ],
+   "explanation": "$3(1)(4)+2(-2)(1)=12-4=8$."
+  },
+  {
+   "type": "mc",
+   "prompt": "For the reflection $A = \\begin{bmatrix} 0 & 1 \\\\ 1 & 0 \\end{bmatrix}$, is $(1,-1)$ an eigenvector?",
+   "choices": [
+    "Yes",
+    "No"
+   ],
+   "answer": 0,
+   "explanations": [
+    null,
+    "$A(1,-1) = (-1,1) = -1\\cdot(1,-1)$ — it IS an eigenvector, with $\\lambda=-1$."
+   ]
+  },
+  {
+   "type": "mc",
+   "prompt": "You run Gram-Schmidt on $v_1,v_2,v_3$ and get $u_3=0$. What does this tell you?",
+   "choices": [
+    "$v_3$ is in span$\\{v_1,v_2\\}$, so the $v$'s were dependent",
+    "$v_3$ is a unit vector",
+    "$v_3$ is orthogonal to $v_1$ and $v_2$",
+    "You made an arithmetic mistake, always"
+   ],
+   "answer": 0,
+   "explanations": [
+    null,
+    "Unit length is unrelated.",
+    "If $v_3$ were orthogonal to the others, the shadows would be $0$ and $u_3=v_3\\neq0$.",
+    "It can be a real signal, not an error: the remainder is $0$ exactly when $v_3$ lies in the span of the earlier vectors."
+   ]
+  },
+  {
+   "type": "mc",
+   "prompt": "If $\\det(A) = 0$, then 0 must be an eigenvalue of $A$.",
+   "choices": [
+    "True",
+    "False"
+   ],
+   "answer": 0,
+   "explanations": [
+    null,
+    "det(A) = det(A − 0·I), so det(A)=0 means 0 solves the characteristic equation."
+   ]
+  }
+ ]
+}

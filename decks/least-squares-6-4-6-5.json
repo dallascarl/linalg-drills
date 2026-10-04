@@ -1,0 +1,1003 @@
+{
+ "id": "least-squares-6-4-6-5",
+ "title": "Least Squares and Best-Fit Lines (6.4-6.5)",
+ "description": "Days 38-39: least squares as projection onto the column space, the normal equations, solving small examples, residuals, best-fit lines and curves, outliers, and QR. 12 questions pulled per attempt.",
+ "questionsPerAttempt": 12,
+ "pointsPerQuestion": 1,
+ "questions": [
+  {
+   "type": "mc",
+   "prompt": "When $A\\mathbf x=\\mathbf b$ has no solution, a **least-squares solution** $\\hat{\\mathbf x}$ is one that",
+   "choices": [
+    "makes $\\hat{\\mathbf x}$ as short as possible",
+    "makes $\\|\\mathbf b-A\\hat{\\mathbf x}\\|$ as small as possible",
+    "makes $A\\hat{\\mathbf x}=\\mathbf b$ exactly",
+    "makes $A^T\\hat{\\mathbf x}=\\mathbf b$"
+   ],
+   "answer": 1,
+   "explanations": [
+    "Length of $\\hat{\\mathbf x}$ is not what is minimized; it is the distance from $A\\hat{\\mathbf x}$ to $\\mathbf b$.",
+    null,
+    "There is no exact solution; least squares gives the closest we can get.",
+    "The dimensions do not even match in general; the condition involves $A^TA$."
+   ]
+  },
+  {
+   "type": "mc",
+   "prompt": "The closest point to $\\mathbf b$ in the column space of $A$ is",
+   "choices": [
+    "the zero vector",
+    "the first column of $A$",
+    "$\\mathbf b$ itself",
+    "the orthogonal projection of $\\mathbf b$ onto col$(A)$"
+   ],
+   "answer": 3,
+   "explanations": [
+    "$\\mathbf 0$ is in col$(A)$ but is generally not the closest point.",
+    "The nearest point depends on all the columns, not just the first.",
+    "$\\mathbf b$ is only in col$(A)$ when the system is consistent.",
+    null
+   ]
+  },
+  {
+   "type": "mc",
+   "prompt": "If $\\hat{\\mathbf x}$ is a least-squares solution, the residual $\\mathbf r=\\mathbf b-A\\hat{\\mathbf x}$ is",
+   "choices": [
+    "parallel to $\\mathbf b$",
+    "in the column space of $A$",
+    "orthogonal to every column of $A$",
+    "always zero"
+   ],
+   "answer": 2,
+   "explanations": [
+    "The residual need not be parallel to $\\mathbf b$.",
+    "It is *perpendicular* to col$(A)$; it would be in the column space only if it were $\\mathbf 0$.",
+    null,
+    "It is zero only when $A\\mathbf x=\\mathbf b$ is consistent."
+   ]
+  },
+  {
+   "type": "mc",
+   "prompt": "The normal equations for $A\\mathbf x=\\mathbf b$ are",
+   "choices": [
+    "$A^TA\\hat{\\mathbf x}=A^T\\mathbf b$",
+    "$A\\hat{\\mathbf x}=A^T\\mathbf b$",
+    "$AA^T\\hat{\\mathbf x}=\\mathbf b$",
+    "$A^T\\hat{\\mathbf x}=A^T\\mathbf b$"
+   ],
+   "answer": 0,
+   "explanations": [
+    null,
+    "$A\\hat{\\mathbf x}$ is in $\\mathbb R^m$ and $A^T\\mathbf b$ is in $\\mathbb R^n$.",
+    "The order is $A^TA$ (which is $n\\times n$), and the right side is $A^T\\mathbf b$.",
+    "Without the extra $A$ the sizes do not match: $A^T$ is $n\\times m$ and $\\hat{\\mathbf x}$ has $n$ entries."
+   ]
+  },
+  {
+   "type": "mc",
+   "prompt": "The normal equations come from the fact that $A^T\\mathbf r=\\mathbf 0$ with $\\mathbf r=\\mathbf b-A\\hat{\\mathbf x}$. Substituting gives",
+   "choices": [
+    "$A^T(\\mathbf b-A\\hat{\\mathbf x})=\\mathbf 0$, so $A^TA\\hat{\\mathbf x}=A^T\\mathbf b$",
+    "$A(\\mathbf b-A\\hat{\\mathbf x})=\\mathbf 0$, so $A\\hat{\\mathbf x}=\\mathbf b$",
+    "$A^T\\mathbf b=\\mathbf 0$",
+    "$\\mathbf b-A\\hat{\\mathbf x}=\\mathbf 0$ always"
+   ],
+   "answer": 0,
+   "explanations": [
+    null,
+    "The orthogonality condition uses $A^T$, not $A$.",
+    "$A^T\\mathbf b$ is generally not zero.",
+    "That would force the system to be consistent."
+   ]
+  },
+  {
+   "type": "mc",
+   "prompt": "The normal equations are",
+   "choices": [
+    "always consistent",
+    "consistent only when $A\\mathbf x=\\mathbf b$ is consistent",
+    "never consistent",
+    "consistent only when $A$ is square"
+   ],
+   "answer": 0,
+   "explanations": [
+    null,
+    "The projection of $\\mathbf b$ always exists, so the normal equations always have a solution.",
+    "They always have at least one solution.",
+    "$A$ can be any shape."
+   ]
+  },
+  {
+   "type": "mc",
+   "prompt": "The least-squares solution $\\hat{\\mathbf x}$ is **unique** exactly when",
+   "choices": [
+    "$A$ has more columns than rows",
+    "the columns of $A$ are linearly independent",
+    "$\\mathbf b$ is in col$(A)$",
+    "$A$ is square"
+   ],
+   "answer": 1,
+   "explanations": [
+    "More columns than rows forces dependent columns, so $\\hat{\\mathbf x}$ is not unique.",
+    null,
+    "Consistency does not make $\\hat{\\mathbf x}$ unique; independence of columns does.",
+    "A square $A$ with dependent columns still has many solutions."
+   ]
+  },
+  {
+   "type": "mc",
+   "prompt": "If the columns of $A$ are linearly dependent, then the normal equations have",
+   "choices": [
+    "exactly one solution",
+    "no solution",
+    "infinitely many solutions, all with the same projection $A\\hat{\\mathbf x}$",
+    "infinitely many different projections"
+   ],
+   "answer": 2,
+   "explanations": [
+    "$A^TA$ is singular, so the solution is not unique.",
+    "They are always consistent.",
+    null,
+    "The projection of $\\mathbf b$ is unique even when $\\hat{\\mathbf x}$ is not."
+   ]
+  },
+  {
+   "type": "mc",
+   "prompt": "If $A\\mathbf x=\\mathbf b$ is consistent, then the least-squares solutions are",
+   "choices": [
+    "the exact solutions, but $\\mathbf r\\neq\\mathbf 0$",
+    "undefined",
+    "exactly the exact solutions, and $\\mathbf r=\\mathbf 0$",
+    "not the exact solutions"
+   ],
+   "answer": 2,
+   "explanations": [
+    "An exact solution has residual $\\mathbf 0$.",
+    "Least squares is still defined and agrees.",
+    null,
+    "An exact solution makes $\\|\\mathbf b-A\\mathbf x\\|=0$, the smallest possible."
+   ]
+  },
+  {
+   "type": "mc",
+   "prompt": "If $A$ is $m\\times n$, then $\\hat{\\mathbf x}$ lives in",
+   "choices": [
+    "$\\mathbb R^m$ and the projection in $\\mathbb R^n$",
+    "$\\mathbb R^n$ and the projection $A\\hat{\\mathbf x}$ lives in $\\mathbb R^m$",
+    "$\\mathbb R^m$ and the projection in $\\mathbb R^m$",
+    "$\\mathbb R^n$ and the projection in $\\mathbb R^n$"
+   ],
+   "answer": 1,
+   "explanations": [
+    "Swapped: $\\hat{\\mathbf x}$ has one entry per column ($n$) and $A\\hat{\\mathbf x}$ has one per row ($m$).",
+    null,
+    "$\\hat{\\mathbf x}$ has $n$ entries, one per column.",
+    "$A\\hat{\\mathbf x}$ is a combination of columns, which have $m$ entries."
+   ]
+  },
+  {
+   "type": "mc",
+   "prompt": "$A^TA$ is always",
+   "choices": [
+    "$m\\times n$",
+    "a symmetric $n\\times n$ matrix",
+    "equal to $AA^T$",
+    "a non-symmetric $m\\times m$ matrix"
+   ],
+   "answer": 1,
+   "explanations": [
+    "$A^TA$ is $n\\times n$, not $m\\times m$.",
+    null,
+    "$A^TA$ and $AA^T$ have different sizes unless $A$ is square, and are generally different.",
+    "$(A^TA)^T=A^TA$ and its size is $n\\times n$."
+   ]
+  },
+  {
+   "type": "mc",
+   "prompt": "$A^TA$ is invertible exactly when",
+   "choices": [
+    "the rows of $A$ are independent",
+    "$A$ is square",
+    "the columns of $A$ are linearly independent",
+    "$\\mathbf b\\neq\\mathbf0$"
+   ],
+   "answer": 2,
+   "explanations": [
+    "Rows of $A$ being independent describes $AA^T$, not $A^TA$.",
+    "A non-square $A$ can still give an invertible $A^TA$.",
+    null,
+    "$\\mathbf b$ does not enter $A^TA$."
+   ]
+  },
+  {
+   "type": "mc",
+   "prompt": "The least-squares solution is the $\\mathbf x$ that makes the **sum of the squares** of the entries of $\\mathbf b-A\\mathbf x$ smallest.",
+   "choices": [
+    "True",
+    "False"
+   ],
+   "answer": 0,
+   "explanations": [
+    null,
+    "That is the definition: minimizing $\\|\\mathbf b-A\\mathbf x\\|$ is the same as minimizing the sum of squares."
+   ]
+  },
+  {
+   "type": "mc",
+   "prompt": "The residual vector of a least-squares solution lies in the column space of $A$.",
+   "choices": [
+    "True",
+    "False"
+   ],
+   "answer": 1,
+   "explanations": [
+    "It is perpendicular to the column space. It could lie in both only if it were $\\mathbf 0$.",
+    null
+   ]
+  },
+  {
+   "type": "mc",
+   "prompt": "The projection $A\\hat{\\mathbf x}$ is the same for every least-squares solution $\\hat{\\mathbf x}$.",
+   "choices": [
+    "True",
+    "False"
+   ],
+   "answer": 0,
+   "explanations": [
+    null,
+    "It is the unique closest point of col$(A)$ to $\\mathbf b$."
+   ]
+  },
+  {
+   "type": "mc",
+   "prompt": "To find a least-squares solution you can row reduce $[A\\mid\\mathbf b]$ directly.",
+   "choices": [
+    "True",
+    "False"
+   ],
+   "answer": 1,
+   "explanations": [
+    "If $A\\mathbf x=\\mathbf b$ is inconsistent, that matrix reduces to a contradiction. Row reduce $[A^TA\\mid A^T\\mathbf b]$ instead.",
+    null
+   ]
+  },
+  {
+   "type": "mc",
+   "prompt": "If $\\hat{\\mathbf x}$ solves the normal equations, then $A^T(\\mathbf b-A\\hat{\\mathbf x})=\\mathbf 0$.",
+   "choices": [
+    "True",
+    "False"
+   ],
+   "answer": 0,
+   "explanations": [
+    null,
+    "That is just the normal equations rearranged."
+   ]
+  },
+  {
+   "type": "mc",
+   "prompt": "Least squares solves $A\\mathbf x=\\mathbf b$ exactly even when $\\mathbf b$ is not in col$(A)$.",
+   "choices": [
+    "True",
+    "False"
+   ],
+   "answer": 1,
+   "explanations": [
+    "It can't: $A\\hat{\\mathbf x}$ is the projection of $\\mathbf b$, which differs from $\\mathbf b$ unless $\\mathbf b$ is in col$(A)$.",
+    null
+   ]
+  },
+  {
+   "type": "mc",
+   "prompt": "$A=\\begin{bmatrix}1&0\\\\0&1\\\\1&1\\end{bmatrix}$. Then $A^TA=$",
+   "choices": [
+    "$\\left[\\begin{matrix}1 & 0\\\\0 & 1\\end{matrix}\\right]$",
+    "$\\left[\\begin{matrix}2 & 0\\\\0 & 2\\end{matrix}\\right]$",
+    "$\\left[\\begin{matrix}2 & 1\\\\1 & 2\\end{matrix}\\right]$",
+    "$\\left[\\begin{matrix}1 & 1 & 1\\\\0 & 1 & 1\\\\1 & 0 & 1\\end{matrix}\\right]$"
+   ],
+   "answer": 2,
+   "explanations": [
+    "That is $A$ with a row removed, not $A^TA$. Compute dot products of the columns.",
+    "Column dot product $(1,0,1)\\cdot(0,1,1)=1$, not $0$.",
+    null,
+    "$A^TA$ is $2\\times2$ here."
+   ]
+  },
+  {
+   "type": "mc",
+   "prompt": "For $A=\\begin{bmatrix}1&0\\\\0&1\\\\1&1\\end{bmatrix}$ and $\\mathbf b=(1,1,0)$, $A^T\\mathbf b=$",
+   "choices": [
+    "$(1,1,0)$",
+    "$(1,1)$",
+    "$(2,1)$",
+    "$(0,0)$"
+   ],
+   "answer": 1,
+   "explanations": [
+    "$A^T\\mathbf b$ is in $\\mathbb R^2$, not $\\mathbb R^3$.",
+    null,
+    "Each entry is a column dotted with $\\mathbf b$: $(1,0,1)\\cdot(1,1,0)=1$.",
+    "$A^T\\mathbf b=(1,1)$, not zero."
+   ]
+  },
+  {
+   "type": "mc",
+   "prompt": "Least squares for $A=\\begin{bmatrix}1&0\\\\0&1\\\\1&1\\end{bmatrix}$, $\\mathbf b=(1,1,0)$: $\\hat{\\mathbf x}=$",
+   "choices": [
+    "$(1/3,1/3)$",
+    "$(2/3,2/3)$",
+    "$(1,1)$",
+    "$(1/2,1/2)$"
+   ],
+   "answer": 0,
+   "explanations": [
+    null,
+    "That is the first two entries of the residual, not $\\hat{\\mathbf x}$.",
+    "That would be $A^T\\mathbf b$, not the solution of $A^TA\\hat{\\mathbf x}=A^T\\mathbf b$.",
+    "$2x_1+x_2=1$ and $x_1+2x_2=1$ give $x_1=x_2=\\tfrac13$."
+   ]
+  },
+  {
+   "type": "mc",
+   "prompt": "For the same problem the projection $A\\hat{\\mathbf x}$ is",
+   "choices": [
+    "$(1/3,1/3,2/3)$",
+    "$(1,1,0)$",
+    "$(1/3,1/3)$",
+    "$(2/3,2/3,-2/3)$"
+   ],
+   "answer": 0,
+   "explanations": [
+    null,
+    "That is $\\mathbf b$, which is not in col$(A)$.",
+    "That is $\\hat{\\mathbf x}$; multiply by $A$ to get the projection in $\\mathbb R^3$.",
+    "That is the residual, not the projection."
+   ]
+  },
+  {
+   "type": "mc",
+   "prompt": "For the same problem the residual $\\mathbf b-A\\hat{\\mathbf x}$ is",
+   "choices": [
+    "$(2/3,2/3,-2/3)$",
+    "$(0,0,0)$",
+    "$(1,1,0)$",
+    "$(1/3,1/3,2/3)$"
+   ],
+   "answer": 0,
+   "explanations": [
+    null,
+    "The residual is $\\mathbf 0$ only if the system is consistent; here $\\mathbf b\\notin$ col$(A)$.",
+    "That is $\\mathbf b$.",
+    "That is the projection."
+   ]
+  },
+  {
+   "type": "mc",
+   "prompt": "$A=\\begin{bmatrix}1&0\\\\1&1\\\\1&2\\end{bmatrix}$, $\\mathbf b=(6,0,0)$. $A^TA=$",
+   "choices": [
+    "$\\left[\\begin{matrix}3 & 3\\\\3 & 5\\end{matrix}\\right]$",
+    "$\\left[\\begin{matrix}3 & 3\\\\3 & 3\\end{matrix}\\right]$",
+    "$\\left[\\begin{matrix}2 & 3\\\\3 & 5\\end{matrix}\\right]$",
+    "$\\left[\\begin{matrix}3 & 2\\\\2 & 5\\end{matrix}\\right]$"
+   ],
+   "answer": 0,
+   "explanations": [
+    null,
+    "$(0,1,2)\\cdot(0,1,2)=5$, not $3$.",
+    "$(1,1,1)\\cdot(1,1,1)=3$, not $2$.",
+    "Second column dotted with first is $0+1+2=3$, not $2$."
+   ]
+  },
+  {
+   "type": "mc",
+   "prompt": "For that problem the least-squares solution is $\\hat{\\mathbf x}=$",
+   "choices": [
+    "$(-3,5)$",
+    "$(6,0)$",
+    "$(4,-2)$",
+    "$(5,-3)$"
+   ],
+   "answer": 3,
+   "explanations": [
+    "Entries are swapped: the intercept is $5$ and the slope is $-3$.",
+    "That is $A^T\\mathbf b$.",
+    "That gives $\\|\\mathbf b-A\\mathbf x\\|^2=8$, larger than the minimum $6$.",
+    null
+   ]
+  },
+  {
+   "type": "mc",
+   "prompt": "For that problem the squared residual length $\\|\\mathbf b-A\\hat{\\mathbf x}\\|^2$ is",
+   "choices": [
+    "$0$",
+    "$6$",
+    "$8$",
+    "$36$"
+   ],
+   "answer": 1,
+   "explanations": [
+    "The system is inconsistent, so the residual is not zero.",
+    null,
+    "$8$ is the error for $\\mathbf x=(4,-2)$, which is not the minimizer.",
+    "$36=\\|\\mathbf b\\|^2$ is the error for $\\mathbf x=\\mathbf 0$."
+   ]
+  },
+  {
+   "type": "mc",
+   "prompt": "The residual for $A=\\begin{bmatrix}1&0\\\\1&1\\\\1&2\\end{bmatrix}$, $\\mathbf b=(6,0,0)$ is $\\mathbf r=(1,-2,1)$. Which check confirms it is correct?",
+   "choices": [
+    "$\\mathbf r=\\mathbf b$",
+    "$A^T\\mathbf r=\\mathbf 0$",
+    "$\\mathbf r\\cdot\\mathbf b=0$",
+    "$A\\mathbf r=\\mathbf 0$"
+   ],
+   "answer": 1,
+   "explanations": [
+    "Then the projection would be $\\mathbf 0$.",
+    null,
+    "$\\mathbf r\\cdot\\mathbf b=6\\neq0$; the right test is against the columns of $A$.",
+    "$A\\mathbf r$ is not even defined ($A$ is $3\\times2$, $\\mathbf r\\in\\mathbb R^3$)."
+   ]
+  },
+  {
+   "type": "mc",
+   "prompt": "To fit $y=a+bx$ to data, the design matrix $A$ has columns",
+   "choices": [
+    "the $x$-values and the $y$-values",
+    "the $x$-values and $x^2$",
+    "a column of ones and a column of the $x$-values",
+    "ones and the $y$-values"
+   ],
+   "answer": 2,
+   "explanations": [
+    "The $y$-values form $\\mathbf b$, not a column of $A$.",
+    "That fits a parabola through the origin; a line needs the constant column.",
+    null,
+    "The $y$-values are the right side $\\mathbf b$."
+   ]
+  },
+  {
+   "type": "mc",
+   "prompt": "For the data $(1,2),(2,3),(3,5),(4,4)$, the right-hand side vector $\\mathbf b$ for a line fit is",
+   "choices": [
+    "$(1,2,3,4)$",
+    "$(2,3,5,4)$",
+    "$(14,39)$",
+    "$(1,1,1,1)$"
+   ],
+   "answer": 1,
+   "explanations": [
+    "That is the $x$-column.",
+    null,
+    "That is $A^T\\mathbf b$.",
+    "That is the column of ones."
+   ]
+  },
+  {
+   "type": "mc",
+   "prompt": "For the data $(1,2),(2,3),(3,5),(4,4)$, $A^TA=$",
+   "choices": [
+    "$\\left[\\begin{matrix}4 & 10\\\\10 & 10\\end{matrix}\\right]$",
+    "$\\left[\\begin{matrix}4 & 10\\\\10 & 30\\end{matrix}\\right]$",
+    "$\\left[\\begin{matrix}30 & 10\\\\10 & 4\\end{matrix}\\right]$",
+    "$\\left[\\begin{matrix}4 & 10\\\\10 & 100\\end{matrix}\\right]$"
+   ],
+   "answer": 1,
+   "explanations": [
+    "The lower right entry is $\\sum x^2=30$.",
+    null,
+    "The order is $[[n,\\sum x],[\\sum x,\\sum x^2]]$.",
+    "The entry is $\\sum x^2=1+4+9+16=30$, not $(\\sum x)^2$."
+   ]
+  },
+  {
+   "type": "mc",
+   "prompt": "For those data, $A^T\\mathbf b=$",
+   "choices": [
+    "$(14,10)$",
+    "$(14,39)$",
+    "$(39,14)$",
+    "$(14,30)$"
+   ],
+   "answer": 1,
+   "explanations": [
+    "The second entry is $\\sum xy=39$.",
+    null,
+    "The order is $(\\sum y,\\sum xy)$.",
+    "$30$ is $\\sum x^2$."
+   ]
+  },
+  {
+   "type": "mc",
+   "prompt": "The best-fit line for $(1,2),(2,3),(3,5),(4,4)$ is",
+   "choices": [
+    "$y=1.4+0.8x$",
+    "$y=1.5+0.8x$",
+    "$y=2+x$",
+    "$y=0.8+1.5x$"
+   ],
+   "answer": 1,
+   "explanations": [
+    "Check: $\\sum r$ would not be $0$.",
+    null,
+    "That line is not the minimizer; check $A^T\\mathbf r=\\mathbf 0$.",
+    "Intercept and slope are swapped."
+   ]
+  },
+  {
+   "type": "mc",
+   "prompt": "For the least-squares line, the residuals $r_i=y_i-(a+bx_i)$ always satisfy",
+   "choices": [
+    "$\\sum r_i=\\sum y_i$",
+    "$\\sum r_i^2=0$",
+    "$\\sum r_i=0$",
+    "all $r_i=0$"
+   ],
+   "answer": 2,
+   "explanations": [
+    "$\\sum r_i=0$, because $\\mathbf r$ is orthogonal to the column of ones.",
+    "$\\sum r_i^2=0$ only when the line passes through every point.",
+    null,
+    "Only when the data are exactly linear."
+   ]
+  },
+  {
+   "type": "mc",
+   "prompt": "Why is $\\sum r_i=0$ for a least-squares line with an intercept?",
+   "choices": [
+    "the data are symmetric",
+    "the line goes through the origin",
+    "$\\mathbf r$ is orthogonal to the column of ones",
+    "$\\mathbf r$ is parallel to the $x$-column"
+   ],
+   "answer": 2,
+   "explanations": [
+    "This holds for any data set.",
+    "A line with an intercept does not have to pass through the origin.",
+    null,
+    "$\\mathbf r$ is orthogonal to the $x$-column too, not parallel."
+   ]
+  },
+  {
+   "type": "mc",
+   "prompt": "Fitting $y=a+bx$ to $(0,6),(1,0),(2,0)$ gives",
+   "choices": [
+    "$y=3-3x$",
+    "$y=5+3x$",
+    "$y=5-3x$",
+    "$y=6-3x$"
+   ],
+   "answer": 2,
+   "explanations": [
+    "With intercept $3$ the line misses $(0,6)$ by $3$ and the total squared error is larger than $6$; the normal equations give $(5,-3)$.",
+    "The data decrease, so the slope is negative.",
+    null,
+    "That passes through $(0,6)$ but does not minimize the total squared error."
+   ]
+  },
+  {
+   "type": "mc",
+   "prompt": "Adding one data point far from the others in $x$ and far from the line usually",
+   "choices": [
+    "has no effect on the line",
+    "moves the least-squares line a lot",
+    "makes the SSE smaller",
+    "changes only the intercept"
+   ],
+   "answer": 1,
+   "explanations": [
+    "Squared residuals punish big misses, so the line tilts toward the outlier.",
+    null,
+    "It makes the SSE larger.",
+    "It generally changes both slope and intercept."
+   ]
+  },
+  {
+   "type": "mc",
+   "prompt": "Least squares is sensitive to outliers because",
+   "choices": [
+    "it uses absolute values",
+    "it minimizes the largest error",
+    "it ignores small errors",
+    "it minimizes squared residuals, which weight large errors heavily"
+   ],
+   "answer": 3,
+   "explanations": [
+    "That is a different method; least squares squares the errors.",
+    "Minimizing the largest error is minimax, a different fit.",
+    "It counts small errors too.",
+    null
+   ]
+  },
+  {
+   "type": "mc",
+   "prompt": "To fit a parabola $y=c_0+c_1t+c_2t^2$ to data, the columns of $A$ are",
+   "choices": [
+    "$\\mathbf y,\\ \\mathbf t,\\ \\mathbf t^2$",
+    "$\\mathbf 1,\\ \\mathbf t,\\ \\mathbf t^2$",
+    "$\\mathbf 1,\\ \\mathbf t$",
+    "$\\mathbf t,\\ \\mathbf t^2$"
+   ],
+   "answer": 1,
+   "explanations": [
+    "$\\mathbf y$ is $\\mathbf b$, not a column of $A$.",
+    null,
+    "Those fit a line.",
+    "That leaves out the constant term."
+   ]
+  },
+  {
+   "type": "mc",
+   "prompt": "Fitting a degree-4 polynomial to 5 data points with distinct $x$ values gives",
+   "choices": [
+    "a worse fit than a line",
+    "a fit with SSE larger than a parabola",
+    "an exact fit (SSE $=0$) that may wiggle badly",
+    "no solution"
+   ],
+   "answer": 2,
+   "explanations": [
+    "More columns can only lower the SSE.",
+    "More columns can only lower the SSE.",
+    null,
+    "The normal equations always have a solution."
+   ]
+  },
+  {
+   "type": "mc",
+   "prompt": "Going from a line to a parabola fit (adding the column $t^2$) can only",
+   "choices": [
+    "raise the SSE",
+    "lower or keep the same the sum of squared errors",
+    "make $A^TA$ smaller",
+    "leave the SSE unchanged always"
+   ],
+   "answer": 1,
+   "explanations": [
+    "The parabolas include all lines (take $c_2=0$), so the minimum cannot go up.",
+    null,
+    "$A^TA$ gets bigger (another row and column).",
+    "It usually lowers it."
+   ]
+  },
+  {
+   "type": "mc",
+   "prompt": "When software solves least squares, it often uses $A=QR$ and then solves",
+   "choices": [
+    "$Q\\hat{\\mathbf x}=R^T\\mathbf b$",
+    "$R\\hat{\\mathbf x}=\\mathbf b$",
+    "$R\\hat{\\mathbf x}=Q^T\\mathbf b$",
+    "$QR\\hat{\\mathbf x}=Q^T\\mathbf b$"
+   ],
+   "answer": 2,
+   "explanations": [
+    "Orders swapped.",
+    "$R$ is $n\\times n$ and $\\mathbf b$ is in $\\mathbb R^m$; project with $Q^T$ first.",
+    null,
+    "$Q^T$ must multiply both sides."
+   ]
+  },
+  {
+   "type": "mc",
+   "prompt": "Using $A=QR$: $A^TA\\hat{\\mathbf x}=A^T\\mathbf b$ simplifies to $R^TR\\hat{\\mathbf x}=R^TQ^T\\mathbf b$, so (since $R$ is invertible)",
+   "choices": [
+    "$\\hat{\\mathbf x}=Q^{-1}\\mathbf b$",
+    "$\\hat{\\mathbf x}=QR\\mathbf b$",
+    "$\\hat{\\mathbf x}=R\\,Q^T\\mathbf b$",
+    "$\\hat{\\mathbf x}=R^{-1}Q^T\\mathbf b$"
+   ],
+   "answer": 3,
+   "explanations": [
+    "$Q$ is not square in general.",
+    "Not dimensionally sensible.",
+    "Multiply by $R^{-1}$, not $R$.",
+    null
+   ]
+  },
+  {
+   "type": "type",
+   "prompt": "$A=\\begin{bmatrix}1&0\\\\0&1\\\\1&1\\end{bmatrix}$, $\\mathbf b=(1,1,0)$. Find the **first entry** of $A^T\\mathbf b$.",
+   "answer": [
+    "1"
+   ],
+   "explanation": "$(1,0,1)\\cdot(1,1,0)=1$."
+  },
+  {
+   "type": "type",
+   "prompt": "Same $A$. The entry in row 1, column 1 of $A^TA$.",
+   "answer": [
+    "2"
+   ],
+   "explanation": "$(1,0,1)\\cdot(1,0,1)=2$."
+  },
+  {
+   "type": "type",
+   "prompt": "Same $A$ and $\\mathbf b$: the **first entry** of $\\hat{\\mathbf x}$ (a fraction like 1/3 is fine).",
+   "answer": [
+    "1/3",
+    "0.3333"
+   ],
+   "explanation": "Solve $2x_1+x_2=1$, $x_1+2x_2=1$."
+  },
+  {
+   "type": "type",
+   "prompt": "Same problem: the **third entry** of the projection $A\\hat{\\mathbf x}$.",
+   "answer": [
+    "2/3",
+    "0.6667"
+   ],
+   "explanation": "$p_3=\\hat x_1+\\hat x_2=\\tfrac23$."
+  },
+  {
+   "type": "type",
+   "prompt": "Same problem: the **third entry** of the residual $\\mathbf b-A\\hat{\\mathbf x}$.",
+   "answer": [
+    "-2/3",
+    "-0.6667"
+   ],
+   "explanation": "$0-\\tfrac23=-\\tfrac23$."
+  },
+  {
+   "type": "type",
+   "prompt": "$A=\\begin{bmatrix}1&0\\\\1&1\\\\1&2\\end{bmatrix}$, $\\mathbf b=(6,0,0)$. The row 2, column 2 entry of $A^TA$.",
+   "answer": [
+    "5"
+   ],
+   "explanation": "$(0,1,2)\\cdot(0,1,2)=5$."
+  },
+  {
+   "type": "type",
+   "prompt": "Same $A$ and $\\mathbf b$: the **second entry** of $A^T\\mathbf b$.",
+   "answer": [
+    "0"
+   ],
+   "explanation": "$(0,1,2)\\cdot(6,0,0)=0$."
+  },
+  {
+   "type": "type",
+   "prompt": "Same problem: the **second entry** of $\\hat{\\mathbf x}$.",
+   "answer": [
+    "-3"
+   ],
+   "explanation": "$3x_1+3x_2=6$ and $3x_1+5x_2=0$ give $x_2=-3$."
+  },
+  {
+   "type": "type",
+   "prompt": "Same problem: the **third entry** of the projection $A\\hat{\\mathbf x}$.",
+   "answer": [
+    "-1"
+   ],
+   "explanation": "$5+2(-3)=-1$."
+  },
+  {
+   "type": "type",
+   "prompt": "Same problem: $\\|\\mathbf b-A\\hat{\\mathbf x}\\|^2$.",
+   "answer": [
+    "6"
+   ],
+   "explanation": "$\\mathbf r=(1,-2,1)$, so $1+4+1=6$."
+  },
+  {
+   "type": "type",
+   "prompt": "Data $(1,2),(2,3),(3,5),(4,4)$. $\\sum x^2=$",
+   "answer": [
+    "30"
+   ],
+   "explanation": "$1+4+9+16$."
+  },
+  {
+   "type": "type",
+   "prompt": "Same data: $\\sum xy=$",
+   "answer": [
+    "39"
+   ],
+   "explanation": "$2+6+15+16$."
+  },
+  {
+   "type": "type",
+   "prompt": "Same data: the **slope** of the best-fit line.",
+   "answer": [
+    "0.8",
+    "4/5"
+   ],
+   "explanation": "Solve $4a+10b=14$, $10a+30b=39$."
+  },
+  {
+   "type": "type",
+   "prompt": "Same data: the **intercept** of the best-fit line.",
+   "answer": [
+    "1.5",
+    "3/2"
+   ],
+   "explanation": "$a=(14-10(0.8))/4=1.5$."
+  },
+  {
+   "type": "type",
+   "prompt": "Same data: the predicted $y$ at $x=3$.",
+   "answer": [
+    "3.9",
+    "39/10"
+   ],
+   "explanation": "$1.5+0.8(3)=3.9$."
+  },
+  {
+   "type": "type",
+   "prompt": "Same data: the residual at $x=3$ (observed minus predicted).",
+   "answer": [
+    "1.1",
+    "11/10"
+   ],
+   "explanation": "$5-3.9=1.1$."
+  },
+  {
+   "type": "type",
+   "prompt": "Same data: the SSE (sum of squared residuals).",
+   "answer": [
+    "1.8",
+    "9/5"
+   ],
+   "explanation": "$0.09+0.01+1.21+0.49=1.8$."
+  },
+  {
+   "type": "type",
+   "prompt": "A line fit to 10 data points has residuals summing to what?",
+   "answer": [
+    "0"
+   ],
+   "explanation": "$\\mathbf r\\perp\\mathbf 1$, so $\\sum r_i=0$."
+  },
+  {
+   "type": "type",
+   "prompt": "The design matrix for a line fit to 7 data points has how many rows?",
+   "answer": [
+    "7"
+   ],
+   "explanation": "One row per data point."
+  },
+  {
+   "type": "type",
+   "prompt": "The design matrix for a **parabola** fit to 7 data points has how many columns?",
+   "answer": [
+    "3"
+   ],
+   "explanation": "Columns $\\mathbf 1,\\mathbf t,\\mathbf t^2$."
+  },
+  {
+   "type": "type",
+   "prompt": "For the three data points $(0,6),(1,0),(2,0)$ the best-fit line has slope",
+   "answer": [
+    "-3"
+   ],
+   "explanation": "$\\hat{\\mathbf x}=(5,-3)$."
+  },
+  {
+   "type": "type",
+   "prompt": "$A$ is $5\\times3$ with independent columns. $A^TA$ is $n\\times n$; what is $n$?",
+   "answer": [
+    "3"
+   ],
+   "explanation": "$A^TA$ has size (columns)$\\times$(columns)."
+  },
+  {
+   "type": "wordbank",
+   "prompt": "A least-squares solution makes $A\\hat{\\mathbf x}$ the _____ of $\\mathbf b$ onto col$(A)$.",
+   "wordbank": [
+    "inverse",
+    "projection",
+    "reflection",
+    "transpose"
+   ],
+   "answer": "projection",
+   "explanation": "The closest point of a subspace is the orthogonal projection."
+  },
+  {
+   "type": "wordbank",
+   "prompt": "The residual $\\mathbf b-A\\hat{\\mathbf x}$ is _____ to the columns of $A$.",
+   "wordbank": [
+    "orthogonal",
+    "equal",
+    "parallel",
+    "opposite"
+   ],
+   "answer": "orthogonal",
+   "explanation": "That is the defining geometry."
+  },
+  {
+   "type": "wordbank",
+   "prompt": "The equations $A^TA\\hat{\\mathbf x}=A^T\\mathbf b$ are called the _____ equations.",
+   "wordbank": [
+    "normal",
+    "residual",
+    "linear",
+    "orthonormal"
+   ],
+   "answer": "normal",
+   "explanation": "\"Normal\" refers to the residual being normal (perpendicular) to the column space."
+  },
+  {
+   "type": "wordbank",
+   "prompt": "$\\hat{\\mathbf x}$ is unique when the columns of $A$ are linearly _____.",
+   "wordbank": [
+    "orthogonal",
+    "equal",
+    "independent",
+    "dependent"
+   ],
+   "answer": "independent",
+   "explanation": "Then $A^TA$ is invertible."
+  },
+  {
+   "type": "wordbank",
+   "prompt": "The sum of squared residuals is abbreviated _____.",
+   "wordbank": [
+    "RREF",
+    "QR",
+    "SVD",
+    "SSE"
+   ],
+   "answer": "SSE",
+   "explanation": "Sum of squared errors."
+  },
+  {
+   "type": "wordbank",
+   "prompt": "In a line fit, the column of ones makes the residuals _____ to zero.",
+   "wordbank": [
+    "multiply",
+    "integrate",
+    "sum",
+    "divide"
+   ],
+   "answer": "sum",
+   "explanation": "$\\mathbf r\\cdot\\mathbf 1=\\sum r_i=0$."
+  },
+  {
+   "type": "wordbank",
+   "prompt": "A point far from the others in $x$ that also misses the line has high _____ and can tilt the fit.",
+   "wordbank": [
+    "entropy",
+    "trace",
+    "leverage",
+    "charge"
+   ],
+   "answer": "leverage",
+   "explanation": "Extreme-$x$ points act on a long lever arm."
+  },
+  {
+   "type": "wordbank",
+   "prompt": "Fitting too many columns so that the curve passes through every point but predicts badly is called _____.",
+   "wordbank": [
+    "underfitting",
+    "projection",
+    "rounding",
+    "overfitting"
+   ],
+   "answer": "overfitting",
+   "explanation": "The model is fitting noise."
+  },
+  {
+   "type": "wordbank",
+   "prompt": "In $A=QR$, the matrix $R$ is _____ triangular.",
+   "wordbank": [
+    "skew",
+    "lower",
+    "upper",
+    "diagonal"
+   ],
+   "answer": "upper",
+   "explanation": "Gram-Schmidt gives an upper triangular $R$."
+  },
+  {
+   "type": "wordbank",
+   "prompt": "The least-squares problem is also described as finding the _____ solution to an inconsistent system.",
+   "wordbank": [
+    "smallest",
+    "largest",
+    "closest",
+    "exact"
+   ],
+   "answer": "closest",
+   "explanation": "The projection is the closest point."
+  }
+ ]
+}
