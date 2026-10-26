@@ -449,7 +449,8 @@ async function loadProfile(uid){
 
 async function refreshProfile(){
   if (!currentUser) return;
-  currentProfile = await loadProfile(currentUser.id);
+  const fresh = await loadProfile(currentUser.id);
+  if (fresh) currentProfile = fresh;   // never replace a good profile with null after a failed fetch
   if (currentProfile){
     document.getElementById('settingsUsername').textContent = '@' + currentProfile.username;
     document.getElementById('settingsFullName').textContent = currentProfile.full_name;
@@ -1010,6 +1011,12 @@ async function finishDeck(){
 
   savingEl.textContent = 'Saving…';
   showScreen('results');
+
+  // Always work from the latest saved profile; refuse to save if it can't be loaded,
+  // otherwise an empty/stale profile would overwrite all of the student's deck_bests.
+  const freshProfile = await loadProfile(currentUser.id);
+  if (!freshProfile){ savingEl.textContent = '⚠ Could not load your profile — score NOT saved. Check your connection and try again.'; return; }
+  currentProfile = freshProfile;
 
   // ── Grade: best raw score, unlimited attempts (unless past due date) ──
   const prevBests  = currentProfile?.deck_bests || {};
