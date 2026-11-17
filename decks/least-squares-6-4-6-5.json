@@ -323,23 +323,6 @@
   },
   {
    "type": "mc",
-   "prompt": "For the same problem the residual $\\mathbf b-A\\hat{\\mathbf x}$ is",
-   "choices": [
-    "$(2/3,2/3,-2/3)$",
-    "$(0,0,0)$",
-    "$(1,1,0)$",
-    "$(1/3,1/3,2/3)$"
-   ],
-   "answer": 0,
-   "explanations": [
-    null,
-    "The residual is $\\mathbf 0$ only if the system is consistent; here $\\mathbf b\\notin$ col$(A)$.",
-    "That is $\\mathbf b$.",
-    "That is the projection."
-   ]
-  },
-  {
-   "type": "mc",
    "prompt": "The residual for $A=\\begin{bmatrix}1&0\\\\1&1\\\\1&2\\end{bmatrix}$, $\\mathbf b=(6,0,0)$ is $\\mathbf r=(1,-2,1)$. Which check confirms it is correct?",
    "choices": [
     "$\\mathbf r=\\mathbf b$",
